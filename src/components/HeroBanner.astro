@@ -5,9 +5,9 @@ interface Props {
   compact?: boolean;
 }
 const { title = "Light Art Gallery", subtitle = "light artworks", compact = false } = Astro.props;
-const heightClass = compact ? "h-20 sm:h-24 md:h-32" : "h-56 sm:h-72 md:h-96";
+const heightClass = compact ? "h-24 sm:h-32 md:h-40" : "h-56 sm:h-72 md:h-96";
 const titleStyle = compact
-  ? "font-size: clamp(1.1rem, 3vw, 1.75rem); letter-spacing: 0.16em; font-weight: 25;"
+  ? "font-size: clamp(1.2rem, 3.2vw, 1.9rem); letter-spacing: 0.15em; font-weight: 25;"
   : "font-size: clamp(1.6rem, 5vw, 3.5rem); letter-spacing: 0.12em; font-weight: 25;";
 ---
 
