@@ -1,59 +1,122 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HeroBanner from "../components/HeroBanner.astro";
+import { getCollection } from "astro:content";
+
+const werke = (await getCollection("werke", ({ data }) => !data.ausblenden))
+  .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf());
+
+const aktuellesWerk = werke[0];
+
+const blogEintraege = (await getCollection("blog", ({ data }) => !data.ausblenden))
+  .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf())
+  .slice(0, 3);
 ---
 
 <Layout>
-  <HeroBanner />
+  <HeroBanner title="Lichtkunst" subtitle="istvan seidel" />
 
   <section class="max-w-3xl mx-auto px-6 pt-16 pb-12 text-center">
     <p class="font-display text-lg md:text-xl leading-relaxed text-[var(--color-muted-foreground)]">
-      Lichtspuren als eigenständiges Medium. Geometrie aus Licht.
-      Eine Praxis zwischen Goethes Farbenlehre, Walter Russell
+      Lichtspuren als eigenständiges Medium. Material, das andere wegwerfen,
+      wird zu Licht. Eine Praxis zwischen Goethes Farbenlehre, Walter Russell
       und Otto Pienes <em>Sky Art</em>.
     </p>
-
-    <div class="flex flex-wrap gap-4 justify-center mt-10">
-      <a
-        href="/werke"
-        class="inline-flex items-center px-6 py-3 rounded-sm bg-[var(--color-accent)] text-[var(--color-accent-foreground)] text-sm tracking-[0.15em] uppercase font-medium glow-amber-sm hover:glow-amber transition-shadow"
-      >
-        Werke ansehen
-      </a>
-      <a
-        href="/nft"
-        class="inline-flex items-center px-6 py-3 rounded-sm border border-[var(--color-border)] text-[var(--color-foreground)] text-sm tracking-[0.15em] uppercase font-medium hover:border-[var(--color-accent)] transition-colors"
-      >
-        NFT-Sammlungen
-      </a>
-    </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-6 py-16 border-t border-[var(--color-border)]">
-    <div class="grid md:grid-cols-3 gap-12">
-      <div>
-        <div class="text-xs tracking-[0.25em] uppercase text-[var(--color-accent)] mb-3">01 — Praxis</div>
-        <h2 class="heading-serif text-2xl mb-4">Lichtkunst</h2>
-        <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-          Langzeitbelichtung als Bildraum. Licht zeichnet —
-          Atmosphäre macht sichtbar.
-        </p>
+  {aktuellesWerk && (
+    <section class="border-t border-[var(--color-border)]">
+      <div class="max-w-6xl mx-auto px-6 py-20 md:py-28">
+        <div class="text-xs tracking-[0.4em] uppercase text-[var(--color-accent)] mb-10 text-center animate-pulse-glow">
+          Aktuelles Werk
+        </div>
+
+        <a href={`/werke/${aktuellesWerk.id}`} class="block group">
+          {aktuellesWerk.data.bild && (
+            <div class="overflow-hidden rounded-sm border border-[var(--color-border)] mb-10 glow-amber-sm group-hover:glow-amber transition-shadow duration-500">
+              <img
+                src={aktuellesWerk.data.bild}
+                alt={aktuellesWerk.data.titel}
+                class="w-full h-auto group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+              />
+            </div>
+          )}
+
+          <div class="text-center max-w-2xl mx-auto">
+            {aktuellesWerk.data.serie && (
+              <div class="text-xs tracking-[0.3em] uppercase text-[var(--color-accent)] mb-4">
+                {aktuellesWerk.data.serie}
+              </div>
+            )}
+
+            <h2 class="heading-display text-4xl md:text-5xl lg:text-6xl mb-6 text-glow-amber tracking-[0.04em] group-hover:text-[var(--color-accent)] transition-colors duration-300">
+              {aktuellesWerk.data.titel}
+            </h2>
+
+            {aktuellesWerk.data.beschreibung_kurz && (
+              <p class="font-display text-base md:text-lg leading-relaxed text-[var(--color-muted-foreground)] mb-8">
+                {aktuellesWerk.data.beschreibung_kurz}
+              </p>
+            )}
+
+            <span class="inline-block px-7 py-3 rounded-sm border border-[var(--color-accent)]/50 text-sm tracking-[0.18em] uppercase text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-accent-foreground)] transition-colors">
+              Zum Werk →
+            </span>
+          </div>
+        </a>
       </div>
-      <div>
-        <div class="text-xs tracking-[0.25em] uppercase text-[var(--color-accent)] mb-3">02 — Form</div>
-        <h2 class="heading-serif text-2xl mb-4">Geometrie</h2>
-        <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-          Bewegung erzeugt Struktur. Wiederholung verdichtet zum Volumen.
-        </p>
+    </section>
+  )}
+
+  {blogEintraege.length > 0 && (
+    <section class="border-t border-[var(--color-border)]">
+      <div class="max-w-4xl mx-auto px-6 py-20">
+        <div class="text-xs tracking-[0.4em] uppercase text-[var(--color-accent)] mb-10 text-center">
+          Aus dem Journal
+        </div>
+
+        <ul class="space-y-8">
+          {blogEintraege.map((eintrag) => (
+            <li class="border-b border-[var(--color-border)]/40 pb-8 last:border-0">
+              <a href={`/blog/${eintrag.id}`} class="group block">
+                <div class="text-xs tracking-widest uppercase text-[var(--color-muted-foreground)]/70 mb-2">
+                  {eintrag.data.datum.toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "numeric" })}
+                </div>
+                <h3 class="heading-serif text-xl md:text-2xl text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors">
+                  {eintrag.data.titel}
+                </h3>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div class="text-center mt-12">
+          <a href="/blog" class="text-xs tracking-[0.25em] uppercase text-[var(--color-muted-foreground)] hover:text-[var(--color-accent)] transition-colors">
+            Alle Einträge →
+          </a>
+        </div>
       </div>
-      <div>
-        <div class="text-xs tracking-[0.25em] uppercase text-[var(--color-accent)] mb-3">03 — Werk</div>
-        <h2 class="heading-serif text-2xl mb-4">Sky Art</h2>
-        <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-          Flüchtiges fixiert. NFTs auf der TON Blockchain als Echo
-          der ursprünglichen Erscheinung.
-        </p>
+    </section>
+  )}
+
+  <section class="border-t border-[var(--color-border)]">
+    <div class="max-w-4xl mx-auto px-6 py-20 text-center">
+      <div class="text-xs tracking-[0.4em] uppercase text-[var(--color-accent)] mb-6">
+        NFT-Sammlungen
       </div>
+      <h2 class="heading-serif text-2xl md:text-3xl text-[var(--color-foreground)] mb-6">
+        Auf der TON Blockchain
+      </h2>
+      <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)] max-w-xl mx-auto mb-8">
+        Flüchtige Lichtphänomene als digitale Zeugnisse —
+        einzigartig, nicht wiederholbar, dauerhaft dokumentiert.
+      </p>
+      <a
+        href="/nft"
+        class="inline-flex items-center px-6 py-3 rounded-sm bg-[var(--color-accent)] text-[var(--color-accent-foreground)] text-sm tracking-[0.15em] uppercase font-medium glow-amber-sm hover:glow-amber transition-shadow"
+      >
+        Sammlungen ansehen →
+      </a>
     </div>
   </section>
 </Layout>
