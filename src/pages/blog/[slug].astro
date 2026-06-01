@@ -1,0 +1,51 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const eintraege = await getCollection("blog", ({ data }) => !data.ausblenden);
+  return eintraege.map((eintrag) => ({
+    params: { slug: eintrag.id },
+    props: { eintrag },
+  }));
+}
+
+const { eintrag } = Astro.props;
+const { Content } = await render(eintrag);
+
+const datum = eintrag.data.datum.toLocaleDateString("de-DE", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<Layout title={`${eintrag.data.titel} – Journal`}>
+  <article class="max-w-3xl mx-auto px-6 py-16">
+    <header class="mb-10 pb-8 border-b border-[var(--color-border)]/40">
+      <div class="text-xs tracking-widest uppercase text-[var(--color-muted-foreground)]/70 mb-3">{datum}</div>
+      <h1 class="heading-serif text-3xl md:text-4xl text-[var(--color-foreground)] leading-tight">
+        {eintrag.data.titel}
+      </h1>
+      {eintrag.data.tags && (
+        <div class="flex flex-wrap gap-2 mt-5">
+          {eintrag.data.tags.map((tag) => (
+            <span class="text-[0.6rem] tracking-widest uppercase text-[var(--color-muted-foreground)]/60 border border-[var(--color-border)]/40 rounded-sm px-2 py-0.5">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <div class="font-body text-[var(--color-muted-foreground)] leading-relaxed [&_h2]:heading-serif [&_h2]:text-xl [&_h2]:text-[var(--color-foreground)] [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:font-medium [&_h3]:text-[var(--color-foreground)] [&_h3]:mt-6 [&_h3]:mb-2 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:mb-4 [&_li]:mb-1 [&_em]:text-[var(--color-foreground)] [&_strong]:text-[var(--color-foreground)] [&_a]:text-[var(--color-accent)] [&_a]:underline [&_a]:underline-offset-4 [&_hr]:my-8 [&_hr]:border-[var(--color-border)]/40">
+      <Content />
+    </div>
+
+    <nav class="mt-16 pt-8 border-t border-[var(--color-border)]/40 text-sm">
+      <a href="/blog" class="text-[var(--color-muted-foreground)] hover:text-[var(--color-accent)] transition-colors">
+        ← Alle Einträge
+      </a>
+    </nav>
+  </article>
+</Layout>

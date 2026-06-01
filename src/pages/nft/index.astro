@@ -1,6 +1,10 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import HeroBanner from "../../components/HeroBanner.astro";
+import { getCollection } from "astro:content";
+
+const sammlungen = (await getCollection("nft-sammlungen", ({ data }) => !data.ausblenden))
+  .sort((a, b) => a.data.titel.localeCompare(b.data.titel));
 ---
 
 <Layout title="NFT-Sammlungen – Istvan Seidel Lichtkunst" description="Lichtkunst-NFTs von Istvan Seidel auf Getgems (TON Blockchain).">
@@ -16,32 +20,37 @@ import HeroBanner from "../../components/HeroBanner.astro";
       </p>
     </div>
 
-    <div class="grid sm:grid-cols-2 gap-6">
-      <a
-        href="https://getgems.io"
-        target="_blank"
-        rel="noopener"
-        class="nft-card block bg-[var(--color-card)] border border-[var(--color-border)] rounded-sm overflow-hidden hover:border-[var(--color-accent)]/60 transition-colors"
-      >
-        <div class="aspect-[4/3] bg-gradient-to-br from-[oklch(0.18_0.02_68)] to-[oklch(0.12_0.005_285)] flex items-center justify-center">
-          <div class="text-[var(--color-accent)] text-xs tracking-[0.3em] uppercase">Sky Art Series</div>
-        </div>
-        <div class="p-5 relative z-10">
-          <div class="text-xs tracking-widest uppercase text-[var(--color-muted-foreground)] mb-2">Aktuelle Sammlung</div>
-          <div class="heading-serif text-lg text-[var(--color-foreground)] mb-1">Sky Art Series</div>
-          <div class="text-xs text-[var(--color-muted-foreground)]">Auf Getgems ansehen →</div>
-        </div>
-      </a>
-
-      <div class="bg-[var(--color-card)]/40 border border-dashed border-[var(--color-border)]/60 rounded-sm overflow-hidden">
-        <div class="aspect-[4/3] flex items-center justify-center">
-          <div class="text-[var(--color-muted-foreground)]/40 text-xs tracking-[0.3em] uppercase">Weitere Sammlungen folgen</div>
-        </div>
-        <div class="p-5">
-          <div class="text-xs tracking-widest uppercase text-[var(--color-muted-foreground)]/50 mb-2">In Vorbereitung</div>
-          <div class="heading-serif text-lg text-[var(--color-foreground)]/40 mb-1">—</div>
-        </div>
+    {sammlungen.length === 0 ? (
+      <div class="text-center text-sm text-[var(--color-muted-foreground)]/60">
+        Sammlungen folgen in Kürze.
       </div>
-    </div>
+    ) : (
+      <div class="grid sm:grid-cols-2 gap-6">
+        {sammlungen.map((sammlung) => (
+          <a
+            href={sammlung.data.url}
+            target="_blank"
+            rel="noopener"
+            class="nft-card block bg-[var(--color-card)] border border-[var(--color-border)] rounded-sm overflow-hidden hover:border-[var(--color-accent)]/60 transition-colors"
+          >
+            <div class="aspect-[4/3] bg-gradient-to-br from-[oklch(0.18_0.02_68)] to-[oklch(0.12_0.005_285)] flex items-center justify-center overflow-hidden">
+              {sammlung.data.vorschaubild ? (
+                <img src={sammlung.data.vorschaubild} alt={sammlung.data.titel} class="w-full h-full object-cover" />
+              ) : (
+                <div class="text-[var(--color-accent)] text-xs tracking-[0.3em] uppercase px-4 text-center">{sammlung.data.titel}</div>
+              )}
+            </div>
+            <div class="p-5 relative z-10">
+              <div class="text-xs tracking-widest uppercase text-[var(--color-muted-foreground)] mb-2">{sammlung.data.plattform}</div>
+              <div class="heading-serif text-lg text-[var(--color-foreground)] mb-1">{sammlung.data.titel}</div>
+              {sammlung.data.beschreibung_kurz && (
+                <div class="text-xs text-[var(--color-muted-foreground)]/80 mt-2 leading-relaxed">{sammlung.data.beschreibung_kurz}</div>
+              )}
+              <div class="text-xs text-[var(--color-accent)] mt-3">Auf {sammlung.data.plattform} ansehen →</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
   </section>
 </Layout>

@@ -1,19 +1,49 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import HeroBanner from "../../components/HeroBanner.astro";
+import { getCollection } from "astro:content";
+
+const eintraege = (await getCollection("blog", ({ data }) => !data.ausblenden))
+  .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf());
 ---
 
 <Layout title="Journal – Istvan Seidel Lichtkunst" description="Journal und Werkstattnotizen zur Lichtkunst-Praxis von Istvan Seidel.">
   <HeroBanner title="Journal" subtitle="notizen aus der praxis" />
 
   <section class="max-w-3xl mx-auto px-6 py-16">
-    <div class="text-center">
-      <div class="text-xs tracking-[0.3em] uppercase text-[var(--color-accent)] mb-4">Demnächst</div>
-      <h2 class="heading-serif text-2xl mb-6">Erste Einträge folgen</h2>
-      <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-        Werkstattnotizen, Lesefrüchte aus der Farbenlehre,
-        kurze Texte zu einzelnen Arbeiten.
-      </p>
-    </div>
+    {eintraege.length === 0 ? (
+      <div class="text-center">
+        <div class="text-xs tracking-[0.3em] uppercase text-[var(--color-accent)] mb-4">Demnächst</div>
+        <h2 class="heading-serif text-2xl mb-6">Erste Einträge folgen</h2>
+        <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)]">
+          Werkstattnotizen, Lesefrüchte aus der Farbenlehre,
+          kurze Texte zu einzelnen Arbeiten.
+        </p>
+      </div>
+    ) : (
+      <ul class="space-y-10">
+        {eintraege.map((eintrag) => (
+          <li>
+            <a href={`/blog/${eintrag.id}`} class="group block">
+              <div class="text-xs tracking-widest uppercase text-[var(--color-muted-foreground)]/70 mb-2">
+                {eintrag.data.datum.toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "numeric" })}
+              </div>
+              <h2 class="heading-serif text-2xl text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors mb-2">
+                {eintrag.data.titel}
+              </h2>
+              {eintrag.data.tags && (
+                <div class="flex flex-wrap gap-2 mt-3">
+                  {eintrag.data.tags.map((tag) => (
+                    <span class="text-[0.6rem] tracking-widest uppercase text-[var(--color-muted-foreground)]/60 border border-[var(--color-border)]/40 rounded-sm px-2 py-0.5">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
   </section>
 </Layout>
