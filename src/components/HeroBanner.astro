@@ -2,11 +2,16 @@
 interface Props {
   title?: string;
   subtitle?: string;
+  compact?: boolean;
 }
-const { title = "Light Art Gallery", subtitle = "light artworks" } = Astro.props;
+const { title = "Light Art Gallery", subtitle = "light artworks", compact = false } = Astro.props;
+const heightClass = compact ? "h-28 sm:h-36 md:h-44" : "h-56 sm:h-72 md:h-96";
+const titleStyle = compact
+  ? "font-size: clamp(1.4rem, 4vw, 2.4rem); letter-spacing: 0.14em; font-weight: 25;"
+  : "font-size: clamp(1.6rem, 5vw, 3.5rem); letter-spacing: 0.12em; font-weight: 25;";
 ---
 
-<div class="relative w-full h-56 sm:h-72 md:h-96 overflow-hidden bg-[oklch(0.07_0.004_285)]">
+<div class={`relative w-full ${heightClass} overflow-hidden bg-[oklch(0.07_0.004_285)]`}>
   <div
     class="absolute inset-0"
     style="background: radial-gradient(ellipse 70% 60% at 55% 45%, oklch(0.55 0.18 68 / 0.55) 0%, oklch(0.35 0.14 55 / 0.3) 30%, oklch(0.12 0.02 285 / 0) 70%);"
@@ -101,7 +106,7 @@ const { title = "Light Art Gallery", subtitle = "light artworks" } = Astro.props
   <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center px-4">
     <h1
       class="heading-display text-[var(--color-foreground)]/90 text-glow-amber"
-      style="font-size: clamp(1.6rem, 5vw, 3.5rem); letter-spacing: 0.12em; font-weight: 25;"
+      style={titleStyle}
     >
       {title}
     </h1>
