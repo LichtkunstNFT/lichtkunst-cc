@@ -1,0 +1,48 @@
+---
+interface Props {
+  endpoint?: string;
+  headline?: string;
+}
+const {
+  endpoint = "#newsletter-placeholder",
+  headline = "Neue Werke, Ausstellungen, Texte — gelegentlich per Mail.",
+} = Astro.props;
+---
+
+<div class="max-w-md mx-auto mt-10 mb-2">
+  <div class="text-center mb-5">
+    <div class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-accent)] mb-3">
+      Newsletter
+    </div>
+    <p class="text-sm text-[var(--color-muted-foreground)] leading-relaxed">
+      {headline}
+    </p>
+  </div>
+
+  <form
+    action={endpoint}
+    method="post"
+    class="flex flex-col sm:flex-row gap-2"
+    data-newsletter-form
+  >
+    <label class="sr-only" for="newsletter-email">E-Mail-Adresse</label>
+    <input
+      id="newsletter-email"
+      type="email"
+      name="email_address"
+      required
+      placeholder="E-Mail-Adresse"
+      class="flex-1 px-4 py-2.5 bg-[var(--color-card)] border border-[var(--color-border)] rounded-sm text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)]/50 transition-colors"
+    />
+    <button
+      type="submit"
+      class="px-5 py-2.5 rounded-sm bg-[var(--color-accent)] text-[var(--color-accent-foreground)] text-xs tracking-[0.2em] uppercase font-medium glow-amber-sm hover:glow-amber transition-shadow whitespace-nowrap"
+    >
+      Abonnieren
+    </button>
+  </form>
+
+  <p class="text-[0.65rem] text-[var(--color-muted-foreground)]/60 text-center mt-3 leading-relaxed">
+    Double Opt-In. Keine Werbung Dritter. Abmeldung jederzeit über Link in jeder Mail.
+  </p>
+</div>
