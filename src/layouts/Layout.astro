@@ -1,0 +1,83 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Istvan Seidel – Lichtkunst",
+  description = "Istvan Seidel – Lichtkünstler. Werke, Sky Art, NFTs. Inspiriert von Goethes Farbenlehre, Walter Russell, Otto Piene.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0d0d0f" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,100;9..144,200;9..144,300;9..144,400&family=Geist+Mono:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@300,400,500&display=swap" />
+  </head>
+
+  <body class="grain-overlay">
+    <header class="border-b border-[var(--color-border)]/60 bg-[var(--color-background)]/90 backdrop-blur-md sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex h-14 items-center justify-between gap-4">
+          <a href="/" class="flex-shrink-0 group">
+            <span class="heading-serif text-sm sm:text-base text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors duration-200 text-glow-amber">
+              Istvan Seidel · Lichtkunst
+            </span>
+          </a>
+
+          <nav class="hidden sm:flex items-center gap-1" aria-label="Hauptnavigation">
+            <a href="/werke" class="px-3 py-1.5 text-sm font-medium rounded text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors">Werke</a>
+            <a href="/blog" class="px-3 py-1.5 text-sm font-medium rounded text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors">Journal</a>
+            <a href="/nft" class="px-3 py-1.5 text-sm font-medium rounded text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors">NFT</a>
+            <a href="/ueber-mich" class="px-3 py-1.5 text-sm font-medium rounded text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors">Über</a>
+          </nav>
+        </div>
+
+        <div class="sm:hidden flex items-center gap-3 pb-2 overflow-x-auto">
+          <a href="/werke" class="whitespace-nowrap text-xs font-medium pb-0.5 text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors">Werke</a>
+          <a href="/blog" class="whitespace-nowrap text-xs font-medium pb-0.5 text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors">Journal</a>
+          <a href="/nft" class="whitespace-nowrap text-xs font-medium pb-0.5 text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors">NFT</a>
+          <a href="/ueber-mich" class="whitespace-nowrap text-xs font-medium pb-0.5 text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors">Über</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="animate-fade-up">
+      <slot />
+    </main>
+
+    <footer class="mt-32 border-t border-[var(--color-border)] bg-[var(--color-muted)]/20">
+      <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between gap-6 text-sm text-[var(--color-muted-foreground)]">
+        <div>
+          <div class="heading-serif text-base text-[var(--color-foreground)] mb-2">
+            Istvan Seidel
+          </div>
+          <div>Lichtkunst · Light Art · Sky Art NFTs</div>
+        </div>
+        <div class="text-xs leading-relaxed max-w-md">
+          Werke nach Goethes Farbenlehre, Walter Russell und Otto Pienes Sky Art —
+          Lichtkunst, Geometrie aus Licht, NFTs auf der TON Blockchain.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

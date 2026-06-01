@@ -1,0 +1,112 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+const { title = "Light Art Gallery", subtitle = "light artworks" } = Astro.props;
+---
+
+<div class="relative w-full h-56 sm:h-72 md:h-96 overflow-hidden bg-[oklch(0.07_0.004_285)]">
+  <div
+    class="absolute inset-0"
+    style="background: radial-gradient(ellipse 70% 60% at 55% 45%, oklch(0.55 0.18 68 / 0.55) 0%, oklch(0.35 0.14 55 / 0.3) 30%, oklch(0.12 0.02 285 / 0) 70%);"
+  ></div>
+
+  <div
+    class="absolute inset-0"
+    style="background: radial-gradient(ellipse 40% 50% at 20% 65%, oklch(0.45 0.15 50 / 0.35) 0%, transparent 60%);"
+  ></div>
+
+  <svg
+    class="absolute inset-0 w-full h-full"
+    viewBox="0 0 1400 320"
+    preserveAspectRatio="xMidYMid slice"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <defs>
+      <filter id="glow-trail">
+        <feGaussianBlur stdDeviation="3.5" result="blur"></feGaussianBlur>
+        <feMerge>
+          <feMergeNode in="blur"></feMergeNode>
+          <feMergeNode in="SourceGraphic"></feMergeNode>
+        </feMerge>
+      </filter>
+      <filter id="glow-bright">
+        <feGaussianBlur stdDeviation="6" result="blur"></feGaussianBlur>
+        <feMerge>
+          <feMergeNode in="blur"></feMergeNode>
+          <feMergeNode in="SourceGraphic"></feMergeNode>
+        </feMerge>
+      </filter>
+    </defs>
+
+    <path
+      d="M-50,280 C200,240 400,60 700,100 C900,130 1100,200 1450,80"
+      fill="none"
+      stroke="oklch(0.78 0.18 68)"
+      stroke-width="1.5"
+      stroke-opacity="0.8"
+      filter="url(#glow-trail)"
+    ></path>
+    <path
+      d="M-50,280 C200,240 400,60 700,100 C900,130 1100,200 1450,80"
+      fill="none"
+      stroke="oklch(0.9 0.12 70)"
+      stroke-width="0.5"
+      stroke-opacity="0.6"
+    ></path>
+
+    <path
+      d="M0,180 C150,120 350,220 600,140 C800,80 1050,170 1400,100"
+      fill="none"
+      stroke="oklch(0.72 0.16 60)"
+      stroke-width="1.2"
+      stroke-opacity="0.7"
+      filter="url(#glow-trail)"
+    ></path>
+
+    <path
+      d="M400,180 C450,80 580,70 640,140 C700,210 620,280 540,240 C460,200 480,120 560,110"
+      fill="none"
+      stroke="oklch(0.8 0.17 65)"
+      stroke-width="1.8"
+      stroke-opacity="0.75"
+      filter="url(#glow-bright)"
+    ></path>
+
+    <path
+      d="M100,320 C300,260 500,160 750,180 C950,195 1150,280 1400,200"
+      fill="none"
+      stroke="oklch(0.65 0.14 55)"
+      stroke-width="0.8"
+      stroke-opacity="0.5"
+    ></path>
+
+    <path
+      d="M380,175 C440,100 560,90 610,150"
+      fill="none"
+      stroke="oklch(0.95 0.1 75)"
+      stroke-width="0.7"
+      stroke-opacity="0.9"
+      filter="url(#glow-bright)"
+    ></path>
+  </svg>
+
+  <div
+    class="absolute inset-0"
+    style="background: linear-gradient(to bottom, oklch(0.07 0.004 285 / 0.6) 0%, transparent 30%, transparent 70%, oklch(0.07 0.004 285 / 0.8) 100%);"
+  ></div>
+
+  <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center px-4">
+    <h1
+      class="heading-display text-[var(--color-foreground)]/90 text-glow-amber"
+      style="font-size: clamp(1.6rem, 5vw, 3.5rem); letter-spacing: 0.12em; font-weight: 25;"
+    >
+      {title}
+    </h1>
+    <p class="font-body text-[var(--color-muted-foreground)]/60 text-xs sm:text-sm tracking-[0.25em] uppercase">
+      {subtitle}
+    </p>
+  </div>
+</div>

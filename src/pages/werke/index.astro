@@ -1,0 +1,28 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HeroBanner from "../../components/HeroBanner.astro";
+---
+
+<Layout title="Werke – Istvan Seidel Lichtkunst" description="Lichtkunst-Werke von Istvan Seidel. Sky Art, Geometrie aus Licht, Lichtspuren.">
+  <HeroBanner title="Werke" subtitle="ausgewählte Lichtkunst" />
+
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <div class="text-center max-w-xl mx-auto">
+      <div class="text-xs tracking-[0.3em] uppercase text-[var(--color-accent)] mb-4">Sammlung im Aufbau</div>
+      <h2 class="heading-serif text-2xl mb-6">Werke folgen in Kürze</h2>
+      <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)]">
+        Die Werkdokumentation wird Schritt für Schritt aufgebaut.
+        Bis dahin geben die <a href="/nft" class="text-[var(--color-accent)] hover:underline underline-offset-4">NFT-Sammlungen</a>
+        einen ersten Einblick in die aktuelle Praxis.
+      </p>
+    </div>
+
+    <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 opacity-30">
+      {Array.from({ length: 6 }).map(() => (
+        <div class="aspect-square bg-[var(--color-card)] border border-[var(--color-border)] rounded-sm flex items-center justify-center">
+          <div class="text-[var(--color-muted-foreground)] text-xs tracking-widest uppercase">Platzhalter</div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>

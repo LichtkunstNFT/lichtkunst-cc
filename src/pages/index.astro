@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroBanner from "../components/HeroBanner.astro";
+---
+
+<Layout>
+  <HeroBanner />
+
+  <section class="max-w-3xl mx-auto px-6 pt-16 pb-12 text-center">
+    <p class="font-display text-lg md:text-xl leading-relaxed text-[var(--color-muted-foreground)]">
+      Lichtspuren als eigenständiges Medium. Geometrie aus Licht.
+      Eine Praxis zwischen Goethes Farbenlehre, Walter Russell
+      und Otto Pienes <em>Sky Art</em>.
+    </p>
+
+    <div class="flex flex-wrap gap-4 justify-center mt-10">
+      <a
+        href="/werke"
+        class="inline-flex items-center px-6 py-3 rounded-sm bg-[var(--color-accent)] text-[var(--color-accent-foreground)] text-sm tracking-[0.15em] uppercase font-medium glow-amber-sm hover:glow-amber transition-shadow"
+      >
+        Werke ansehen
+      </a>
+      <a
+        href="/nft"
+        class="inline-flex items-center px-6 py-3 rounded-sm border border-[var(--color-border)] text-[var(--color-foreground)] text-sm tracking-[0.15em] uppercase font-medium hover:border-[var(--color-accent)] transition-colors"
+      >
+        NFT-Sammlungen
+      </a>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 py-16 border-t border-[var(--color-border)]">
+    <div class="grid md:grid-cols-3 gap-12">
+      <div>
+        <div class="text-xs tracking-[0.25em] uppercase text-[var(--color-accent)] mb-3">01 — Praxis</div>
+        <h2 class="heading-serif text-2xl mb-4">Lichtkunst</h2>
+        <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)]">
+          Langzeitbelichtung als Bildraum. Licht zeichnet —
+          Atmosphäre macht sichtbar.
+        </p>
+      </div>
+      <div>
+        <div class="text-xs tracking-[0.25em] uppercase text-[var(--color-accent)] mb-3">02 — Form</div>
+        <h2 class="heading-serif text-2xl mb-4">Geometrie</h2>
+        <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)]">
+          Bewegung erzeugt Struktur. Wiederholung verdichtet zum Volumen.
+        </p>
+      </div>
+      <div>
+        <div class="text-xs tracking-[0.25em] uppercase text-[var(--color-accent)] mb-3">03 — Werk</div>
+        <h2 class="heading-serif text-2xl mb-4">Sky Art</h2>
+        <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)]">
+          Flüchtiges fixiert. NFTs auf der TON Blockchain als Echo
+          der ursprünglichen Erscheinung.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

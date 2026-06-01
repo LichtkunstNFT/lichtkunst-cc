@@ -1,0 +1,47 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HeroBanner from "../../components/HeroBanner.astro";
+---
+
+<Layout title="NFT-Sammlungen – Istvan Seidel Lichtkunst" description="Lichtkunst-NFTs von Istvan Seidel auf Getgems (TON Blockchain).">
+  <HeroBanner title="NFT-Sammlungen" subtitle="auf der TON Blockchain" />
+
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="font-display text-lg leading-relaxed text-[var(--color-muted-foreground)]">
+        Aus den flüchtigen Lichtphänomenen entstehen NFTs als
+        digitale Zeugnisse — einzigartig, nicht wiederholbar.
+        Geprägt auf der <span class="text-[var(--color-foreground)]">TON Blockchain</span>,
+        zu erwerben über <a href="https://getgems.io" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline underline-offset-4">Getgems.io</a>.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+      <a
+        href="https://getgems.io"
+        target="_blank"
+        rel="noopener"
+        class="nft-card block bg-[var(--color-card)] border border-[var(--color-border)] rounded-sm overflow-hidden hover:border-[var(--color-accent)]/60 transition-colors"
+      >
+        <div class="aspect-[4/3] bg-gradient-to-br from-[oklch(0.18_0.02_68)] to-[oklch(0.12_0.005_285)] flex items-center justify-center">
+          <div class="text-[var(--color-accent)] text-xs tracking-[0.3em] uppercase">Sky Art Series</div>
+        </div>
+        <div class="p-5 relative z-10">
+          <div class="text-xs tracking-widest uppercase text-[var(--color-muted-foreground)] mb-2">Aktuelle Sammlung</div>
+          <div class="heading-serif text-lg text-[var(--color-foreground)] mb-1">Sky Art Series</div>
+          <div class="text-xs text-[var(--color-muted-foreground)]">Auf Getgems ansehen →</div>
+        </div>
+      </a>
+
+      <div class="bg-[var(--color-card)]/40 border border-dashed border-[var(--color-border)]/60 rounded-sm overflow-hidden">
+        <div class="aspect-[4/3] flex items-center justify-center">
+          <div class="text-[var(--color-muted-foreground)]/40 text-xs tracking-[0.3em] uppercase">Weitere Sammlungen folgen</div>
+        </div>
+        <div class="p-5">
+          <div class="text-xs tracking-widest uppercase text-[var(--color-muted-foreground)]/50 mb-2">In Vorbereitung</div>
+          <div class="heading-serif text-lg text-[var(--color-foreground)]/40 mb-1">—</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

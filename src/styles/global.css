@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/* ─── Tailwind v4 Theme Tokens (OKLCH from Caffeine DESIGN.md) ─── */
+@theme {
+  --color-background: oklch(0.10 0.005 285);
+  --color-foreground: oklch(0.93 0.012 70);
+  --color-card: oklch(0.14 0.008 285);
+  --color-card-foreground: oklch(0.93 0.012 70);
+  --color-popover: oklch(0.16 0.010 285);
+  --color-popover-foreground: oklch(0.93 0.012 70);
+  --color-primary: oklch(0.93 0.012 70);
+  --color-primary-foreground: oklch(0.10 0.005 285);
+  --color-secondary: oklch(0.20 0.012 285);
+  --color-secondary-foreground: oklch(0.82 0.012 70);
+  --color-muted: oklch(0.18 0.008 285);
+  --color-muted-foreground: oklch(0.55 0.012 70);
+  --color-accent: oklch(0.72 0.14 68);
+  --color-accent-foreground: oklch(0.10 0.005 285);
+  --color-border: oklch(0.22 0.010 285);
+  --color-input: oklch(0.22 0.010 285);
+  --color-ring: oklch(0.72 0.14 68);
+
+  --font-display: "Fraunces", serif;
+  --font-body: "Cabinet Grotesk", system-ui, sans-serif;
+  --font-mono: "Geist Mono", monospace;
+
+  --radius: 0.25rem;
+}
+
+/* ─── Base Layer ─── */
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% -20%, oklch(0.20 0.030 285 / 0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, oklch(0.18 0.020 68 / 0.25) 0%, transparent 50%);
+    background-attachment: fixed;
+    min-height: 100dvh;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+  ::selection {
+    background: oklch(0.72 0.14 68 / 0.3);
+    color: var(--color-foreground);
+  }
+}
+
+/* ─── Typography ─── */
+.heading-display {
+  font-family: var(--font-display);
+  font-weight: 100;
+  letter-spacing: 0.06em;
+  font-optical-sizing: auto;
+}
+
+.heading-serif {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Glow effects (light-art signature) ─── */
+.glow-amber {
+  box-shadow:
+    0 0 0 1px oklch(0.72 0.14 68 / 0.3),
+    0 0 20px oklch(0.72 0.14 68 / 0.15),
+    0 0 60px oklch(0.72 0.14 68 / 0.08);
+}
+
+.glow-amber-sm {
+  box-shadow: 0 0 12px oklch(0.72 0.14 68 / 0.20);
+}
+
+.text-glow-amber {
+  text-shadow:
+    0 0 28px oklch(0.72 0.14 68 / 0.35),
+    0 0 60px oklch(0.72 0.14 68 / 0.15);
+}
+
+/* ─── NFT/Werk card hover ─── */
+.nft-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nft-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, oklch(0.10 0.005 285 / 0.85) 100%);
+  pointer-events: none;
+}
+
+.nft-card:hover { transform: translateY(-4px); }
+.nft-card:hover img { transform: scale(1.04); }
+.nft-card img { transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+/* ─── Grain overlay ─── */
+.grain-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ─── Animations ─── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}

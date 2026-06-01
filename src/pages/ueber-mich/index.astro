@@ -1,0 +1,70 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Über – Istvan Seidel Lichtkunst" description="Über Istvan Seidel — Lichtkünstler. Inspiriert von Goethes Farbenlehre, Schopenhauer, Walter Russell, Otto Piene.">
+  <section class="container mx-auto px-6 py-20 max-w-2xl">
+    <h1 class="heading-display text-2xl sm:text-3xl text-[var(--color-foreground)] uppercase mb-10 text-glow-amber tracking-[0.18em]">
+      Über den Künstler
+    </h1>
+
+    <div class="space-y-6 font-body text-[var(--color-muted-foreground)] leading-relaxed text-sm sm:text-base">
+      <p>
+        <span class="text-[var(--color-foreground)] font-medium">Istvan Seidel</span>
+        bewegt sich zwischen den Welten — zwischen Licht und Schatten,
+        zwischen dem Sichtbaren und dem, was jenseits der Wahrnehmung liegt.
+        Als Lichtkünstler erforscht er die verborgenen Strukturen, die allem
+        Lebendigen zugrunde liegen.
+      </p>
+
+      <p>
+        Seine Arbeit wurzelt in den großen Farbdenkern der Geschichte: in
+        Goethes Überzeugung, dass Farbe kein physikalisches Phänomen ist,
+        sondern ein lebendiges Wechselspiel zwischen Licht, Dunkel und dem
+        menschlichen Auge. In Schopenhauers Erkenntnis, dass Farbe eine
+        Aktivität der Netzhaut ist — ein subjektiver Akt der Wahrnehmung,
+        der Wirklichkeit erst erschafft.
+      </p>
+
+      <p>
+        Ideologisch steht Seidel
+        <span class="text-[var(--color-foreground)]/80 italic">Walter Russell</span>
+        nahe, der Licht nicht als bloße Strahlung verstand, sondern als
+        universelle Schöpfungskraft — den Atem des Kosmos, aus dem alle Form
+        entsteht. Und er teilt den visionären Impuls von
+        <span class="text-[var(--color-foreground)]/80 italic">Otto Piene</span>,
+        dessen <em>Sky Art</em> den Himmel selbst zur Leinwand machte und Licht in
+        den öffentlichen Raum entließ.
+      </p>
+
+      <p>
+        Aus diesen Lichtkunstphänomenen — vergänglich, einmalig, nie
+        wiederholbar — entstehen einzigartige NFTs: digitale Zeugnisse eines
+        Moments, in dem Licht sich selbst porträtiert hat. Jedes Werk ist
+        ein Atemzug aus Licht, geprägt auf der
+        <span class="text-[var(--color-accent)]">TON Blockchain</span>
+        und über <a href="https://getgems.io" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline underline-offset-4">Getgems</a> erhältlich.
+      </p>
+
+      <p class="text-[var(--color-foreground)]/50 italic text-xs pt-6 border-t border-[var(--color-border)]/30">
+        Wer er ist, verrät sein Werk. Mehr braucht es nicht.
+      </p>
+    </div>
+
+    <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4">
+      {[
+        { name: "Goethe", role: "Farbenlehre" },
+        { name: "Schopenhauer", role: "Wahrnehmung" },
+        { name: "Walter Russell", role: "Licht & Kosmos" },
+        { name: "Otto Piene", role: "Sky Art" },
+      ].map(({ name, role }) => (
+        <div class="bg-[var(--color-card)]/50 border border-[var(--color-border)]/30 rounded-sm p-4 text-center">
+          <p class="heading-serif text-xs text-[var(--color-foreground)]/80">{name}</p>
+          <p class="text-[0.6rem] text-[var(--color-muted-foreground)]/50 uppercase tracking-widest mt-1">
+            {role}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
