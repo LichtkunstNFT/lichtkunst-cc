@@ -3,17 +3,17 @@
 /* ─── Tailwind v4 Theme Tokens (OKLCH from Caffeine DESIGN.md) ─── */
 @theme {
   --color-background: oklch(0.10 0.005 285);
-  --color-foreground: oklch(0.93 0.012 70);
+  --color-foreground: oklch(1 0 0);
   --color-card: oklch(0.14 0.008 285);
-  --color-card-foreground: oklch(0.93 0.012 70);
+  --color-card-foreground: oklch(1 0 0);
   --color-popover: oklch(0.16 0.010 285);
-  --color-popover-foreground: oklch(0.93 0.012 70);
-  --color-primary: oklch(0.93 0.012 70);
+  --color-popover-foreground: oklch(1 0 0);
+  --color-primary: oklch(1 0 0);
   --color-primary-foreground: oklch(0.10 0.005 285);
   --color-secondary: oklch(0.20 0.012 285);
-  --color-secondary-foreground: oklch(0.82 0.012 70);
+  --color-secondary-foreground: oklch(0.95 0 0);
   --color-muted: oklch(0.18 0.008 285);
-  --color-muted-foreground: oklch(0.55 0.012 70);
+  --color-muted-foreground: oklch(0.72 0 0);
   --color-accent: oklch(0.72 0.14 68);
   --color-accent-foreground: oklch(0.10 0.005 285);
   --color-border: oklch(0.22 0.010 285);
