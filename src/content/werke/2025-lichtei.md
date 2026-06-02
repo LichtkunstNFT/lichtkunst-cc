@@ -4,7 +4,7 @@ datum: 2025-09-01
 bild: /bilder/lichtei/01-hero.jpg
 serie: Lichtskulptur
 beschreibung_kurz: Eiförmige Lichtskulptur mit konzentrischen Ringen und vierstrahligem Sternenzentrum — eine Form, die mit der Beleuchtung ihre Stimmung wechselt.
-getgems_url: https://getgems.io/lichtei
+getgems_url: https://getgems.io/collection/EQBjS1PlPB2PBYZcm70gegjzaeE1vKbMv17s0G4ipAKJ3TBN
 tags:
   - werk
   - lichtskulptur
@@ -70,4 +70,4 @@ zur Form*.
 ## Status
 
 - **Entstehung:** 2025
-- **NFT-Kollektion:** [getgems.io/lichtei](https://getgems.io/lichtei)
+- **NFT-Kollektion:** [getgems.io/lichtei](https://getgems.io/collection/EQBjS1PlPB2PBYZcm70gegjzaeE1vKbMv17s0G4ipAKJ3TBN)
