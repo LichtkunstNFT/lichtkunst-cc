@@ -3,7 +3,7 @@ titel: Lichtei
 datum: 2025-09-01
 bild: /bilder/lichtei/01-hero.jpg
 serie: Lichtskulptur
-beschreibung_kurz: Eiförmige Lichtskulptur mit konzentrischen Ringen und vierstrahligem Sternenzentrum. Wechselnde Farbstimmungen verwandeln die Geometrie zum Andachtsraum.
+beschreibung_kurz: Eiförmige Lichtskulptur mit konzentrischen Ringen und vierstrahligem Sternenzentrum — eine Form, die mit der Beleuchtung ihre Stimmung wechselt.
 getgems_url: https://getgems.io/lichtei
 tags:
   - werk
@@ -12,45 +12,60 @@ tags:
   - "2025"
 ---
 
-## Begegnung mit dem Licht
-
 Eine eiförmige Schale, geöffnet zur Betrachterin. Konzentrische Ringe
-nach innen, ein vierstrahliger Stern im Zentrum, ein dunkles Auge in der
-Mitte. Die Geometrie ist klar — die Wirkung nicht.
-
-Je nach Lichtmodus wechselt das Innere durch ganze Stimmungswelten:
-intensives Grün der Tiefe, kühles Blauviolett der Stille, weiß-silbernes
-Licht der Klarheit. Die Form bleibt — was sie sagt, ändert sich.
+nach innen, ein vierstrahliger Stern im Zentrum, ein dunkles Auge in
+der Mitte. Die Geometrie ist klar — die Wirkung nicht. Je nach Licht
+wechselt das Innere durch ganze Stimmungswelten.
 
 ![Frontalansicht im Grün — zwei Betrachter im Profil](/bilder/lichtei/03-zentrum-gruen.jpg)
 
-## Geometrie und Stille
+## Im Gesamtwerk
 
-Die Komposition aus Ringen und Stern verweist auf alte Symbolsprachen
-des Lichts: Walter Russells Diagramme der Schöpfung durch Wellenform,
-Goethes Polarität, das Auge als Sinnesorgan und Symbol zugleich.
+Das *Lichtei* ist die Fortsetzung einer langjährigen Arbeit am Licht
+als eigenständigem Medium. Es bezieht sich auf drei Denker, die im
+Werk durchgehend präsent sind:
 
-Doch das Werk illustriert keine Theorie. Es zeigt nur sich selbst —
-und lässt dem Blick die Arbeit.
+**Walter Russell** verstand Licht als Schöpfungsprinzip — konzentrische
+Wellenformen, aus denen alle Form entsteht. Genau diese Geometrie zeigt
+das Lichtei: Ringe um eine Mitte, Stern aus Polaritäten, ein dunkles
+Zentrum, aus dem Licht zurückkehrt.
 
-![Studie in Schwarzweiß: die reine Form](/bilder/lichtei/04-form-studie.jpg)
+**Goethe** beschreibt Farbe als *Tat des Lichts* — keine objektive
+Eigenschaft, sondern ein Ereignis zwischen Licht, Dunkel und Auge.
+Im Lichtei werden die Farben gewechselt; die Form bleibt. Was sich
+ändert, ist immer auch das, was im Auge geschieht.
+
+**Schopenhauer** geht weiter: Sehen ist *Tätigkeit*, nicht Empfangen.
+Die Netzhaut erzeugt, was wir Farbe nennen. Das Lichtei macht das
+spürbar — wer hineinblickt, erfährt sich als Mitschöpfer des Bildes.
+
+## Die Form
+
+![Studie in Schwarzweiß — die reine Geometrie](/bilder/lichtei/04-form-studie.jpg)
+
+Ohne Farbe zeigt sich die Konstruktion: drei konzentrische Ringe,
+ein gleichseitiger Lichtstern als zentrales Motiv, ein offenes Auge
+am Pol. Die Eiform ist nicht zufällig — sie verweist auf das
+Schöpfungsmotiv, das in vielen Bildkulturen mit Licht und Ursprung
+verbunden ist.
 
 ## Farbwechsel
 
-Das Lichtei ist nie zweimal dasselbe. Bei jedem Wechsel der Beleuchtung
-verändert sich nicht nur die Farbe, sondern auch die Räumlichkeit der
-Eindrücke: das Grün rückt die Form näher, das Blauviolett lässt sie
-treiben.
-
 ![Blauviolette Stimmung — zwei Köpfe, eine Form](/bilder/lichtei/02-blauviolett.jpg)
 
-## Asymmetrie und Spiegelung
+Im Grün rückt die Form näher und wird körperlich.
+Im Blauviolett tritt sie zurück und wird Atmosphäre.
+Was Goethe in Worten beschreibt, lässt sich hier mit Augen sehen:
+Farbe ist nicht etwas, das *ist*, sondern etwas, das *geschieht*.
 
-Auf den Aufnahmen unter wechselndem Licht zeigt sich, was unter
-gleichmäßiger Ausleuchtung verborgen bleibt: kleine Abweichungen,
-Spiegelungen der Schalenränder, eingeritzte Lichtbahnen.
+## Asymmetrie
 
 ![Schwarzweiß-Aufnahme mit sichtbarer Asymmetrie](/bilder/lichtei/05-asymmetrie.jpg)
+
+Bei genauerem Sehen löst sich die scheinbare Symmetrie auf:
+kleine Verzerrungen, Spiegelungen, eingeritzte Lichtbahnen.
+Die geometrische Klarheit ist nicht Perfektion, sondern *Bewegung
+zur Form*.
 
 ## Status
 
