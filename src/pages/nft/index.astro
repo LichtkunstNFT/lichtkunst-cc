@@ -8,15 +8,18 @@ const sammlungen = (await getCollection("nft-sammlungen", ({ data }) => !data.au
 ---
 
 <Layout title="NFT-Sammlungen – Istvan Seidel Lichtkunst" description="Lichtkunst-NFTs von Istvan Seidel auf Getgems (TON Blockchain).">
-  <HeroBanner title="NFT-Sammlungen" subtitle="auf der TON Blockchain" />
+  <HeroBanner title="NFT-Sammlungen" subtitle="auf der TON Blockchain" compact />
 
-  <section class="max-w-4xl mx-auto px-6 py-16">
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      <p class="font-display text-lg leading-relaxed text-[var(--color-muted-foreground)]">
-        Aus den flüchtigen Lichtphänomenen entstehen NFTs als
-        digitale Zeugnisse — einzigartig, nicht wiederholbar.
-        Geprägt auf der <span class="text-[var(--color-foreground)]">TON Blockchain</span>,
-        zu erwerben über <a href="https://getgems.io" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline underline-offset-4">Getgems.io</a>.
+  <section class="max-w-4xl mx-auto px-6 py-12">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <p class="font-display text-base md:text-lg leading-relaxed text-[var(--color-muted-foreground)]">
+        Aus flüchtigen Lichtphänomenen werden dauerhafte Sammlerstücke —
+        signierte Editionen, geprägt auf der
+        <span class="text-[var(--color-foreground)]">TON Blockchain</span>,
+        erhältlich über <a href="https://getgems.io" target="_blank" rel="noopener" class="text-[var(--color-accent)] underline underline-offset-4">Getgems.io</a>.
+      </p>
+      <p class="text-sm text-[var(--color-muted-foreground)]/80 mt-4">
+        Neu in der NFT-Welt? <a href="/nft/info" class="text-[var(--color-accent)] underline underline-offset-4">Was ist ein NFT, wie funktioniert der Kauf →</a>
       </p>
     </div>
 
@@ -25,32 +28,36 @@ const sammlungen = (await getCollection("nft-sammlungen", ({ data }) => !data.au
         Sammlungen folgen in Kürze.
       </div>
     ) : (
-      <div class="grid sm:grid-cols-2 gap-6">
+      <ul class="space-y-8">
         {sammlungen.map((sammlung) => (
-          <a
-            href={sammlung.data.url}
-            target="_blank"
-            rel="noopener"
-            class="nft-card block bg-[var(--color-card)] border border-[var(--color-border)] rounded-sm overflow-hidden hover:border-[var(--color-accent)]/60 transition-colors"
-          >
-            <div class="aspect-[4/3] bg-gradient-to-br from-[oklch(0.18_0.02_68)] to-[oklch(0.12_0.005_285)] flex items-center justify-center overflow-hidden">
-              {sammlung.data.vorschaubild ? (
-                <img src={sammlung.data.vorschaubild} alt={sammlung.data.titel} class="w-full h-full object-cover" />
-              ) : (
-                <div class="text-[var(--color-accent)] text-xs tracking-[0.3em] uppercase px-4 text-center">{sammlung.data.titel}</div>
-              )}
-            </div>
-            <div class="p-5 relative z-10">
-              <div class="text-xs tracking-widest uppercase text-[var(--color-muted-foreground)] mb-2">{sammlung.data.plattform}</div>
-              <div class="heading-serif text-lg text-[var(--color-foreground)] mb-1">{sammlung.data.titel}</div>
-              {sammlung.data.beschreibung_kurz && (
-                <div class="text-xs text-[var(--color-muted-foreground)]/80 mt-2 leading-relaxed">{sammlung.data.beschreibung_kurz}</div>
-              )}
-              <div class="text-xs text-[var(--color-accent)] mt-3">Auf {sammlung.data.plattform} ansehen →</div>
-            </div>
-          </a>
+          <li>
+            <a
+              href={sammlung.data.url}
+              target="_blank"
+              rel="noopener"
+              class="group grid grid-cols-[6rem_1fr] sm:grid-cols-[8rem_1fr] gap-5 sm:gap-6 items-start"
+            >
+              <div class="overflow-hidden rounded-sm border border-[var(--color-border)] aspect-square bg-[var(--color-card)] group-hover:border-[var(--color-accent)]/50 transition-colors">
+                {sammlung.data.vorschaubild ? (
+                  <img src={sammlung.data.vorschaubild} alt={sammlung.data.titel} class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700" />
+                ) : (
+                  <div class="text-[var(--color-accent)] text-[0.6rem] tracking-[0.3em] uppercase px-2 text-center flex items-center justify-center h-full">{sammlung.data.titel}</div>
+                )}
+              </div>
+              <div>
+                <div class="text-[0.6rem] tracking-[0.3em] uppercase text-[var(--color-muted-foreground)] mb-2">{sammlung.data.plattform}</div>
+                <div class="heading-serif text-lg md:text-xl text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors">{sammlung.data.titel}</div>
+                {sammlung.data.beschreibung_kurz && (
+                  <div class="text-sm text-[var(--color-muted-foreground)]/85 mt-2 leading-relaxed">{sammlung.data.beschreibung_kurz}</div>
+                )}
+                <div class="text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-accent)] mt-3 group-hover:underline underline-offset-4">
+                  Bilder als NFT auf {sammlung.data.plattform} erwerben →
+                </div>
+              </div>
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     )}
   </section>
 </Layout>

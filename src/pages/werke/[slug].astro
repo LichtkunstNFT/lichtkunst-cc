@@ -53,16 +53,34 @@ const datum = werk.data.datum.toLocaleDateString("de-DE", {
     </div>
 
     {werk.data.getgems_url && (
-      <div class="mt-12 pt-8 border-t border-[var(--color-border)]">
+      <aside class="mt-16 p-6 sm:p-8 rounded-sm border border-[var(--color-accent)]/40 bg-[var(--color-card)]/60">
+        <div class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-accent)] mb-3">
+          Sammlerwert
+        </div>
+        <h3 class="heading-serif text-xl md:text-2xl text-[var(--color-foreground)] mb-4">
+          Bilder als einzigartige <a href="/nft/info" class="underline underline-offset-4 decoration-[var(--color-accent)]/60 hover:decoration-[var(--color-accent)] text-[var(--color-foreground)]">NFT</a>-Kunstwerke erwerben
+        </h3>
+        <p class="text-sm text-[var(--color-muted-foreground)] leading-relaxed mb-4">
+          Jede Edition ist ein signiertes, dauerhaft auf der TON Blockchain
+          verankertes Werk — direkt vom Künstler, mit Echtheitsnachweis und
+          10 % Royalty bei jedem Wiederverkauf.
+        </p>
+        <p class="text-xs text-[var(--color-muted-foreground)]/80 leading-relaxed mb-6">
+          Voraussetzungen: eine
+          <a href="/nft/info" class="text-[var(--color-accent)] underline underline-offset-4">TON-Wallet</a>
+          (z.B. Tonkeeper oder @wallet in Telegram) und
+          <a href="/nft/info" class="text-[var(--color-accent)] underline underline-offset-4">TON Coins</a>
+          als Zahlungsmittel. <a href="/nft/info" class="text-[var(--color-accent)] underline underline-offset-4">Schritt für Schritt erklärt →</a>
+        </p>
         <a
           href={werk.data.getgems_url}
           target="_blank"
           rel="noopener"
           class="inline-flex items-center px-6 py-3 rounded-sm bg-[var(--color-accent)] text-[var(--color-accent-foreground)] text-sm tracking-[0.15em] uppercase font-medium glow-amber-sm hover:glow-amber transition-shadow"
         >
-          Auf Getgems ansehen →
+          Auf Getgems erwerben →
         </a>
-      </div>
+      </aside>
     )}
 
     <nav class="mt-16 pt-8 border-t border-[var(--color-border)]/40 text-sm">

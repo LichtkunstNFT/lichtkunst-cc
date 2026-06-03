@@ -7,46 +7,60 @@ const werke = (await getCollection("werke", ({ data }) => !data.ausblenden))
   .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf());
 ---
 
-<Layout title="Werke – Istvan Seidel Lichtkunst" description="Lichtkunst-Werke von Istvan Seidel. Sky Art, Geometrie aus Licht, Lichtspuren.">
-  <HeroBanner title="Werke" subtitle="ausgewählte Lichtkunst" />
+<Layout title="Werke – Istvan Seidel Lichtkunst" description="Lichtkunst-Werke von Istvan Seidel. Sky Art, Lichtskulptur, Lichtinstallation.">
+  <HeroBanner title="Werke" subtitle="ausgewählte lichtkunst" compact />
 
-  <section class="max-w-6xl mx-auto px-6 py-16">
+  <section class="max-w-5xl mx-auto px-6 py-12">
     {werke.length === 0 ? (
       <div class="text-center max-w-xl mx-auto">
         <div class="text-xs tracking-[0.3em] uppercase text-[var(--color-accent)] mb-4">Sammlung im Aufbau</div>
-        <h2 class="heading-serif text-2xl mb-6">Werke folgen in Kürze</h2>
-        <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-          Die Werkdokumentation wird Schritt für Schritt aufgebaut.
-          Bis dahin geben die <a href="/nft" class="text-[var(--color-accent)] hover:underline underline-offset-4">NFT-Sammlungen</a>
-          einen ersten Einblick.
-        </p>
+        <h2 class="heading-serif text-2xl mb-6 text-[var(--color-foreground)]">Werke folgen in Kürze</h2>
       </div>
     ) : (
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {werke.map((werk) => (
-          <a
-            href={`/werke/${werk.id}`}
-            class="nft-card block bg-[var(--color-card)] border border-[var(--color-border)] rounded-sm overflow-hidden hover:border-[var(--color-accent)]/60 transition-colors"
-          >
-            <div class="aspect-square bg-gradient-to-br from-[oklch(0.18_0.02_68)] to-[oklch(0.12_0.005_285)] flex items-center justify-center overflow-hidden">
-              {werk.data.bild ? (
-                <img src={werk.data.bild} alt={werk.data.titel} class="w-full h-full object-cover" />
-              ) : (
-                <div class="text-[var(--color-muted-foreground)]/40 text-xs tracking-[0.3em] uppercase">ohne Bild</div>
-              )}
-            </div>
-            <div class="p-5 relative z-10">
-              {werk.data.serie && (
-                <div class="text-xs tracking-widest uppercase text-[var(--color-accent)] mb-2">{werk.data.serie}</div>
-              )}
-              <div class="heading-serif text-lg text-[var(--color-foreground)] mb-1">{werk.data.titel}</div>
-              {werk.data.beschreibung_kurz && (
-                <div class="text-xs text-[var(--color-muted-foreground)] mt-2 leading-relaxed">{werk.data.beschreibung_kurz}</div>
-              )}
-            </div>
-          </a>
-        ))}
-      </div>
+      <>
+        <p class="text-center text-sm text-[var(--color-muted-foreground)] max-w-2xl mx-auto mb-12 italic">
+          Die Werke sind als <a href="/nft/info" class="text-[var(--color-accent)] underline underline-offset-4">NFT</a> auf der TON Blockchain erhältlich — jede Edition ein einzigartiges, signiertes Kunstwerk.
+        </p>
+
+        <ul class="space-y-10 md:space-y-12">
+          {werke.map((werk) => (
+            <li>
+              <a href={`/werke/${werk.id}`} class="group grid grid-cols-[6rem_1fr] sm:grid-cols-[10rem_1fr] gap-5 sm:gap-8 items-start">
+                {werk.data.bild && (
+                  <div class="overflow-hidden rounded-sm border border-[var(--color-border)] aspect-square bg-[var(--color-card)] group-hover:border-[var(--color-accent)]/50 transition-colors">
+                    <img
+                      src={werk.data.bild}
+                      alt={werk.data.titel}
+                      class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+                    />
+                  </div>
+                )}
+                <div>
+                  {werk.data.serie && (
+                    <div class="text-[0.6rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-2">
+                      {werk.data.serie}
+                    </div>
+                  )}
+                  <h2 class="heading-serif text-xl md:text-2xl text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors mb-2">
+                    {werk.data.titel}
+                    <span class="text-[var(--color-muted-foreground)]/70 text-sm font-normal ml-2">
+                      ({werk.data.datum.getFullYear()})
+                    </span>
+                  </h2>
+                  {werk.data.beschreibung_kurz && (
+                    <p class="text-sm text-[var(--color-muted-foreground)] leading-relaxed">
+                      {werk.data.beschreibung_kurz}
+                    </p>
+                  )}
+                  <span class="inline-block mt-3 text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-accent)] group-hover:underline underline-offset-4">
+                    Im Detail →
+                  </span>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </>
     )}
   </section>
 </Layout>

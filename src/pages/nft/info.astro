@@ -1,0 +1,125 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import HeroBanner from "../../components/HeroBanner.astro";
+---
+
+<Layout title="Was sind NFTs? – Istvan Seidel Lichtkunst" description="Erklärung: Was sind NFTs, was ist die TON Blockchain, wie kaufe ich ein Lichtkunst-NFT von Istvan Seidel.">
+  <HeroBanner title="NFT — Erklärung" subtitle="warum, was und wie" compact />
+
+  <article class="max-w-2xl mx-auto px-6 py-12 font-body text-[var(--color-muted-foreground)] leading-relaxed
+    [&_h2]:heading-serif [&_h2]:text-xl [&_h2]:md:text-2xl [&_h2]:text-[var(--color-foreground)] [&_h2]:mt-10 [&_h2]:mb-4
+    [&_h3]:font-medium [&_h3]:text-[var(--color-foreground)] [&_h3]:mt-6 [&_h3]:mb-2
+    [&_p]:mb-4 [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:mb-4 [&_li]:mb-2
+    [&_strong]:text-[var(--color-foreground)] [&_em]:text-[var(--color-foreground)]/90
+    [&_a]:text-[var(--color-accent)] [&_a]:underline [&_a]:underline-offset-4">
+
+    <p class="text-sm leading-relaxed mb-8 text-center italic">
+      Eine kurze Einführung für Sammler:innen, die mit NFTs noch nicht
+      vertraut sind. Wer sich auskennt, kann direkt zu den
+      <a href="/nft">Sammlungen</a> weitergehen.
+    </p>
+
+    <h2>Was ist ein NFT?</h2>
+    <p>
+      <strong>NFT</strong> steht für <em>Non-Fungible Token</em> — ein
+      einzigartiger digitaler Eigentumsnachweis. Anders als eine Münze
+      oder eine Datei ist jedes NFT individuell und nicht beliebig
+      ersetzbar. Es wird in einer Blockchain — einem öffentlichen, nicht
+      manipulierbaren Register — fest verankert. Damit ist eindeutig
+      und dauerhaft belegt:
+    </p>
+    <ul>
+      <li>welches Werk es ist (Bild, Titel, Beschreibung, Attribute)</li>
+      <li>wann es entstand und vom Künstler signiert wurde</li>
+      <li>wer es aktuell besitzt</li>
+      <li>welche Sammlung es zugehört (z.B. <a href="/werke/2025-lichtei">Lichtei</a>)</li>
+    </ul>
+
+    <h2>Warum NFT statt Download?</h2>
+    <p>
+      Die Bilder auf dieser Website lassen sich technisch leicht
+      kopieren. Aber: Eine Kopie ist nur ein Bild. Ein NFT ist mehr:
+    </p>
+    <ul>
+      <li><strong>Echtheitsnachweis</strong> — direkt vom Künstler signiert, nicht später behauptbar</li>
+      <li><strong>Sammlerwert</strong> — die Edition ist begrenzt, oft 1 von 1; weltweit gibt es nur diesen einen</li>
+      <li><strong>Direkte Künstler-Unterstützung</strong> — der Erlös geht ohne Galerie-Margen an den Künstler</li>
+      <li><strong>Royalty bei Wiederverkauf</strong> — bei jedem späteren Verkauf gehen 10 % zurück an den Künstler, dauerhaft</li>
+      <li><strong>Zugang zur Sammler-Community</strong> — Eintrag in einer öffentlichen, dauerhaften Werkliste</li>
+    </ul>
+
+    <h2>Was ist die TON Blockchain?</h2>
+    <p>
+      Die Lichtkunst-NFTs sind auf der <strong>TON Blockchain</strong>
+      verankert — der Blockchain des Telegram-Ökosystems. TON wurde
+      ursprünglich vom Telegram-Team entwickelt und wird heute als
+      Open-Source-Projekt fortgeführt. Vorteile gegenüber älteren
+      Chains wie Ethereum:
+    </p>
+    <ul>
+      <li>sehr niedrige Transaktionsgebühren (Bruchteile eines Cents)</li>
+      <li>energieeffizient — kein „Mining"-Stromverbrauch</li>
+      <li>schnelle Transaktionen (Sekunden, keine Minuten)</li>
+      <li>integriert in Telegram — Wallet ist als Bot direkt verfügbar</li>
+    </ul>
+    <p>
+      Die zugehörige Kryptowährung heißt <strong>TON Coin</strong>
+      (Symbol: <code>TON</code>). Damit werden NFTs gekauft und
+      Transaktionsgebühren bezahlt.
+    </p>
+
+    <h2>Was du zum Kauf brauchst</h2>
+    <ol>
+      <li>
+        <strong>Eine TON-Wallet</strong> — die einfachste Variante ist
+        der <a href="https://t.me/wallet" target="_blank" rel="noopener">@wallet Bot</a>
+        direkt in Telegram. Alternativ:
+        <a href="https://tonkeeper.com/" target="_blank" rel="noopener">Tonkeeper</a>
+        als App. Die Wallet ist dein digitaler Geldbeutel und
+        Eigentumsnachweis.
+      </li>
+      <li>
+        <strong>TON Coins</strong> in der Wallet — kaufbar direkt
+        in @wallet (per Karte oder Banküberweisung) oder an Krypto-Börsen
+        wie Bybit, OKX, MEXC.
+      </li>
+      <li>
+        <strong>Ein Getgems-Login</strong> — auf
+        <a href="https://getgems.io" target="_blank" rel="noopener">getgems.io</a>
+        die Wallet verbinden. Kein eigenes Passwort, die Wallet ist die Identität.
+      </li>
+    </ol>
+
+    <h2>Wie kaufst du ein Lichtkunst-NFT?</h2>
+    <ol>
+      <li>Auf der gewünschten <a href="/nft">Sammlung</a> bei Getgems das Werk auswählen</li>
+      <li>„Buy now" oder „Place a bid" klicken</li>
+      <li>Wallet bestätigt die Transaktion (Bestätigung in der Wallet-App)</li>
+      <li>Nach wenigen Sekunden ist das NFT in deiner Wallet — und du bist der eingetragene Besitzer</li>
+    </ol>
+
+    <h2>Was passiert mit deinem NFT?</h2>
+    <p>
+      Es bleibt in deiner Wallet, solange du es behältst. Du kannst es:
+    </p>
+    <ul>
+      <li>in deinem Profil bei Getgems ausstellen</li>
+      <li>später weiterverkaufen — bei Wertsteigerung mit Gewinn</li>
+      <li>verschenken (Wallet-zu-Wallet Transfer)</li>
+      <li>in deine Sammlung integrieren (ein NFT ist Teil eines wachsenden Œuvres)</li>
+    </ul>
+
+    <h2>Bei Fragen</h2>
+    <p>
+      Über das <a href="/ueber-mich">Kontakt-Profil</a> erreichst du mich
+      direkt — auch für persönliche Beratung bei Erstkauf oder
+      individuelle Werk-Vorschläge.
+    </p>
+
+    <div class="mt-12 pt-8 border-t border-[var(--color-border)] text-center">
+      <a href="/nft" class="inline-flex items-center px-6 py-3 rounded-sm bg-[var(--color-accent)] text-[var(--color-accent-foreground)] text-sm tracking-[0.15em] uppercase font-medium glow-amber-sm hover:glow-amber transition-shadow no-underline">
+        Sammlungen ansehen →
+      </a>
+    </div>
+  </article>
+</Layout>
