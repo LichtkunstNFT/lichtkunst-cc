@@ -30,9 +30,8 @@ Differenz ist für meine Praxis entscheidend.
 ## Was als Nächstes kommt
 
 Im Juni teste ich eine Serie ausschließlich mit Komplementärpaaren —
-keine weiße Lichtquelle. Wenn das funktioniert, wird es Teil der neuen
-Werkreihe [[2026-06-10-beispiel-werk-danach]].
+keine weiße Lichtquelle.
 
 ---
 
-Verwandte Werke: [[2026-05-30-beispiel-lichtfeld]]
+Verwandte Werke: [[2025-lichtei|Lichtei]] · [[2023-gegen-die-schwerkraft|Gegen die Schwerkraft]]
