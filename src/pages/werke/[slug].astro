@@ -23,14 +23,19 @@ const datum = werk.data.datum.toLocaleDateString("de-DE", {
 <Layout title={`${werk.data.titel} – Lichtkunst`} description={werk.data.beschreibung_kurz}>
   <article class="max-w-3xl mx-auto px-6 py-16">
     {werk.data.bild && (
-      <div class="mb-12 -mx-6 sm:mx-0">
+      <div class="mb-10 flex justify-center">
         <img
           src={werk.data.bild}
           alt={werk.data.titel}
-          class="w-full h-auto rounded-sm border border-[var(--color-border)]"
+          draggable="false"
+          class="w-40 h-40 rounded-sm border border-[var(--color-border)] object-cover select-none"
         />
       </div>
     )}
+
+    <p class="text-center text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-muted-foreground)]/70 mb-8 -mt-6">
+      Vorschau · Originale exklusiv als <a href="/nft/info" class="text-[var(--color-accent)] underline underline-offset-4">NFT</a>
+    </p>
 
     <header class="mb-10">
       {werk.data.serie && (
@@ -48,7 +53,7 @@ const datum = werk.data.datum.toLocaleDateString("de-DE", {
       </div>
     </header>
 
-    <div class="font-body text-[var(--color-muted-foreground)] leading-relaxed [&_h2]:heading-serif [&_h2]:text-2xl [&_h2]:text-[var(--color-foreground)] [&_h2]:mt-12 [&_h2]:mb-5 [&_h3]:font-medium [&_h3]:text-[var(--color-foreground)] [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:mb-5 [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-5 [&_li]:mb-1 [&_em]:text-[var(--color-foreground)]/90 [&_strong]:text-[var(--color-foreground)] [&_a]:text-[var(--color-accent)] [&_a]:underline [&_a]:underline-offset-4 [&_blockquote]:border-l-2 [&_blockquote]:border-[var(--color-accent)] [&_blockquote]:pl-5 [&_blockquote]:italic [&_blockquote]:text-[var(--color-foreground)]/80 [&_blockquote]:my-6 [&_img]:w-full [&_img]:h-auto [&_img]:rounded-sm [&_img]:border [&_img]:border-[var(--color-border)] [&_img]:my-10 [&_img]:-mx-6 [&_img]:sm:mx-0 [&_img]:max-w-[calc(100%+3rem)] [&_img]:sm:max-w-full">
+    <div class="font-body text-[var(--color-muted-foreground)] leading-relaxed [&_h2]:heading-serif [&_h2]:text-2xl [&_h2]:text-[var(--color-foreground)] [&_h2]:mt-12 [&_h2]:mb-5 [&_h3]:font-medium [&_h3]:text-[var(--color-foreground)] [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:mb-5 [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-5 [&_li]:mb-1 [&_em]:text-[var(--color-foreground)]/90 [&_strong]:text-[var(--color-foreground)] [&_a]:text-[var(--color-accent)] [&_a]:underline [&_a]:underline-offset-4 [&_blockquote]:border-l-2 [&_blockquote]:border-[var(--color-accent)] [&_blockquote]:pl-5 [&_blockquote]:italic [&_blockquote]:text-[var(--color-foreground)]/80 [&_blockquote]:my-6 [&_img]:w-32 [&_img]:h-32 [&_img]:object-cover [&_img]:rounded-sm [&_img]:border [&_img]:border-[var(--color-border)] [&_img]:my-6 [&_img]:mx-auto [&_img]:block [&_img]:select-none">
       <Content />
     </div>
 
