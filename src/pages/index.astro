@@ -78,11 +78,11 @@ const zitate = [
           Aktuelle Werke
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
           {werke.slice(0, 3).map((werk, i) => (
-            <a href={`/werke/${werk.id}`} class="block group">
+            <a href={`/werke/${werk.id}`} class="block group max-w-[10rem] mx-auto">
               {werk.data.bild && (
-                <div class="overflow-hidden rounded-sm border border-[var(--color-border)] group-hover:glow-amber-sm transition-shadow duration-500 mb-4 aspect-square bg-[var(--color-card)]">
+                <div class="overflow-hidden rounded-sm border border-[var(--color-border)] group-hover:glow-amber-sm transition-shadow duration-500 mb-3 aspect-square bg-[var(--color-card)]">
                   <img
                     src={werk.data.bild}
                     alt={werk.data.titel}
@@ -92,20 +92,20 @@ const zitate = [
               )}
               <div class="text-center">
                 {werk.data.serie && (
-                  <div class="text-[0.6rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-2">
+                  <div class="text-[0.55rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-1">
                     {werk.data.serie}
                   </div>
                 )}
-                <h2 class="heading-serif text-lg md:text-xl mb-2 text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors">
+                <h2 class="heading-serif text-sm md:text-base mb-1 text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors">
                   {werk.data.titel}
                   {i === 0 && (
-                    <span class="block text-[0.55rem] tracking-[0.3em] uppercase text-[var(--color-accent)]/80 mt-1 font-normal">
+                    <span class="block text-[0.5rem] tracking-[0.3em] uppercase text-[var(--color-accent)]/80 mt-1 font-normal">
                       Aktuell
                     </span>
                   )}
                 </h2>
                 {werk.data.beschreibung_kurz && (
-                  <p class="text-xs leading-relaxed text-[var(--color-muted-foreground)] max-w-xs mx-auto">
+                  <p class="text-[0.7rem] leading-snug text-[var(--color-muted-foreground)]/85 line-clamp-3">
                     {werk.data.beschreibung_kurz}
                   </p>
                 )}
