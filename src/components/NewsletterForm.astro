@@ -4,7 +4,7 @@ interface Props {
   headline?: string;
 }
 const {
-  endpoint = "#newsletter-placeholder",
+  endpoint = "https://eocampaign1.com/form/37a6e4fc-6001-11f1-b0c3-9b90a18e68d4",
   headline = "Neue Werke, Ausstellungen, Texte — gelegentlich per Mail.",
 } = Astro.props;
 ---
@@ -29,11 +29,20 @@ const {
     <input
       id="newsletter-email"
       type="email"
-      name="email_address"
+      name="field_0"
       required
       placeholder="E-Mail-Adresse"
       class="flex-1 px-4 py-2.5 bg-[var(--color-card)] border border-[var(--color-border)] rounded-sm text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)]/50 transition-colors"
     />
+    {/* EmailOctopus Honeypot — von Menschen unsichtbar, muss leer bleiben */}
+    <div class="absolute left-[-5000px]" aria-hidden="true">
+      <input
+        type="text"
+        name="hpc4b27b6e-eb38-11e9-be00-06b4694bee2a"
+        tabindex="-1"
+        autocomplete="off"
+      />
+    </div>
     <button
       type="submit"
       class="px-5 py-2.5 rounded-sm bg-[var(--color-accent)] text-[var(--color-accent-foreground)] text-xs tracking-[0.2em] uppercase font-medium glow-amber-sm hover:glow-amber transition-shadow whitespace-nowrap"
@@ -42,7 +51,53 @@ const {
     </button>
   </form>
 
+  <p
+    data-newsletter-status
+    hidden
+    class="text-sm text-center mt-4 leading-relaxed text-[var(--color-foreground)]"
+  >
+  </p>
+
   <p class="text-[0.65rem] text-[var(--color-muted-foreground)]/60 text-center mt-3 leading-relaxed">
     Double Opt-In. Keine Werbung Dritter. Abmeldung jederzeit über Link in jeder Mail.
   </p>
 </div>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>("[data-newsletter-form]").forEach((form) => {
+    const status = form.parentElement?.querySelector<HTMLElement>("[data-newsletter-status]");
+    const button = form.querySelector<HTMLButtonElement>("button[type='submit']");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (button) button.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new URLSearchParams(new FormData(form) as unknown as Record<string, string>),
+        });
+        const data = await response.json().catch(() => ({}));
+
+        if (response.ok && data?.success !== false) {
+          form.hidden = true;
+          if (status) {
+            status.textContent =
+              "Fast geschafft — bitte bestätige die Anmeldung über den Link in der E-Mail, die wir dir gerade geschickt haben.";
+            status.hidden = false;
+          }
+        } else {
+          throw new Error(data?.error?.message ?? "Unbekannter Fehler");
+        }
+      } catch {
+        if (button) button.disabled = false;
+        if (status) {
+          status.textContent =
+            "Da ist etwas schiefgelaufen. Bitte versuch es gleich noch einmal.";
+          status.hidden = false;
+        }
+      }
+    });
+  });
+</script>
