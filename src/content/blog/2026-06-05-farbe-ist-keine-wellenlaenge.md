@@ -1,6 +1,8 @@
 ---
 titel: Farbe ist keine Wellenlänge — sie ist ein Erlebnis
+untertitel: Über Goethe, Schopenhauer und Philipp Otto Runge — und warum ich in eine offene Lücke der Kunstgeschichte springe.
 datum: 2026-06-05
+titelbild: /bilder/journal/hell-dunkel-polaritaet.svg
 tags:
   - journal
   - theorie

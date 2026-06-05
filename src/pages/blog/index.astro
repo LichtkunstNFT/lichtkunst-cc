@@ -31,6 +31,19 @@ const eintraege = (await getCollection("blog", ({ data }) => !data.ausblenden))
               <h2 class="heading-serif text-2xl text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors mb-2">
                 {eintrag.data.titel}
               </h2>
+              {eintrag.data.untertitel && (
+                <p class="font-body italic text-[var(--color-muted-foreground)] leading-relaxed mb-3">
+                  {eintrag.data.untertitel}
+                </p>
+              )}
+              {eintrag.data.titelbild && (
+                <img
+                  src={eintrag.data.titelbild}
+                  alt=""
+                  loading="lazy"
+                  class="w-full max-w-sm rounded mb-3 opacity-90 group-hover:opacity-100 transition-opacity"
+                />
+              )}
               {eintrag.data.tags && (
                 <div class="flex flex-wrap gap-2 mt-3">
                   {eintrag.data.tags.map((tag) => (
