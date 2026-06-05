@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 132" role="img" aria-label="Farbskala von Licht zu Dunkel: Gelb entsteht aus verdunkeltem Licht, Blau aus aufgehelltem Dunkel">
+  <defs>
+    <linearGradient id="pol" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F7F4EC"/>
+      <stop offset="30%" stop-color="#EFC400"/>
+      <stop offset="50%" stop-color="#7d7a72"/>
+      <stop offset="70%" stop-color="#2E5FA3"/>
+      <stop offset="100%" stop-color="#0c1018"/>
+    </linearGradient>
+  </defs>
+  <rect x="20" y="26" width="320" height="48" rx="7" fill="url(#pol)"/>
+  <g font-family="Georgia, serif" font-size="12" fill="#b6b0a4">
+    <text x="22" y="98" text-anchor="start">Licht</text>
+    <text x="116" y="98" text-anchor="middle" fill="#EFC400">Gelb</text>
+    <text x="244" y="98" text-anchor="middle" fill="#5a82c0">Blau</text>
+    <text x="338" y="98" text-anchor="end">Dunkel</text>
+  </g>
+  <g font-family="Georgia, serif" font-size="11" fill="#8d887e" font-style="italic">
+    <text x="116" y="118" text-anchor="middle">Licht, das sich verdunkelt</text>
+    <text x="244" y="118" text-anchor="middle">Dunkel, das sich erhellt</text>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 96" role="img" aria-label="Weiches Farbfeld in Pfirsichblüt, einer nicht-spektralen Farbe mit kühlem Violett-Unterton">
+  <defs>
+    <radialGradient id="pfb" cx="50%" cy="50%" r="62%">
+      <stop offset="0%" stop-color="#F6D8CE"/>
+      <stop offset="40%" stop-color="#EEBCB6"/>
+      <stop offset="72%" stop-color="#DDA0AE"/>
+      <stop offset="90%" stop-color="#C690AE"/>
+      <stop offset="100%" stop-color="#C690AE" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="150" cy="48" rx="146" ry="46" fill="url(#pfb)"/>
+</svg>
