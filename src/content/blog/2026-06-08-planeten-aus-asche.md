@@ -86,6 +86,38 @@ ist nicht aufgetragen, es tritt aus der Tiefe, dort wo das Material dünner wird
 Das Bild steht still und fließt zugleich. Vom Körper zur reinen Strömung — vom
 Ding zum Ereignis.
 
+## Am Anfang war das Feuer
+
+Und jetzt der eigentliche Anfang — den ich ans Ende stelle, weil man ihn erst
+versteht, wenn man die Planeten gesehen hat. Denn die gedämpften Asche-Planeten
+sind das, was *übrigbleibt*, wenn das Feuer erkaltet. Davor aber, vor der Asche,
+vor jeder Ordnung, steht dieses Bild von 2020:
+
+<figure>
+  <img src="/bilder/urfeuer/01-urfeuer.jpg" width="420" alt="Eine runde Tafel, auf der die ganze Farbskala explosionsartig aus einem goldgrauen Grund hervorbricht." />
+  <figcaption>Am Anfang war das Feuer — Ø 50 cm, Pigment und Öl auf Holz, 2020. Die ganze Farbe auf einmal.</figcaption>
+</figure>
+
+Hier tritt die Farbe nicht leise hervor, sie **explodiert**. Aus einem goldgrauen
+Grund — der Farbe der Urasche selbst — bricht der gesamte Farbkreis auf einmal
+heraus: Rot, Gelb, Blau, Violett, Grün, Weiß, alles gleichzeitig, schleudernd,
+zentrifugal. Bei den Griechen war das Feuer das erste der Elemente; bei Platon
+das, woraus die sichtbare Welt zuerst entsteht. *Am Anfang war das Feuer* — und
+mit ihm, im selben Augenblick, die Farbe.
+
+<figure>
+  <img src="/bilder/urfeuer/02-urfeuer.jpg" width="380" alt="Zweite Ansicht desselben runden Werks — der Farbausbruch aus anderer Richtung." />
+  <figcaption>Dasselbe Werk, anderer Stand — die Explosion ist nie zweimal dieselbe.</figcaption>
+</figure>
+
+Auch hier ist Goethe der Schlüssel: Das Graue ist bei ihm nicht das Tote, sondern
+die Mitte, in der alle Farben ruhend beieinanderliegen. Dieses Bild zeigt den
+Moment, in dem diese Mitte zerspringt und ihren ganzen Reichtum freisetzt. Die
+Asche, aus der ich später die stillen Planeten gieße, ist der **kühle Rest genau
+dieses Feuers** — sie trägt die Erinnerung an die Explosion in sich. Deshalb gehört
+dieses Bild an den Anfang und ans Ende zugleich: Es ist der Ursprung, aus dem die
+ganze Reihe kommt.
+
 ## Warum das Ganze
 
 Ich male keine Planeten, weil mich Astronomie interessiert. Mich interessiert die
