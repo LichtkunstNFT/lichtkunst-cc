@@ -1,0 +1,106 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="Kontakt – Istvan Seidel Lichtkunst"
+  description="Kontakt zu Istvan Seidel — Anfragen zu Werken, Ausstellungen und NFTs."
+>
+  <section class="container mx-auto px-6 py-20 max-w-xl">
+    <h1 class="heading-display text-2xl sm:text-3xl text-[var(--color-foreground)] uppercase mb-6 text-glow-amber tracking-[0.18em]">
+      Kontakt
+    </h1>
+    <p class="font-body text-[var(--color-muted-foreground)] leading-relaxed text-sm sm:text-base mb-10">
+      Fragen zu einem Werk, zu Ausstellungen oder NFTs? Schreib mir — ich melde
+      mich persönlich zurück.
+    </p>
+
+    <form id="kontakt-form" class="space-y-4">
+      <input
+        type="text"
+        name="name"
+        required
+        maxlength="80"
+        placeholder="Name"
+        class="w-full bg-[var(--color-card)]/60 border border-[var(--color-border)]/60 rounded-sm px-4 py-2.5 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)]/60"
+      />
+      <input
+        type="email"
+        name="email"
+        required
+        maxlength="120"
+        placeholder="Deine E-Mail (für meine Antwort)"
+        class="w-full bg-[var(--color-card)]/60 border border-[var(--color-border)]/60 rounded-sm px-4 py-2.5 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)]/60"
+      />
+      <textarea
+        name="message"
+        required
+        rows="6"
+        maxlength="5000"
+        placeholder="Deine Nachricht …"
+        class="w-full bg-[var(--color-card)]/60 border border-[var(--color-border)]/60 rounded-sm px-4 py-3 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)]/60 resize-y"
+      ></textarea>
+
+      {/* Honeypot — von Menschen unsichtbar, muss leer bleiben */}
+      <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden">
+        <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+      </div>
+
+      <div class="flex items-center justify-between gap-4 pt-2">
+        <p id="kontakt-status" class="text-xs text-[var(--color-muted-foreground)]/70" role="status" aria-live="polite"></p>
+        <button
+          type="submit"
+          class="inline-flex items-center px-7 py-3 rounded-sm bg-[var(--color-accent)] text-[var(--color-accent-foreground)] text-sm tracking-[0.12em] uppercase font-medium glow-amber-sm hover:glow-amber transition-shadow disabled:opacity-50"
+        >
+          Senden
+        </button>
+      </div>
+      <p class="text-[0.7rem] text-[var(--color-muted-foreground)]/50 leading-relaxed">
+        Deine Angaben werden ausschließlich zur Beantwortung deiner Anfrage
+        verwendet, in der EU (Cloudflare) gespeichert und nicht weitergegeben,
+        kein Tracking.
+      </p>
+    </form>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById("kontakt-form");
+  if (form) {
+    const statusEl = document.getElementById("kontakt-status");
+    const loadedAt = Date.now();
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector("button[type=submit]");
+      const fd = new FormData(form);
+      const payload = {
+        name: fd.get("name"),
+        email: fd.get("email"),
+        message: fd.get("message"),
+        website: fd.get("website"),
+        t: loadedAt,
+      };
+      btn.disabled = true;
+      statusEl.textContent = "Wird gesendet …";
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const d = await res.json();
+        if (d.ok) {
+          form.reset();
+          statusEl.textContent = "Danke — deine Nachricht ist angekommen. Ich melde mich.";
+        } else {
+          statusEl.textContent = d.error || "Konnte nicht gesendet werden.";
+        }
+      } catch {
+        statusEl.textContent = "Netzwerkfehler — bitte später erneut versuchen.";
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  }
+</script>

@@ -66,12 +66,76 @@ async function addComment(request, env) {
   });
 }
 
+async function addContact(request, env) {
+  let data;
+  try {
+    data = await request.json();
+  } catch {
+    return json({ ok: false, error: "Ungültige Anfrage." }, 400);
+  }
+
+  // Spamschutz: Honeypot + Zeitfalle.
+  if (data.website) return json({ ok: true, skipped: true });
+  const elapsed = Date.now() - Number(data.t || 0);
+  if (!Number.isFinite(elapsed) || elapsed < MIN_FILL_MS)
+    return json({ ok: true, skipped: true });
+
+  const name = String(data.name || "").trim();
+  const email = String(data.email || "").trim();
+  const message = String(data.message || "").trim();
+
+  if (name.length < 1 || name.length > 80)
+    return json({ ok: false, error: "Bitte einen Namen (max. 80 Zeichen) angeben." }, 400);
+  if (!EMAIL_RE.test(email) || email.length > 120)
+    return json({ ok: false, error: "Bitte eine gültige E-Mail-Adresse angeben." }, 400);
+  if (message.length < 5 || message.length > 5000)
+    return json({ ok: false, error: "Bitte eine Nachricht (mind. 5 Zeichen) eingeben." }, 400);
+
+  // 1) Immer in D1 sichern — so geht keine Anfrage verloren.
+  await env.DB.prepare(
+    "INSERT INTO contacts (name, email, message, created_at) VALUES (?, ?, ?, ?)"
+  )
+    .bind(name, email, message, Date.now())
+    .run();
+
+  // 2) E-Mail-Benachrichtigung — aktiv, sobald die send_email-Bindung (SEB) existiert.
+  if (env.SEB) {
+    try {
+      const { EmailMessage } = await import("cloudflare:email");
+      const raw = [
+        "From: Kontaktformular <kontakt@lichtkunst.cc>",
+        "To: istvanseidel@icloud.com",
+        "Reply-To: " + email,
+        "Subject: Neue Kontaktanfrage von lichtkunst.cc",
+        "MIME-Version: 1.0",
+        "Content-Type: text/plain; charset=utf-8",
+        "Content-Transfer-Encoding: 8bit",
+        "",
+        "Name:   " + name,
+        "E-Mail: " + email,
+        "",
+        message,
+      ].join("\r\n");
+      const msg = new EmailMessage("kontakt@lichtkunst.cc", "istvanseidel@icloud.com", raw);
+      await env.SEB.send(msg);
+    } catch (e) {
+      // Nicht fatal — die Anfrage liegt bereits in D1.
+    }
+  }
+
+  return json({ ok: true });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === "/api/comments") {
       if (request.method === "GET") return listComments(url, env);
       if (request.method === "POST") return addComment(request, env);
+      return new Response("Method not allowed", { status: 405 });
+    }
+    if (url.pathname === "/api/contact") {
+      if (request.method === "POST") return addContact(request, env);
       return new Response("Method not allowed", { status: 405 });
     }
     // Alles andere: statische Seite ausliefern.
