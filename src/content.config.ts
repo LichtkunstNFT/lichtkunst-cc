@@ -24,6 +24,8 @@ const blog = defineCollection({
     titelbild: z.string().optional(),
     tags: z.array(z.string()).optional(),
     ausblenden: z.boolean().default(false),
+    galerie: z.array(z.string()).optional(),
+    pinterest_url: z.string().url().optional(),
   }),
 });
 

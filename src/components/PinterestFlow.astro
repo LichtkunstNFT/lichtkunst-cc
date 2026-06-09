@@ -1,0 +1,93 @@
+---
+interface Props {
+  galerie?: string[];
+  pinterestUrl?: string;
+  pageUrl: string;
+  titel: string;
+}
+const { galerie = [], pinterestUrl, pageUrl, titel } = Astro.props;
+const SITE = "https://lichtkunst.cc";
+const pinHref = (img: string) =>
+  `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(pageUrl)}` +
+  `&media=${encodeURIComponent(SITE + img)}` +
+  `&description=${encodeURIComponent(titel + " — Istvan Seidel, Lichtkunst")}`;
+---
+
+{(galerie.length > 0 || pinterestUrl) && (
+  <section class="mt-16 pt-10 border-t border-[var(--color-border)]/40">
+    {galerie.length > 0 && (
+      <Fragment>
+        <div class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-accent)] mb-6">
+          Galerie
+        </div>
+        <div class="columns-2 sm:columns-3 gap-3 [&>figure]:mb-3">
+          {galerie.map((img) => (
+            <figure class="group relative break-inside-avoid overflow-hidden rounded-sm border border-[var(--color-border)]/50">
+              <img src={img} alt="" loading="lazy" class="w-full block" />
+              <a
+                href={pinHref(img)}
+                target="_blank"
+                rel="noopener"
+                aria-label="Auf Pinterest merken"
+                class="absolute top-2 right-2 px-2.5 py-1 rounded-sm bg-black/60 text-white text-[0.6rem] tracking-widest uppercase opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity hover:bg-[var(--color-accent)] hover:text-[var(--color-accent-foreground)]"
+              >
+                Merken
+              </a>
+            </figure>
+          ))}
+        </div>
+      </Fragment>
+    )}
+
+    {pinterestUrl && (
+      <div class="mt-10">
+        <a
+          href={pinterestUrl}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center px-6 py-3 rounded-sm border border-[var(--color-accent)]/50 text-[var(--color-accent)] text-sm tracking-[0.12em] uppercase hover:bg-[var(--color-accent)] hover:text-[var(--color-accent-foreground)] transition-colors"
+        >
+          Weiter im Strom — auf Pinterest →
+        </a>
+
+        <div class="mt-8" id="pin-embed" data-board={pinterestUrl}>
+          <button
+            id="pin-load-btn"
+            type="button"
+            class="text-sm text-[var(--color-muted-foreground)] underline underline-offset-4 hover:text-[var(--color-accent)] transition-colors"
+          >
+            Live-Pinnwand hier laden
+          </button>
+          <p class="text-[0.7rem] text-[var(--color-muted-foreground)]/50 mt-2 max-w-md leading-relaxed">
+            Lädt Inhalte von Pinterest (Pinterest Inc., USA). Erst nach deinem
+            Klick — dabei wird eine Verbindung zu Pinterest aufgebaut. Details in
+            der <a href="/datenschutz" class="underline underline-offset-2">Datenschutzerklärung</a>.
+          </p>
+        </div>
+      </div>
+    )}
+  </section>
+)}
+
+<script>
+  const btn = document.getElementById("pin-load-btn");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const wrap = document.getElementById("pin-embed");
+      const board = wrap.dataset.board;
+      const a = document.createElement("a");
+      a.setAttribute("data-pin-do", "embedBoard");
+      a.setAttribute("data-pin-board-width", "800");
+      a.setAttribute("data-pin-scale-height", "320");
+      a.setAttribute("data-pin-scale-width", "115");
+      a.href = board;
+      wrap.innerHTML = "";
+      wrap.appendChild(a);
+      const s = document.createElement("script");
+      s.src = "https://assets.pinterest.com/js/pinit.js";
+      s.async = true;
+      s.defer = true;
+      document.body.appendChild(s);
+    });
+  }
+</script>
