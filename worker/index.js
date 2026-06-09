@@ -103,7 +103,7 @@ async function addContact(request, env) {
     try {
       const { EmailMessage } = await import("cloudflare:email");
       const raw = [
-        "From: Kontaktformular <kontakt@lichtkunst.cc>",
+        "From: lichtkunst.cc Kontakt <istvan@lichtkunst.cc>",
         "To: istvanseidel@icloud.com",
         "Reply-To: " + email,
         "Subject: Neue Kontaktanfrage von lichtkunst.cc",
@@ -116,7 +116,7 @@ async function addContact(request, env) {
         "",
         message,
       ].join("\r\n");
-      const msg = new EmailMessage("kontakt@lichtkunst.cc", "istvanseidel@icloud.com", raw);
+      const msg = new EmailMessage("istvan@lichtkunst.cc", "istvanseidel@icloud.com", raw);
       await env.SEB.send(msg);
     } catch (e) {
       // Nicht fatal — die Anfrage liegt bereits in D1.

@@ -14,5 +14,8 @@
       "database_name": "lichtkunst-comments",
       "database_id": "7d0b6adb-c26a-4384-bdc2-b7d4b1838db1"
     }
+  ],
+  "send_email": [
+    { "name": "SEB" }
   ]
 }
