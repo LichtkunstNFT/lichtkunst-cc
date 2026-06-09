@@ -1,0 +1,172 @@
+---
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+---
+
+<section
+  id="kommentare"
+  data-slug={slug}
+  class="mt-16 pt-10 border-t border-[var(--color-border)]/40"
+>
+  <div class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-accent)] mb-6">
+    Kommentare
+  </div>
+
+  <ul id="kommentar-liste" class="space-y-6 mb-10">
+    <li class="text-sm text-[var(--color-muted-foreground)]/60 italic">
+      Kommentare werden geladen …
+    </li>
+  </ul>
+
+  <form id="kommentar-form" class="space-y-4 max-w-xl">
+    <div class="flex flex-col sm:flex-row gap-4">
+      <input
+        type="text"
+        name="name"
+        required
+        maxlength="80"
+        placeholder="Name"
+        class="flex-1 bg-[var(--color-card)]/60 border border-[var(--color-border)]/60 rounded-sm px-4 py-2.5 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)]/60"
+      />
+      <input
+        type="email"
+        name="email"
+        maxlength="120"
+        placeholder="E-Mail (optional, wird nicht angezeigt)"
+        class="flex-1 bg-[var(--color-card)]/60 border border-[var(--color-border)]/60 rounded-sm px-4 py-2.5 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)]/60"
+      />
+    </div>
+
+    <textarea
+      name="body"
+      required
+      rows="4"
+      maxlength="5000"
+      placeholder="Dein Gedanke zum Werk …"
+      class="w-full bg-[var(--color-card)]/60 border border-[var(--color-border)]/60 rounded-sm px-4 py-3 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)]/60 resize-y"
+    ></textarea>
+
+    {/* Honeypot — von Menschen unsichtbar, muss leer bleiben */}
+    <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden">
+      <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+    </div>
+
+    <div class="flex items-center justify-between gap-4">
+      <p id="kommentar-status" class="text-xs text-[var(--color-muted-foreground)]/70" role="status" aria-live="polite"></p>
+      <button
+        type="submit"
+        class="inline-flex items-center px-6 py-2.5 rounded-sm bg-[var(--color-accent)] text-[var(--color-accent-foreground)] text-sm tracking-[0.12em] uppercase font-medium glow-amber-sm hover:glow-amber transition-shadow disabled:opacity-50"
+      >
+        Absenden
+      </button>
+    </div>
+    <p class="text-[0.7rem] text-[var(--color-muted-foreground)]/50 leading-relaxed">
+      Name und Kommentar erscheinen öffentlich. Die E-Mail ist freiwillig, bleibt
+      privat und dient nur für eine eventuelle Rückmeldung. Gespeichert wird
+      ausschließlich in der EU (Cloudflare), kein Tracking. Kontakt:
+      <a href="mailto:lichtkunst@proton.me" class="underline underline-offset-2 hover:text-[var(--color-accent)]">lichtkunst@proton.me</a>.
+    </p>
+  </form>
+</section>
+
+<script>
+  const root = document.getElementById("kommentare");
+  if (root) {
+    const slug = root.dataset.slug;
+    const liste = document.getElementById("kommentar-liste");
+    const form = document.getElementById("kommentar-form");
+    const statusEl = document.getElementById("kommentar-status");
+    const loadedAt = Date.now();
+    let comments = [];
+
+    const fmt = (ms) =>
+      new Date(ms).toLocaleDateString("de-DE", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+
+    function render() {
+      liste.innerHTML = "";
+      if (!comments.length) {
+        const li = document.createElement("li");
+        li.className = "text-sm text-[var(--color-muted-foreground)]/60 italic";
+        li.textContent = "Noch keine Kommentare — schreib den ersten.";
+        liste.appendChild(li);
+        return;
+      }
+      for (const c of comments) {
+        const li = document.createElement("li");
+        li.className = "border-l-2 border-[var(--color-border)]/50 pl-4 py-1";
+
+        const head = document.createElement("div");
+        head.className = "text-xs text-[var(--color-muted-foreground)]/70 mb-1";
+        const name = document.createElement("span");
+        name.className = "text-[var(--color-foreground)] font-medium";
+        name.textContent = c.name;
+        head.appendChild(name);
+        head.appendChild(document.createTextNode(" · " + fmt(c.created_at)));
+
+        const p = document.createElement("p");
+        p.className = "text-sm text-[var(--color-muted-foreground)] leading-relaxed whitespace-pre-wrap";
+        p.textContent = c.body;
+
+        li.appendChild(head);
+        li.appendChild(p);
+        liste.appendChild(li);
+      }
+    }
+
+    fetch("/api/comments?slug=" + encodeURIComponent(slug))
+      .then((r) => r.json())
+      .then((d) => {
+        comments = d.comments || [];
+        render();
+      })
+      .catch(() => {
+        liste.innerHTML =
+          '<li class="text-sm text-[var(--color-muted-foreground)]/60 italic">Kommentare konnten nicht geladen werden.</li>';
+      });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector("button[type=submit]");
+      const fd = new FormData(form);
+      const payload = {
+        slug,
+        name: fd.get("name"),
+        email: fd.get("email"),
+        body: fd.get("body"),
+        website: fd.get("website"),
+        t: loadedAt,
+      };
+      btn.disabled = true;
+      statusEl.textContent = "Wird gesendet …";
+      try {
+        const res = await fetch("/api/comments", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const d = await res.json();
+        if (d.ok && d.comment) {
+          comments.push(d.comment);
+          render();
+          form.reset();
+          statusEl.textContent = "Danke — dein Kommentar ist online.";
+        } else if (d.ok) {
+          form.reset();
+          statusEl.textContent = "Danke.";
+        } else {
+          statusEl.textContent = d.error || "Konnte nicht gesendet werden.";
+        }
+      } catch {
+        statusEl.textContent = "Netzwerkfehler — bitte später erneut versuchen.";
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  }
+</script>
