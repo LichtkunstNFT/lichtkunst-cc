@@ -41,18 +41,25 @@ schon entfaltet. Walter Russell beschrieb Schöpfung als ein Spiel konzentrische
 Wellen um ein zentrales Nichts; das Ei ist die sichtbare Hülle genau dieses
 Gedankens.
 
-## Blau, das sich erhellt
+## Blau, das sich erhellt — aus dem Meer
 
 <figure>
-  <img src="/bilder/eiform/eiform-01.jpg" width="320" alt="Eiförmige Tafel, tiefes Blau oben, nach unten ins Helle aufgehend." />
-  <figcaption>Schieferei — tiefes Blau, das nach unten ins Licht übergeht.</figcaption>
+  <img src="/bilder/eiform/eiform-01.jpg" width="320" alt="Eiförmige Tafel: oben ultramarinblauer Himmel, unten türkis-smaragdgrünes Meer." />
+  <figcaption>Mein erstes kleines Ei — oben der ultramarinblaue Himmel, unten das smaragdgrüne Meer. Geboren aus dem Atem unter Wasser.</figcaption>
 </figure>
 
-Viele meiner Eier sind blau. Und sie sind nie *flächig* blau: Oben steht das
-Dunkel am tiefsten, nach unten hellt es sich auf, bis das Ei am Fuß fast zu
-leuchten beginnt. Das ist Goethe als Form gegossen — „Blau ist Dunkel, das sich
-erhellt". Das Ei wird so selbst zu einem kleinen Modell des Übergangs: ein Körper,
-der vom Dunkel ins Licht steigt, ohne dass eine Linie ihn teilt.
+Dieses erste kleine Ei kam aus dem Meer. Beim Schwimmen in der Ostsee, den Kopf
+unter Wasser: zum Atemholen empor in den ultramarinblauen Himmel, zum Ausatmen
+hinab ins Türkis- und Smaragdgrüne. Wer nie im Meer geschwommen ist, kann das
+kaum nachfühlen — dieses Bild versucht, genau dieses Gefühl zu halten. Das Ei
+steht dabei für die Wiedergeburt aus dem Wasser: Botticellis schaumgeborene
+Venus steckt darin.
+
+Und es ist nie *flächig* blau: Oben steht das Dunkel am tiefsten, nach unten
+hellt es sich auf, bis das Ei am Fuß fast zu leuchten beginnt. Das ist Goethe als
+Form gegossen — „Blau ist Dunkel, das sich erhellt". Das Ei wird so selbst zum
+kleinen Modell des Übergangs: ein Körper, der vom Dunkel ins Licht steigt, ohne
+dass eine Linie ihn teilt.
 
 ## Das Ei als Kosmos
 
@@ -65,6 +72,19 @@ Andere Eier tun das Gegenteil: Sie halten nicht zurück, sondern lassen den ganz
 Farbreichtum aus ihrer Mitte aufbrechen — das Ei nicht als Stille vor der
 Schöpfung, sondern als der Moment, in dem sie geschieht. Beides ist dasselbe
 Motiv von zwei Seiten: das Ei als das, was die ganze Welt noch in sich trägt.
+
+## Und dann die Asche
+
+<figure>
+  <img src="/bilder/eiform/eiform-07.jpg" width="300" alt="Eiform, ultramarinblauer Himmel, darunter ein dunkler Aschegrund." />
+  <figcaption>Derselbe ultramarinblaue Himmel — doch darunter liegt nun die Asche.</figcaption>
+</figure>
+
+Später kommt die Asche hinzu. Derselbe ultramarinblaue Himmel, dramatischer noch
+als zuvor — doch als Untergrund liegt jetzt die Agnihotra-Asche, dunkel und
+bedrohlich, ein Hinweis auf das Ende. So spannen sich diese beiden Eier zu einem
+Bogen: das Meer als Anfang, die Asche als Ende eines Zyklus — und dazwischen die
+ganze Farbexplosion.
 
 ## Vom Bild zur Skulptur — das Lichtei
 
