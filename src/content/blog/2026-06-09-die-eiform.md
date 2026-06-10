@@ -22,6 +22,9 @@ galerie:
   - /bilder/eiform/eiform-08.jpg
   - /bilder/eiform/eiform-11.jpg
   - /bilder/eiform/eiform-09.jpg
+  - /bilder/lichtei/03-zentrum-gruen.jpg
+  - /bilder/lichtei/02-blauviolett.jpg
+  - /bilder/lichtei/01-hero.jpg
 ---
 
 *Das Ei ist die Form, zu der ich immer wieder zurückkehre.*
@@ -73,6 +76,28 @@ Farbreichtum aus ihrer Mitte aufbrechen — das Ei nicht als Stille vor der
 Schöpfung, sondern als der Moment, in dem sie geschieht. Beides ist dasselbe
 Motiv von zwei Seiten: das Ei als das, was die ganze Welt noch in sich trägt.
 
+## Das lebendige Ei — das Lichtei
+
+Und dann wird das Ei lebendig. Was die gemalten Eier vorbereitet haben —
+Übergang, Konzentrik, ein dunkles Zentrum als Quelle — verdichtet sich in einer
+Arbeit, in der die Form den Träger wechselt: Aus der gemalten und geschieferten
+Eiform wird ein Körper aus Licht. Das [[2025-lichtei|Lichtei]].
+
+<figure>
+  <img src="/bilder/lichtei/03-zentrum-gruen.jpg" width="190" alt="Lichtei im grünen Licht." />
+  <img src="/bilder/lichtei/02-blauviolett.jpg" width="170" alt="Lichtei im blauvioletten Licht." />
+  <img src="/bilder/lichtei/01-hero.jpg" width="170" alt="Lichtei im warmen Bernsteinlicht." />
+  <figcaption>Dieselbe Form, immer neue Farbe: Grün, Blauviolett, Bernstein — das Licht lässt das Ei jedes Mal ein anderes Leben hervorbringen.</figcaption>
+</figure>
+
+Hier ist die Farbexplosion nicht mehr gemalt, sondern geschieht in Echtzeit: Mit
+der Beleuchtung wechselt das Ei seine Stimmung, und mit jeder Stimmung bringt es
+eine andere Welt hervor. Aus dem dunklen Zentrum strahlen die konzentrischen
+Ringe nach außen — der Ursprung, der sich entfaltet. Die Form, die als Bild
+begann, wird hier zur Erfahrung: ein begehbares Ereignis, in dem das Ei den
+Kosmos nicht nur *zeigt*, sondern ihn fortwährend neu *erzeugt* — das Ei, das
+das Leben hervorbringt.
+
 ## Und dann die Asche
 
 <figure>
@@ -85,14 +110,6 @@ als zuvor — doch als Untergrund liegt jetzt die Agnihotra-Asche, dunkel und
 bedrohlich, ein Hinweis auf das Ende. So spannen sich diese beiden Eier zu einem
 Bogen: das Meer als Anfang, die Asche als Ende eines Zyklus — und dazwischen die
 ganze Farbexplosion.
-
-## Vom Bild zur Skulptur — das Lichtei
-
-Am Ende dieser Spur steht eine Arbeit, in der die Form den Träger wechselt: Aus
-der gemalten und geschieferten Eiform wird ein Körper aus Licht. Das
-[[2025-lichtei|Lichtei]] nimmt alles auf, was die flachen Eier vorbereitet haben —
-Übergang, Konzentrik, ein dunkles Zentrum als Quelle — und macht es zum
-begehbaren Ereignis. Die Form, die als Bild begann, wird hier zur Erfahrung.
 
 ## Ursprung und Rückkehr
 
