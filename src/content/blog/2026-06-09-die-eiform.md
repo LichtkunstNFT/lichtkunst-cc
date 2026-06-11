@@ -67,6 +67,17 @@ ergänzen sich doch gegenseitig; in genau diesem Gleichgewicht der beiden
 verwandten Farben wohnt der Kreislauf des Lebens. Der Horizont ist die Linie, an
 der ein Atemzug in den nächsten übergeht.
 
+An dieser Linie treffen zwei Welten aufeinander. Mit dem Kopf unter Wasser sieht
+man durch das blaugrüne Meer hindurch auf den Grund: Gestein, Sand, Meerespflanzen,
+die Lebewesen der Tiefe — eine eigene, in sich geschlossene Welt. Hebt man den
+Kopf heraus, um nach Luft zu schnappen, öffnet sich die andere: der ultramarinblaue
+Himmel bis zum Zenit, die Sonne, die Wolken, die Wasservögel und alles, was über
+dem Wasser lebt. Der Schwimmer durchquert in einem einzigen Zyklus beide Welten.
+Seine Züge und sein Atem tragen ihn von der einen in die andere und wieder
+zurück — und in seiner Wahrnehmung fügen sich die getrennten Reiche zu einem
+Einklang. Genau diesen Augenblick, in dem das Untenliegende und das Obere eins
+werden, hält das Ei fest.
+
 Und es ist nie *flächig* blau: Oben steht das Dunkel am tiefsten, nach unten
 hellt es sich auf, bis das Ei am Fuß fast zu leuchten beginnt. Das ist Goethe als
 Form gegossen — „Blau ist Dunkel, das sich erhellt". Das Ei wird so selbst zum
