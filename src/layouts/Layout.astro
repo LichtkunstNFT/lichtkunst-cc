@@ -4,12 +4,21 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: string;
 }
 
+const SITE = "https://lichtkunst.cc";
 const {
   title = "Istvan Seidel – Lichtkunst",
   description = "Istvan Seidel – Lichtkünstler. Werke, Sky Art, NFTs. Inspiriert von Goethes Farbenlehre, Walter Russell, Otto Piene.",
+  image = "/bilder/eiform/eiform-01.jpg",
+  type = "website",
 } = Astro.props;
+
+// Open Graph braucht absolute URLs (Telegram, WhatsApp, Signal, Mastodon …).
+const ogImage = image.startsWith("http") ? image : SITE + image;
+const canonical = new URL(Astro.url.pathname, SITE).href;
 ---
 
 <!doctype html>
@@ -23,6 +32,20 @@ const {
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0d0d0f" />
     <meta name="p:domain_verify" content="653a733f87997a252d9074b01a83b963" />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="Istvan Seidel · Lichtkunst" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="de_DE" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
