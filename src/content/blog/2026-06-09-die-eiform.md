@@ -33,7 +33,9 @@ galerie:
 Es gibt Formen, die man wählt, und Formen, die einen wählen. Das Ei ist bei mir
 das zweite. Es taucht über die Jahre immer wieder auf — als Tafel, als
 Schieferarbeit, als leuchtende Skulptur. Nicht weil ich es mir vornehme, sondern
-weil es offenbar die Form ist, in der sich für mich Ursprung denken lässt.
+weil es offenbar die Form ist, in der sich für mich Ursprung denken lässt. Und
+Ursprung heißt hier vor allem eines: Geburt — Leben, das aus dem Meer steigt.
+Genau dort, im Wasser, hat dieses Ei für mich angefangen.
 
 ## Das Weltei
 
@@ -49,7 +51,7 @@ Gedankens.
 
 <figure>
   <img src="/bilder/eiform/eiform-01.jpg" width="320" alt="Eiförmige Tafel: oben ultramarinblauer Himmel, unten türkis-smaragdgrünes Meer." />
-  <figcaption>Mein erstes kleines Ei — oben der ultramarinblaue Himmel, unten das smaragdgrüne Meer. Geboren aus dem Atem unter Wasser.</figcaption>
+  <figcaption>Mein erstes kleines Ei — oben der ultramarinblaue Himmel, unten das smaragdgrüne Meer. Geboren aus dem Atem unter Wasser.<br /><small style="font-style: normal; opacity: 0.7; letter-spacing: 0.03em;">Tafelmalerei auf Holz, 2021 · 19 × 13 cm</small></figcaption>
 </figure>
 
 Dieses erste kleine Ei kam aus dem Meer. Beim Schwimmen in der Ostsee, den Kopf
@@ -88,7 +90,7 @@ dass eine Linie ihn teilt.
 
 <figure>
   <img src="/bilder/eiform/eiform-04.jpg" width="300" alt="Eiform, in der Farben aus der Mitte heraus aufbrechen." />
-  <figcaption>Ein anderes Ei: Hier bricht der ganze Farbreichtum aus der Mitte hervor.</figcaption>
+  <figcaption>Ein anderes Ei: Hier bricht der ganze Farbreichtum aus der Mitte hervor.<br /><small style="font-style: normal; opacity: 0.7; letter-spacing: 0.03em;">Tafelmalerei auf Holz, 2022 · 35 × 21 cm</small></figcaption>
 </figure>
 
 Andere Eier tun das Gegenteil: Sie halten nicht zurück, sondern lassen den ganzen
@@ -107,7 +109,7 @@ Eiform wird ein Körper aus Licht. Das [[2025-lichtei|Lichtei]].
   <img src="/bilder/lichtei/03-zentrum-gruen.jpg" width="190" alt="Lichtei im grünen Licht." />
   <img src="/bilder/lichtei/02-blauviolett.jpg" width="170" alt="Lichtei im blauvioletten Licht." />
   <img src="/bilder/lichtei/01-hero.jpg" width="170" alt="Lichtei im warmen Bernsteinlicht." />
-  <figcaption>Dieselbe Form, immer neue Farbe: Grün, Blauviolett, Bernstein — das Licht lässt das Ei jedes Mal ein anderes Leben hervorbringen.</figcaption>
+  <figcaption>Dieselbe Form, immer neue Farbe: Grün, Blauviolett, Bernstein — das Licht lässt das Ei jedes Mal ein anderes Leben hervorbringen.<br /><small style="font-style: normal; opacity: 0.7; letter-spacing: 0.03em;">Lichtskulptur, 2025 · 58 × 50 cm</small></figcaption>
 </figure>
 
 Hier ist die Farbexplosion nicht mehr gemalt, sondern geschieht in Echtzeit: Mit
@@ -122,7 +124,7 @@ das Leben hervorbringt.
 
 <figure>
   <img src="/bilder/eiform/eiform-07.jpg" width="300" alt="Eiform, ultramarinblauer Himmel, darunter ein dunkler Aschegrund." />
-  <figcaption>Derselbe ultramarinblaue Himmel — doch darunter liegt nun die Asche.</figcaption>
+  <figcaption>Derselbe ultramarinblaue Himmel — doch darunter liegt nun die Asche.<br /><small style="font-style: normal; opacity: 0.7; letter-spacing: 0.03em;">Tafelmalerei auf Holz, 2023 · 43 × 36 cm</small></figcaption>
 </figure>
 
 Später kommt die Asche hinzu. Derselbe ultramarinblaue Himmel, dramatischer noch
