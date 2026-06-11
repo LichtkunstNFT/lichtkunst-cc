@@ -1,6 +1,7 @@
 ---
-titel: Die Eiform
-untertitel: Das Ei ist die Form, zu der ich immer wieder zurückkehre — Weltei, Ursprung, Gefäß des Lichts. Eine Spur durch meine Arbeit, vom blauen Schieferei bis zum Lichtei.
+titel: Die Geburt des Lebens aus dem Meer
+untertitel: "Botticellis schaumgeborene Venus steigt aus dem Wasser — und mit ihr das Ei des Lebens, Gefäß des Lichts und Symbol der Lebenskraft."
+vorschau: "Beim Schwimmen in der Ostsee, den Kopf unter Wasser: zum Atemholen empor in den ultramarinblauen Himmel, zum Ausatmen hinab ins Smaragdgrüne — die Wiedergeburt aus dem Meer."
 datum: 2026-06-09
 titelbild: /bilder/eiform/eiform-01.jpg
 tags:

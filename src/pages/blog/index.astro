@@ -32,8 +32,13 @@ const eintraege = (await getCollection("blog", ({ data }) => !data.ausblenden))
                 {eintrag.data.titel}
               </h2>
               {eintrag.data.untertitel && (
-                <p class="font-body italic text-[var(--color-muted-foreground)] leading-relaxed mb-3">
+                <p class="font-body font-semibold text-[var(--color-foreground)]/90 leading-relaxed mb-2">
                   {eintrag.data.untertitel}
+                </p>
+              )}
+              {eintrag.data.vorschau && (
+                <p class="font-body italic text-[var(--color-muted-foreground)]/80 leading-relaxed mb-3">
+                  {eintrag.data.vorschau}
                 </p>
               )}
               {eintrag.data.titelbild && (
