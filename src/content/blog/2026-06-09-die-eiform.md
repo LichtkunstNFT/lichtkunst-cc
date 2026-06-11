@@ -59,6 +59,14 @@ kaum nachfühlen — dieses Bild versucht, genau dieses Gefühl zu halten. Das E
 steht dabei für die Wiedergeburt aus dem Wasser: Botticellis schaumgeborene
 Venus steckt darin.
 
+Die beiden Farben am Horizont sind dabei mehr als Himmel und Meer: Sie sind das
+Einatmen und das Ausatmen. Man holt tief Luft gegen den ultramarinblauen Himmel
+und stößt sie unter Wasser ins türkisgrüne Meer wieder aus — Ein und Aus, oben
+und unten, im selben Atemzug. Blau und Grün sind eng miteinander verwandt und
+ergänzen sich doch gegenseitig; in genau diesem Gleichgewicht der beiden
+verwandten Farben wohnt der Kreislauf des Lebens. Der Horizont ist die Linie, an
+der ein Atemzug in den nächsten übergeht.
+
 Und es ist nie *flächig* blau: Oben steht das Dunkel am tiefsten, nach unten
 hellt es sich auf, bis das Ei am Fuß fast zu leuchten beginnt. Das ist Goethe als
 Form gegossen — „Blau ist Dunkel, das sich erhellt". Das Ei wird so selbst zum
