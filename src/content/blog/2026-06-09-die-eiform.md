@@ -149,6 +149,21 @@ begann, wird hier zur Erfahrung: ein begehbares Ereignis, in dem das Ei den
 Kosmos nicht nur *zeigt*, sondern ihn fortwährend neu *erzeugt* — das Ei, das
 das Leben hervorbringt.
 
+## Die Verkehrung — Tanz auf dem Vulkan
+
+<figure>
+  <img src="/bilder/eiform/eiform-08.jpg" width="300" alt="Eiform auf den Kopf gestellt: die schwarze Asche oben, der ultramarinblaue Himmel glüht unten." />
+  <figcaption>Die Welt steht kopf: oben die Asche, unten der Himmel — das Aufbäumen, bevor der Zyklus sich schließt.</figcaption>
+</figure>
+
+Und kurz vor dem Ende kehrt sich die Welt noch einmal um. In diesem Ei liegt
+der ultramarinblaue Himmel *unten*, und die Asche drückt von *oben* herab —
+die Ordnung von Himmel und Erde ist gestürzt. Aber gerade dadurch leuchtet das
+Blau am Fuß umso trotziger, als wolle es sich nicht nehmen lassen, was ihm
+zusteht: ein Aufbäumen gegen den Tod. Eine letzte Party vor dem Ende, ein Tanz
+auf dem Vulkan — das letzte Abendmahl, bei dem das Licht noch einmal alle an
+den Tisch ruft, obwohl es weiß, was kommt.
+
 ## Und dann die Asche
 
 <figure>
@@ -156,11 +171,12 @@ das Leben hervorbringt.
   <figcaption>Derselbe ultramarinblaue Himmel — doch darunter liegt nun die Asche.<br /><small style="font-style: normal; opacity: 0.7; letter-spacing: 0.03em;">Tafelmalerei auf Holz, 2023 · 43 × 36 cm</small></figcaption>
 </figure>
 
-Später kommt die Asche hinzu. Derselbe ultramarinblaue Himmel, dramatischer noch
-als zuvor — doch als Untergrund liegt jetzt die Agnihotra-Asche, dunkel und
-bedrohlich, ein Hinweis auf das Ende. So spannen sich diese beiden Eier zu einem
-Bogen: das Meer als Anfang, die Asche als Ende eines Zyklus — und dazwischen die
-ganze Farbexplosion.
+Dann kehrt die Welt in ihre Ordnung zurück — und gerade das ist das Ende. Der
+ultramarinblaue Himmel steht wieder oben, dramatischer noch als im ersten Ei;
+doch wo damals das smaragdgrüne Meer atmete, liegt jetzt die Agnihotra-Asche,
+dunkel und bedrohlich. Der Tanz ist vorbei. So spannen sich das erste und das
+letzte Ei zu einem Bogen: das Meer als Anfang, die Asche als Ende eines
+Zyklus — und dazwischen die ganze Farbexplosion.
 
 ## Ursprung und Rückkehr
 
