@@ -14,7 +14,9 @@ pinterest_url: https://de.pinterest.com/lightart112358NFT/eiform/
 galerie:
   - /bilder/eiform/eiform-01.jpg
   - /bilder/eiform/eiform-04.jpg
+  - /bilder/eiform/eiform-12.jpg
   - /bilder/eiform/eiform-02.jpg
+  - /bilder/eiform/eiform-13.jpg
   - /bilder/eiform/eiform-06.jpg
   - /bilder/eiform/eiform-03.jpg
   - /bilder/eiform/eiform-07.jpg
@@ -97,6 +99,33 @@ Andere Eier tun das Gegenteil: Sie halten nicht zurück, sondern lassen den ganz
 Farbreichtum aus ihrer Mitte aufbrechen — das Ei nicht als Stille vor der
 Schöpfung, sondern als der Moment, in dem sie geschieht. Beides ist dasselbe
 Motiv von zwei Seiten: das Ei als das, was die ganze Welt noch in sich trägt.
+
+## Die Farbexplosion — und die erste Asche
+
+<figure>
+  <img src="/bilder/eiform/eiform-12.jpg" width="300" alt="Eiform: blauer Himmel über glühend orange-rotem Grund." />
+  <figcaption>Blau gegen Orange — die beiden Pole der Farbenlehre prallen aufeinander, und unter dem Glühen liegt schon die erste Asche.<br /><small style="font-style: normal; opacity: 0.7; letter-spacing: 0.03em;">Tafelmalerei auf Holz, 2023 · 30 × 23 cm</small></figcaption>
+</figure>
+
+Zwei Eier aus demselben Jahr treiben diese Explosion auf die Spitze. Im ersten
+steht der blaue Himmel über einem Grund, der glüht: Orange, Rot, Gelb — Blau und
+Orange sind bei Goethe das äußerste Gegensatzpaar, Dunkel, das sich erhellt,
+gegen Licht, das sich trübt. Hier stehen sie sich unverstellt gegenüber, und die
+Landschaft dazwischen brennt. Doch in dieses Glühen ist bereits etwas anderes
+eingewoben: die Agnihotra-Asche. Noch trägt sie das Feuer, noch leuchtet sie mit
+— aber sie ist da.
+
+<figure>
+  <img src="/bilder/eiform/eiform-13.jpg" width="300" alt="Eiform in Violett, Pink und Türkis mit grünen und roten Adern." />
+  <figcaption>Pink, Violett, Türkis — die Palette kippt ins Unwirkliche; auch hier arbeitet die Asche schon im Grund.<br /><small style="font-style: normal; opacity: 0.7; letter-spacing: 0.03em;">Tafelmalerei auf Holz, 2023 · 39 × 30 cm</small></figcaption>
+</figure>
+
+Das zweite geht noch weiter und verlässt die vertraute Welt: Über einem pink-
+violetten Grund öffnet sich ein türkiser Himmel, durchzogen von grünen und roten
+Adern — Farben, die kein Meer und kein Himmel mehr kennen, ein Ei wie von einem
+anderen Stern. Und auch hier arbeitet die Asche schon mit, eingebettet in den
+Farbrausch. So kündigt sich mitten im Höhepunkt des Zyklus leise sein Ende an:
+Die Explosion trägt ihre eigene Asche bereits in sich.
 
 ## Das lebendige Ei — das Lichtei
 
