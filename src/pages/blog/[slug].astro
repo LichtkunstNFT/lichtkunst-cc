@@ -59,6 +59,7 @@ const weiterlesen = (await getCollection("blog", ({ data }) => !data.ausblenden)
       pinterestUrl={eintrag.data.pinterest_url}
       pageUrl={`https://lichtkunst.cc/blog/${eintrag.id}`}
       titel={eintrag.data.titel}
+      pinZiel={eintrag.data.pin_ziel}
     />
 
     <Comments slug={eintrag.id} />

@@ -10,6 +10,7 @@ tags:
   - planeten
   - work-in-progress
 ausblenden: false
+pin_ziel: https://getgems.io/collection/EQA_bfpwKniQOAATWojdfIDk9X7_mCW_Stpzt_1kDSF6UDYV
 galerie:
   - /bilder/rund/01-welt.jpg
   - /bilder/fremder-planet-1/01-fremder-planet-1.jpg

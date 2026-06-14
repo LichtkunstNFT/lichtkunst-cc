@@ -27,6 +27,9 @@ const blog = defineCollection({
     ausblenden: z.boolean().default(false),
     galerie: z.array(z.string()).optional(),
     pinterest_url: z.string().url().optional(),
+    // Temporär, solange Pinterest lichtkunst.cc sperrt: Pins zeigen auf dieses
+    // Getgems-NFT statt auf die Website. Nach Entsperrung Feld wieder entfernen.
+    pin_ziel: z.string().url().optional(),
   }),
 });
 

@@ -4,14 +4,20 @@ interface Props {
   pinterestUrl?: string;
   pageUrl: string;
   titel: string;
+  pinZiel?: string;
 }
-const { galerie = [], pinterestUrl, pageUrl, titel } = Astro.props;
+const { galerie = [], pinterestUrl, pageUrl, titel, pinZiel } = Astro.props;
 const SITE = "https://lichtkunst.cc";
 // Trailing-Slash erzwingen: ohne ihn antwortet die Seite mit 307-Redirect,
 // was Pinterest als „leitet weiter" deutet und den Pin sperrt.
 const canonical = pageUrl.endsWith("/") ? pageUrl : pageUrl + "/";
+// Solange Pinterest die Domain lichtkunst.cc sperrt, zeigt der Pin auf das
+// Getgems-NFT (pinZiel). Funnel: Pinterest → Getgems → lichtkunst.cc.
+// Nach einer Entsperrung pin_ziel aus der Artikel-Frontmatter entfernen,
+// dann zeigen die Pins wieder direkt auf die Seite (canonical).
+const pinUrl = pinZiel ?? canonical;
 const pinHref = (img: string) =>
-  `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(canonical)}` +
+  `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(pinUrl)}` +
   `&media=${encodeURIComponent(SITE + img)}` +
   `&description=${encodeURIComponent(titel + " — Istvan Seidel, Lichtkunst")}`;
 ---

@@ -11,6 +11,7 @@ tags:
   - eiform
 ausblenden: false
 pinterest_url: https://de.pinterest.com/lightart112358NFT/eiform/
+pin_ziel: https://getgems.io/collection/EQBjS1PlPB2PBYZcm70gegjzaeE1vKbMv17s0G4ipAKJ3TBN
 galerie:
   - /bilder/eiform/eiform-01.jpg
   - /bilder/eiform/eiform-04.jpg
