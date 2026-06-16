@@ -33,7 +33,7 @@ const weiterlesen = (await getCollection("blog", ({ data }) => !data.ausblenden)
   image={eintrag.data.titelbild}
   type="article"
 >
-  <article class="max-w-3xl mx-auto px-6 py-16">
+  <article class={`max-w-3xl mx-auto px-6 py-16 ${eintrag.data.bildstil === "aus-dunkel" ? "ei-dunkel" : ""}`}>
     <header class="mb-10 pb-8 border-b border-[var(--color-border)]/40">
       <div class="text-xs tracking-widest uppercase text-[var(--color-muted-foreground)]/70 mb-3">{datum}</div>
       <h1 class="heading-serif text-3xl md:text-4xl text-[var(--color-foreground)] leading-tight">

@@ -118,6 +118,25 @@
   z-index: 1000;
 }
 
+/* ─── Ei aus der Finsternis ───
+   Die Eibilder treten aus dem Dunkel hervor: rechteckige Ränder und
+   Galerie-Rahmen lösen sich in den schwarzen Grund auf, nur die Ei-Form bleibt.
+   Aktiviert über Frontmatter `bildstil: aus-dunkel` (setzt .ei-dunkel am Artikel).
+   Stärke/Form zentral über --ei-maske justierbar. */
+.ei-dunkel {
+  --ei-maske: radial-gradient(ellipse 82% 90% at 50% 48%, #000 56%, transparent 100%);
+}
+.ei-dunkel figure {
+  border: 0 !important;
+}
+.ei-dunkel figure img {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  -webkit-mask-image: var(--ei-maske);
+          mask-image: var(--ei-maske);
+}
+
 /* ─── Animations ─── */
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(16px); }

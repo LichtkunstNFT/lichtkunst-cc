@@ -21,6 +21,8 @@ const blog = defineCollection({
     titel: z.string(),
     untertitel: z.string().optional(),
     vorschau: z.string().optional(),
+    // "aus-dunkel" lässt die Bildränder in den schwarzen Grund auslaufen (Eithema)
+    bildstil: z.string().optional(),
     datum: z.coerce.date(),
     titelbild: z.string().optional(),
     tags: z.array(z.string()).optional(),

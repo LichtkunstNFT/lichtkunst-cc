@@ -4,6 +4,7 @@ untertitel: "Botticellis schaumgeborene Venus steigt aus dem Wasser — und mit 
 vorschau: "Beim Schwimmen in der Ostsee, den Kopf unter Wasser: zum Atemholen empor in den ultramarinblauen Himmel, zum Ausatmen hinab ins Smaragdgrüne — die Wiedergeburt aus dem Meer."
 datum: 2026-06-09
 titelbild: /bilder/eiform/eiform-01.jpg
+bildstil: aus-dunkel
 tags:
   - journal
   - form
