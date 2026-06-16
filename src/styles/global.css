@@ -124,7 +124,8 @@
    Aktiviert über Frontmatter `bildstil: aus-dunkel` (setzt .ei-dunkel am Artikel).
    Stärke/Form zentral über --ei-maske justierbar. */
 .ei-dunkel {
-  --ei-maske: radial-gradient(ellipse 82% 90% at 50% 48%, #000 56%, transparent 100%);
+  /* kräftiger: kleinerer heller Kern, Ränder lösen sich deutlicher ins Schwarz */
+  --ei-maske: radial-gradient(ellipse 80% 88% at 50% 47%, #000 46%, transparent 95%);
 }
 .ei-dunkel figure {
   border: 0 !important;
@@ -135,6 +136,11 @@
   background: transparent !important;
   -webkit-mask-image: var(--ei-maske);
           mask-image: var(--ei-maske);
+}
+/* Maximale Dramatik für Bilder auf reinem Schwarz: das Schwarz verschwindet
+   vollständig, nur das Licht des Eis bleibt. Per class="ei-leuchtet" am <img>. */
+.ei-dunkel figure img.ei-leuchtet {
+  mix-blend-mode: screen;
 }
 
 /* ─── Animations ─── */

@@ -17,10 +17,8 @@ galerie:
   - /bilder/eiform/eiform-01.jpg
   - /bilder/eiform/eiform-04.jpg
   - /bilder/eiform/eiform-12.jpg
-  - /bilder/eiform/eiform-02.jpg
   - /bilder/eiform/eiform-13.jpg
   - /bilder/eiform/eiform-06.jpg
-  - /bilder/eiform/eiform-03.jpg
   - /bilder/eiform/eiform-07.jpg
   - /bilder/eiform/eiform-05.jpg
   - /bilder/eiform/eiform-10.jpg
@@ -33,6 +31,8 @@ galerie:
 ---
 
 *Das Ei ist die Form, zu der ich immer wieder zurückkehre.*
+
+**Das Ei — Gefäß des Lichtes!**
 
 Es gibt Formen, die man wählt, und Formen, die einen wählen. Das Ei ist bei mir
 das zweite. Es taucht über die Jahre immer wieder auf — als Tafel, als
@@ -54,8 +54,8 @@ Gedankens.
 ## Blau, das sich erhellt — aus dem Meer
 
 <figure>
-  <img src="/bilder/eiform/eiform-01.jpg" width="320" alt="Eiförmige Tafel: oben ultramarinblauer Himmel, unten türkis-smaragdgrünes Meer." />
-  <figcaption>Mein erstes kleines Ei — oben der ultramarinblaue Himmel, unten das smaragdgrüne Meer. Geboren aus dem Atem unter Wasser.<br /><small style="font-style: normal; opacity: 0.7; letter-spacing: 0.03em;">Tafelmalerei auf Holz, 2021 · 19 × 13 cm</small></figcaption>
+  <img src="/bilder/eiform/eiform-01.jpg" width="320" class="ei-leuchtet" alt="Eiförmige Tafel: oben ultramarinblauer Himmel, unten türkis-smaragdgrünes Meer." />
+  <figcaption>Mein erstes kleines Ei — oben der ultramarinblaue Himmel, unten das smaragdgrüne Meer. Geboren aus dem Atem unter Wasser.<br /><strong>Das Ei — Gefäß des Lichtes.</strong><br /><small style="font-style: normal; opacity: 0.7; letter-spacing: 0.03em;">Tafelmalerei auf Holz, 2021 · 19 × 13 cm</small></figcaption>
 </figure>
 
 Dieses erste kleine Ei kam aus dem Meer. Beim Schwimmen in der Ostsee, den Kopf
@@ -93,7 +93,7 @@ dass eine Linie ihn teilt.
 ## Das Ei als Kosmos
 
 <figure>
-  <img src="/bilder/eiform/eiform-04.jpg" width="300" alt="Eiform, in der Farben aus der Mitte heraus aufbrechen." />
+  <img src="/bilder/eiform/eiform-04.jpg" width="300" class="ei-leuchtet" alt="Eiform, in der Farben aus der Mitte heraus aufbrechen." />
   <figcaption>Ein anderes Ei: Hier bricht der ganze Farbreichtum aus der Mitte hervor.<br /><small style="font-style: normal; opacity: 0.7; letter-spacing: 0.03em;">Tafelmalerei auf Holz, 2022 · 35 × 21 cm</small></figcaption>
 </figure>
 
@@ -118,7 +118,7 @@ eingewoben: die Agnihotra-Asche. Noch trägt sie das Feuer, noch leuchtet sie mi
 — aber sie ist da.
 
 <figure>
-  <img src="/bilder/eiform/eiform-13.jpg" width="300" alt="Eiform in Violett, Pink und Türkis mit grünen und roten Adern." />
+  <img src="/bilder/eiform/eiform-13.jpg" width="300" class="ei-leuchtet" alt="Eiform in Violett, Pink und Türkis mit grünen und roten Adern." />
   <figcaption>Pink, Violett, Türkis — die Palette kippt ins Unwirkliche; auch hier arbeitet die Asche schon im Grund.<br /><small style="font-style: normal; opacity: 0.7; letter-spacing: 0.03em;">Tafelmalerei auf Holz, 2023 · 39 × 30 cm</small></figcaption>
 </figure>
 
@@ -137,9 +137,9 @@ Arbeit, in der die Form den Träger wechselt: Aus der gemalten und geschieferten
 Eiform wird ein Körper aus Licht. Das [[2025-lichtei|Lichtei]].
 
 <figure>
-  <img src="/bilder/lichtei/03-zentrum-gruen.jpg" width="190" alt="Lichtei im grünen Licht." />
-  <img src="/bilder/lichtei/02-blauviolett.jpg" width="170" alt="Lichtei im blauvioletten Licht." />
-  <img src="/bilder/lichtei/01-hero.jpg" width="170" alt="Lichtei im warmen Bernsteinlicht." />
+  <img src="/bilder/lichtei/03-zentrum-gruen.jpg" width="190" class="ei-leuchtet" alt="Lichtei im grünen Licht." />
+  <img src="/bilder/lichtei/02-blauviolett.jpg" width="170" class="ei-leuchtet" alt="Lichtei im blauvioletten Licht." />
+  <img src="/bilder/lichtei/01-hero.jpg" width="170" class="ei-leuchtet" alt="Lichtei im warmen Bernsteinlicht." />
   <figcaption>Dieselbe Form, immer neue Farbe: Grün, Blauviolett, Bernstein — das Licht lässt das Ei jedes Mal ein anderes Leben hervorbringen.<br /><small style="font-style: normal; opacity: 0.7; letter-spacing: 0.03em;">Lichtskulptur, 2025 · 58 × 50 cm</small></figcaption>
 </figure>
 
@@ -151,10 +151,13 @@ begann, wird hier zur Erfahrung: ein begehbares Ereignis, in dem das Ei den
 Kosmos nicht nur *zeigt*, sondern ihn fortwährend neu *erzeugt* — das Ei, das
 das Leben hervorbringt.
 
+**Das Ei — Gefäß des Lichtes!** Hier ist es buchstäblich wahr: eine Hülle, in
+der das Licht selbst wohnt, sich sammelt und Welt um Welt hervorbringt.
+
 ## Die Verkehrung — Tanz auf dem Vulkan
 
 <figure>
-  <img src="/bilder/eiform/eiform-08.jpg" width="300" alt="Eiform auf den Kopf gestellt: die schwarze Asche oben, der ultramarinblaue Himmel glüht unten." />
+  <img src="/bilder/eiform/eiform-08.jpg" width="300" class="ei-leuchtet" alt="Eiform auf den Kopf gestellt: die schwarze Asche oben, der ultramarinblaue Himmel glüht unten." />
   <figcaption>Die Welt steht kopf: oben die Asche, unten der Himmel — das Aufbäumen, bevor der Zyklus sich schließt.</figcaption>
 </figure>
 
@@ -188,3 +191,7 @@ Versuch einer Antwort — und alle zusammen bilden eine Familie.
 
 Unten findest du sie versammelt — und den Weg zurück in den Strom, aus dem du
 vielleicht gekommen bist: die Eiform-Pinnwand, auf der diese Formen weiterlaufen.
+
+---
+
+**Das Ei — Gefäß des Lichtes.**
