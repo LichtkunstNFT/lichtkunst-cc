@@ -103,6 +103,18 @@ fügen — begehbare Räume, die Licht filtern und verteilen. Skulpturale Gebäu
 aus Recycling-Glas. Diese Vision bleibt bislang unrealisiert — nicht aus
 Mangel an Ideen, sondern weil äußere Kräfte den Wuchs des Werkes verhindern.
 
+## In der Presse
+
+In der Ausgabe **06/2026** der Verbandszeitschrift **„Der Kleingärtner"** des
+**Landesverbandes der Gartenfreunde Sachsen-Anhalt e.V. (LVGSA)** ist ein
+Artikel über *„Gegen die Schwerkraft"* erschienen — über die Flaschenwand,
+ihren Standort im Hallenser Kleingarten und den Gedanken, der das Werk trägt.
+
+<div style="margin:2rem 0;padding:1.5rem;border:1px solid var(--color-accent);border-radius:2px;background:var(--color-card);display:flex;flex-direction:column;gap:0.75rem;align-items:flex-start;">
+  <div style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);">Der Kleingärtner · 06/2026 · LVGSA e.V.</div>
+  <a href="/presse/der-kleingaertner-06-2026-gegen-die-schwerkraft.pdf" target="_blank" rel="noopener" download style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.85rem 1.5rem;border-radius:2px;background:var(--color-accent);color:var(--color-accent-foreground);font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;text-decoration:none;">⬇ Artikel als PDF herunterladen</a>
+</div>
+
 ## Status
 
 - **Entstehung:** 2023 — laufend (unvollendet)
