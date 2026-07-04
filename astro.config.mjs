@@ -3,9 +3,12 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 import wikiLinkPlugin from 'remark-wiki-link';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://lichtkunst.cc',
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]
   },
