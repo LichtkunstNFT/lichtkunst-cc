@@ -30,30 +30,13 @@ Schwerkraft: von unten wachsend, nach oben strebend, als wollten sie nie fallen.
 Der Sockel, auf dem das Werk steht, ist aus Lehm — von eigenen Händen geformt.
 Kein Fertigmaterial. Kein Beton. Erde.
 
-## Material und Technik
-
-- Hunderte Glasflaschen des 19. und 20. Jahrhunderts (recycelt)
-- Verbindung ausschließlich durch farblosen Silikon
-- Selbst gefertigter Lehmsockel
-- Aufgehängt in senkrechten Reihen an einem Pergola-Holzrahmen
-- Manche Flaschen tragen noch eingeprägte Herstellerbezeichnungen
-  (*Nordhausen*, *Maybach*, u.a.)
-
-## Wirkung
-
-- **Licht** bricht sich in den Glaswänden, streut und fächert sich auf
-- **Wind** geht durch die Zwischenräume — das Werk atmet
-- **Farbspiel** je nach Tageszeit: Grün, Bernstein, Kristallweiß
-- **Gegen den Himmel** betrachtet: die Flaschen werden transparent,
-  der Himmel spiegelt sich in historischen Prägungen
-
 ## Im Garten
 
 Das Werk steht inmitten von Wildblumen — Teil eines lebendigen Kleingartens,
 nicht in einem White Cube. Hier entscheiden Licht, Wetter und Jahreszeit
 mit, wie das Werk erscheint.
 
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:34rem;margin:2.5rem auto 0;">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:40rem;margin:2.5rem auto 0;">
   <img src="/bilder/gegen-die-schwerkraft/kacheln/k01.jpg" alt="Blick gegen den Himmel" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
   <img src="/bilder/gegen-die-schwerkraft/kacheln/k02.jpg" alt="Flaschenwand und Waben" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
   <img src="/bilder/gegen-die-schwerkraft/kacheln/k03.jpg" alt="Im Garten zwischen Wildblumen" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
@@ -62,7 +45,7 @@ mit, wie das Werk erscheint.
   <img src="/bilder/gegen-die-schwerkraft/kacheln/k06.jpg" alt="Frontansicht im Tageslicht" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
 </div>
 
-<p style="max-width:34rem;margin:0.75rem auto 2.5rem;text-align:center;font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-muted-foreground);opacity:0.85;">© Lichtkunst · zufällig gewählte Fragmentansichten des Gesamtkunstwerkes</p>
+<p style="max-width:40rem;margin:0.75rem auto 2.5rem;text-align:center;font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-muted-foreground);opacity:0.85;">© Lichtkunst · zufällig gewählte Fragmentansichten des Gesamtkunstwerkes</p>
 
 ## Das Werk und die Bienen
 
@@ -81,7 +64,7 @@ so wie die Bienen sich schwebend zwischen Himmel und Erde halten.
 So wird die Wand selbst zu einem gläsernen Bienenstock: Reihe an Reihe,
 Flasche an Flasche — gefüllt nicht mit Honig, sondern mit Licht.
 
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:34rem;margin:2.5rem auto 0;">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:40rem;margin:2.5rem auto 0;">
   <img src="/bilder/gegen-die-schwerkraft/kacheln/k07.jpg" alt="Licht und Wind in den Zwischenräumen" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
   <img src="/bilder/gegen-die-schwerkraft/kacheln/k08.jpg" alt="Waben im Licht der Flaschenwand" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
   <img src="/bilder/gegen-die-schwerkraft/kacheln/k09.jpg" alt="Wildblumen am Werk" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
@@ -90,7 +73,24 @@ Flasche an Flasche — gefüllt nicht mit Honig, sondern mit Licht.
   <img src="/bilder/gegen-die-schwerkraft/kacheln/k12.jpg" alt="Tageslicht auf der Flaschenwand" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
 </div>
 
-<p style="max-width:34rem;margin:0.75rem auto 2.5rem;text-align:center;font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-muted-foreground);opacity:0.85;">© Lichtkunst · zufällig gewählte Fragmentansichten des Gesamtkunstwerkes</p>
+<p style="max-width:40rem;margin:0.75rem auto 2.5rem;text-align:center;font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-muted-foreground);opacity:0.85;">© Lichtkunst · zufällig gewählte Fragmentansichten des Gesamtkunstwerkes</p>
+
+## Vision: Die dritte und die vierte Dimension
+
+Das Werk ist **unvollendet**. Die Vision geht weiter: Wände, die sich
+gegenseitig tragen, könnten sich zu dreidimensionalen Glas-Architekturen
+fügen — begehbare Räume, die Licht filtern und verteilen. Skulpturale Gebäude
+aus Recycling-Glas. Diese Vision bleibt bislang unrealisiert — nicht aus
+Mangel an Ideen, sondern weil äußere Kräfte den Wuchs des Werkes verhindern.
+
+Und hinter der dritten wartet die **vierte Dimension**: die Ausdehnung des
+Werkes in den Äther. Platon kannte neben Erde, Wasser, Luft und Feuer ein
+fünftes Element — den Äther, den lichten Stoff, aus dem der Himmel selbst
+gemacht ist. In diese Sphäre wächst das Werk weiter: als Licht, das durch
+das Glas hindurchgeht und nicht an ihm endet; als Gedanke, der sich im
+Betrachter fortsetzt; als digitales Abbild, das in der NFT-Kollektion
+dauerhaft verankert ist. Das Werk endet nicht an seinen Rändern — es dehnt
+sich dorthin aus, wo keine Schwerkraft mehr gilt.
 
 ## Titel und Bedeutung
 
@@ -112,22 +112,22 @@ Lothar Zenetti:
 
 Glasflaschen, die Licht machen. Buchstäblich.
 
-## Vision: Die dritte und die vierte Dimension
+## Material und Technik
 
-Das Werk ist **unvollendet**. Die Vision geht weiter: Wände, die sich
-gegenseitig tragen, könnten sich zu dreidimensionalen Glas-Architekturen
-fügen — begehbare Räume, die Licht filtern und verteilen. Skulpturale Gebäude
-aus Recycling-Glas. Diese Vision bleibt bislang unrealisiert — nicht aus
-Mangel an Ideen, sondern weil äußere Kräfte den Wuchs des Werkes verhindern.
+- Hunderte Glasflaschen des 19. und 20. Jahrhunderts (recycelt)
+- Verbindung ausschließlich durch farblosen Silikon
+- Selbst gefertigter Lehmsockel
+- Aufgehängt in senkrechten Reihen an einem Pergola-Holzrahmen
+- Manche Flaschen tragen noch eingeprägte Herstellerbezeichnungen
+  (*Nordhausen*, *Maybach*, u.a.)
 
-Und hinter der dritten wartet die **vierte Dimension**: die Ausdehnung des
-Werkes in den Äther. Platon kannte neben Erde, Wasser, Luft und Feuer ein
-fünftes Element — den Äther, den lichten Stoff, aus dem der Himmel selbst
-gemacht ist. In diese Sphäre wächst das Werk weiter: als Licht, das durch
-das Glas hindurchgeht und nicht an ihm endet; als Gedanke, der sich im
-Betrachter fortsetzt; als digitales Abbild, das in der NFT-Kollektion
-dauerhaft verankert ist. Das Werk endet nicht an seinen Rändern — es dehnt
-sich dorthin aus, wo keine Schwerkraft mehr gilt.
+## Wirkung
+
+- **Licht** bricht sich in den Glaswänden, streut und fächert sich auf
+- **Wind** geht durch die Zwischenräume — das Werk atmet
+- **Farbspiel** je nach Tageszeit: Grün, Bernstein, Kristallweiß
+- **Gegen den Himmel** betrachtet: die Flaschen werden transparent,
+  der Himmel spiegelt sich in historischen Prägungen
 
 ## Komm und sieh selbst
 
