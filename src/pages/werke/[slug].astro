@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Comments from "../../components/Comments.astro";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -87,6 +88,8 @@ const datum = werk.data.datum.toLocaleDateString("de-DE", {
         </a>
       </aside>
     )}
+
+    {werk.data.kommentare && <Comments slug={werk.id} />}
 
     <nav class="mt-16 pt-8 border-t border-[var(--color-border)]/40 text-sm">
       <a href="/werke" class="text-[var(--color-muted-foreground)] hover:text-[var(--color-accent)] transition-colors">

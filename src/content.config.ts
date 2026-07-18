@@ -12,6 +12,8 @@ const werke = defineCollection({
     getgems_url: z.string().url().optional(),
     tags: z.array(z.string()).optional(),
     ausblenden: z.boolean().default(false),
+    // Blendet die Kommentar-Sektion auf der Werk-Detail-Seite ein
+    kommentare: z.boolean().default(false),
   }),
 });
 

@@ -5,6 +5,7 @@ bild: /bilder/gegen-die-schwerkraft/01-gesamtansicht.jpg
 serie: Land Art / Sky Art
 beschreibung_kurz: Außeninstallation aus hunderten recycelten Glasflaschen des 19. und 20. Jahrhunderts, verbunden allein durch farblosen Silikon. Hallenser Kleingarten, ab 2023 — laufend.
 getgems_url: https://getgems.io/againstgravity
+kommentare: true
 tags:
   - werk
   - land-art

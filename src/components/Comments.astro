@@ -33,8 +33,9 @@ const { slug } = Astro.props;
       <input
         type="email"
         name="email"
+        required
         maxlength="120"
-        placeholder="E-Mail (optional, wird nicht angezeigt)"
+        placeholder="E-Mail (wird nicht angezeigt)"
         class="flex-1 bg-[var(--color-card)]/60 border border-[var(--color-border)]/60 rounded-sm px-4 py-2.5 text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)]/60"
       />
     </div>
@@ -53,6 +54,15 @@ const { slug } = Astro.props;
       <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
     </div>
 
+    <label class="flex items-start gap-2.5 text-[0.75rem] text-[var(--color-muted-foreground)] leading-relaxed cursor-pointer select-none">
+      <input type="checkbox" name="newsletter" class="mt-0.5 accent-[var(--color-accent)]" />
+      <span>
+        Ja, ich möchte zusätzlich den <span class="text-[var(--color-foreground)]">Newsletter</span>
+        erhalten — neue Werke, Ausstellungen, Texte, gelegentlich per Mail.
+        Anmeldung erst nach Bestätigung per E-Mail (Double Opt-In), Abmeldung jederzeit.
+      </span>
+    </label>
+
     <div class="flex items-center justify-between gap-4">
       <p id="kommentar-status" class="text-xs text-[var(--color-muted-foreground)]/70" role="status" aria-live="polite"></p>
       <button
@@ -63,9 +73,10 @@ const { slug } = Astro.props;
       </button>
     </div>
     <p class="text-[0.7rem] text-[var(--color-muted-foreground)]/50 leading-relaxed">
-      Name und Kommentar erscheinen öffentlich. Die E-Mail ist freiwillig, bleibt
-      privat und dient nur für eine eventuelle Rückmeldung. Gespeichert wird
-      ausschließlich in der EU (Cloudflare), kein Tracking. Mehr in der
+      Name und Kommentar erscheinen öffentlich. Die E-Mail-Adresse ist
+      erforderlich, bleibt aber privat und dient nur für eine eventuelle
+      Rückmeldung. Gespeichert wird ausschließlich in der EU (Cloudflare),
+      kein Tracking. Mehr in der
       <a href="/datenschutz" class="underline underline-offset-2 hover:text-[var(--color-accent)]">Datenschutzerklärung</a>.
     </p>
   </form>
@@ -130,14 +141,34 @@ const { slug } = Astro.props;
           '<li class="text-sm text-[var(--color-muted-foreground)]/60 italic">Kommentare konnten nicht geladen werden.</li>';
       });
 
+    // Gleiche EmailOctopus-Liste wie das Newsletter-Formular (Double Opt-In).
+    const NEWSLETTER_ENDPOINT =
+      "https://eocampaign1.com/form/37a6e4fc-6001-11f1-b0c3-9b90a18e68d4";
+
+    async function newsletterAnmelden(email) {
+      try {
+        const res = await fetch(NEWSLETTER_ENDPOINT, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new URLSearchParams({ field_0: email }),
+        });
+        const d = await res.json().catch(() => ({}));
+        return res.ok && d?.success !== false;
+      } catch {
+        return false;
+      }
+    }
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const btn = form.querySelector("button[type=submit]");
       const fd = new FormData(form);
+      const email = fd.get("email");
+      const newsletter = fd.get("newsletter");
       const payload = {
         slug,
         name: fd.get("name"),
-        email: fd.get("email"),
+        email,
         body: fd.get("body"),
         website: fd.get("website"),
         t: loadedAt,
@@ -156,6 +187,11 @@ const { slug } = Astro.props;
           render();
           form.reset();
           statusEl.textContent = "Danke — dein Kommentar ist online.";
+          if (newsletter) {
+            statusEl.textContent = (await newsletterAnmelden(email))
+              ? "Danke — dein Kommentar ist online. Newsletter: bitte bestätige den Link in der E-Mail, die wir dir gerade geschickt haben."
+              : "Dein Kommentar ist online. Die Newsletter-Anmeldung hat leider nicht geklappt — bitte nutze das Newsletter-Formular auf der Startseite.";
+          }
         } else if (d.ok) {
           form.reset();
           statusEl.textContent = "Danke.";

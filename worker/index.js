@@ -49,15 +49,17 @@ async function addComment(request, env) {
     return json({ ok: false, error: "Bitte einen Namen (max. 80 Zeichen) angeben." }, 400);
   if (body.length < 2 || body.length > 5000)
     return json({ ok: false, error: "Kommentar fehlt oder ist zu lang." }, 400);
-  if (email && (email.length > 120 || !EMAIL_RE.test(email)))
-    return json({ ok: false, error: "E-Mail-Adresse sieht ungültig aus." }, 400);
+  // E-Mail ist Pflicht: kommentieren darf, wer eine Adresse hinterlässt.
+  // Sie bleibt privat (wird nie über GET /api/comments ausgeliefert).
+  if (!EMAIL_RE.test(email) || email.length > 120)
+    return json({ ok: false, error: "Bitte eine gültige E-Mail-Adresse angeben." }, 400);
 
   const created_at = Date.now();
   const res = await env.DB.prepare(
     "INSERT INTO comments (slug, name, email, body, created_at, approved) " +
       "VALUES (?, ?, ?, ?, ?, 1)"
   )
-    .bind(slug, name, email || null, body, created_at)
+    .bind(slug, name, email, body, created_at)
     .run();
 
   return json({
