@@ -40,9 +40,8 @@ Kein Fertigmaterial. Kein Beton. Erde.
    Sie scheinen schwerelos. Sie tragen sich gegenseitig, obwohl nur Silikon
    sie verbindet.
 
-2. **Metaphorisch** — das Werk richtet sich gegen die *Schwere des Denkens.*
-   Gegen Bürokratie, Kleingeist und Sturheit. Gegen Haltungen, die das
-   Lebendige als störend empfinden.
+2. **Metaphorisch** — das Werk feiert die Leichtigkeit: Getragen-Werden
+   statt Fallen, gegenseitiger Halt statt Schwere.
 
 Der Geist des Werkes entspricht dem Gedicht **„Was keiner wagt"** von
 Lothar Zenetti:
@@ -89,35 +88,48 @@ mit, wie das Werk erscheint.
 Neben der Glasflaschenwand stehen Bienenkästen — leer. Am Boden davor liegen
 zerstörte Waben, geraubt von Waschbären.
 
-Das Licht der Glasflaschen fällt genau auf diese Waben. Dieses Bild —
-Licht durch Glas, daneben zerstörte Waben — ist das stärkste visuelle Statement
-des Werkes. Es braucht keine Erklärung.
+Das Licht der Glasflaschen fällt genau auf diese Waben — ein stilles
+Nebeneinander von Licht und Verlust im selben Garten.
 
-![Flaschenwand und zerstörte Waben — das Werk als Spiegel](/bilder/gegen-die-schwerkraft/03-werk-und-waben.jpg)
+![Flaschenwand und Waben im Licht](/bilder/gegen-die-schwerkraft/03-werk-und-waben.jpg)
 
 ## Vision: Die dritte Dimension
 
 Das Werk ist **unvollendet**. Die Vision geht weiter: Wände, die sich
 gegenseitig tragen, könnten sich zu dreidimensionalen Glas-Architekturen
 fügen — begehbare Räume, die Licht filtern und verteilen. Skulpturale Gebäude
-aus Recycling-Glas. Diese Vision bleibt bislang unrealisiert — nicht aus
-Mangel an Ideen, sondern weil äußere Kräfte den Wuchs des Werkes verhindern.
+aus Recycling-Glas. Diese Vision wartet noch auf ihre Verwirklichung.
+
+## Komm und sieh selbst
+
+Das Werk steht in einem lebendigen Kleingarten in Halle (Saale) — und es
+lebt von Besuch. Licht, Wetter und Tageszeit entscheiden mit, was du siehst.
+Kein Foto ersetzt das.
+
+<div style="margin:2rem 0;padding:1.5rem;border:1px solid var(--color-accent);border-radius:2px;background:var(--color-card);display:flex;flex-direction:column;gap:0.75rem;align-items:flex-start;">
+  <div style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);">Besuch nach Absprache</div>
+  <a href="/kontakt" style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.85rem 1.5rem;border-radius:2px;background:var(--color-accent);color:var(--color-accent-foreground);font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;text-decoration:none;">→ Besuch anmelden</a>
+</div>
+
+## Mach dein eigenes Bild
+
+Fotografiere das Werk mit deinen Augen. Veröffentliche dein Bild, deinen
+Text, deinen Eindruck — auf deinen Kanälen. Verlinke dabei auf
+**lichtkunst.cc**, damit andere den Weg hierher finden.
+
+Ausgewählte Gäste-Perspektiven erscheinen künftig hier in der Sektion
+**„Stimmen aus den Gärten"** — und besonders starke Aufnahmen können
+(mit Einverständnis) Teil der NFT-Kollektion werden.
 
 ## In der Presse
 
-In der Ausgabe **06/2026** der Verbandszeitschrift **„Der Kleingärtner"** des
-**Landesverbandes der Gartenfreunde Sachsen-Anhalt e.V. (LVGSA)** ist ein
-Artikel über *„Gegen die Schwerkraft"* erschienen — über die Flaschenwand,
-ihren Standort im Hallenser Kleingarten und den Gedanken, der das Werk trägt.
-
-<div style="margin:2rem 0;padding:1.5rem;border:1px solid var(--color-accent);border-radius:2px;background:var(--color-card);display:flex;flex-direction:column;gap:0.75rem;align-items:flex-start;">
-  <div style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-accent);">Der Kleingärtner · 06/2026 · LVGSA e.V.</div>
-  <a href="/presse/der-kleingaertner-06-2026-gegen-die-schwerkraft.pdf" target="_blank" rel="noopener" download style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.85rem 1.5rem;border-radius:2px;background:var(--color-accent);color:var(--color-accent-foreground);font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;text-decoration:none;">⬇ Artikel als PDF herunterladen</a>
-</div>
+In der Ausgabe **06/2026** der Verbandszeitschrift **„Der Kleingärtner"**
+(LVGSA e.V.) ist ein Artikel über *„Gegen die Schwerkraft"* erschienen.
 
 ## Status
 
 - **Entstehung:** 2023 — laufend (unvollendet)
-- **Standort:** KGV „Am Osendorfer See" e.V., Halle (Saale)
+- **Standort:** Kleingartenanlage in Halle (Saale), Besuch nach Absprache
+- **Gelistet** in den [Mitgliederprojekten des BBK Sachsen-Anhalt](https://www.bbk-sachsenanhalt.de/)
 - **Urheberrechtlich geschützt** nach §§ 2, 14 UrhG
 - **NFT-Kollektion:** [getgems.io/againstgravity](https://getgems.io/againstgravity)
