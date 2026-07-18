@@ -20,7 +20,7 @@
   --color-input: oklch(0.22 0.010 285);
   --color-ring: oklch(0.72 0.14 68);
 
-  --font-display: "Fraunces", serif;
+  --font-display: "Cormorant", serif;
   --font-body: "Cabinet Grotesk", system-ui, sans-serif;
   --font-mono: "Geist Mono", monospace;
 
@@ -59,9 +59,9 @@
 /* ─── Typography ─── */
 .heading-display {
   font-family: var(--font-display);
-  font-weight: 100;
-  letter-spacing: 0.06em;
-  font-optical-sizing: auto;
+  /* Cormorant Light: filigranste verfügbare Stärke ist 300 */
+  font-weight: 300;
+  letter-spacing: 0.05em;
 }
 
 .heading-serif {
