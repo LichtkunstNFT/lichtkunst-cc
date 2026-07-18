@@ -10,6 +10,7 @@ tags:
   - tafelmalerei
   - goethe
   - "2014"
+kommentare: true
 ---
 
 Drei leuchtende Körper steigen aus einem tiefen, fast nächtlichen Blau empor.

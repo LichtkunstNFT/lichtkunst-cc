@@ -16,12 +16,12 @@ const { slug } = Astro.props;
   <h2 class="heading-serif text-2xl md:text-3xl text-[var(--color-foreground)] mb-3">
     Kommentare
   </h2>
-  <p class="text-base text-[var(--color-muted-foreground)] mb-8">
+  <p class="text-lg text-white mb-8">
     Was löst das Werk bei dir aus? Schreib es hier — dein Kommentar erscheint sofort.
   </p>
 
   <ul id="kommentar-liste" class="space-y-6 mb-10">
-    <li class="text-base text-[var(--color-muted-foreground)]/60 italic">
+    <li class="text-lg text-[var(--color-muted-foreground)]/60 italic">
       Kommentare werden geladen …
     </li>
   </ul>
@@ -34,7 +34,7 @@ const { slug } = Astro.props;
         required
         maxlength="80"
         placeholder="Name"
-        class="flex-1 bg-[var(--color-card)]/60 border border-[var(--color-border)]/60 rounded-sm px-4 py-3 text-base text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)]/60"
+        class="flex-1 bg-[var(--color-card)]/60 border border-[var(--color-border)]/60 rounded-sm px-4 py-3 text-lg text-white placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)]/60"
       />
       <input
         type="email"
@@ -42,7 +42,7 @@ const { slug } = Astro.props;
         required
         maxlength="120"
         placeholder="E-Mail (wird nicht angezeigt)"
-        class="flex-1 bg-[var(--color-card)]/60 border border-[var(--color-border)]/60 rounded-sm px-4 py-3 text-base text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)]/60"
+        class="flex-1 bg-[var(--color-card)]/60 border border-[var(--color-border)]/60 rounded-sm px-4 py-3 text-lg text-white placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)]/60"
       />
     </div>
 
@@ -52,7 +52,7 @@ const { slug } = Astro.props;
       rows="4"
       maxlength="5000"
       placeholder="Dein Gedanke zum Werk …"
-      class="w-full bg-[var(--color-card)]/60 border border-[var(--color-border)]/60 rounded-sm px-4 py-3 text-base text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)]/60 resize-y"
+      class="w-full bg-[var(--color-card)]/60 border border-[var(--color-border)]/60 rounded-sm px-4 py-3 text-lg text-white placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)]/60 resize-y"
     ></textarea>
 
     {/* Honeypot — von Menschen unsichtbar, muss leer bleiben */}
@@ -60,10 +60,10 @@ const { slug } = Astro.props;
       <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
     </div>
 
-    <label class="flex items-start gap-3 text-sm text-[var(--color-muted-foreground)] leading-relaxed cursor-pointer select-none">
-      <input type="checkbox" name="newsletter" class="mt-0.5 h-5 w-5 shrink-0 accent-[var(--color-accent)] cursor-pointer" />
+    <label class="flex items-start gap-3 text-base text-white leading-relaxed cursor-pointer select-none">
+      <input type="checkbox" name="newsletter" class="mt-1 h-5 w-5 shrink-0 accent-[var(--color-accent)] cursor-pointer" />
       <span>
-        Ja, ich möchte zusätzlich den <span class="text-[var(--color-foreground)]">Newsletter</span>
+        Ja, ich möchte zusätzlich den <span class="text-[var(--color-accent)]">Newsletter</span>
         erhalten — neue Werke, Ausstellungen, Texte, gelegentlich per Mail.
         Anmeldung erst nach Bestätigung per E-Mail (Double Opt-In), Abmeldung jederzeit.
       </span>
@@ -109,7 +109,7 @@ const { slug } = Astro.props;
       liste.innerHTML = "";
       if (!comments.length) {
         const li = document.createElement("li");
-        li.className = "text-base text-[var(--color-muted-foreground)]/60 italic";
+        li.className = "text-lg text-[var(--color-muted-foreground)]/60 italic";
         li.textContent = "Noch keine Kommentare — schreib den ersten.";
         liste.appendChild(li);
         return;
@@ -119,15 +119,15 @@ const { slug } = Astro.props;
         li.className = "border-l-2 border-[var(--color-accent)]/50 pl-5 py-2";
 
         const head = document.createElement("div");
-        head.className = "text-sm text-[var(--color-muted-foreground)]/70 mb-1.5";
+        head.className = "text-base text-[var(--color-muted-foreground)] mb-1.5";
         const name = document.createElement("span");
-        name.className = "text-[var(--color-foreground)] font-medium text-base";
+        name.className = "text-white font-medium text-lg";
         name.textContent = c.name;
         head.appendChild(name);
         head.appendChild(document.createTextNode(" · " + fmt(c.created_at)));
 
         const p = document.createElement("p");
-        p.className = "text-base text-[var(--color-foreground)]/90 leading-relaxed whitespace-pre-wrap";
+        p.className = "text-lg text-white leading-relaxed whitespace-pre-wrap";
         p.textContent = c.body;
 
         li.appendChild(head);

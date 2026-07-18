@@ -11,6 +11,7 @@ tags:
   - planeten
   - goethe
   - "2019"
+kommentare: true
 ---
 
 Ein hochformatiges Tafelbild, 28 × 43 cm. Aus einem tiefen, kühlen Blau brechen

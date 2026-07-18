@@ -10,6 +10,7 @@ tags:
   - lichtskulptur
   - geometrie
   - "2025"
+kommentare: true
 ---
 
 Eine eiförmige Schale, geöffnet zur Betrachterin. Drei konzentrische Ringe

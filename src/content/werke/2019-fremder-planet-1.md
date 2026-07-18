@@ -11,6 +11,7 @@ tags:
   - planeten
   - goethe
   - "2019"
+kommentare: true
 ---
 
 Eine kreisrunde Scheibe, Ø 43 cm. Grün-gelbe Landmassen ziehen über die
