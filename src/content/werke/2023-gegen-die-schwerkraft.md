@@ -22,7 +22,7 @@ aus dem 19. und 20. Jahrhundert. Grün, braun, kristallklar. Manche tragen noch
 die eingeprägten Schriftzüge ihrer Herkunft: *Nordhausen*, *Maybach* — Namen,
 die längst verschwunden sind.
 
-Verbunden sind sie ausschließlich durch farblosen Baumarkt-Silikon.
+Verbunden sind sie ausschließlich durch farblosen Silikon.
 Kein Stahl, kein Draht, kein Gerüst. Sie tragen sich gegenseitig —
 Flasche trägt Flasche, Reihe trägt Reihe. Und sie trotzen dabei scheinbar der
 Schwerkraft: von unten wachsend, nach oben strebend, als wollten sie nie fallen.
