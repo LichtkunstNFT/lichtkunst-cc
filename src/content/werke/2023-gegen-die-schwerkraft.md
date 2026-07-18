@@ -30,8 +30,6 @@ Schwerkraft: von unten wachsend, nach oben strebend, als wollten sie nie fallen.
 Der Sockel, auf dem das Werk steht, ist aus Lehm — von eigenen Händen geformt.
 Kein Fertigmaterial. Kein Beton. Erde.
 
-![Blick gegen den Himmel: Licht und Wind brechen durch die Zwischenräume](/bilder/gegen-die-schwerkraft/02-gegen-den-himmel.jpg)
-
 ## Titel und Bedeutung
 
 **„Gegen die Schwerkraft"** ist doppeldeutig:
@@ -52,6 +50,15 @@ Lothar Zenetti:
 
 Glasflaschen, die Licht machen. Buchstäblich.
 
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin:2.5rem 0;">
+  <img src="/bilder/gegen-die-schwerkraft/kacheln/k01.jpg" alt="Blick gegen den Himmel" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
+  <img src="/bilder/gegen-die-schwerkraft/kacheln/k02.jpg" alt="Flaschenwand und Waben" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
+  <img src="/bilder/gegen-die-schwerkraft/kacheln/k03.jpg" alt="Im Garten zwischen Wildblumen" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
+  <img src="/bilder/gegen-die-schwerkraft/kacheln/k04.jpg" alt="Lehmsockel" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
+  <img src="/bilder/gegen-die-schwerkraft/kacheln/k05.jpg" alt="Historische Prägungen" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
+  <img src="/bilder/gegen-die-schwerkraft/kacheln/k06.jpg" alt="Frontansicht im Tageslicht" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
+</div>
+
 ## Material und Technik
 
 - Hunderte Glasflaschen des 19. und 20. Jahrhunderts (recycelt)
@@ -61,8 +68,6 @@ Glasflaschen, die Licht machen. Buchstäblich.
 - Manche Flaschen tragen noch eingeprägte Herstellerbezeichnungen
   (*Nordhausen*, *Maybach*, u.a.)
 
-![Seitenansicht mit Lehmsockel](/bilder/gegen-die-schwerkraft/05-lehmsockel.jpg)
-
 ## Wirkung
 
 - **Licht** bricht sich in den Glaswänden, streut und fächert sich auf
@@ -71,17 +76,20 @@ Glasflaschen, die Licht machen. Buchstäblich.
 - **Gegen den Himmel** betrachtet: die Flaschen werden transparent,
   der Himmel spiegelt sich in historischen Prägungen
 
-![Historische Flaschen mit Prägungen](/bilder/gegen-die-schwerkraft/06-historische-praegungen.jpg)
-
 ## Im Garten
 
 Das Werk steht inmitten von Wildblumen — Teil eines lebendigen Kleingartens,
 nicht in einem White Cube. Hier entscheiden Licht, Wetter und Jahreszeit
 mit, wie das Werk erscheint.
 
-![Gesamtübersicht mit blühenden Wildblumen](/bilder/gegen-die-schwerkraft/04-im-garten.jpg)
-
-![Frontansicht im Tageslicht](/bilder/gegen-die-schwerkraft/07-tageslicht.jpg)
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin:2.5rem 0;">
+  <img src="/bilder/gegen-die-schwerkraft/kacheln/k07.jpg" alt="Licht und Wind in den Zwischenräumen" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
+  <img src="/bilder/gegen-die-schwerkraft/kacheln/k08.jpg" alt="Waben im Licht der Flaschenwand" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
+  <img src="/bilder/gegen-die-schwerkraft/kacheln/k09.jpg" alt="Wildblumen am Werk" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
+  <img src="/bilder/gegen-die-schwerkraft/kacheln/k10.jpg" alt="Detail des Lehmsockels" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
+  <img src="/bilder/gegen-die-schwerkraft/kacheln/k11.jpg" alt="Prägung im Glas" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
+  <img src="/bilder/gegen-die-schwerkraft/kacheln/k12.jpg" alt="Tageslicht auf der Flaschenwand" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
+</div>
 
 ## Das Werk und die Bienen
 
@@ -91,14 +99,13 @@ zerstörte Waben, geraubt von Waschbären.
 Das Licht der Glasflaschen fällt genau auf diese Waben — ein stilles
 Nebeneinander von Licht und Verlust im selben Garten.
 
-![Flaschenwand und Waben im Licht](/bilder/gegen-die-schwerkraft/03-werk-und-waben.jpg)
-
 ## Vision: Die dritte Dimension
 
 Das Werk ist **unvollendet**. Die Vision geht weiter: Wände, die sich
 gegenseitig tragen, könnten sich zu dreidimensionalen Glas-Architekturen
 fügen — begehbare Räume, die Licht filtern und verteilen. Skulpturale Gebäude
-aus Recycling-Glas. Diese Vision wartet noch auf ihre Verwirklichung.
+aus Recycling-Glas. Diese Vision bleibt bislang unrealisiert — nicht aus
+Mangel an Ideen, sondern weil äußere Kräfte den Wuchs des Werkes verhindern.
 
 ## Komm und sieh selbst
 
