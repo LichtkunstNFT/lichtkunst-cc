@@ -37,6 +37,28 @@ Das Werk steht inmitten von Wildblumen — Teil eines lebendigen Kleingartens,
 nicht in einem White Cube. Hier entscheiden Licht, Wetter und Jahreszeit
 mit, wie das Werk erscheint.
 
+Es steht dort, weil es nur dort entstehen konnte. Der Garten ist nicht
+Kulisse, sondern Material: der Lehm des Sockels stammt aus dieser Erde,
+die Flaschen tragen das Gedächtnis der Region in ihren Prägungen, und
+neben dem Werk standen die Bienen — Nachbarn im selben Licht. Ein Werk
+über das Getragen-Werden konnte nur an einem Ort wachsen, an dem
+Lebendiges einander trägt: Blumen, Bienen, Menschen.
+
+Und genau darum protestiert es — leise, ohne ein einziges lautes Wort —
+gegen die Schwere, die dem Lebendigen entgegengesetzt wird. Den Bienen
+neben dem Werk wurde die Haltung am Standort schriftlich untersagt;
+heute wird ihre Beräumung gefordert. Der Zeitschriftenbeitrag über das
+Werk wurde anwaltlich abgemahnt, verlangt wurde Löschung binnen
+24 Stunden. Ein Werk aus recyceltem Glas, ein Text über Licht — beides
+soll verschwinden.
+
+Das Werk antwortet nicht mit Schriftsätzen. Es demonstriert, jeden Tag
+aufs Neue, wie Halt ohne Zwang aussieht: kein Draht, kein Gerüst, keine
+Anordnung — hunderte Flaschen stehen, weil jede jede trägt. Was sich
+gegenseitig trägt, muss nicht niedergedrückt werden. Und je stärker der
+Druck von außen, desto deutlicher ist zu sehen, wofür es steht: Licht,
+das durch alles hindurchgeht.
+
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:40rem;margin:2.5rem auto 0;">
   <img src="/bilder/gegen-die-schwerkraft/kacheln/k01.jpg" alt="Blick gegen den Himmel" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
   <img src="/bilder/gegen-die-schwerkraft/kacheln/k02.jpg" alt="Flaschenwand und Waben" loading="lazy" style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px;margin:0;" />
