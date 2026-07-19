@@ -11,11 +11,24 @@ const json = (data, status = 200) =>
     headers: { "content-type": "application/json; charset=utf-8" },
   });
 
+// Schema-Nachrüstung ohne wrangler-Zugriff: die Spalte parent_id
+// (Antwort-auf-Kommentar) wird beim ersten Request pro Isolate angelegt;
+// existiert sie schon, schlägt das ALTER fehl und wird ignoriert.
+let schemaGeprueft = false;
+async function ensureSchema(env) {
+  if (schemaGeprueft) return;
+  try {
+    await env.DB.exec("ALTER TABLE comments ADD COLUMN parent_id INTEGER");
+  } catch {}
+  schemaGeprueft = true;
+}
+
 async function listComments(url, env) {
   const slug = url.searchParams.get("slug") || "";
   if (!SLUG_RE.test(slug)) return json({ comments: [] });
+  await ensureSchema(env);
   const { results } = await env.DB.prepare(
-    "SELECT id, name, body, created_at FROM comments " +
+    "SELECT id, name, body, created_at, parent_id FROM comments " +
       "WHERE slug = ? AND approved = 1 ORDER BY created_at ASC LIMIT 500"
   )
     .bind(slug)
@@ -54,17 +67,37 @@ async function addComment(request, env) {
   if (!EMAIL_RE.test(email) || email.length > 120)
     return json({ ok: false, error: "Bitte eine gültige E-Mail-Adresse angeben." }, 400);
 
+  await ensureSchema(env);
+
+  // Optional: Antwort auf einen bestehenden Kommentar desselben Beitrags.
+  let parent_id = null;
+  if (data.parent_id != null) {
+    parent_id = Number(data.parent_id);
+    if (!Number.isInteger(parent_id) || parent_id < 1)
+      return json({ ok: false, error: "Ungültige Antwort-Referenz." }, 400);
+    const parent = await env.DB.prepare(
+      "SELECT id FROM comments WHERE id = ? AND slug = ? AND approved = 1"
+    )
+      .bind(parent_id, slug)
+      .first();
+    if (!parent)
+      return json(
+        { ok: false, error: "Der Kommentar, auf den du antwortest, existiert nicht mehr." },
+        400
+      );
+  }
+
   const created_at = Date.now();
   const res = await env.DB.prepare(
-    "INSERT INTO comments (slug, name, email, body, created_at, approved) " +
-      "VALUES (?, ?, ?, ?, ?, 1)"
+    "INSERT INTO comments (slug, name, email, body, created_at, approved, parent_id) " +
+      "VALUES (?, ?, ?, ?, ?, 1, ?)"
   )
-    .bind(slug, name, email, body, created_at)
+    .bind(slug, name, email, body, created_at, parent_id)
     .run();
 
   return json({
     ok: true,
-    comment: { id: res.meta.last_row_id, name, body, created_at },
+    comment: { id: res.meta.last_row_id, name, body, created_at, parent_id },
   });
 }
 

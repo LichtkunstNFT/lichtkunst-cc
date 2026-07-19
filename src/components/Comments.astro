@@ -17,16 +17,36 @@ const { slug } = Astro.props;
     Kommentare
   </h2>
   <p class="text-lg text-white mb-8">
-    Was löst das Werk bei dir aus? Schreib es hier — dein Kommentar erscheint sofort.
+    Was löst das Werk bei dir aus? Schreib es hier — oder antworte direkt auf
+    einen Kommentar. Jeder Kommentar hat einen eigenen Link zum Teilen.
   </p>
 
-  <ul id="kommentar-liste" class="space-y-6 mb-10">
+  <ul id="kommentar-liste" class="space-y-6 mb-12">
     <li class="text-lg text-[var(--color-muted-foreground)]/60 italic">
       Kommentare werden geladen …
     </li>
   </ul>
 
-  <form id="kommentar-form" class="space-y-4 max-w-xl">
+  <form id="kommentar-form" class="space-y-4 max-w-xl scroll-mt-24">
+    <h3 id="kommentar-form-titel" class="heading-serif text-xl text-[var(--color-foreground)]">
+      Antwort auf den Artikel
+    </h3>
+
+    <div
+      id="antwort-hinweis"
+      hidden
+      class="flex items-center justify-between gap-3 flex-wrap border border-[var(--color-accent)]/50 rounded-sm bg-[var(--color-card)]/60 px-4 py-3 text-base text-white"
+    >
+      <span>↩ Du antwortest auf <a id="antwort-ziel" href="#kommentare" class="text-[var(--color-accent)] underline underline-offset-4"></a></span>
+      <button
+        type="button"
+        id="antwort-abbrechen"
+        class="text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-accent)] underline underline-offset-2"
+      >
+        ✕ stattdessen auf den Artikel antworten
+      </button>
+    </div>
+
     <div class="flex flex-col sm:flex-row gap-4">
       <input
         type="text"
@@ -88,15 +108,30 @@ const { slug } = Astro.props;
   </form>
 </section>
 
+<style is:global>
+  /* Angesprungener Kommentar (#kommentar-…) leuchtet auf */
+  #kommentare li:target > article {
+    border-color: var(--color-accent);
+    box-shadow:
+      0 0 0 1px oklch(0.72 0.14 68 / 0.3),
+      0 0 20px oklch(0.72 0.14 68 / 0.15);
+  }
+</style>
+
 <script>
   const root = document.getElementById("kommentare");
   if (root) {
     const slug = root.dataset.slug;
     const liste = document.getElementById("kommentar-liste");
     const form = document.getElementById("kommentar-form");
+    const formTitel = document.getElementById("kommentar-form-titel");
     const statusEl = document.getElementById("kommentar-status");
+    const hinweis = document.getElementById("antwort-hinweis");
+    const hinweisZiel = document.getElementById("antwort-ziel");
+    const hinweisAbbrechen = document.getElementById("antwort-abbrechen");
     const loadedAt = Date.now();
     let comments = [];
+    let antwortAuf = null; // Kommentar-Objekt oder null = Artikel
 
     const fmt = (ms) =>
       new Date(ms).toLocaleDateString("de-DE", {
@@ -104,6 +139,93 @@ const { slug } = Astro.props;
         month: "long",
         day: "numeric",
       });
+
+    function setAntwortAuf(c) {
+      antwortAuf = c;
+      if (c) {
+        hinweisZiel.textContent = "Kommentar #" + c.id + " von " + c.name;
+        hinweisZiel.href = "#kommentar-" + c.id;
+        hinweis.hidden = false;
+        formTitel.textContent = "Antwort auf Kommentar #" + c.id;
+      } else {
+        hinweis.hidden = true;
+        formTitel.textContent = "Antwort auf den Artikel";
+      }
+    }
+
+    function baueKommentar(c) {
+      const li = document.createElement("li");
+      li.id = "kommentar-" + c.id;
+      li.className = "scroll-mt-24";
+
+      const art = document.createElement("article");
+      art.className =
+        "border border-[var(--color-border)]/60 rounded-sm bg-[var(--color-card)]/40 p-4 sm:p-5 transition-shadow";
+
+      // Eigene Überschrift pro Kommentar
+      const eyebrow = document.createElement("a");
+      eyebrow.href = "#kommentar-" + c.id;
+      eyebrow.className =
+        "block text-[0.65rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-1 no-underline hover:underline underline-offset-4";
+      eyebrow.textContent = "Kommentar #" + c.id;
+
+      const head = document.createElement("div");
+      head.className = "flex items-baseline gap-3 flex-wrap mb-2";
+      const name = document.createElement("h3");
+      name.className = "heading-serif text-xl text-white m-0";
+      name.textContent = c.name;
+      const datum = document.createElement("span");
+      datum.className = "text-sm text-[var(--color-muted-foreground)]";
+      datum.textContent = fmt(c.created_at);
+      head.appendChild(name);
+      head.appendChild(datum);
+
+      const p = document.createElement("p");
+      p.className = "text-lg text-white leading-relaxed whitespace-pre-wrap m-0";
+      p.textContent = c.body;
+
+      const actions = document.createElement("div");
+      actions.className = "flex gap-5 mt-3";
+
+      const antworten = document.createElement("button");
+      antworten.type = "button";
+      antworten.className =
+        "text-sm tracking-[0.08em] uppercase text-[var(--color-accent)] hover:underline underline-offset-4";
+      antworten.textContent = "↩ Antworten";
+      antworten.addEventListener("click", () => {
+        setAntwortAuf(c);
+        form.scrollIntoView({ behavior: "smooth", block: "start" });
+        form.querySelector("textarea").focus({ preventScroll: true });
+      });
+
+      const link = document.createElement("button");
+      link.type = "button";
+      link.className =
+        "text-sm tracking-[0.08em] uppercase text-[var(--color-muted-foreground)] hover:text-[var(--color-accent)] hover:underline underline-offset-4";
+      link.textContent = "Link kopieren";
+      link.addEventListener("click", async () => {
+        const url =
+          location.origin + location.pathname + "#kommentar-" + c.id;
+        try {
+          await navigator.clipboard.writeText(url);
+          link.textContent = "Kopiert ✓";
+        } catch {
+          location.hash = "kommentar-" + c.id;
+          link.textContent = "Link in der Adresszeile";
+        }
+        setTimeout(() => (link.textContent = "Link kopieren"), 2500);
+      });
+
+      actions.appendChild(antworten);
+      actions.appendChild(link);
+
+      art.appendChild(eyebrow);
+      art.appendChild(head);
+      art.appendChild(p);
+      art.appendChild(actions);
+      li.appendChild(art);
+      return li;
+    }
 
     function render() {
       liste.innerHTML = "";
@@ -114,25 +236,42 @@ const { slug } = Astro.props;
         liste.appendChild(li);
         return;
       }
+
+      // Baum aufbauen: Antworten hängen unter ihrem Eltern-Kommentar
+      const kinder = new Map();
+      const wurzeln = [];
       for (const c of comments) {
-        const li = document.createElement("li");
-        li.className = "border-l-2 border-[var(--color-accent)]/50 pl-5 py-2";
+        const p = c.parent_id;
+        if (p && comments.some((x) => x.id === p)) {
+          if (!kinder.has(p)) kinder.set(p, []);
+          kinder.get(p).push(c);
+        } else {
+          wurzeln.push(c);
+        }
+      }
 
-        const head = document.createElement("div");
-        head.className = "text-base text-[var(--color-muted-foreground)] mb-1.5";
-        const name = document.createElement("span");
-        name.className = "text-white font-medium text-lg";
-        name.textContent = c.name;
-        head.appendChild(name);
-        head.appendChild(document.createTextNode(" · " + fmt(c.created_at)));
+      function haenge(an, liste_, tiefe) {
+        for (const c of liste_) {
+          const li = baueKommentar(c);
+          an.appendChild(li);
+          const antworten = kinder.get(c.id);
+          if (antworten && antworten.length) {
+            const ul = document.createElement("ul");
+            ul.className =
+              "mt-4 space-y-4 border-l-2 border-[var(--color-accent)]/30 " +
+              (tiefe < 3 ? "pl-4 sm:pl-6" : "pl-2");
+            li.appendChild(ul);
+            haenge(ul, antworten, tiefe + 1);
+          }
+        }
+      }
+      haenge(liste, wurzeln, 0);
+    }
 
-        const p = document.createElement("p");
-        p.className = "text-lg text-white leading-relaxed whitespace-pre-wrap";
-        p.textContent = c.body;
-
-        li.appendChild(head);
-        li.appendChild(p);
-        liste.appendChild(li);
+    function springeZuHash() {
+      if (/^#kommentar-\d+$/.test(location.hash)) {
+        const ziel = document.getElementById(location.hash.slice(1));
+        if (ziel) ziel.scrollIntoView({ block: "start" });
       }
     }
 
@@ -141,11 +280,14 @@ const { slug } = Astro.props;
       .then((d) => {
         comments = d.comments || [];
         render();
+        springeZuHash();
       })
       .catch(() => {
         liste.innerHTML =
-          '<li class="text-sm text-[var(--color-muted-foreground)]/60 italic">Kommentare konnten nicht geladen werden.</li>';
+          '<li class="text-lg text-[var(--color-muted-foreground)]/60 italic">Kommentare konnten nicht geladen werden.</li>';
       });
+
+    hinweisAbbrechen.addEventListener("click", () => setAntwortAuf(null));
 
     // Gleiche EmailOctopus-Liste wie das Newsletter-Formular (Double Opt-In).
     const NEWSLETTER_ENDPOINT =
@@ -177,6 +319,7 @@ const { slug } = Astro.props;
         email,
         body: fd.get("body"),
         website: fd.get("website"),
+        parent_id: antwortAuf ? antwortAuf.id : null,
         t: loadedAt,
       };
       btn.disabled = true;
@@ -192,7 +335,9 @@ const { slug } = Astro.props;
           comments.push(d.comment);
           render();
           form.reset();
-          statusEl.textContent = "Danke — dein Kommentar ist online.";
+          setAntwortAuf(null);
+          statusEl.textContent =
+            "Danke — dein Kommentar #" + d.comment.id + " ist online.";
           if (newsletter) {
             statusEl.textContent = (await newsletterAnmelden(email))
               ? "Danke — dein Kommentar ist online. Newsletter: bitte bestätige den Link in der E-Mail, die wir dir gerade geschickt haben."
@@ -200,6 +345,7 @@ const { slug } = Astro.props;
           }
         } else if (d.ok) {
           form.reset();
+          setAntwortAuf(null);
           statusEl.textContent = "Danke.";
         } else {
           statusEl.textContent = d.error || "Konnte nicht gesendet werden.";

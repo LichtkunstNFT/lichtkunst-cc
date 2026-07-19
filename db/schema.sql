@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS comments (
   email      TEXT,                       -- optional, wird NICHT öffentlich angezeigt
   body       TEXT    NOT NULL,
   created_at INTEGER NOT NULL,           -- Unix-ms
-  approved   INTEGER NOT NULL DEFAULT 1  -- 1 = sichtbar; auf 0 setzen für Moderation
+  approved   INTEGER NOT NULL DEFAULT 1, -- 1 = sichtbar; auf 0 setzen für Moderation
+  parent_id  INTEGER                     -- Antwort auf Kommentar-ID (NULL = auf den Artikel)
 );
 
 CREATE INDEX IF NOT EXISTS idx_comments_slug
