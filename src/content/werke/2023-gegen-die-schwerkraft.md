@@ -39,22 +39,30 @@ mit, wie das Werk erscheint.
 
 Es steht dort, weil es nur dort entstehen konnte. Der Garten ist nicht
 Kulisse, sondern Material: der Lehm des Sockels stammt aus dieser Erde,
-die Flaschen tragen das Gedächtnis der Region in ihren Prägungen, und
-neben dem Werk standen die Bienen — Nachbarn im selben Licht. Ein Werk
-über das Getragen-Werden konnte nur an einem Ort wachsen, an dem
-Lebendiges einander trägt: Blumen, Bienen, Menschen.
+die Flaschen tragen in ihren Prägungen — *Nordhausen*, *Maybach* — das
+Gedächtnis der Region, und neben dem Werk standen die Bienen, Nachbarn im
+selben Licht. Ein Werk über das Getragen-Werden konnte nur an einem Ort
+wachsen, an dem Lebendiges einander trägt: Blumen, Bienen, Menschen.
+Verpflanzt man es, verliert es seinen Grund — im wörtlichen wie im
+übertragenen Sinn.
 
 Und genau darum protestiert es — leise, ohne ein einziges lautes Wort —
-gegen die Schwere, die dem Lebendigen entgegengesetzt wird. Den Bienen
-neben dem Werk wurde die Haltung am Standort schriftlich untersagt;
-heute wird ihre Beräumung gefordert. Der Zeitschriftenbeitrag über das
-Werk wurde anwaltlich abgemahnt, verlangt wurde Löschung binnen
-24 Stunden. Ein Werk aus recyceltem Glas, ein Text über Licht — beides
-soll verschwinden.
+gegen die Schwere, die dem Lebendigen entgegengesetzt wird. Diese Schwere
+ist am Standort sehr konkret geworden. Den Bienen wurde die Haltung hier
+schriftlich untersagt, zuletzt verbunden mit der Aufforderung, die Völker
+zu entfernen — lebende Tiere, die sich nicht auf Frist beräumen lassen.
+Und der künstlerisch-journalistische Beitrag über das Werk wurde
+anwaltlich abgemahnt, mit der Forderung, ihn binnen kurzer Frist zu
+löschen. Ein Werk aus recyceltem Glas, Bienen zwischen Himmel und Erde,
+ein Text über Licht — alles drei soll verschwinden. Dagegen richtet sich
+der stille Protest: gegen den Impuls, Wachsendes niederzudrücken, nur weil
+es sich nicht anordnen lässt.
 
 Das Werk antwortet nicht mit Schriftsätzen. Es demonstriert, jeden Tag
 aufs Neue, wie Halt ohne Zwang aussieht: kein Draht, kein Gerüst, keine
-Anordnung — hunderte Flaschen stehen, weil jede jede trägt. Was sich
+Anordnung — hunderte Flaschen stehen, weil jede jede trägt. Es beruft sich
+auf kein Amt und keine Satzung, sondern auf ein einziges Prinzip:
+gegenseitiges Tragen hält fester als jede erzwungene Ordnung. Was sich
 gegenseitig trägt, muss nicht niedergedrückt werden. Und je stärker der
 Druck von außen, desto deutlicher ist zu sehen, wofür es steht: Licht,
 das durch alles hindurchgeht.
