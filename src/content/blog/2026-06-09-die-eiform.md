@@ -31,7 +31,7 @@ galerie:
 ---
 
 <figure style="margin-top:0;">
-  <img src="/bilder/eiform/eiform-01.jpg" width="560" class="ei-leuchtet" alt="Eiförmige Tafel: oben ultramarinblauer Himmel, unten türkis-smaragdgrünes Meer." />
+  <img src="/bilder/eiform/eiform-01.jpg" width="480" class="ei-leuchtet" alt="Eiförmige Tafel: oben ultramarinblauer Himmel, unten türkis-smaragdgrünes Meer." />
   <figcaption>Mein erstes kleines Ei — oben der ultramarinblaue Himmel, unten das smaragdgrüne Meer. Geboren aus dem Atem unter Wasser.<br /><strong>Das Ei — Gefäß des Lichtes.</strong><br /><small style="font-style: normal; opacity: 0.7; letter-spacing: 0.03em;">Tafelmalerei auf Holz, 2021 · 19 × 13 cm</small></figcaption>
 </figure>
 
