@@ -143,6 +143,39 @@
   mix-blend-mode: screen;
 }
 
+/* ─── Fibonacci-Reihen ───
+   Die Eier vermehren sich zeilenweise nach 1 1 2 3 5 8 13 21. Jede Reihe behält
+   dieselbe Gesamtbreite, also werden die Eier von Reihe zu Reihe kleiner und der
+   Bestand verdichtet sich zum Cluster. Anzahl der Spalten per --n am Element,
+   Reihenbreite per --b. Noch unbesetzte Plätze bekommen die Klasse `leer`. */
+.ei-reihe {
+  display: grid;
+  grid-template-columns: repeat(var(--n, 1), 1fr);
+  gap: var(--g, 0.5rem);
+  align-items: center;
+  justify-items: center;
+  width: var(--b, 100%);
+  max-width: 100%;
+  margin: 0 auto;
+}
+.ei-reihe img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* Platzhalter: die Form ist schon da, das Ei noch nicht. */
+.ei-reihe .leer {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border: 1px dashed currentColor;
+  border-radius: 50% 50% 50% 50% / 58% 58% 42% 42%;
+  opacity: 0.14;
+}
+.ei-reihe .leer.wartet {
+  opacity: 0.22;
+  border-style: solid;
+}
+
 /* ─── Animations ─── */
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(16px); }
