@@ -119,6 +119,8 @@ const { slug } = Astro.props;
 </style>
 
 <script>
+  import { NEWSLETTER_ENDPOINT, EMAIL_FIELD } from "../newsletter";
+
   const root = document.getElementById("kommentare");
   if (root) {
     const slug = root.dataset.slug;
@@ -289,16 +291,15 @@ const { slug } = Astro.props;
 
     hinweisAbbrechen.addEventListener("click", () => setAntwortAuf(null));
 
-    // Gleiche EmailOctopus-Liste wie das Newsletter-Formular (Double Opt-In).
-    const NEWSLETTER_ENDPOINT =
-      "https://eocampaign1.com/form/37a6e4fc-6001-11f1-b0c3-9b90a18e68d4";
+    // Gleiche EmailOctopus-Liste wie das Newsletter-Formular (Double Opt-In),
+    // zentral gepflegt in src/newsletter.ts.
 
     async function newsletterAnmelden(email) {
       try {
         const res = await fetch(NEWSLETTER_ENDPOINT, {
           method: "POST",
           headers: { Accept: "application/json" },
-          body: new URLSearchParams({ field_0: email }),
+          body: new URLSearchParams({ [EMAIL_FIELD]: email }),
         });
         const d = await res.json().catch(() => ({}));
         return res.ok && d?.success !== false;

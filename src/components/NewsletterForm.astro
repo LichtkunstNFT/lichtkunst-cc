@@ -1,17 +1,20 @@
 ---
+import {
+  NEWSLETTER_ENDPOINT,
+  EMAIL_FIELD,
+  HONEYPOT_FIELD,
+  TRAP_FIELD,
+  MIN_FILL_MS,
+} from "../newsletter";
+
 interface Props {
   endpoint?: string;
   headline?: string;
 }
 const {
-  endpoint = "https://eocampaign1.com/form/37a6e4fc-6001-11f1-b0c3-9b90a18e68d4",
+  endpoint = NEWSLETTER_ENDPOINT,
   headline = "Neue Werke, Ausstellungen, Texte — gelegentlich per Mail.",
 } = Astro.props;
-
-/* Mindestzeit zwischen Seitenaufbau und Absenden. Menschen brauchen zum
-   Tippen einer Adresse länger; Bots senden sofort. Wird nicht abgelehnt,
-   sondern verzögert — so kann kein echter Mensch ausgesperrt werden. */
-const MIN_FILL_MS = 3500;
 ---
 
 <div class="max-w-md mx-auto mt-10 mb-2">
@@ -35,7 +38,7 @@ const MIN_FILL_MS = 3500;
     <input
       id="newsletter-email"
       type="email"
-      name="field_0"
+      name={EMAIL_FIELD}
       required
       autocomplete="email"
       placeholder="E-Mail-Adresse"
@@ -45,7 +48,7 @@ const MIN_FILL_MS = 3500;
     <div class="absolute left-[-5000px]" aria-hidden="true">
       <input
         type="text"
-        name="hpc4b27b6e-eb38-11e9-be00-06b4694bee2a"
+        name={HONEYPOT_FIELD}
         tabindex="-1"
         autocomplete="off"
       />
@@ -53,7 +56,7 @@ const MIN_FILL_MS = 3500;
           Wird nie mitgesendet — bei Inhalt bricht das Skript still ab. */}
       <input
         type="text"
-        name="website"
+        name={TRAP_FIELD}
         data-newsletter-trap
         tabindex="-1"
         autocomplete="off"
@@ -80,6 +83,8 @@ const MIN_FILL_MS = 3500;
 </div>
 
 <script>
+  import { TRAP_FIELD } from "../newsletter";
+
   document.querySelectorAll<HTMLFormElement>("[data-newsletter-form]").forEach((form) => {
     const status = form.parentElement?.querySelector<HTMLElement>("[data-newsletter-status]");
     const button = form.querySelector<HTMLButtonElement>("button[type='submit']");
@@ -120,7 +125,7 @@ const MIN_FILL_MS = 3500;
       // Honeypot bleibt draußen.
       const payload = new URLSearchParams();
       new FormData(form).forEach((value, key) => {
-        if (key !== "website" && typeof value === "string") payload.append(key, value);
+        if (key !== TRAP_FIELD && typeof value === "string") payload.append(key, value);
       });
 
       try {
