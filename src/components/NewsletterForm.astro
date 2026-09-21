@@ -7,6 +7,11 @@ const {
   endpoint = "https://eocampaign1.com/form/37a6e4fc-6001-11f1-b0c3-9b90a18e68d4",
   headline = "Neue Werke, Ausstellungen, Texte — gelegentlich per Mail.",
 } = Astro.props;
+
+/* Mindestzeit zwischen Seitenaufbau und Absenden. Menschen brauchen zum
+   Tippen einer Adresse länger; Bots senden sofort. Wird nicht abgelehnt,
+   sondern verzögert — so kann kein echter Mensch ausgesperrt werden. */
+const MIN_FILL_MS = 3500;
 ---
 
 <div class="max-w-md mx-auto mt-10 mb-2">
@@ -24,6 +29,7 @@ const {
     method="post"
     class="flex flex-col sm:flex-row gap-2"
     data-newsletter-form
+    data-min-fill={MIN_FILL_MS}
   >
     <label class="sr-only" for="newsletter-email">E-Mail-Adresse</label>
     <input
@@ -31,14 +37,24 @@ const {
       type="email"
       name="field_0"
       required
+      autocomplete="email"
       placeholder="E-Mail-Adresse"
       class="flex-1 px-4 py-2.5 bg-[var(--color-card)] border border-[var(--color-border)] rounded-sm text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)]/50 transition-colors"
     />
-    {/* EmailOctopus Honeypot — von Menschen unsichtbar, muss leer bleiben */}
+    {/* EmailOctopus-Honeypot — von Menschen unsichtbar, muss leer bleiben */}
     <div class="absolute left-[-5000px]" aria-hidden="true">
       <input
         type="text"
         name="hpc4b27b6e-eb38-11e9-be00-06b4694bee2a"
+        tabindex="-1"
+        autocomplete="off"
+      />
+      {/* Eigener Honeypot: plausibler Feldname, den Formular-Bots gern ausfüllen.
+          Wird nie mitgesendet — bei Inhalt bricht das Skript still ab. */}
+      <input
+        type="text"
+        name="website"
+        data-newsletter-trap
         tabindex="-1"
         autocomplete="off"
       />
@@ -67,30 +83,61 @@ const {
   document.querySelectorAll<HTMLFormElement>("[data-newsletter-form]").forEach((form) => {
     const status = form.parentElement?.querySelector<HTMLElement>("[data-newsletter-status]");
     const button = form.querySelector<HTMLButtonElement>("button[type='submit']");
+    const trap = form.querySelector<HTMLInputElement>("[data-newsletter-trap]");
+    const minFill = Number(form.dataset.minFill ?? 0);
+    const readyAt = Date.now();
+    let running = false;
+
+    const showSuccess = () => {
+      form.hidden = true;
+      if (status) {
+        status.textContent =
+          "Fast geschafft — bitte bestätige die Anmeldung über den Link in der E-Mail, die wir dir gerade geschickt haben.";
+        status.hidden = false;
+      }
+    };
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      if (running) return;
+      running = true;
+
+      // Honeypot gefüllt: Bot. Erfolg vortäuschen, nichts senden.
+      if (trap?.value) {
+        showSuccess();
+        return;
+      }
+
       if (button) button.disabled = true;
+
+      // Zu schnell abgesendet: nicht ablehnen, nur bis zur Mindestzeit warten.
+      const elapsed = Date.now() - readyAt;
+      if (elapsed < minFill) {
+        await new Promise((resolve) => setTimeout(resolve, minFill - elapsed));
+      }
+
+      // Nur die Felder senden, die EmailOctopus kennt — der eigene
+      // Honeypot bleibt draußen.
+      const payload = new URLSearchParams();
+      new FormData(form).forEach((value, key) => {
+        if (key !== "website" && typeof value === "string") payload.append(key, value);
+      });
 
       try {
         const response = await fetch(form.action, {
           method: "POST",
           headers: { Accept: "application/json" },
-          body: new URLSearchParams(new FormData(form) as unknown as Record<string, string>),
+          body: payload,
         });
         const data = await response.json().catch(() => ({}));
 
         if (response.ok && data?.success !== false) {
-          form.hidden = true;
-          if (status) {
-            status.textContent =
-              "Fast geschafft — bitte bestätige die Anmeldung über den Link in der E-Mail, die wir dir gerade geschickt haben.";
-            status.hidden = false;
-          }
+          showSuccess();
         } else {
           throw new Error(data?.error?.message ?? "Unbekannter Fehler");
         }
       } catch {
+        running = false;
         if (button) button.disabled = false;
         if (status) {
           status.textContent =
