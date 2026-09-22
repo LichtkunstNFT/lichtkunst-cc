@@ -119,7 +119,7 @@ const { slug } = Astro.props;
 </style>
 
 <script>
-  import { NEWSLETTER_ENDPOINT, EMAIL_FIELD } from "../newsletter";
+  import { NEWSLETTER_ENDPOINT, EMAIL_FIELD, CONSENT_FIELD } from "../newsletter";
 
   const root = document.getElementById("kommentare");
   if (root) {
@@ -299,7 +299,11 @@ const { slug } = Astro.props;
         const res = await fetch(NEWSLETTER_ENDPOINT, {
           method: "POST",
           headers: { Accept: "application/json" },
-          body: new URLSearchParams({ [EMAIL_FIELD]: email }),
+          body: new URLSearchParams({
+            [EMAIL_FIELD]: email,
+            // Die Checkbox im Kommentarformular IST die Einwilligung.
+            [CONSENT_FIELD]: "on",
+          }),
         });
         const d = await res.json().catch(() => ({}));
         return res.ok && d?.success !== false;

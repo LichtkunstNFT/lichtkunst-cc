@@ -3,6 +3,8 @@ import {
   NEWSLETTER_ENDPOINT,
   EMAIL_FIELD,
   HONEYPOT_FIELD,
+  CONSENT_FIELD,
+  CONSENT_LABEL,
   TRAP_FIELD,
   MIN_FILL_MS,
 } from "../newsletter";
@@ -30,10 +32,11 @@ const {
   <form
     action={endpoint}
     method="post"
-    class="flex flex-col sm:flex-row gap-2"
+    class="flex flex-col gap-3"
     data-newsletter-form
     data-min-fill={MIN_FILL_MS}
   >
+    <div class="flex flex-col sm:flex-row gap-2">
     <label class="sr-only" for="newsletter-email">E-Mail-Adresse</label>
     <input
       id="newsletter-email"
@@ -62,12 +65,24 @@ const {
         autocomplete="off"
       />
     </div>
-    <button
-      type="submit"
-      class="px-5 py-2.5 rounded-sm bg-[var(--color-accent)] text-[var(--color-accent-foreground)] text-xs tracking-[0.2em] uppercase font-medium glow-amber-sm hover:glow-amber transition-shadow whitespace-nowrap"
-    >
-      Abonnieren
-    </button>
+      <button
+        type="submit"
+        class="px-5 py-2.5 rounded-sm bg-[var(--color-accent)] text-[var(--color-accent-foreground)] text-xs tracking-[0.2em] uppercase font-medium glow-amber-sm hover:glow-amber transition-shadow whitespace-nowrap"
+      >
+        Abonnieren
+      </button>
+    </div>
+
+    <label class="flex items-start gap-2.5 text-[0.7rem] text-[var(--color-muted-foreground)] leading-relaxed cursor-pointer">
+      <input
+        type="checkbox"
+        name={CONSENT_FIELD}
+        value="on"
+        required
+        class="mt-0.5 shrink-0 accent-[var(--color-accent)]"
+      />
+      <span>{CONSENT_LABEL}</span>
+    </label>
   </form>
 
   <p
