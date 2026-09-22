@@ -28,8 +28,5 @@ export const CONSENT_FIELD = "consent";
 export const CONSENT_LABEL =
   "Ja, ich möchte den Newsletter mit Neuigkeiten zu Werken, Ausstellungen und Texten per E-Mail erhalten.";
 
-/** Eigener Honigtopf; wird nie an EmailOctopus gesendet. */
-export const TRAP_FIELD = "website";
-
 /** Mindestzeit (ms) zwischen Seitenaufbau und Absenden. */
 export const MIN_FILL_MS = 3500;

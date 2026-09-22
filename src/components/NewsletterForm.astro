@@ -5,7 +5,6 @@ import {
   HONEYPOT_FIELD,
   CONSENT_FIELD,
   CONSENT_LABEL,
-  TRAP_FIELD,
   MIN_FILL_MS,
 } from "../newsletter";
 
@@ -55,15 +54,6 @@ const {
         tabindex="-1"
         autocomplete="off"
       />
-      {/* Eigener Honeypot: plausibler Feldname, den Formular-Bots gern ausfüllen.
-          Wird nie mitgesendet — bei Inhalt bricht das Skript still ab. */}
-      <input
-        type="text"
-        name={TRAP_FIELD}
-        data-newsletter-trap
-        tabindex="-1"
-        autocomplete="off"
-      />
     </div>
       <button
         type="submit"
@@ -98,12 +88,9 @@ const {
 </div>
 
 <script>
-  import { TRAP_FIELD } from "../newsletter";
-
   document.querySelectorAll<HTMLFormElement>("[data-newsletter-form]").forEach((form) => {
     const status = form.parentElement?.querySelector<HTMLElement>("[data-newsletter-status]");
     const button = form.querySelector<HTMLButtonElement>("button[type='submit']");
-    const trap = form.querySelector<HTMLInputElement>("[data-newsletter-trap]");
     const minFill = Number(form.dataset.minFill ?? 0);
     const readyAt = Date.now();
     let running = false;
@@ -122,12 +109,6 @@ const {
       if (running) return;
       running = true;
 
-      // Honeypot gefüllt: Bot. Erfolg vortäuschen, nichts senden.
-      if (trap?.value) {
-        showSuccess();
-        return;
-      }
-
       if (button) button.disabled = true;
 
       // Zu schnell abgesendet: nicht ablehnen, nur bis zur Mindestzeit warten.
@@ -136,11 +117,9 @@ const {
         await new Promise((resolve) => setTimeout(resolve, minFill - elapsed));
       }
 
-      // Nur die Felder senden, die EmailOctopus kennt — der eigene
-      // Honeypot bleibt draußen.
       const payload = new URLSearchParams();
       new FormData(form).forEach((value, key) => {
-        if (key !== TRAP_FIELD && typeof value === "string") payload.append(key, value);
+        if (typeof value === "string") payload.append(key, value);
       });
 
       try {
