@@ -23,10 +23,10 @@ export const HONEYPOT_FIELD = "hpc4b27b6e-eb38-11e9-be00-06b4694bee2a";
 export const CONSENT_FIELD = "consent";
 
 /** Text an der Checkbox. Muss mit dem Text im EmailOctopus-Formular
- *  uebereinstimmen — sonst weicht der Nachweis von dem ab, was der
- *  Nutzer tatsaechlich gesehen hat. */
+ *  übereinstimmen — sonst weicht der Nachweis von dem ab, was der
+ *  Nutzer tatsächlich gesehen hat. */
 export const CONSENT_LABEL =
-  "Ja, ich moechte den Newsletter mit Neuigkeiten zu Werken, Ausstellungen und Texten per E-Mail erhalten.";
+  "Ja, ich möchte den Newsletter mit Neuigkeiten zu Werken, Ausstellungen und Texten per E-Mail erhalten.";
 
 /** Eigener Honigtopf; wird nie an EmailOctopus gesendet. */
 export const TRAP_FIELD = "website";
