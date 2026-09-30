@@ -10,10 +10,13 @@ tags:
   - salz
   - schiefer
   - "2026"
-# Bleibt verborgen, bis Text geprüft und die Getgems-Sammlung angelegt ist.
+# Rohbau: verborgen, bis Istvan ihn freigibt. Danach online, auch ohne Getgems-Link.
 ausblenden: true
 kommentare: true
 ---
+
+*Diese Seite ist noch im Aufbau. Gerade entstehen weitere Aufnahmen der
+Tafeln; sie kommen in den nächsten Wochen hier hinzu.*
 
 Am 19. und 20. September 2026 stand im Coworking am Klaustor in Halle eine
 Installation, die es seitdem nicht mehr gibt. Drei sechseckige Spiegelräume
@@ -22,17 +25,14 @@ Wer von oben hineinsah, sah nicht drei Räume, sondern unzählige. Nach zwei
 Tagen war sie abgebaut. Ich zeige jede Arbeit nur einmal — was bleibt, sind
 Ausschnitte wie diese.
 
-![Blick von oben in eines der drei Kaleidoskope: die Eier vervielfältigen sich in den Spiegeln, an den Kanten sammelt sich das Licht](/bilder/cosmic-eggs/01-kaleidoskop.jpg)
-
 Die Installation war mein Beitrag zu den Offenen Ateliers Sachsen-Anhalt und
 zum Themenjahr der Stadt Halle, „Stadt, Licht, Energie".
 
 ## Material
 
-Schiefer, zum Teil aus Frankreich [Region ergänzen]. Sole vom Gradierwerk in
+Schiefer, zum Teil aus Frankreich. Sole vom Gradierwerk in
 Bad Dürrenberg, wo sie über Wände aus Schwarzdornreisig rieselt und in der
 Luft verdunstet — Salz aus den Lagern eines längst eingedampften Meeres.
-[Lourdes: was genau stammt von dort?]
 
 ## Wie das Muster entsteht
 
@@ -74,6 +74,5 @@ Irgendwo zwischen diesen beiden Sätzen liegt die Arbeit.
 Die vollständigen Aufnahmen, bearbeitet und ergänzt, erscheinen als
 NFT-Sammlung auf Getgems — jedes Bild ein Unikat, geprägt als 1/1 auf der
 TON Blockchain. So wie die Installation nur einmal existiert hat, gibt es
-auch jedes dieser Bilder nur einmal.
-
-[Link zur Getgems-Sammlung ergänzen]
+auch jedes dieser Bilder nur einmal. Die Sammlung wird gerade vorbereitet;
+sobald sie steht, findet sich der Link hier.
