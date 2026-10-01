@@ -10,8 +10,8 @@ tags:
   - salz
   - schiefer
   - "2026"
-# Rohbau: verborgen, bis Istvan ihn freigibt. Danach online, auch ohne Getgems-Link.
-ausblenden: true
+# Rohbau online seit 01.10.2026 (Freigabe Istvan). Hinweis "im Aufbau" entfernen, wenn vollständig.
+ausblenden: false
 kommentare: true
 ---
 
