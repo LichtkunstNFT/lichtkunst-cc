@@ -1,11 +1,13 @@
 ---
 import "../styles/global.css";
+import Leserspur from "../components/Leserspur.astro";
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
   type?: string;
+  noindex?: boolean;
 }
 
 const SITE = "https://lichtkunst.cc";
@@ -14,6 +16,7 @@ const {
   description = "Istvan Seidel – Lichtkünstler. Werke, Sky Art, NFTs. Inspiriert von Goethes Farbenlehre, Walter Russell, Otto Piene.",
   image = "/bilder/eiform/eiform-01.jpg",
   type = "website",
+  noindex = false,
 } = Astro.props;
 
 // Open Graph braucht absolute URLs (Telegram, WhatsApp, Signal, Mastodon …).
@@ -33,6 +36,7 @@ const canonical = new URL(Astro.url.pathname, SITE).href;
     <meta name="theme-color" content="#0d0d0f" />
     <meta name="p:domain_verify" content="653a733f87997a252d9074b01a83b963" />
     <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content="Istvan Seidel · Lichtkunst" />
@@ -110,5 +114,7 @@ const canonical = new URL(Astro.url.pathname, SITE).href;
         </div>
       </div>
     </footer>
+
+    <Leserspur />
   </body>
 </html>

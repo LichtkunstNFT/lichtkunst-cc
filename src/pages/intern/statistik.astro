@@ -1,0 +1,300 @@
+---
+// Übersichtsseite der Leserspur (Technik-Auftrag 9).
+// Liest die Rohdaten über GET /api/statistik (Schlüssel nötig) und rechnet
+// alles im Browser aus. Nicht in Suchmaschinen, nicht in der Sitemap,
+// wird selbst nicht gezählt.
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Leserspur – intern" description="Interne Auswertung" noindex>
+  <section class="ls max-w-4xl mx-auto px-6 py-16">
+    <div class="text-xs tracking-[0.3em] uppercase text-[var(--color-accent)] mb-3">Intern</div>
+    <h1 class="heading-serif text-3xl md:text-4xl text-[var(--color-foreground)] mb-2">Leserspur</h1>
+    <p class="ls-muted mb-10">Woher die Leser kommen, wie weit sie lesen, was sie anklicken.</p>
+
+    <form id="ls-schluessel" class="ls-card mb-10" hidden>
+      <label for="ls-key" class="block mb-2">Schlüssel für die Auswertung</label>
+      <div class="ls-row">
+        <input id="ls-key" type="password" autocomplete="current-password" class="ls-input" />
+        <button class="ls-btn" type="submit">Öffnen</button>
+      </div>
+      <p class="ls-muted ls-small mt-3">Der Schlüssel bleibt nur in diesem Browserfenster, bis du es schließt.</p>
+    </form>
+
+    <div id="ls-status" class="ls-muted" role="status" aria-live="polite">Lade …</div>
+
+    <div id="ls-inhalt" hidden>
+      <div class="ls-row ls-filter mb-8">
+        <label>Seite <select id="ls-seite" class="ls-input"></select></label>
+        <label>Zeitraum
+          <select id="ls-tage" class="ls-input">
+            <option value="7">7 Tage</option>
+            <option value="14">14 Tage</option>
+            <option value="30" selected>30 Tage</option>
+            <option value="90">90 Tage</option>
+            <option value="365">1 Jahr</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="ls-datenlage" class="ls-card ls-datenlage mb-10"></div>
+      <div id="ls-kacheln" class="ls-kacheln mb-12"></div>
+
+      <h2 class="ls-h2">Woher sie kommen</h2>
+      <div id="ls-herkunft" class="mb-12"></div>
+
+      <h2 class="ls-h2">Wie weit sie lesen</h2>
+      <p class="ls-muted ls-small mb-4">Erreicht: Anteil der Aufrufe, die bis zu diesem Abschnitt gekommen sind.
+        Verweilen: typische Sekunden in diesem Abschnitt (Median), nur bei denen, die dort waren.
+        Ausstieg: Anteil, der die Seite in diesem Abschnitt verlassen hat.</p>
+      <div id="ls-abschnitte" class="mb-12"></div>
+
+      <h2 class="ls-h2">Bei welchem Bild sie stehen bleiben</h2>
+      <p class="ls-muted ls-small mb-4">Durchschnittliche Sekunden, in denen das Bild ganz im Fenster war. Die Vorschaubilder sind klein und oft zu zweit sichtbar — nur grobe Unterschiede bedeuten etwas.</p>
+      <div id="ls-bilder" class="mb-12"></div>
+
+      <h2 class="ls-h2">Was sie anklicken</h2>
+      <div id="ls-klicks" class="mb-12"></div>
+
+      <h2 class="ls-h2">Kommentar und Newsletter</h2>
+      <div id="ls-formular" class="mb-12"></div>
+
+      <h2 class="ls-h2">Alle Seiten</h2>
+      <div id="ls-seiten" class="mb-6"></div>
+      <p class="ls-muted ls-small">Gezählt wird ein Seitenaufruf, nicht eine Person. Wer zweimal kommt, zählt zweimal.</p>
+    </div>
+  </section>
+
+  <style is:global>
+    .ls { font-family: var(--font-body, inherit); color: var(--color-muted-foreground); }
+    .ls-muted { color: var(--color-muted-foreground); }
+    .ls-small { font-size: 0.8rem; line-height: 1.5; }
+    .ls-h2 { font-family: var(--font-serif, inherit); color: var(--color-foreground); font-size: 1.4rem; margin: 0 0 1rem; }
+    .ls-card { border: 1px solid var(--color-border); background: color-mix(in oklch, var(--color-card) 70%, transparent); padding: 1rem 1.25rem; border-radius: 2px; }
+    .ls-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .ls-filter label { display: flex; gap: 0.5rem; align-items: center; font-size: 0.85rem; }
+    .ls-input { background: var(--color-input); color: var(--color-foreground); border: 1px solid var(--color-border); border-radius: 2px; padding: 0.4rem 0.6rem; font-size: 0.85rem; max-width: 100%; }
+    .ls-btn { background: var(--color-accent); color: var(--color-accent-foreground); border-radius: 2px; padding: 0.45rem 1rem; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .ls-datenlage strong { color: var(--color-foreground); font-weight: 500; }
+    .ls-kacheln { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 0.75rem; }
+    .ls-kachel { border: 1px solid var(--color-border); padding: 0.9rem 1rem; border-radius: 2px; }
+    .ls-kachel b { display: block; color: var(--color-foreground); font-size: 1.7rem; font-weight: 400; font-variant-numeric: tabular-nums; }
+    .ls-kachel span { font-size: 0.75rem; }
+    .ls-tab { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .ls-tab th { text-align: left; font-weight: 400; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-muted-foreground); padding: 0 0.5rem 0.5rem 0; border-bottom: 1px solid var(--color-border); }
+    .ls-tab td { padding: 0.55rem 0.5rem 0.55rem 0; border-bottom: 1px solid color-mix(in oklch, var(--color-border) 50%, transparent); vertical-align: middle; }
+    .ls-tab td.zahl, .ls-tab th.zahl { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .ls-tab td.name { color: var(--color-foreground); }
+    .ls-balken { position: relative; height: 8px; min-width: 6rem; background: color-mix(in oklch, var(--color-border) 60%, transparent); border-radius: 4px; }
+    .ls-balken i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--color-accent); border-radius: 4px; }
+    .ls-leer { font-size: 0.85rem; font-style: italic; }
+    .ls-scroll { overflow-x: auto; }
+    @media (max-width: 640px) { .ls-balken { min-width: 3rem; } .ls-tab { font-size: 0.8rem; } }
+  </style>
+
+  <script is:inline>
+  (function () {
+    var KEY = "leserspur-schluessel";
+    var $ = function (id) { return document.getElementById(id); };
+    var alle = [];
+
+    function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+    function median(a) { if (!a.length) return 0; var b = a.slice().sort(function (x, y) { return x - y; }); var m = b.length >> 1; return b.length % 2 ? b[m] : (b[m - 1] + b[m]) / 2; }
+    function pct(teil, ganz) { return ganz ? Math.round(teil / ganz * 100) : 0; }
+    function zeit(s) { s = Math.round(s); return s < 60 ? s + " s" : Math.floor(s / 60) + " min " + (s % 60) + " s"; }
+    function balken(v, max) { var w = max ? Math.max(2, Math.round(v / max * 100)) : 0; return '<div class="ls-balken" title="' + esc(v) + '"><i style="width:' + w + '%"></i></div>'; }
+
+    function kanalVon(z) {
+      var k = (z.kanal || "").toLowerCase();
+      if (k) {
+        if (/^(mail|email|brief)/.test(k)) return "Mail";
+        if (/newsletter|emailoctopus/.test(k)) return "Newsletter";
+        if (/^pin/.test(k)) return "Pinterest";
+        if (/getgems/.test(k)) return "Getgems";
+        return "Kennung „" + k + "“";
+      }
+      if (z.ref_intern) return "Innerhalb der Website";
+      var r = (z.ref || "").toLowerCase();
+      if (!r) return "Direkt oder unbekannt";
+      if (/(^|\.)pinterest\./.test(r) || r === "pin.it") return "Pinterest";
+      if (/getgems\.io$/.test(r)) return "Getgems";
+      if (/(^|\.)(google|bing|duckduckgo|ecosia|qwant|startpage|yahoo|yandex)\./.test(r) || r === "search.brave.com") return "Suche";
+      if (/eocampaign|emailoctopus/.test(r)) return "Newsletter";
+      if (/^(mail|webmail|outlook)\.|(^|\.)(gmx|web\.de|t-online|proton)/.test(r)) return "Mail";
+      return "Andere Website: " + r;
+    }
+    function zielName(z) {
+      if (z === "extern:getgems.io") return "Getgems";
+      if (z.indexOf("extern:") === 0) return "Extern: " + z.slice(7);
+      if (z === "/nft/info") return "NFT-Erklärung";
+      if (z === "/nft") return "NFT-Übersicht";
+      if (z === "/werke") return "Werkübersicht";
+      if (z.indexOf("/werke/") === 0) return "Werk: " + z.slice(7);
+      if (z.indexOf("/blog/") === 0) return "Journal: " + z.slice(6);
+      if (z === "/datenschutz") return "Datenschutz";
+      if (z === "mail") return "E-Mail-Adresse";
+      if (z.charAt(0) === "#") return "Sprung zu " + z;
+      return z;
+    }
+    var FORM = {
+      "kommentar-begonnen": "Kommentarfeld angetippt",
+      "kommentar-abgeschickt": "Kommentar abgeschickt",
+      "newsletter-haken": "Newsletter-Häkchen gesetzt",
+      "newsletter-begonnen": "Newsletter-Feld angetippt",
+      "newsletter-abgeschickt": "Newsletter-Anmeldung abgeschickt"
+    };
+
+    function datenlage(n) {
+      var u = n ? Math.round(98 / Math.sqrt(n)) : 100;
+      var stufe = n < 30 ? "<strong>Einzelbeobachtungen.</strong> Noch keine Aussage möglich, nur Hinweise."
+        : n < 100 ? "<strong>Tendenzen.</strong> Nur große Unterschiede (mehr als " + u + " Punkte) bedeuten etwas."
+        : n < 400 ? "<strong>Erste Befunde.</strong> Unterschiede ab etwa " + u + " Punkten tragen."
+        : "<strong>Belastbar.</strong> Unterschiede ab etwa " + u + " Punkten tragen.";
+      return n + " Aufrufe in diesem Zeitraum. Prozentwerte schwanken bei dieser Menge um etwa ± " + u + " Punkte. " + stufe;
+    }
+
+    function tabelle(kopf, zeilen) {
+      if (!zeilen.length) return '<p class="ls-leer">Noch keine Daten.</p>';
+      return '<div class="ls-scroll"><table class="ls-tab"><thead><tr>' + kopf.map(function (k) {
+        return '<th class="' + (k.zahl ? "zahl" : "") + '">' + esc(k.t) + "</th>";
+      }).join("") + "</tr></thead><tbody>" + zeilen.join("") + "</tbody></table></div>";
+    }
+
+    function zeichnen() {
+      var tage = Number($("ls-tage").value);
+      var grenze = Date.now() - tage * 86400000;
+      var imZeitraum = alle.filter(function (z) { return z.ts >= grenze; });
+      var seite = $("ls-seite").value;
+      var zs = imZeitraum.filter(function (z) { return z.pfad === seite; });
+      var n = zs.length;
+      $("ls-datenlage").innerHTML = datenlage(n);
+
+      // Kacheln
+      var lesezeit = median(zs.map(function (z) { return z.sekunden; }));
+      var bisEnde = zs.filter(function (z) { var a = z.abschnitte || []; return a.length && z.abschnitt_max >= a.length - 1; }).length;
+      var mitKlick = zs.filter(function (z) { return (z.klicks || []).length > 0; }).length;
+      $("ls-kacheln").innerHTML = [
+        [n, "Aufrufe"], [zeit(lesezeit), "typische Lesezeit"],
+        [pct(bisEnde, n) + " %", "bis zum letzten Abschnitt"], [pct(mitKlick, n) + " %", "haben etwas angeklickt"]
+      ].map(function (k) { return '<div class="ls-kachel"><b>' + esc(k[0]) + "</b><span>" + esc(k[1]) + "</span></div>"; }).join("");
+
+      // Herkunft
+      var her = {};
+      zs.forEach(function (z) { var k = kanalVon(z); her[k] = her[k] || { n: 0, s: [] }; her[k].n++; her[k].s.push(z.sekunden); });
+      var herL = Object.keys(her).sort(function (a, b) { return her[b].n - her[a].n; });
+      var herMax = herL.length ? her[herL[0]].n : 0;
+      $("ls-herkunft").innerHTML = tabelle(
+        [{ t: "Kanal" }, { t: "Aufrufe", zahl: 1 }, { t: "Anteil", zahl: 1 }, { t: "" }, { t: "Lesezeit", zahl: 1 }],
+        herL.map(function (k) {
+          return '<tr><td class="name">' + esc(k) + '</td><td class="zahl">' + her[k].n + '</td><td class="zahl">' + pct(her[k].n, n) + ' %</td><td style="width:35%">' + balken(her[k].n, herMax) + '</td><td class="zahl">' + zeit(median(her[k].s)) + "</td></tr>";
+        }));
+
+      // Abschnitte (nach Namen; Reihenfolge aus dem jüngsten Aufruf)
+      var reihen = [], A = {};
+      zs.slice().sort(function (a, b) { return b.ts - a.ts; }).forEach(function (z) {
+        (z.abschnitte || []).forEach(function (paar, i) {
+          var nm = paar[0];
+          if (!A[nm]) { A[nm] = { erreicht: 0, aus: 0, s: [] }; reihen.push(nm); }
+          if (i <= z.abschnitt_max) A[nm].erreicht++;
+          if (i === z.abschnitt_ende) A[nm].aus++;
+          if (paar[1] > 0) A[nm].s.push(paar[1]);
+        });
+      });
+      $("ls-abschnitte").innerHTML = tabelle(
+        [{ t: "Abschnitt" }, { t: "Erreicht", zahl: 1 }, { t: "" }, { t: "Verweilen", zahl: 1 }, { t: "Ausstieg", zahl: 1 }],
+        reihen.map(function (nm) {
+          var e = pct(A[nm].erreicht, n);
+          return '<tr><td class="name">' + esc(nm) + '</td><td class="zahl">' + e + ' %</td><td style="width:30%">' + balken(e, 100) + '</td><td class="zahl">' + zeit(median(A[nm].s)) + '</td><td class="zahl">' + pct(A[nm].aus, n) + " %</td></tr>";
+        }));
+
+      // Bilder
+      var B = {};
+      zs.forEach(function (z) { var b = z.bilder || {}; Object.keys(b).forEach(function (k) { B[k] = (B[k] || 0) + b[k]; }); });
+      var bL = Object.keys(B).sort(function (a, b) { return B[b] - B[a]; });
+      var bMax = bL.length ? B[bL[0]] / n : 0;
+      $("ls-bilder").innerHTML = tabelle(
+        [{ t: "Bild" }, { t: "Sekunden je Aufruf", zahl: 1 }, { t: "" }],
+        bL.map(function (k) { var v = B[k] / n; return '<tr><td class="name">' + esc(k) + '</td><td class="zahl">' + v.toFixed(1) + '</td><td style="width:40%">' + balken(v, bMax) + "</td></tr>"; }));
+
+      // Klicks
+      var K = {};
+      zs.forEach(function (z) {
+        var gesehen = {};
+        (z.klicks || []).forEach(function (c) {
+          var nm = zielName(c[0]), ab = c[1] >= 0 ? (((z.abschnitte || [])[c[1]] || [])[0] || "?") : "Kopf- oder Fußleiste";
+          var key = nm + "\u0000" + ab;
+          if (gesehen[key]) return; gesehen[key] = 1;
+          K[key] = K[key] || { nm: nm, ab: ab, n: 0 }; K[key].n++;
+        });
+      });
+      var kL = Object.keys(K).sort(function (a, b) { return K[b].n - K[a].n; });
+      var kMax = kL.length ? K[kL[0]].n : 0;
+      $("ls-klicks").innerHTML = '<p class="ls-muted ls-small mb-4">Je Aufruf zählt jeder Link höchstens einmal. Unter 10 Klicks ist ein Vergleich zwischen Links Zufall.</p>' + tabelle(
+        [{ t: "Ziel" }, { t: "steht in" }, { t: "Klicks", zahl: 1 }, { t: "je 100 Aufrufe", zahl: 1 }, { t: "" }],
+        kL.map(function (key) { var k = K[key]; return '<tr><td class="name">' + esc(k.nm) + "</td><td>" + esc(k.ab) + '</td><td class="zahl">' + k.n + '</td><td class="zahl">' + (n ? (k.n / n * 100).toFixed(1) : 0) + '</td><td style="width:25%">' + balken(k.n, kMax) + "</td></tr>"; }));
+
+      // Formulare
+      var F = {};
+      zs.forEach(function (z) { (z.formular || []).forEach(function (f) { F[f] = (F[f] || 0) + 1; }); });
+      $("ls-formular").innerHTML = tabelle(
+        [{ t: "Schritt" }, { t: "Aufrufe", zahl: 1 }, { t: "Anteil", zahl: 1 }],
+        Object.keys(FORM).filter(function (f) { return F[f]; }).map(function (f) { return '<tr><td class="name">' + FORM[f] + '</td><td class="zahl">' + F[f] + '</td><td class="zahl">' + pct(F[f], n) + " %</td></tr>"; }));
+
+      // Alle Seiten
+      var S = {};
+      imZeitraum.forEach(function (z) { S[z.pfad] = S[z.pfad] || { n: 0, s: [], t: [] }; S[z.pfad].n++; S[z.pfad].s.push(z.sekunden); S[z.pfad].t.push(z.scroll); });
+      var sL = Object.keys(S).sort(function (a, b) { return S[b].n - S[a].n; });
+      $("ls-seiten").innerHTML = tabelle(
+        [{ t: "Seite" }, { t: "Aufrufe", zahl: 1 }, { t: "Lesezeit", zahl: 1 }, { t: "Scrolltiefe", zahl: 1 }],
+        sL.map(function (p) { return '<tr><td class="name">' + esc(p) + '</td><td class="zahl">' + S[p].n + '</td><td class="zahl">' + zeit(median(S[p].s)) + '</td><td class="zahl">' + Math.round(median(S[p].t)) + " %</td></tr>"; }));
+    }
+
+    function seitenListe() {
+      var zaehl = {};
+      alle.forEach(function (z) { zaehl[z.pfad] = (zaehl[z.pfad] || 0) + 1; });
+      var wunsch = "/werke/2026-cosmic-eggs";
+      var vorher = $("ls-seite").value;
+      var pfade = Object.keys(zaehl).sort(function (a, b) { return zaehl[b] - zaehl[a]; });
+      if (pfade.indexOf(wunsch) < 0) pfade.unshift(wunsch);
+      $("ls-seite").innerHTML = pfade.map(function (p) { return "<option>" + esc(p) + "</option>"; }).join("");
+      $("ls-seite").value = vorher && pfade.indexOf(vorher) >= 0 ? vorher : wunsch;
+    }
+
+    function laden(key) {
+      $("ls-status").textContent = "Lade …";
+      fetch("/api/statistik?tage=365", { headers: { Authorization: "Bearer " + key } })
+        .then(function (r) {
+          if (r.status === 401 || r.status === 403) throw new Error("schluessel");
+          if (!r.ok) throw new Error("http " + r.status);
+          return r.json();
+        })
+        .then(function (d) {
+          try { sessionStorage.setItem(KEY, key); } catch (e) {}
+          alle = (d.zeilen || []).map(function (z) { z.ts = Number(z.ts) || 0; z.sekunden = Number(z.sekunden) || 0; z.scroll = Number(z.scroll) || 0; return z; });
+          $("ls-schluessel").hidden = true;
+          $("ls-status").textContent = "";
+          $("ls-inhalt").hidden = false;
+          seitenListe();
+          zeichnen();
+        })
+        .catch(function (e) {
+          if (e.message === "schluessel") {
+            try { sessionStorage.removeItem(KEY); } catch (x) {}
+            $("ls-status").textContent = "Der Schlüssel passt nicht.";
+            $("ls-schluessel").hidden = false;
+          } else {
+            $("ls-status").textContent = "Die Auswertung ist gerade nicht erreichbar (" + e.message + "). Ist Technik-Auftrag 9 schon umgesetzt?";
+            $("ls-schluessel").hidden = false;
+          }
+        });
+    }
+
+    $("ls-schluessel").addEventListener("submit", function (e) { e.preventDefault(); var k = $("ls-key").value.trim(); if (k) laden(k); });
+    $("ls-seite").addEventListener("change", zeichnen);
+    $("ls-tage").addEventListener("change", zeichnen);
+    var gemerkt = null;
+    try { gemerkt = sessionStorage.getItem(KEY); } catch (e) {}
+    if (gemerkt) laden(gemerkt); else { $("ls-status").textContent = ""; $("ls-schluessel").hidden = false; }
+  })();
+  </script>
+</Layout>

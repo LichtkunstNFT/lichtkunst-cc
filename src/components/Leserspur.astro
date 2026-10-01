@@ -1,0 +1,157 @@
+---
+// Leserspur — datensparsamer Besucherzähler für lichtkunst.cc (Technik-Auftrag 9).
+//
+// Misst pro Seitenaufruf: Kanal (Kennzeichnung ?k=… oder verweisende Domain),
+// aktive Lesezeit, Scrolltiefe, Sekunden je Abschnitt (h2) und je Bild,
+// angeklickte Links mit dem Abschnitt, in dem sie stehen, und Formular-Schritte.
+//
+// Bewusst NICHT: keine Cookies, nichts im Browser gespeichert, keine IP,
+// keine Wiedererkennung zwischen Besuchen, keine volle Herkunfts-URL.
+// Einzige Ausnahme: der freiwillige Widerspruch auf /datenschutz legt
+// "leserspur-aus" im localStorage ab — auf ausdrücklichen Wunsch des Lesers.
+//
+// Läuft nicht bei: Global Privacy Control, Do Not Track, automatisierten
+// Browsern, Seiten unter /intern/.
+// Gesendet wird erst beim Verlassen (sendBeacon) — die Seite lädt nicht langsamer.
+---
+
+<script is:inline>
+(function () {
+  try {
+    var n = navigator, w = window, d = document, L = location;
+    if (n.globalPrivacyControl || n.doNotTrack === "1" || n.webdriver || !n.sendBeacon) return;
+    try { if (localStorage.getItem("leserspur-aus") === "1") return; } catch (e) {}
+    if (/^\/intern(\/|$)/.test(L.pathname)) return;
+
+    // --- Herkunft ---------------------------------------------------------
+    var q = new URLSearchParams(L.search);
+    var k = (q.get("k") || q.get("utm_source") || "").toLowerCase().replace(/[^a-z0-9-]/g, "").slice(0, 30);
+    var ref = "", refIntern = "";
+    try {
+      if (d.referrer) {
+        var r = new URL(d.referrer);
+        if (r.host === L.host) refIntern = r.pathname.slice(0, 120);
+        else ref = r.hostname.replace(/^www\./, "").slice(0, 80);
+      }
+    } catch (e) {}
+    // Kennzeichnung aus der Adresszeile nehmen: ein weitergegebener Link
+    // soll nicht noch einmal als "Mail" oder "Pinterest" zählen.
+    var weg = [];
+    q.forEach(function (_, key) { if (key === "k" || key.indexOf("utm_") === 0) weg.push(key); });
+    if (weg.length) {
+      weg.forEach(function (key) { q.delete(key); });
+      var rest = q.toString();
+      history.replaceState(history.state, "", L.pathname + (rest ? "?" + rest : "") + L.hash);
+    }
+
+    // --- Abschnitte und Bilder -------------------------------------------
+    var root = d.querySelector("main article") || d.querySelector("main") || d.body;
+    var heads = [].slice.call(root.querySelectorAll("h2"));
+    var namen = ["Einleitung"].concat(heads.map(function (h) { return (h.textContent || "").replace(/\s+/g, " ").trim().slice(0, 60); }));
+    var abs = namen.map(function () { return 0; });
+    var bilderEl = [].slice.call(root.querySelectorAll("img")).slice(0, 24);
+    var bilder = {};
+
+    function abschnittVon(el) {
+      var i = 0;
+      for (var j = 0; j < heads.length; j++) if (heads[j].compareDocumentPosition(el) & 4) i = j + 1;
+      return i;
+    }
+    function abschnittAmLesepunkt() {
+      var y = w.innerHeight * 0.4, i = 0;
+      for (var j = 0; j < heads.length; j++) if (heads[j].getBoundingClientRect().top <= y) i = j + 1;
+      return i;
+    }
+    function bildName(img) {
+      var s = (img.getAttribute("src") || "").split("?")[0].split("/").pop() || "bild";
+      return s.replace(/\.[a-z0-9]+$/i, "").slice(0, 60);
+    }
+
+    // --- Laufende Messung ------------------------------------------------
+    var sek = 0, maxPct = 0, aktuell = 0, maxAbs = 0, aktiv = Date.now();
+    function tiefe() {
+      var rc = root.getBoundingClientRect();
+      var pct = rc.height > 0 ? (w.innerHeight - rc.top) / rc.height * 100 : 100;
+      if (pct > maxPct) maxPct = Math.min(100, pct);
+      aktuell = abschnittAmLesepunkt();
+      if (aktuell > maxAbs) maxAbs = aktuell;
+    }
+    var geplant = false;
+    function beiBewegung() {
+      aktiv = Date.now();
+      if (!geplant) { geplant = true; w.requestAnimationFrame(function () { geplant = false; tiefe(); }); }
+    }
+    ["scroll", "keydown", "pointerdown", "touchstart", "wheel"].forEach(function (ev) {
+      w.addEventListener(ev, beiBewegung, { passive: true });
+    });
+    var mausZeit = 0;
+    w.addEventListener("mousemove", function () { var t = Date.now(); if (t - mausZeit > 2000) { mausZeit = t; aktiv = t; } }, { passive: true });
+
+    // Jede Sekunde: zählt nur, wenn die Seite sichtbar ist und in der letzten
+    // Minute jemand gescrollt, getippt oder die Maus bewegt hat.
+    setInterval(function () {
+      if (d.visibilityState !== "visible" || Date.now() - aktiv > 60000) return;
+      sek++;
+      tiefe();
+      abs[aktuell]++;
+      var h = w.innerHeight;
+      for (var i = 0; i < bilderEl.length; i++) {
+        var b = bilderEl[i].getBoundingClientRect();
+        if (b.height > 0 && b.top >= 0 && b.bottom <= h) {
+          var nm = bildName(bilderEl[i]);
+          bilder[nm] = (bilder[nm] || 0) + 1;
+        }
+      }
+    }, 1000);
+    tiefe();
+
+    // --- Klicks und Formulare --------------------------------------------
+    var klicks = [], formular = [];
+    function merke(liste, eintrag, max) { if (liste.length < max) liste.push(eintrag); }
+    d.addEventListener("click", function (e) {
+      var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+      if (!a) return;
+      var u, ziel;
+      try { u = new URL(a.getAttribute("href"), L.href); } catch (x) { return; }
+      if (u.protocol === "mailto:") ziel = "mail";
+      else if (u.host === L.host) {
+        if (u.pathname === L.pathname && u.hash) ziel = "#" + u.hash.slice(1, 40);
+        else ziel = u.pathname.replace(/\/+$/, "") || "/";
+      } else ziel = "extern:" + u.hostname.replace(/^www\./, "");
+      merke(klicks, [ziel.slice(0, 120), root.contains(a) ? abschnittVon(a) : -1], 40);
+    }, true);
+    function einmal(name) { if (formular.indexOf(name) < 0) merke(formular, name, 20); }
+    d.addEventListener("focusin", function (e) {
+      var t = e.target;
+      if (!t || !t.closest) return;
+      if (t.closest("#kommentar-form") && t.tagName === "TEXTAREA") einmal("kommentar-begonnen");
+      if (t.closest("[data-newsletter-form]")) einmal("newsletter-begonnen");
+    });
+    d.addEventListener("change", function (e) {
+      var t = e.target;
+      if (t && t.name === "newsletter" && t.checked) einmal("newsletter-haken");
+    });
+    d.addEventListener("submit", function (e) {
+      var f = e.target;
+      if (!f || !f.matches) return;
+      if (f.matches("#kommentar-form")) einmal("kommentar-abgeschickt");
+      if (f.matches("[data-newsletter-form]")) einmal("newsletter-abgeschickt");
+    }, true);
+
+    // --- Senden ----------------------------------------------------------
+    var id = (w.crypto && crypto.randomUUID) ? crypto.randomUUID() : (Date.now().toString(36) + Math.random().toString(36).slice(2));
+    function senden() {
+      tiefe();
+      var daten = {
+        v: 1, id: id, p: L.pathname.slice(0, 160), k: k, r: ref, ri: refIntern,
+        g: w.innerWidth < 768 ? "m" : "d", t: sek, s: Math.round(maxPct),
+        a: namen.map(function (nm, i) { return [nm, abs[i]]; }),
+        x: aktuell, m: maxAbs, b: bilder, c: klicks, f: formular
+      };
+      try { n.sendBeacon("/api/leserspur", new Blob([JSON.stringify(daten)], { type: "text/plain" })); } catch (e) {}
+    }
+    d.addEventListener("visibilitychange", function () { if (d.visibilityState === "hidden") senden(); });
+    w.addEventListener("pagehide", senden);
+  } catch (e) {}
+})();
+</script>
