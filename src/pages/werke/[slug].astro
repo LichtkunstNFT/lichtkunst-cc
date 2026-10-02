@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Comments from "../../components/Comments.astro";
+import Weiter from "../../components/Weiter.astro";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -22,7 +23,7 @@ const datum = werk.data.datum.toLocaleDateString("de-DE", {
 ---
 
 <Layout title={`${werk.data.titel} – Lichtkunst`} description={werk.data.beschreibung_kurz}>
-  <article class="max-w-3xl mx-auto px-6 py-16">
+  <article class={`max-w-3xl mx-auto px-6 py-16 ${werk.data.tags?.includes("schiefer") ? "material-schiefer" : ""}`}>
     {werk.data.bild && (
       <div class="mb-10 flex justify-center">
         <img
@@ -54,7 +55,7 @@ const datum = werk.data.datum.toLocaleDateString("de-DE", {
       </div>
     </header>
 
-    <div class="font-body text-[var(--color-muted-foreground)] leading-relaxed [&_h2]:heading-serif [&_h2]:text-2xl [&_h2]:text-[var(--color-foreground)] [&_h2]:mt-12 [&_h2]:mb-5 [&_h3]:font-medium [&_h3]:text-[var(--color-foreground)] [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:mb-5 [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-5 [&_li]:mb-1 [&_em]:text-[var(--color-foreground)]/90 [&_strong]:text-[var(--color-foreground)] [&_a]:text-[var(--color-accent)] [&_a]:underline [&_a]:underline-offset-4 [&_blockquote]:border-l-2 [&_blockquote]:border-[var(--color-accent)] [&_blockquote]:pl-5 [&_blockquote]:italic [&_blockquote]:font-display [&_blockquote]:text-xl [&_blockquote]:text-[var(--color-foreground)]/80 [&_blockquote]:my-6 [&_img]:w-32 [&_img]:h-32 [&_img]:object-cover [&_img]:rounded-sm [&_img]:border [&_img]:border-[var(--color-border)] [&_img]:my-6 [&_img]:mx-auto [&_img]:block [&_img]:select-none">
+    <div class="werk-text font-body text-[var(--color-muted-foreground)] leading-relaxed [&_h2]:heading-serif [&_h2]:text-2xl [&_h2]:text-[var(--color-foreground)] [&_h2]:mt-12 [&_h2]:mb-5 [&_h3]:font-medium [&_h3]:text-[var(--color-foreground)] [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:mb-5 [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-5 [&_li]:mb-1 [&_em]:text-[var(--color-foreground)]/90 [&_strong]:text-[var(--color-foreground)] [&_a]:text-[var(--color-accent)] [&_a]:underline [&_a]:underline-offset-4 [&_blockquote]:border-l-2 [&_blockquote]:border-[var(--color-accent)] [&_blockquote]:pl-5 [&_blockquote]:italic [&_blockquote]:font-display [&_blockquote]:text-xl [&_blockquote]:text-[var(--color-foreground)]/80 [&_blockquote]:my-6 [&_img]:w-32 [&_img]:h-32 [&_img]:object-cover [&_img]:rounded-sm [&_img]:border [&_img]:border-[var(--color-border)] [&_img]:my-6 [&_img]:mx-auto [&_img]:block [&_img]:select-none">
       <Content />
     </div>
 
@@ -88,6 +89,8 @@ const datum = werk.data.datum.toLocaleDateString("de-DE", {
         </a>
       </aside>
     )}
+
+    {werk.id !== "2023-gegen-die-schwerkraft" && <Weiter art="werk" id={werk.id} />}
 
     {werk.data.kommentare && <Comments slug={werk.id} />}
 

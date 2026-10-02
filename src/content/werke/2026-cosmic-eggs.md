@@ -10,13 +10,13 @@ tags:
   - salz
   - schiefer
   - "2026"
-# Rohbau online seit 01.10.2026 (Freigabe Istvan). Hinweis "im Aufbau" entfernen, wenn vollständig.
+# Online seit 01.10.2026 (Freigabe Istvan). Ausbau 02.10.2026. Hinweis oben entfernen, wenn die Getgems-URL steht.
 ausblenden: false
 kommentare: true
 ---
 
-*Diese Seite ist noch im Aufbau. Gerade entstehen weitere Aufnahmen der
-Tafeln; sie kommen in den nächsten Wochen hier hinzu.*
+*Diese Seite wächst noch. Die vollständigen Bilder erscheinen als
+NFT-Sammlung auf Getgems; sobald sie steht, findet sich der Link hier.*
 
 Am 19. und 20. September 2026 stand im Coworking am Klaustor in Halle eine
 Installation, die es seitdem nicht mehr gibt. Drei sechseckige Spiegelräume
@@ -46,15 +46,60 @@ Salz selbst. Das Muster ist zur Hälfte gezeichnet und zur Hälfte gewachsen.
 
 ![Die Blume des Lebens, mit dem Zirkel geritzt und vom Salz nachgezeichnet](/bilder/cosmic-eggs/03-blume-des-lebens.jpg)
 
+![Schwarze Inseln im Salz, an ihren Rändern feine Kristallnadeln](/bilder/cosmic-eggs/07-salz-an-der-naht.jpg)
+
 ## Licht
 
-An den Kanten der Spiegel saßen LED-Leisten, das Licht fiel flach über die
-Tafeln. Jede Kristallfläche ist ein winziger Spiegel, und nur die Flächen,
-die gerade im richtigen Winkel zwischen Lampe und Auge stehen, blitzen auf.
-Wer sich bewegte, sah ein anderes Bild. Kein Besucher hat dieselbe
-Installation gesehen wie ein anderer.
+Das Licht kommt nicht von oben. Die LED-Leisten stehen außen, hinter den
+Spiegeln, und ihr Licht gelangt nur durch eine schmale Fuge unter der
+Unterkante des Spiegels ins Innere. Dort fällt es flach über die Tafeln.
+Jede Kristallfläche ist ein winziger Spiegel, und nur die Flächen, die gerade
+im richtigen Winkel zwischen Lampe und Auge stehen, blitzen auf. Wer sich
+bewegte, sah ein anderes Bild. Kein Besucher hat dieselbe Installation
+gesehen wie ein anderer.
+
+![Schnitt durch den Fuß eines Spiegels. Die Leiste steht hinter dem Spiegel und höher als seine Unterkante; das Licht passiert die Fuge nur abwärts und landet als Streiflicht auf dem Grund.](/bilder/cosmic-eggs/zeichnung-lichtspalt-1.jpg)
+
+Entscheidend ist die unterste Kante des Spiegels. Ein Strahl kommt nur
+hinein, wenn er unter ihr hindurchpasst. Liegt die ganze Leuchtfläche höher
+als diese Kante, kann kein Strahl aufwärts ins Innere gelangen. Die Diode
+bleibt von innen unsichtbar, auch in allen Spiegelbildern. Man sieht das
+Licht, aber nicht die Lampe.
+
+![Derselbe Schnitt mit tiefer gesetzter Leiste. Ein Teil der Strahlen läuft flach quer durch den Raum; in den Spiegelbildern würden die Dioden an den fernen Fugen sichtbar.](/bilder/cosmic-eggs/zeichnung-lichtspalt-2.jpg)
+
+Ragt die Leuchtfläche auch nur einen Millimeter unter die Kante, laufen
+flache Strahlen quer durch den Raum. In den Spiegelbildern blickt man sehr
+flach auf die fernen Fugen, und genau dort tauchen dann Lichtpunkte auf. Die
+beiden Zeichnungen sind stark vergrößerte Schnitte aus meinem Rechenmodell,
+das rund 4000 Strahlen verfolgt.
+
+Am Fuß jedes Spiegels leuchtet die Fuge selbst als feine Linie. Diese Linien
+setzen sich in den Spiegelbildern fort und bilden das Gitter, in dem die
+Eier liegen.
+
+![Ein Lichtknoten: Hier treffen sich die Fugen mehrerer Spiegelbilder](/bilder/cosmic-eggs/05-lichtknoten.jpg)
 
 ![Eine Lichtspur zieht quer über das geritzte Ornament](/bilder/cosmic-eggs/04-lichtspur.jpg)
+
+![Streiflicht über einer geritzten Tafel](/bilder/cosmic-eggs/09-lichtstreif.jpg)
+
+## Echt oder gespiegelt
+
+Die ganze Figur entsteht erst beim Blick in das Kaleidoskop. Von oben sieht
+man ein volles Lichthexagon: die sechs leuchtenden Fugen am Fuß der Spiegel,
+darin die Tafeln. Alles, was um dieses Hexagon herum liegt, ist seine
+Spiegelung, und erst die Spiegelungen vervollständigen die Figur. Wo das
+wirkliche Ei endet und sein Spiegelbild beginnt, lässt sich dabei nicht mehr
+unterscheiden.
+
+![Ein Ei an der Spiegelkante, darunter sein Spiegelbild](/bilder/cosmic-eggs/06-spiegelkante.jpg)
+
+![Ein Ei zwischen den Lichtnähten. Ob es auf dem Grund liegt oder gespiegelt ist, zeigt das Bild nicht.](/bilder/cosmic-eggs/08-ei-ueber-der-naht.jpg)
+
+Deshalb zeige ich hier nur Ausschnitte. Die vollständigen Figuren gibt es
+nur im Blick in das Kaleidoskop, und von dort aus als Bilder in der
+NFT-Sammlung.
 
 ## Was ich darüber denke
 
@@ -71,8 +116,9 @@ Irgendwo zwischen diesen beiden Sätzen liegt die Arbeit.
 
 ## Die Bilder
 
-Die vollständigen Aufnahmen, bearbeitet und ergänzt, erscheinen als
+Die vollständigen Figuren, bearbeitet und ergänzt, erscheinen als
 NFT-Sammlung auf Getgems — jedes Bild ein Unikat, geprägt als 1/1 auf der
 TON Blockchain. So wie die Installation nur einmal existiert hat, gibt es
-auch jedes dieser Bilder nur einmal. Die Sammlung wird gerade vorbereitet;
-sobald sie steht, findet sich der Link hier.
+auch jedes dieser Bilder nur einmal. Die Sammlung wird gerade vorbereitet.
+Sobald sie steht, findet sich der Link hier, und ich kündige sie im
+Newsletter an.

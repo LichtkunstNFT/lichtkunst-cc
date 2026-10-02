@@ -1,5 +1,131 @@
 @import "tailwindcss";
 
+/* ─── Schriften, selbst ausgeliefert (seit 2026-10-02) ───
+ * Keine Verbindung zu Google Fonts oder Fontshare. Cormorant, Schibsted
+ * Grotesk und Geist Mono stehen
+ * unter der SIL Open Font License (Lizenztexte in /fonts/). Der Browser lädt
+ * eine Datei nur, wenn Zeichen aus ihrem unicode-range gebraucht werden. */
+@font-face {
+  font-family: "Cormorant";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: url("/fonts/cormorant-latin-300-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Cormorant";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: url("/fonts/cormorant-latin-ext-300-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: "Cormorant";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/fonts/cormorant-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Cormorant";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/fonts/cormorant-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: "Cormorant";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url("/fonts/cormorant-latin-500-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Cormorant";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url("/fonts/cormorant-latin-ext-500-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: "Cormorant";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300;
+  src: url("/fonts/cormorant-latin-300-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Cormorant";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300;
+  src: url("/fonts/cormorant-latin-ext-300-italic.woff2") format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: "Cormorant";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/fonts/cormorant-latin-400-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Cormorant";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/fonts/cormorant-latin-ext-400-italic.woff2") format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 900;
+  src: url("/fonts/schibsted-grotesk-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 900;
+  src: url("/fonts/schibsted-grotesk-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400 900;
+  src: url("/fonts/schibsted-grotesk-latin-wght-italic.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("/fonts/geist-mono-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("/fonts/geist-mono-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
 /* ─── Tailwind v4 Theme Tokens (OKLCH from Caffeine DESIGN.md) ─── */
 @theme {
   --color-background: oklch(0.10 0.005 285);
@@ -20,8 +146,13 @@
   --color-input: oklch(0.22 0.010 285);
   --color-ring: oklch(0.72 0.14 68);
 
+  /* Materialpalette Schiefer (seit 2026-10-02, nur Werke mit Schlagwort „schiefer“) */
+  --color-schiefer: oklch(0.62 0.03 250);
+  --color-schiefer-tief: oklch(0.26 0.02 250);
+  --color-salz: oklch(0.94 0.01 240);
+
   --font-display: "Cormorant", serif;
-  --font-body: "Cabinet Grotesk", system-ui, sans-serif;
+  --font-body: "Schibsted Grotesk", system-ui, sans-serif;
   --font-mono: "Geist Mono", monospace;
 
   --radius: 0.25rem;
@@ -193,4 +324,57 @@
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ─── Zeichnungen im Werktext (Freigabe Istvan 2026-10-02) ───
+ * Erklärende Zeichnungen (Dateiname beginnt mit „zeichnung-“) dürfen
+ * ungeschnitten bis 28rem breit stehen. Werkfotos bleiben bei w-32.
+ * Steht bewusst außerhalb der Tailwind-Layer, damit es [&_img]:w-32 schlägt. */
+.werk-text img[src*="/zeichnung-"] {
+  width: 100%;
+  max-width: 28rem;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ─── Materialpalette Schiefer (Freigabe 2026-10-02) ───
+ * Für Werke mit dem Schlagwort „schiefer“ (Cosmic Eggs). Der Raum wird kühler:
+ * Ränder und Nebentöne in Schiefer-Graublau, Text im Salzweiß. Das Licht
+ * bleibt Amber, wie die leuchtenden Fugen in den Aufnahmen. Vor jeder
+ * Abschnittsüberschrift steht ein kleines Lichthexagon. */
+.material-schiefer {
+  --color-border: var(--color-schiefer-tief);
+}
+.material-schiefer .werk-text h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.material-schiefer .werk-text h2::before {
+  content: "";
+  flex: none;
+  width: 0.7rem;
+  height: 0.8rem;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  background: var(--color-accent);
+  box-shadow: 0 0 12px oklch(0.72 0.14 68 / 0.6);
+  opacity: 0.85;
+}
+.material-schiefer .werk-text em,
+.material-schiefer .werk-text strong {
+  color: var(--color-salz);
+}
+.material-schiefer .werk-text img {
+  border-color: var(--color-schiefer-tief);
+}
+
+/* ─── Abschnittsüberschriften im Werk- und Journaltext (2026-10-02) ───
+ * Die Tailwind-Variante [&_h2]:heading-serif erzeugt kein CSS (eigene Klasse,
+ * keine Utility). Deshalb standen diese Überschriften bisher in der
+ * Fließschrift. Hier ausdrücklich in Cormorant, wie Branding.md §3 vorsieht. */
+.werk-text h2,
+.journal-text h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }

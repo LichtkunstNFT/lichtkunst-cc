@@ -2,64 +2,97 @@
 import Layout from "../../layouts/Layout.astro";
 import HeroBanner from "../../components/HeroBanner.astro";
 import { getCollection } from "astro:content";
+import { JOURNAL_ZU_WERK } from "../../verbindungen";
 
 const werke = (await getCollection("werke", ({ data }) => !data.ausblenden))
   .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf());
+const journal = await getCollection("blog", ({ data }) => !data.ausblenden);
+
+// Nach Werkgruppe (Serie) gegliedert, die Gruppe mit dem jüngsten Werk zuerst.
+// Jede Gruppe ist ein h2-Abschnitt, damit die Leserspur sie einzeln zählt.
+const gruppen: { serie: string; werke: typeof werke }[] = [];
+for (const w of werke) {
+  const serie = w.data.serie ?? "Einzelwerke";
+  let g = gruppen.find((x) => x.serie === serie);
+  if (!g) gruppen.push((g = { serie, werke: [] }));
+  g.werke.push(w);
+}
+const textZu = (ws: typeof werke) => {
+  for (const w of ws) {
+    const t = journal.find((j) => j.id === JOURNAL_ZU_WERK[w.id]);
+    if (t) return t;
+  }
+};
 ---
 
-<Layout title="Werke – Istvan Seidel Lichtkunst" description="Lichtkunst-Werke von Istvan Seidel. Sky Art, Lichtskulptur, Lichtinstallation.">
+<Layout title="Werke – Istvan Seidel Lichtkunst" description="Lichtkunst-Werke von Istvan Seidel, nach Werkgruppen geordnet: Installation, Lichtskulptur, Malerei.">
   <HeroBanner title="Werke" subtitle="ausgewählte lichtkunst" compact />
 
   <section class="max-w-5xl mx-auto px-6 py-12">
     {werke.length === 0 ? (
       <div class="text-center max-w-xl mx-auto">
         <div class="text-xs tracking-[0.3em] uppercase text-[var(--color-accent)] mb-4">Sammlung im Aufbau</div>
-        <h2 class="heading-serif text-2xl mb-6 text-[var(--color-foreground)]">Werke folgen in Kürze</h2>
+        <p class="heading-serif text-2xl mb-6 text-[var(--color-foreground)]">Werke folgen in Kürze</p>
       </div>
     ) : (
       <>
-        <p class="text-center text-sm text-[var(--color-muted-foreground)] max-w-2xl mx-auto mb-12 italic">
-          Die Werke sind als <a href="/nft/info" class="text-[var(--color-accent)] underline underline-offset-4">NFT</a> auf der TON Blockchain erhältlich — jede Edition ein einzigartiges, signiertes Kunstwerk.
+        <p class="text-center text-sm text-[var(--color-muted-foreground)] max-w-2xl mx-auto mb-14 italic leading-relaxed">
+          Was hier zu sehen ist, sind Vorschauen und Ausschnitte. Die vollständigen
+          Bilder gibt es nur als <a href="/nft/info" class="text-[var(--color-accent)] underline underline-offset-4">NFT</a>
+          auf der TON Blockchain, jedes ein Unikat.
         </p>
 
-        <ul class="space-y-10 md:space-y-12">
-          {werke.map((werk) => (
-            <li>
-              <a href={`/werke/${werk.id}`} class="group grid grid-cols-[3rem_1fr] sm:grid-cols-[3.5rem_1fr] md:grid-cols-[4rem_1fr] gap-4 sm:gap-5 items-start">
-                {werk.data.bild && (
-                  <div class="overflow-hidden rounded-sm border border-[var(--color-border)] aspect-square bg-[var(--color-card)] group-hover:border-[var(--color-accent)]/50 transition-colors">
-                    <img
-                      src={werk.data.bild}
-                      alt={werk.data.titel}
-                      class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
-                    />
-                  </div>
+        <div class="space-y-16">
+          {gruppen.map((g) => {
+            const text = textZu(g.werke);
+            return (
+              <div>
+                <h2 class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-accent)] mb-6 pb-3 border-b border-[var(--color-border)]/40">
+                  {g.serie}
+                </h2>
+                <ul class="space-y-8 md:space-y-10">
+                  {g.werke.map((werk) => (
+                    <li>
+                      <a href={`/werke/${werk.id}`} class="group grid grid-cols-[3rem_1fr] sm:grid-cols-[3.5rem_1fr] md:grid-cols-[4rem_1fr] gap-4 sm:gap-5 items-start">
+                        {werk.data.bild && (
+                          <div class="overflow-hidden rounded-sm border border-[var(--color-border)] aspect-square bg-[var(--color-card)] group-hover:border-[var(--color-accent)]/50 transition-colors">
+                            <img
+                              src={werk.data.bild}
+                              alt={werk.data.titel}
+                              class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out"
+                            />
+                          </div>
+                        )}
+                        <div>
+                          <h3 class="heading-serif text-xl md:text-2xl text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors mb-2">
+                            {werk.data.titel}
+                            <span class="text-[var(--color-muted-foreground)]/70 text-sm font-normal ml-2">
+                              ({werk.data.datum.getFullYear()})
+                            </span>
+                          </h3>
+                          {werk.data.beschreibung_kurz && (
+                            <p class="text-sm text-[var(--color-muted-foreground)] leading-relaxed">
+                              {werk.data.beschreibung_kurz}
+                            </p>
+                          )}
+                          <span class="inline-block mt-3 text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-accent)] group-hover:underline underline-offset-4">
+                            Im Detail →
+                          </span>
+                        </div>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                {text && (
+                  <p class="mt-6 text-sm text-[var(--color-muted-foreground)]">
+                    <span class="text-[0.6rem] tracking-[0.3em] uppercase text-[var(--color-muted-foreground)]/70 mr-2">Im Journal</span>
+                    <a href={`/blog/${text.id}`} class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-foreground)] transition-colors">{text.data.titel}</a>
+                  </p>
                 )}
-                <div>
-                  {werk.data.serie && (
-                    <div class="text-[0.6rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-2">
-                      {werk.data.serie}
-                    </div>
-                  )}
-                  <h2 class="heading-serif text-xl md:text-2xl text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors mb-2">
-                    {werk.data.titel}
-                    <span class="text-[var(--color-muted-foreground)]/70 text-sm font-normal ml-2">
-                      ({werk.data.datum.getFullYear()})
-                    </span>
-                  </h2>
-                  {werk.data.beschreibung_kurz && (
-                    <p class="text-sm text-[var(--color-muted-foreground)] leading-relaxed">
-                      {werk.data.beschreibung_kurz}
-                    </p>
-                  )}
-                  <span class="inline-block mt-3 text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-accent)] group-hover:underline underline-offset-4">
-                    Im Detail →
-                  </span>
-                </div>
-              </a>
-            </li>
-          ))}
-        </ul>
+              </div>
+            );
+          })}
+        </div>
       </>
     )}
   </section>

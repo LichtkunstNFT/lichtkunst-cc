@@ -3,15 +3,22 @@ import Layout from "../layouts/Layout.astro";
 import HeroBanner from "../components/HeroBanner.astro";
 import NewsletterForm from "../components/NewsletterForm.astro";
 import { getCollection } from "astro:content";
+import { JOURNAL_ZU_WERK } from "../verbindungen";
 
 const werke = (await getCollection("werke", ({ data }) => !data.ausblenden))
   .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf());
 
 const aktuellesWerk = werke[0];
+const weitereWerke = werke.slice(1, 4);
 
 const blogEintraege = (await getCollection("blog", ({ data }) => !data.ausblenden))
   .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf())
   .slice(0, 3);
+
+const alleTexte = await getCollection("blog", ({ data }) => !data.ausblenden);
+const textZumAktuellen = aktuellesWerk
+  ? alleTexte.find((j) => j.id === JOURNAL_ZU_WERK[aktuellesWerk.id])
+  : undefined;
 
 const zitate = [
   {
@@ -71,48 +78,97 @@ const zitate = [
     document.querySelector("[data-zitat-werk]").textContent = z.werk;
   </script>
 
-  {werke.length > 0 && (
+  {aktuellesWerk && (
     <section class="mt-4">
       <div class="max-w-6xl mx-auto px-6 pt-1 pb-12">
         <div class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-accent)] mb-6 text-center animate-pulse-glow">
-          Aktuelle Werke
+          Aktuell
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
-          {werke.slice(0, 3).map((werk, i) => (
-            <a href={`/werke/${werk.id}`} class="block group max-w-[10rem] mx-auto">
-              {werk.data.bild && (
-                <div class="overflow-hidden rounded-sm border border-[var(--color-border)] group-hover:glow-amber-sm transition-shadow duration-500 mb-3 aspect-square bg-[var(--color-card)]">
-                  <img
-                    src={werk.data.bild}
-                    alt={werk.data.titel}
-                    class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
-                  />
-                </div>
-              )}
-              <div class="text-center">
-                {werk.data.serie && (
-                  <div class="text-[0.55rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-1">
-                    {werk.data.serie}
-                  </div>
-                )}
-                <h2 class="heading-serif text-sm md:text-base mb-1 text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors">
-                  {werk.data.titel}
-                  {i === 0 && (
-                    <span class="block text-[0.5rem] tracking-[0.3em] uppercase text-[var(--color-accent)]/80 mt-1 font-normal">
-                      Aktuell
-                    </span>
-                  )}
-                </h2>
-                {werk.data.beschreibung_kurz && (
-                  <p class="text-[0.7rem] leading-snug text-[var(--color-muted-foreground)]/85 line-clamp-3">
-                    {werk.data.beschreibung_kurz}
-                  </p>
-                )}
+        <div class="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-6 sm:gap-8 items-start">
+          <a href={`/werke/${aktuellesWerk.id}`} class="block group max-w-[10rem] w-full mx-auto">
+            {aktuellesWerk.data.bild && (
+              <div class="overflow-hidden rounded-sm border border-[var(--color-border)] group-hover:glow-amber-sm transition-shadow duration-500 aspect-square bg-[var(--color-card)]">
+                <img
+                  src={aktuellesWerk.data.bild}
+                  alt={aktuellesWerk.data.titel}
+                  class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                />
               </div>
-            </a>
-          ))}
+            )}
+          </a>
+          <div class="text-center sm:text-left">
+            {aktuellesWerk.data.serie && (
+              <div class="text-[0.6rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-2">
+                {aktuellesWerk.data.serie}
+              </div>
+            )}
+            <h2 class="heading-serif text-2xl md:text-3xl text-[var(--color-foreground)] mb-3">
+              <a href={`/werke/${aktuellesWerk.id}`} class="hover:text-[var(--color-accent)] transition-colors">
+                {aktuellesWerk.data.titel}
+              </a>
+            </h2>
+            {aktuellesWerk.data.beschreibung_kurz && (
+              <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)] mb-5">
+                {aktuellesWerk.data.beschreibung_kurz}
+              </p>
+            )}
+            <div class="flex flex-col gap-2 text-sm">
+              <a href={`/werke/${aktuellesWerk.id}`} class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-foreground)] transition-colors">
+                Zum Werk →
+              </a>
+              {textZumAktuellen && (
+                <a href={`/blog/${textZumAktuellen.id}`} class="text-[var(--color-muted-foreground)] hover:text-[var(--color-accent)] transition-colors">
+                  Dazu im Journal: <span class="underline underline-offset-4">{textZumAktuellen.data.titel}</span> →
+                </a>
+              )}
+            </div>
+          </div>
         </div>
+
+        {weitereWerke.length > 0 && (
+          <>
+            <div class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-muted-foreground)]/80 mt-16 mb-6 text-center">
+              Weitere Werke
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
+              {weitereWerke.map((werk) => (
+                <a href={`/werke/${werk.id}`} class="block group max-w-[10rem] mx-auto">
+                  {werk.data.bild && (
+                    <div class="overflow-hidden rounded-sm border border-[var(--color-border)] group-hover:glow-amber-sm transition-shadow duration-500 mb-3 aspect-square bg-[var(--color-card)]">
+                      <img
+                        src={werk.data.bild}
+                        alt={werk.data.titel}
+                        loading="lazy"
+                        class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                      />
+                    </div>
+                  )}
+                  <div class="text-center">
+                    {werk.data.serie && (
+                      <div class="text-[0.55rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-1">
+                        {werk.data.serie}
+                      </div>
+                    )}
+                    <h3 class="heading-serif text-sm md:text-base mb-1 text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors">
+                      {werk.data.titel}
+                    </h3>
+                    {werk.data.beschreibung_kurz && (
+                      <p class="text-[0.7rem] leading-snug text-[var(--color-muted-foreground)]/85 line-clamp-3">
+                        {werk.data.beschreibung_kurz}
+                      </p>
+                    )}
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div class="text-center mt-8">
+              <a href="/werke" class="text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-muted-foreground)] hover:text-[var(--color-accent)] transition-colors">
+                Alle Werke →
+              </a>
+            </div>
+          </>
+        )}
 
         <NewsletterForm />
       </div>
@@ -160,7 +216,8 @@ const zitate = [
       </h2>
       <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)] max-w-md mx-auto mb-6">
         Flüchtige Lichtphänomene als digitale Zeugnisse —
-        einzigartig, nicht wiederholbar.
+        einzigartig, nicht wiederholbar. Auf dieser Website zeige ich
+        Vorschauen und Ausschnitte; die vollständigen Bilder gibt es nur dort.
       </p>
       <a
         href="/nft"

@@ -1,0 +1,94 @@
+---
+/**
+ * Weiter — gleicher Abschluss für alle Werk- und Journalseiten (seit 2026-10-02).
+ * Ein eigener h2-Abschnitt, damit die Leserspur ihn als Abschnitt „Weiter“
+ * zählt: verwandtes Werk bzw. das Werk zum Text, ein Journal-Beitrag, die
+ * NFT-Erklärung und die Newsletter-Anmeldung. Reihenfolge und Wortlaut auf
+ * allen Seiten gleich, damit die Seiten vergleichbar bleiben.
+ * Bildgrößen: Vorschaubilder w-14 (56 px), unter der Listen-Obergrenze.
+ */
+import { getCollection } from "astro:content";
+import NewsletterForm from "./NewsletterForm.astro";
+import { GESPERRT, WERK_ZU_WERK, JOURNAL_ZU_WERK, WERK_ZU_JOURNAL } from "../verbindungen";
+
+interface Props {
+  art: "werk" | "blog";
+  id: string;
+}
+const { art, id } = Astro.props;
+
+const werke = (await getCollection("werke", ({ data }) => !data.ausblenden))
+  .filter((w) => !GESPERRT.has(w.id))
+  .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf());
+const journal = (await getCollection("blog", ({ data }) => !data.ausblenden))
+  .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf());
+
+const gemeinsam = (a: string[] = [], b: string[] = []) =>
+  a.filter((t) => t !== "werk" && t !== "journal" && b.includes(t)).length;
+
+let werk;
+let text;
+if (art === "werk") {
+  const ich = werke.find((w) => w.id === id);
+  const andere = werke.filter((w) => w.id !== id);
+  werk =
+    andere.find((w) => w.id === WERK_ZU_WERK[id]) ??
+    andere.find((w) => ich?.data.serie && w.data.serie === ich.data.serie) ??
+    [...andere].sort((a, b) => gemeinsam(b.data.tags, ich?.data.tags) - gemeinsam(a.data.tags, ich?.data.tags))[0];
+  text =
+    journal.find((j) => j.id === JOURNAL_ZU_WERK[id]) ??
+    [...journal].sort((a, b) => gemeinsam(b.data.tags, ich?.data.tags) - gemeinsam(a.data.tags, ich?.data.tags))[0];
+} else {
+  const ich = journal.find((j) => j.id === id);
+  werk =
+    werke.find((w) => w.id === WERK_ZU_JOURNAL[id]) ??
+    [...werke].sort((a, b) => gemeinsam(b.data.tags, ich?.data.tags) - gemeinsam(a.data.tags, ich?.data.tags))[0];
+  const andere = journal.filter((j) => j.id !== id);
+  text = andere.find((j) => gemeinsam(j.data.tags, ich?.data.tags) > 0) ?? andere[0];
+}
+
+const kopf = "text-[0.6rem] tracking-[0.35em] uppercase text-[var(--color-accent)] mb-2";
+const karte = "group flex gap-4 items-start p-4 rounded-sm border border-[var(--color-border)]/50 hover:border-[var(--color-accent)]/50 transition-colors";
+const titel = "heading-serif text-lg leading-snug text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors";
+const zeile = "text-xs text-[var(--color-muted-foreground)]/80 mt-1 leading-relaxed line-clamp-2";
+const bild = "w-14 h-14 object-cover rounded-sm border border-[var(--color-border)] flex-shrink-0 select-none";
+---
+
+<section class="mt-16 pt-10 border-t border-[var(--color-border)]/40" data-weiter>
+  <h2 class="heading-serif text-2xl text-[var(--color-foreground)] mb-6">Weiter</h2>
+
+  <div class="grid gap-3">
+    {werk && (
+      <a href={`/werke/${werk.id}`} class={karte}>
+        {werk.data.bild && <img src={werk.data.bild} alt="" loading="lazy" draggable="false" class={bild} />}
+        <div>
+          <div class={kopf}>{art === "werk" ? "Verwandtes Werk" : "Das Werk dazu"}</div>
+          <div class={titel}>{werk.data.titel}</div>
+          {werk.data.beschreibung_kurz && <p class={zeile}>{werk.data.beschreibung_kurz}</p>}
+        </div>
+      </a>
+    )}
+
+    {text && (
+      <a href={`/blog/${text.id}`} class={karte}>
+        {text.data.titelbild && <img src={text.data.titelbild} alt="" loading="lazy" draggable="false" class={bild} />}
+        <div>
+          <div class={kopf}>{art === "werk" ? "Im Journal" : "Weiterlesen"}</div>
+          <div class={titel}>{text.data.titel}</div>
+          {text.data.untertitel && <p class={zeile}>{text.data.untertitel}</p>}
+        </div>
+      </a>
+    )}
+
+    <a href="/nft/info" class={karte}>
+      <div class="w-14 h-14 flex-shrink-0 rounded-sm border border-[var(--color-border)] flex items-center justify-center text-[var(--color-accent)] text-lg font-display" aria-hidden="true">1/1</div>
+      <div>
+        <div class={kopf}>Originale</div>
+        <div class={titel}>Wie man ein Werk als NFT besitzt</div>
+        <p class={zeile}>Die Originale gibt es nur als NFT. Was man dafür braucht, Schritt für Schritt erklärt.</p>
+      </div>
+    </a>
+  </div>
+
+  <NewsletterForm headline="Neue Werke und Texte schicke ich gelegentlich per Mail." />
+</section>
