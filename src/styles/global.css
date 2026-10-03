@@ -340,25 +340,9 @@
 /* ─── Materialpalette Schiefer (Freigabe 2026-10-02) ───
  * Für Werke mit dem Schlagwort „schiefer“ (Cosmic Eggs). Der Raum wird kühler:
  * Ränder und Nebentöne in Schiefer-Graublau, Text im Salzweiß. Das Licht
- * bleibt Amber, wie die leuchtenden Fugen in den Aufnahmen. Vor jeder
- * Abschnittsüberschrift steht ein kleines Lichthexagon. */
+ * bleibt Amber, wie die leuchtenden Fugen in den Aufnahmen. */
 .material-schiefer {
   --color-border: var(--color-schiefer-tief);
-}
-.material-schiefer .werk-text h2 {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.material-schiefer .werk-text h2::before {
-  content: "";
-  flex: none;
-  width: 0.7rem;
-  height: 0.8rem;
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-  background: var(--color-accent);
-  box-shadow: 0 0 12px oklch(0.72 0.14 68 / 0.6);
-  opacity: 0.85;
 }
 .material-schiefer .werk-text em,
 .material-schiefer .werk-text strong {
@@ -377,4 +361,132 @@
   font-family: var(--font-display);
   font-weight: 400;
   letter-spacing: -0.01em;
+}
+
+/* ─── Lichthexagon (seit 2026-10-03 durchgehendes Zeichen der Website) ───
+ * Vor jeder Abschnittsüberschrift im Werk- und Journaltext und im Abschnitt
+ * „Weiter“. Herkunft: das volle Lichthexagon im Kaleidoskop von Cosmic Eggs. */
+.hex,
+.werk-text h2::before,
+.journal-text h2::before {
+  content: "";
+  display: inline-block;
+  flex: none;
+  width: 0.7rem;
+  height: 0.8rem;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  background: var(--color-accent);
+  box-shadow: 0 0 12px oklch(0.72 0.14 68 / 0.6);
+  opacity: 0.85;
+}
+.werk-text h2,
+.journal-text h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hex-gross {
+  width: 1.75rem;
+  height: 2rem;
+  background: transparent;
+  box-shadow: none;
+  opacity: 1;
+  position: relative;
+}
+.hex-gross::before,
+.hex-gross::after {
+  content: "";
+  position: absolute;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+.hex-gross::before { inset: 0; background: var(--color-accent); }
+.hex-gross::after { inset: 1.5px; background: var(--color-background); }
+
+/* ─── Ausschnitte mit sichtbarer Unterschrift (2026-10-03) ───
+ * Fotos bleiben bei w-32 (Bildregel); sie stehen in Reihen, die Unterschrift
+ * daneben. Zeichnungen (figure.zeichnung) stehen allein, Unterschrift darunter. */
+.werk-text .ausschnitte {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem 2rem;
+  margin: 2rem 0 2.5rem;
+}
+@media (min-width: 640px) {
+  .werk-text .ausschnitte { grid-template-columns: 1fr 1fr; }
+}
+.werk-text .ausschnitte figure {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin: 0;
+}
+.werk-text .ausschnitte img {
+  margin: 0;
+  flex: none;
+}
+.werk-text figure.zeichnung {
+  margin: 2.5rem 0;
+}
+.werk-text figure.zeichnung img {
+  margin: 0 auto;
+}
+.werk-text figcaption {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: oklch(0.72 0 0 / 0.9);
+  font-style: italic;
+}
+.werk-text figure.zeichnung figcaption {
+  max-width: 28rem;
+  margin: 0.75rem auto 0;
+}
+
+/* „Gegen die Schwerkraft“: laufende Abmahnung, Seite nur nach Freigabe
+ * gestalterisch verändern — dort vorerst kein Hexagon. */
+.werk-gesperrt .werk-text h2::before { display: none; }
+
+/* Dieselben Ausschnitt-Reihen und Zeichnungen im Journaltext (2026-10-03).
+ * Fotos dort ausdrücklich auf w-32 (8rem) begrenzt. */
+.journal-text .ausschnitte {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem 2rem;
+  margin: 2rem 0 2.5rem;
+}
+@media (min-width: 640px) {
+  .journal-text .ausschnitte { grid-template-columns: 1fr 1fr; }
+}
+.journal-text .ausschnitte figure {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin: 0;
+  text-align: left;
+}
+.journal-text .ausschnitte img {
+  margin: 0;
+  flex: none;
+  width: 8rem;
+  height: 8rem;
+  max-width: 8rem;
+  object-fit: cover;
+  border-radius: 0.125rem;
+  border: 1px solid var(--color-border);
+}
+.journal-text figure.zeichnung img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 28rem;
+  height: auto;
+}
+.journal-text .ausschnitte figcaption,
+.journal-text figure.zeichnung figcaption {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  margin-top: 0;
+}
+.journal-text figure.zeichnung figcaption {
+  max-width: 28rem;
+  margin: 0.75rem auto 0;
 }

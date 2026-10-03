@@ -10,7 +10,7 @@ const { slug } = Astro.props;
   data-slug={slug}
   class="mt-16 pt-10 border-t border-[var(--color-border)]/40"
 >
-  <div class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-accent)] mb-3">
+  <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-3">
     Deine Stimme
   </div>
   <h2 class="heading-serif text-2xl md:text-3xl text-[var(--color-foreground)] mb-3">
@@ -80,10 +80,10 @@ const { slug } = Astro.props;
       <label>Website<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
     </div>
 
-    <label class="flex items-start gap-3 text-base text-white leading-relaxed cursor-pointer select-none">
-      <input type="checkbox" name="newsletter" class="mt-1 h-5 w-5 shrink-0 accent-[var(--color-accent)] cursor-pointer" />
+    <label class="flex items-start gap-2.5 text-xs text-[var(--color-muted-foreground)] leading-relaxed cursor-pointer select-none">
+      <input type="checkbox" name="newsletter" class="mt-0.5 h-4 w-4 shrink-0 accent-[var(--color-accent)] cursor-pointer" />
       <span>
-        Ja, ich möchte zusätzlich den <span class="text-[var(--color-accent)]">Newsletter</span>
+        Ja, ich möchte zusätzlich den Newsletter
         erhalten — neue Werke, Ausstellungen, Texte, gelegentlich per Mail.
         Anmeldung erst nach Bestätigung per E-Mail (Double Opt-In), Abmeldung jederzeit.
       </span>
@@ -168,7 +168,7 @@ const { slug } = Astro.props;
       const eyebrow = document.createElement("a");
       eyebrow.href = "#kommentar-" + c.id;
       eyebrow.className =
-        "block text-[0.65rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-1 no-underline hover:underline underline-offset-4";
+        "block text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-1 no-underline hover:underline underline-offset-4";
       eyebrow.textContent = "Kommentar #" + c.id;
 
       const head = document.createElement("div");

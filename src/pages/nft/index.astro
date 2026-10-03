@@ -41,16 +41,16 @@ const sammlungen = (await getCollection("nft-sammlungen", ({ data }) => !data.au
                 {sammlung.data.vorschaubild ? (
                   <img src={sammlung.data.vorschaubild} alt={sammlung.data.titel} class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700" />
                 ) : (
-                  <div class="text-[var(--color-accent)] text-[0.6rem] tracking-[0.3em] uppercase px-2 text-center flex items-center justify-center h-full">{sammlung.data.titel}</div>
+                  <div class="text-[var(--color-accent)] text-[0.7rem] tracking-[0.3em] uppercase px-2 text-center flex items-center justify-center h-full">{sammlung.data.titel}</div>
                 )}
               </div>
               <div>
-                <div class="text-[0.6rem] tracking-[0.3em] uppercase text-[var(--color-muted-foreground)] mb-2">{sammlung.data.plattform}</div>
+                <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-muted-foreground)] mb-2">{sammlung.data.plattform}</div>
                 <div class="heading-serif text-lg md:text-xl text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors">{sammlung.data.titel}</div>
                 {sammlung.data.beschreibung_kurz && (
                   <div class="text-sm text-[var(--color-muted-foreground)]/85 mt-2 leading-relaxed">{sammlung.data.beschreibung_kurz}</div>
                 )}
-                <div class="text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-accent)] mt-3 group-hover:underline underline-offset-4">
+                <div class="text-[0.7rem] tracking-[0.25em] uppercase text-[var(--color-accent)] mt-3 group-hover:underline underline-offset-4">
                   Bilder als NFT auf {sammlung.data.plattform} erwerben →
                 </div>
               </div>

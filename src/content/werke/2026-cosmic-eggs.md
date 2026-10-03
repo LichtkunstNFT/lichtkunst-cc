@@ -42,11 +42,11 @@ kristallisiert entlang der Linien. Wo Kerzenwachs im Schiefer steckt, perlt
 die Sole ab; dort bleibt der Stein schwarz. Alles dazwischen entscheidet das
 Salz selbst. Das Muster ist zur Hälfte gezeichnet und zur Hälfte gewachsen.
 
-![Salz, das sich in Inseln und Säumen niedergeschlagen hat — dazwischen bleibt der Schiefer dunkel](/bilder/cosmic-eggs/02-salzinseln.jpg)
-
-![Die Blume des Lebens, mit dem Zirkel geritzt und vom Salz nachgezeichnet](/bilder/cosmic-eggs/03-blume-des-lebens.jpg)
-
-![Schwarze Inseln im Salz, an ihren Rändern feine Kristallnadeln](/bilder/cosmic-eggs/07-salz-an-der-naht.jpg)
+<div class="ausschnitte">
+  <figure><img src="/bilder/cosmic-eggs/02-salzinseln.jpg" alt="Salzinseln auf Schiefer" /><figcaption>Salz in Inseln und Säumen, dazwischen bleibt der Schiefer dunkel.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/03-blume-des-lebens.jpg" alt="Geritzte Blume des Lebens mit Salz" /><figcaption>Die Blume des Lebens, mit dem Zirkel geritzt und vom Salz nachgezeichnet.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/07-salz-an-der-naht.jpg" alt="Schwarze Inseln im Salz" /><figcaption>Schwarze Inseln im Salz, an ihren Rändern feine Kristallnadeln.</figcaption></figure>
+</div>
 
 ## Licht
 
@@ -58,7 +58,7 @@ im richtigen Winkel zwischen Lampe und Auge stehen, blitzen auf. Wer sich
 bewegte, sah ein anderes Bild. Kein Besucher hat dieselbe Installation
 gesehen wie ein anderer.
 
-![Schnitt durch den Fuß eines Spiegels. Die Leiste steht hinter dem Spiegel und höher als seine Unterkante; das Licht passiert die Fuge nur abwärts und landet als Streiflicht auf dem Grund.](/bilder/cosmic-eggs/zeichnung-lichtspalt-1.jpg)
+<figure class="zeichnung"><img src="/bilder/cosmic-eggs/zeichnung-lichtspalt-1.jpg" alt="Schnittzeichnung: Lichtspalt mit verborgener Diode" /><figcaption>Schnitt durch den Fuß eines Spiegels. Die Leiste sitzt höher als seine Unterkante; das Licht passiert die Fuge nur abwärts und landet als Streiflicht auf dem Grund.</figcaption></figure>
 
 Entscheidend ist die unterste Kante des Spiegels. Ein Strahl kommt nur
 hinein, wenn er unter ihr hindurchpasst. Liegt die ganze Leuchtfläche höher
@@ -66,7 +66,7 @@ als diese Kante, kann kein Strahl aufwärts ins Innere gelangen. Die Diode
 bleibt von innen unsichtbar, auch in allen Spiegelbildern. Man sieht das
 Licht, aber nicht die Lampe.
 
-![Derselbe Schnitt mit tiefer gesetzter Leiste. Ein Teil der Strahlen läuft flach quer durch den Raum; in den Spiegelbildern würden die Dioden an den fernen Fugen sichtbar.](/bilder/cosmic-eggs/zeichnung-lichtspalt-2.jpg)
+<figure class="zeichnung"><img src="/bilder/cosmic-eggs/zeichnung-lichtspalt-2.jpg" alt="Schnittzeichnung: Lichtspalt mit sichtbarer Diode" /><figcaption>Dieselbe Stelle mit tiefer gesetzter Leiste. Ein Teil der Strahlen läuft flach durch den Raum; in den Spiegelbildern würden die Dioden sichtbar.</figcaption></figure>
 
 Ragt die Leuchtfläche auch nur einen Millimeter unter die Kante, laufen
 flache Strahlen quer durch den Raum. In den Spiegelbildern blickt man sehr
@@ -78,11 +78,11 @@ Am Fuß jedes Spiegels leuchtet die Fuge selbst als feine Linie. Diese Linien
 setzen sich in den Spiegelbildern fort und bilden das Gitter, in dem die
 Eier liegen.
 
-![Ein Lichtknoten: Hier treffen sich die Fugen mehrerer Spiegelbilder](/bilder/cosmic-eggs/05-lichtknoten.jpg)
-
-![Eine Lichtspur zieht quer über das geritzte Ornament](/bilder/cosmic-eggs/04-lichtspur.jpg)
-
-![Streiflicht über einer geritzten Tafel](/bilder/cosmic-eggs/09-lichtstreif.jpg)
+<div class="ausschnitte">
+  <figure><img src="/bilder/cosmic-eggs/05-lichtknoten.jpg" alt="Lichtknoten zwischen Spiegelfugen" /><figcaption>Ein Lichtknoten: Hier treffen sich die Fugen mehrerer Spiegelbilder.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/04-lichtspur.jpg" alt="Lichtspur über geritztem Ornament" /><figcaption>Eine Lichtspur zieht quer über das geritzte Ornament.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/09-lichtstreif.jpg" alt="Streiflicht über geritzter Tafel" /><figcaption>Streiflicht über einer geritzten Tafel.</figcaption></figure>
+</div>
 
 ## Echt oder gespiegelt
 
@@ -93,9 +93,10 @@ Spiegelung, und erst die Spiegelungen vervollständigen die Figur. Wo das
 wirkliche Ei endet und sein Spiegelbild beginnt, lässt sich dabei nicht mehr
 unterscheiden.
 
-![Ein Ei an der Spiegelkante, darunter sein Spiegelbild](/bilder/cosmic-eggs/06-spiegelkante.jpg)
-
-![Ein Ei zwischen den Lichtnähten. Ob es auf dem Grund liegt oder gespiegelt ist, zeigt das Bild nicht.](/bilder/cosmic-eggs/08-ei-ueber-der-naht.jpg)
+<div class="ausschnitte">
+  <figure><img src="/bilder/cosmic-eggs/06-spiegelkante.jpg" alt="Ei an der Spiegelkante mit Spiegelbild" /><figcaption>Ein Ei an der Spiegelkante, darunter sein Spiegelbild.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/08-ei-ueber-der-naht.jpg" alt="Ei zwischen Lichtnähten" /><figcaption>Ein Ei zwischen den Lichtnähten. Ob es auf dem Grund liegt oder gespiegelt ist, zeigt das Bild nicht.</figcaption></figure>
+</div>
 
 Deshalb zeige ich hier nur Ausschnitte. Die vollständigen Figuren gibt es
 nur im Blick in das Kaleidoskop, und von dort aus als Bilder in der

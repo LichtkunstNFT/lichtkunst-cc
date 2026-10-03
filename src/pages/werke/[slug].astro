@@ -23,19 +23,19 @@ const datum = werk.data.datum.toLocaleDateString("de-DE", {
 ---
 
 <Layout title={`${werk.data.titel} – Lichtkunst`} description={werk.data.beschreibung_kurz}>
-  <article class={`max-w-3xl mx-auto px-6 py-16 ${werk.data.tags?.includes("schiefer") ? "material-schiefer" : ""}`}>
+  <article class={`max-w-3xl mx-auto px-6 py-16 ${werk.data.tags?.includes("schiefer") ? "material-schiefer" : ""} ${werk.id === "2023-gegen-die-schwerkraft" ? "werk-gesperrt" : ""}`}>
     {werk.data.bild && (
       <div class="mb-10 flex justify-center">
         <img
           src={werk.data.bild}
           alt={werk.data.titel}
           draggable="false"
-          class="w-[28rem] h-[28rem] max-w-full rounded-sm border border-[var(--color-border)] object-cover select-none"
+          class="w-[28rem] max-w-full h-auto aspect-square rounded-sm border border-[var(--color-border)] object-cover select-none"
         />
       </div>
     )}
 
-    <p class="text-center text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-muted-foreground)]/70 mb-8 -mt-6">
+    <p class="text-center text-[0.7rem] tracking-[0.25em] uppercase text-[var(--color-muted-foreground)]/70 mb-8 -mt-6">
       Vorschau · Originale exklusiv als <a href="/nft/info" class="text-[var(--color-accent)] underline underline-offset-4">NFT</a>
     </p>
 
@@ -61,7 +61,7 @@ const datum = werk.data.datum.toLocaleDateString("de-DE", {
 
     {werk.data.getgems_url && (
       <aside class="mt-16 p-6 sm:p-8 rounded-sm border border-[var(--color-accent)]/40 bg-[var(--color-card)]/60">
-        <div class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-accent)] mb-3">
+        <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-3">
           Sammlerwert
         </div>
         <h3 class="heading-serif text-xl md:text-2xl text-[var(--color-foreground)] mb-4">

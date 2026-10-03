@@ -9,7 +9,7 @@
  */
 import { getCollection } from "astro:content";
 import NewsletterForm from "./NewsletterForm.astro";
-import { GESPERRT, WERK_ZU_WERK, JOURNAL_ZU_WERK, WERK_ZU_JOURNAL } from "../verbindungen";
+import { GESPERRT, WERK_ZU_WERK, WERK_ZU_JOURNAL, journalFuer } from "../verbindungen";
 
 interface Props {
   art: "werk" | "blog";
@@ -36,7 +36,7 @@ if (art === "werk") {
     andere.find((w) => ich?.data.serie && w.data.serie === ich.data.serie) ??
     [...andere].sort((a, b) => gemeinsam(b.data.tags, ich?.data.tags) - gemeinsam(a.data.tags, ich?.data.tags))[0];
   text =
-    journal.find((j) => j.id === JOURNAL_ZU_WERK[id]) ??
+    journalFuer(id, journal) ??
     [...journal].sort((a, b) => gemeinsam(b.data.tags, ich?.data.tags) - gemeinsam(a.data.tags, ich?.data.tags))[0];
 } else {
   const ich = journal.find((j) => j.id === id);
@@ -47,7 +47,7 @@ if (art === "werk") {
   text = andere.find((j) => gemeinsam(j.data.tags, ich?.data.tags) > 0) ?? andere[0];
 }
 
-const kopf = "text-[0.6rem] tracking-[0.35em] uppercase text-[var(--color-accent)] mb-2";
+const kopf = "text-[0.7rem] tracking-[0.28em] uppercase text-[var(--color-accent)] mb-2";
 const karte = "group flex gap-4 items-start p-4 rounded-sm border border-[var(--color-border)]/50 hover:border-[var(--color-accent)]/50 transition-colors";
 const titel = "heading-serif text-lg leading-snug text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors";
 const zeile = "text-xs text-[var(--color-muted-foreground)]/80 mt-1 leading-relaxed line-clamp-2";
@@ -55,7 +55,7 @@ const bild = "w-14 h-14 object-cover rounded-sm border border-[var(--color-borde
 ---
 
 <section class="mt-16 pt-10 border-t border-[var(--color-border)]/40" data-weiter>
-  <h2 class="heading-serif text-2xl text-[var(--color-foreground)] mb-6">Weiter</h2>
+  <h2 class="heading-serif text-2xl text-[var(--color-foreground)] mb-6 flex items-center gap-3"><span class="hex" aria-hidden="true"></span>Weiter</h2>
 
   <div class="grid gap-3">
     {werk && (
@@ -81,7 +81,7 @@ const bild = "w-14 h-14 object-cover rounded-sm border border-[var(--color-borde
     )}
 
     <a href="/nft/info" class={karte}>
-      <div class="w-14 h-14 flex-shrink-0 rounded-sm border border-[var(--color-border)] flex items-center justify-center text-[var(--color-accent)] text-lg font-display" aria-hidden="true">1/1</div>
+      <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center" aria-hidden="true"><span class="hex hex-gross"></span></div>
       <div>
         <div class={kopf}>Originale</div>
         <div class={titel}>Wie man ein Werk als NFT besitzt</div>

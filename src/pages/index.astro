@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import HeroBanner from "../components/HeroBanner.astro";
 import NewsletterForm from "../components/NewsletterForm.astro";
 import { getCollection } from "astro:content";
-import { JOURNAL_ZU_WERK } from "../verbindungen";
+import { journalFuer } from "../verbindungen";
 
 const werke = (await getCollection("werke", ({ data }) => !data.ausblenden))
   .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf());
@@ -17,39 +17,31 @@ const blogEintraege = (await getCollection("blog", ({ data }) => !data.ausblende
 
 const alleTexte = await getCollection("blog", ({ data }) => !data.ausblenden);
 const textZumAktuellen = aktuellesWerk
-  ? alleTexte.find((j) => j.id === JOURNAL_ZU_WERK[aktuellesWerk.id])
+  ? journalFuer(aktuellesWerk.id, alleTexte)
   : undefined;
 
+// Zitate, geprüft am 03.10.2026 gegen die Quellen. Nur Wortlaut, den es gibt;
+// Übersetzungen sind als solche gekennzeichnet.
 const zitate = [
   {
     text: "Die Farben sind Taten des Lichts, Taten und Leiden.",
     autor: "Johann Wolfgang von Goethe",
-    werk: "Zur Farbenlehre",
+    werk: "Zur Farbenlehre, Vorwort",
   },
   {
-    text: "Wäre nicht das Auge sonnenhaft, die Sonne könnt' es nie erblicken.",
+    text: "Wär' nicht das Auge sonnenhaft, / Wie könnten wir das Licht erblicken?",
     autor: "Johann Wolfgang von Goethe",
-    werk: "Zur Farbenlehre",
+    werk: "Zur Farbenlehre, Einleitung",
   },
   {
-    text: "Die Farbe ist eine Modifikation der Tätigkeit der Netzhaut.",
+    text: "Die Farbe ist die qualitativ getheilte Thätigkeit der Retina.",
     autor: "Arthur Schopenhauer",
-    werk: "Über das Sehn und die Farben",
+    werk: "Ueber das Sehn und die Farben, § 5",
   },
   {
-    text: "Das Sehen ist eine Tätigkeit, nicht ein bloßes Empfangen.",
-    autor: "Arthur Schopenhauer",
-    werk: "Über das Sehn und die Farben",
-  },
-  {
-    text: "Licht ist alles, was es gibt — alles andere ist nur sein Spiegel.",
+    text: "Es gibt in diesem Universum nur eines: Licht, das stille Licht allen Wissens.",
     autor: "Walter Russell",
-    werk: "Das Geheimnis des Lichts",
-  },
-  {
-    text: "Licht scheint von innen, nicht von außen.",
-    autor: "Walter Russell",
-    werk: "Das Geheimnis des Lichts",
+    werk: "The Secret of Light, eigene Übersetzung",
   },
 ];
 ---
@@ -63,7 +55,7 @@ const zitate = [
         class="font-display italic text-sm md:text-base leading-relaxed text-[var(--color-muted-foreground)]/85"
         data-zitat-text
       ></p>
-      <footer class="mt-4 text-[0.65rem] tracking-[0.3em] uppercase text-[var(--color-accent)] not-italic">
+      <footer class="mt-4 text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] not-italic">
         <span data-zitat-autor></span>
         <span class="text-[var(--color-muted-foreground)]/50 mx-2">·</span>
         <span data-zitat-werk class="text-[var(--color-muted-foreground)]/70 normal-case tracking-wider italic"></span>
@@ -81,7 +73,7 @@ const zitate = [
   {aktuellesWerk && (
     <section class="mt-4">
       <div class="max-w-6xl mx-auto px-6 pt-1 pb-12">
-        <div class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-accent)] mb-6 text-center animate-pulse-glow">
+        <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-6 text-center animate-pulse-glow">
           Aktuell
         </div>
 
@@ -99,7 +91,7 @@ const zitate = [
           </a>
           <div class="text-center sm:text-left">
             {aktuellesWerk.data.serie && (
-              <div class="text-[0.6rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-2">
+              <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-2">
                 {aktuellesWerk.data.serie}
               </div>
             )}
@@ -128,7 +120,7 @@ const zitate = [
 
         {weitereWerke.length > 0 && (
           <>
-            <div class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-muted-foreground)]/80 mt-16 mb-6 text-center">
+            <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-muted-foreground)]/80 mt-16 mb-6 text-center">
               Weitere Werke
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
@@ -146,7 +138,7 @@ const zitate = [
                   )}
                   <div class="text-center">
                     {werk.data.serie && (
-                      <div class="text-[0.55rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-1">
+                      <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-1">
                         {werk.data.serie}
                       </div>
                     )}
@@ -163,7 +155,7 @@ const zitate = [
               ))}
             </div>
             <div class="text-center mt-8">
-              <a href="/werke" class="text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-muted-foreground)] hover:text-[var(--color-accent)] transition-colors">
+              <a href="/werke" class="text-[0.7rem] tracking-[0.25em] uppercase text-[var(--color-muted-foreground)] hover:text-[var(--color-accent)] transition-colors">
                 Alle Werke →
               </a>
             </div>
@@ -178,7 +170,7 @@ const zitate = [
   {blogEintraege.length > 0 && (
     <section class="border-t border-[var(--color-border)]/60">
       <div class="max-w-3xl mx-auto px-6 py-14">
-        <div class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-accent)] mb-8 text-center">
+        <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-8 text-center">
           Aus dem Journal
         </div>
 
@@ -186,7 +178,7 @@ const zitate = [
           {blogEintraege.map((eintrag) => (
             <li class="border-b border-[var(--color-border)]/30 pb-6 last:border-0">
               <a href={`/blog/${eintrag.id}`} class="group block">
-                <div class="text-[0.65rem] tracking-widest uppercase text-[var(--color-muted-foreground)]/60 mb-1">
+                <div class="text-[0.7rem] tracking-widest uppercase text-[var(--color-muted-foreground)]/60 mb-1">
                   {eintrag.data.datum.toLocaleDateString("de-DE", { year: "numeric", month: "long", day: "numeric" })}
                 </div>
                 <h3 class="heading-serif text-base md:text-lg text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors">
@@ -198,7 +190,7 @@ const zitate = [
         </ul>
 
         <div class="text-center mt-8">
-          <a href="/blog" class="text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-muted-foreground)] hover:text-[var(--color-accent)] transition-colors">
+          <a href="/blog" class="text-[0.7rem] tracking-[0.25em] uppercase text-[var(--color-muted-foreground)] hover:text-[var(--color-accent)] transition-colors">
             Alle Einträge →
           </a>
         </div>
@@ -208,7 +200,7 @@ const zitate = [
 
   <section class="border-t border-[var(--color-border)]/60">
     <div class="max-w-2xl mx-auto px-6 py-14 text-center">
-      <div class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-accent)] mb-4">
+      <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-4">
         NFT-Sammlungen
       </div>
       <h2 class="heading-serif text-xl md:text-2xl text-[var(--color-foreground)] mb-4">

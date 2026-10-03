@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import HeroBanner from "../../components/HeroBanner.astro";
 import { getCollection } from "astro:content";
-import { JOURNAL_ZU_WERK } from "../../verbindungen";
+import { journalFuer } from "../../verbindungen";
 
 const werke = (await getCollection("werke", ({ data }) => !data.ausblenden))
   .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf());
@@ -19,7 +19,7 @@ for (const w of werke) {
 }
 const textZu = (ws: typeof werke) => {
   for (const w of ws) {
-    const t = journal.find((j) => j.id === JOURNAL_ZU_WERK[w.id]);
+    const t = journalFuer(w.id, journal);
     if (t) return t;
   }
 };
@@ -47,7 +47,7 @@ const textZu = (ws: typeof werke) => {
             const text = textZu(g.werke);
             return (
               <div>
-                <h2 class="text-[0.65rem] tracking-[0.4em] uppercase text-[var(--color-accent)] mb-6 pb-3 border-b border-[var(--color-border)]/40">
+                <h2 class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-6 pb-3 border-b border-[var(--color-border)]/40">
                   {g.serie}
                 </h2>
                 <ul class="space-y-8 md:space-y-10">
@@ -75,7 +75,7 @@ const textZu = (ws: typeof werke) => {
                               {werk.data.beschreibung_kurz}
                             </p>
                           )}
-                          <span class="inline-block mt-3 text-[0.65rem] tracking-[0.25em] uppercase text-[var(--color-accent)] group-hover:underline underline-offset-4">
+                          <span class="inline-block mt-3 text-[0.7rem] tracking-[0.25em] uppercase text-[var(--color-accent)] group-hover:underline underline-offset-4">
                             Im Detail →
                           </span>
                         </div>
@@ -85,7 +85,7 @@ const textZu = (ws: typeof werke) => {
                 </ul>
                 {text && (
                   <p class="mt-6 text-sm text-[var(--color-muted-foreground)]">
-                    <span class="text-[0.6rem] tracking-[0.3em] uppercase text-[var(--color-muted-foreground)]/70 mr-2">Im Journal</span>
+                    <span class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-muted-foreground)]/70 mr-2">Im Journal</span>
                     <a href={`/blog/${text.id}`} class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-foreground)] transition-colors">{text.data.titel}</a>
                   </p>
                 )}

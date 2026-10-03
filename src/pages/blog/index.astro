@@ -52,7 +52,7 @@ const eintraege = (await getCollection("blog", ({ data }) => !data.ausblenden))
               {eintrag.data.tags && (
                 <div class="flex flex-wrap gap-2 mt-3">
                   {eintrag.data.tags.map((tag) => (
-                    <span class="text-[0.6rem] tracking-widest uppercase text-[var(--color-muted-foreground)]/60 border border-[var(--color-border)]/40 rounded-sm px-2 py-0.5">
+                    <span class="text-[0.7rem] tracking-widest uppercase text-[var(--color-muted-foreground)]/60 border border-[var(--color-border)]/40 rounded-sm px-2 py-0.5">
                       {tag}
                     </span>
                   ))}

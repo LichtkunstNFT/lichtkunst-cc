@@ -13,8 +13,9 @@ export const WERK_ZU_WERK: Record<string, string> = {
   "2014-erscheinung": "2019-blue-fluid",
 };
 
-export const JOURNAL_ZU_WERK: Record<string, string> = {
-  "2026-cosmic-eggs": "2026-06-09-die-eiform",
+// Mehrere Einträge = Reihenfolge der Vorliebe; verborgene Texte werden übersprungen.
+export const JOURNAL_ZU_WERK: Record<string, string | string[]> = {
+  "2026-cosmic-eggs": ["2026-10-03-die-lampe-die-man-nicht-sieht", "2026-06-09-die-eiform"],
   "2025-lichtei": "2026-06-09-die-eiform",
   "2019-black-planet": "2026-06-10-runde-welten",
   "2019-black-planet-2": "2026-06-10-runde-welten",
@@ -25,7 +26,18 @@ export const JOURNAL_ZU_WERK: Record<string, string> = {
 };
 
 export const WERK_ZU_JOURNAL: Record<string, string> = {
+  "2026-10-03-die-lampe-die-man-nicht-sieht": "2026-cosmic-eggs",
   "2026-06-09-die-eiform": "2026-cosmic-eggs",
   "2026-06-10-runde-welten": "2019-black-planet",
   "2026-06-05-farbe-ist-keine-wellenlaenge": "2014-erscheinung",
 };
+
+// Liefert den ersten sichtbaren Journaltext aus JOURNAL_ZU_WERK.
+export function journalFuer<T extends { id: string }>(werkId: string, journal: T[]): T | undefined {
+  const z = JOURNAL_ZU_WERK[werkId];
+  for (const id of Array.isArray(z) ? z : z ? [z] : []) {
+    const t = journal.find((j) => j.id === id);
+    if (t) return t;
+  }
+  return undefined;
+}
