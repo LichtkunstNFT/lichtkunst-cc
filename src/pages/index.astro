@@ -65,7 +65,7 @@ const zitate = [
 
   <script is:inline define:vars={{ zitate }}>
     const z = zitate[Math.floor(Math.random() * zitate.length)];
-    document.querySelector("[data-zitat-text]").textContent = `„${z.text}"`;
+    document.querySelector("[data-zitat-text]").textContent = `„${z.text}“`;
     document.querySelector("[data-zitat-autor]").textContent = z.autor;
     document.querySelector("[data-zitat-werk]").textContent = z.werk;
   </script>
