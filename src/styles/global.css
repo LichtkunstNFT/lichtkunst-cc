@@ -490,3 +490,50 @@
   max-width: 28rem;
   margin: 0.75rem auto 0;
 }
+
+/* ─── Ausblick Cosmic Eggs (2026-10-07) ───
+ * Puzzlestücke: kleine Ausschnitte der Nachzeichnung von Russells Welle,
+ * rechts neben dem Absatz, in dem das Element vorkommt. Das Paar: zwei kleine
+ * Modell-Skizzen nebeneinander. */
+.werk-text figure.puzzle {
+  float: right;
+  width: 9.5rem;
+  margin: 0.35rem 0 0.75rem 1.25rem;
+}
+.werk-text figure.puzzle img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  object-fit: contain;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  opacity: 0.9;
+}
+@media (max-width: 639px) {
+  .werk-text figure.puzzle { width: 7.5rem; margin-left: 0.9rem; }
+}
+.werk-text h3,
+.werk-text .ausblick-paar { clear: both; }
+.werk-text .stoff { display: flow-root; margin-bottom: 0.75rem; }
+.werk-text .stoff p { margin-bottom: 0; }
+.werk-text .ausblick-paar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-width: 36rem;
+  margin: 2rem auto;
+}
+.werk-text .ausblick-paar figure { margin: 0; }
+.werk-text .ausblick-paar img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  object-fit: contain;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+}
+.werk-text .ausblick-paar figcaption { font-size: 0.75rem; margin-top: 0.5rem; }

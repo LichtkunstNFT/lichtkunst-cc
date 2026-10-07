@@ -126,83 +126,98 @@ Newsletter an.
 
 ## Ausblick
 
-Cosmic Eggs gibt es nicht mehr, und ich zeige es nicht noch einmal. Was ich
-aus der Installation mitnehme, fließt in neue Arbeiten derselben Werkgruppe
-ein. Ihr Leitgedanke ist, Schweres in der Schwebe zu halten, nicht durch
-Kraft, sondern durch Gleichgewicht.
+Cosmic Eggs gibt es nicht mehr, und ich zeige es nicht noch einmal. Was hier
+folgt, ist nicht gebaut: Überlegungen aus der Werkstatt, Rechenmodelle und
+Skizzen für Arbeiten, die es noch nicht gibt. Die Suche läuft. Ob und wie sie
+zu einem Werk führt, ist offen.
 
-### Gleichgewicht statt Kraft
+### Licht, nicht Halterung
 
-In der Installation hielten Magnete die Spiegel. Künftig klebt jeder Spiegel
-mit Silikon an einem Ring aus Weißblech, wie man ihn aus einer Konservendose
-schneidet, und der Ring steht auf einem kleinen Neodym-Magneten. Steht der
-Schwerpunkt des Spiegels genau im Lot über dem Magneten, braucht der Spiegel
-ihn nicht; der Magnet sichert nur. Der Halt ist eine Waage, kein Ständer.
-Dreht man den Ring auf dem Magneten, ändert sich die Neigung des Spiegels,
-mit ihr die Fuge am Boden und mit der Fuge das Licht.
+Wie bei Cosmic Eggs soll das Licht durch eine schmale Fuge am Fuß der Spiegel
+eintreten, flach über Schiefer und Salz streichen und von ihnen
+zurückgeworfen werden. Neu ist der Gedanke, die Spiegel allein im
+Gleichgewicht zu halten. Jeder Spiegel klebt an einem Ring aus Weißblech, der
+Ring steht auf einem kleinen Magneten. Liegt der Schwerpunkt des Spiegels im
+Lot über dem Magneten, trägt der Magnet nichts, er sichert nur. Der Ring ist
+eine Hilfskonstruktion: Er soll die Installation stabil halten und dabei
+nicht in Erscheinung treten.
 
-Für den Durchmesser D des Dosenrings gibt es zwei Wege, die ich in einem
-Rechenmodell durchgespielt habe.
+<div class="ausblick-paar">
+  <figure><img src="/bilder/cosmic-eggs/zeichnung-ausblick-licht-d-fest.jpg" alt="Modell: Licht durch die Fuge bei einem Dosenring mit festem Durchmesser" /><figcaption>D fest, 10 cm: ein Ring aus der Standarddose. Steif, aber er legt die Neigung auf rund 30° fest.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/zeichnung-ausblick-licht-d-variabel.jpg" alt="Modell: Licht durch die Fuge bei einem Ring mit gewähltem Durchmesser" /><figcaption>D veränderbar, hier 8,25 cm für 20°. Freier in der Neigung, aber weicher.</figcaption></figure>
+</div>
 
-<figure class="zeichnung"><img src="/bilder/cosmic-eggs/zeichnung-ausblick-dosenring-d-fest.jpg" alt="Schnittzeichnung: Spiegel an einem Dosenring mit festem Durchmesser von 10 cm" /><figcaption>Erster Weg: D bleibt fest. Ein Ring aus der Standarddose, Ø 10 cm. Der Spiegel klebt 8,7 cm über seiner Unterkante am Ring; bei 30° Neigung nach außen steht sein Schwerpunkt im Lot über dem Magneten, die Fuge misst 4,8 mm.</figcaption></figure>
+D ist der Durchmesser des Dosenrings. Oben in beiden Skizzen tritt das Licht
+durch die Fuge, darunter zeigt das Modell, wie es sich über den Grund
+verteilt. In beiden Fällen landet fast alles Licht in den ersten zwei
+Zentimetern hinter der Fuge. Bei 10 cm reicht der Halbschatten über den
+ganzen Grund, bei 8,25 cm endet er nach 18 cm. Stabiler wird der Spiegel
+durch einen größeren Ring nicht, denn Halte- und Kippmoment wachsen beide mit
+D. Welcher Weg trägt, ist nicht entschieden.
 
-Beim festen Durchmesser nimmt man einen Ring aus dem gesickten Teil der
-Dose. Die Sicken machen ihn steif, im Modell federt er nur gut ein Grad ein.
-Dafür legt der Ring die Neigung fest, bei der der Spiegel im Gleichgewicht
-steht: Bei 35 cm Spiegelhöhe sind es rund 30°. Soll der Spiegel steiler
-stehen, muss die Schieferplatte auf einen Sockel.
+### Die Stoffe
 
-<figure class="zeichnung"><img src="/bilder/cosmic-eggs/zeichnung-ausblick-ring-d-variabel.jpg" alt="Schnittzeichnung: Spiegel an einem Ring mit frei gewähltem Durchmesser von 8,25 cm" /><figcaption>Zweiter Weg: D folgt der Neigung, hier 8,25 cm für 20°. Die Klebestelle liegt 5,9 cm über der Unterkante, die Fuge misst 4,7 mm.</figcaption></figure>
+Walter Russell hat 1926 die Elemente auf eine Welle gelegt, deren Bögen von
+Oktave zu Oktave größer werden; jede endet in einem Edelgas auf der
+Mittelachse. Mit der heutigen Chemie deckt sich das nicht in allem. Ich lese
+darin, wie die Stoffe des Werks zusammenhängen: Jeder ist ein einzelnes Stück,
+erst zusammen ergeben sie ein Bild, wie die Instrumente eines Orchesters. Die
+kleinen Ausschnitte sind Nachzeichnungen aus Russells Tafel; rot markiert ist
+der Stoff, um den es im Absatz geht.
 
-Beim veränderbaren Durchmesser wähle ich zuerst die Neigung und rechne den
-Ring dazu aus. Das ist freier, aber ein Ring aus zwei Lagen dünnem Blech ist
-weicher; im Modell sinkt der Spiegel beim Loslassen um mehrere Grad nach
-außen. Steif wird er erst mit einer dritten Lage oder einem ganzen gesickten
-Dosenring.
+<div class="stoff">
+<figure class="puzzle"><img src="/bilder/cosmic-eggs/zeichnung-russell-kohlenstoff-sauerstoff.jpg" alt="Ausschnitt aus Russells Welle: Kohlenstoff und Sauerstoff markiert" /></figure>
 
-Für beide Wege gilt: Ein größerer Ring macht den Spiegel nicht stabiler. Das
-Moment, mit dem der Magnet hält, wächst mit dem Durchmesser, aber das Moment,
-mit dem der Spiegel kippen will, wächst genauso. Stabiler wird er durch eine
-stärkere Neigung nach außen, durch Flachstahl unter dem Magneten und durch
-eine kleine, bewusste Abweichung vom Gleichgewicht. Die LED-Leiste liegt in
-beiden Fällen auf dem Grund im Zwickel zwischen Ring und Spiegelrücken, nie
-am Spiegel oder am Ring, sonst wandert der Schwerpunkt.
+Kohlenstoff steckt in Ölfarbe und Wachs, die die Sole abstoßen. Sauerstoff,
+zwei Stellen weiter in derselben Oktave, verbindet Silizium mit allem
+anderen: im Glas, im Schiefer, im Silikon.
 
-### Die Stoffe in Russells Welle
+</div>
 
-Walter Russell hat 1926 ein Periodensystem gezeichnet, in dem die Elemente
-auf einer Welle liegen. Jede Oktave schwingt von +1 über einen Scheitel bis
-−1 und endet in einem Edelgas auf der Mittelachse, der Nullebene. Mit dem
-Periodensystem der heutigen Chemie deckt sich das nicht in allem. In den
-kurzen Oktaven folgen Russells Zahlen aber den gewohnten Wertigkeiten,
-Natrium +1, Chlor −1, und am Scheitel stehen Kohlenstoff und Silizium, die
-auch im üblichen Periodensystem in einer Gruppe stehen.
+<div class="stoff">
+<figure class="puzzle"><img src="/bilder/cosmic-eggs/zeichnung-russell-silizium.jpg" alt="Ausschnitt aus Russells Welle: Silizium markiert" /></figure>
 
-<figure class="zeichnung"><img src="/bilder/cosmic-eggs/zeichnung-ausblick-russell-welle.jpg" alt="Eigene Nachzeichnung von Russells Wellen-Periodensystem, 4. bis 6. Oktave, mit hervorgehobenen Elementen des Werks" /><figcaption>Russells Welle, 4. bis 6. Oktave, eigene Nachzeichnung nach seiner Tafel von 1926. In Amber die Stoffe, die im Werk vorkommen.</figcaption></figure>
+Silizium steht am Scheitel der nächsten Oktave. Es ist Spiegelglas, Silikon
+und Schiefer. Sauerstoff und Silizium machen zusammen fast drei Viertel der
+Erdkruste aus.
 
-Fast alles, woraus die Arbeit besteht, liegt in drei aufeinanderfolgenden
-Oktaven. Kohlenstoff steckt in Ölfarbe und Wachs, die die Sole abstoßen.
-Sauerstoff verbindet Silizium mit allem anderen, im Glas, im Schiefer und im
-Silikon. Natrium und Chlor bilden das Salz. Silizium ist Spiegelglas,
-Silikon und Schiefer. Eisen ist der Dosenring und der Hauptbestandteil des
-Magneten, Bor ein kleiner Teil davon, Kupfer liegt unter dem Silber der
-Spiegelrückseite. Zinn, die dünne Haut der Dose, und Neodym, das dem Magneten
-den Namen gibt, folgen weiter unten in der Welle.
+</div>
 
-Der Spiegelfuß ist im Schnitt eine kleine Erde. Innen der Eisenring, darauf
-eine Zinnhaut von Bruchteilen eines Mikrometers, Passivierung und Lack, dann
-Silikon, Glas, Silber und Kupfer. Auch in der Erde liegt das schwere Eisen
-innen, im Kern, und außen die Kruste, die zu fast drei Vierteln aus
-Sauerstoff und Silizium besteht.
+<div class="stoff">
+<figure class="puzzle"><img src="/bilder/cosmic-eggs/zeichnung-russell-natrium-chlor.jpg" alt="Ausschnitt aus Russells Welle: Natrium und Chlor markiert" /></figure>
 
-Das Vorangehende lässt sich überprüfen. Das Folgende ist meine Deutung.
-Silizium steht bei Russell am Scheitel seiner Oktave, Eisen dicht vor dem
-Scheitel der nächsten, auf der entgegengesetzten Seite der Achse. Zwischen
-ihnen liegt Argon, ein Ruhepunkt. Bei Russell gehen die Gegensätze aus einem solchen
-Ruhepunkt hervor und kehren in ihn zurück; verbunden sind sie über ihn,
-nicht unmittelbar. Natrium und Chlor sind die beiden
-Enden der Oktave des Siliziums; sie heben sich im Kristall auf, und dieser
-Kristall wächst auf Schiefer. Daraus lese ich die Regel für die nächsten
-Arbeiten: Gleiches verbinde ich mit Gleichem, Silikon mit Glas, Magnet mit
-Weißblech. Gegensätze lasse ich zeichnen, Wachs gegen Sole. Was daraus
-entsteht, wird keine Wiederholung von Cosmic Eggs.
+Natrium und Chlor sind die beiden Enden dieser Oktave, +1 und −1. Im Salz
+gleichen sie sich aus, und das Salz wächst auf dem Schiefer.
+
+</div>
+
+<div class="stoff">
+<figure class="puzzle"><img src="/bilder/cosmic-eggs/zeichnung-russell-eisen-argon.jpg" alt="Ausschnitt aus Russells Welle: Eisen und Argon markiert" /></figure>
+
+Eisen steht dicht vor dem Scheitel der folgenden Oktave, auf der anderen
+Seite der Achse. Dazwischen liegt Argon, bei Russell ein Ruhepunkt. Eisen ist
+der Ring, der Hauptbestandteil des Magneten und der Kern der Erde.
+
+</div>
+
+<div class="stoff">
+<figure class="puzzle"><img src="/bilder/cosmic-eggs/zeichnung-russell-zinn.jpg" alt="Ausschnitt aus Russells Welle: Zinn markiert" /></figure>
+
+Zinn, die hauchdünne Haut der Dose, liegt weiter unten in der Welle, zwischen
+Krypton und Xenon.
+
+</div>
+
+<div class="stoff">
+<figure class="puzzle"><img src="/bilder/cosmic-eggs/zeichnung-russell-neodym.jpg" alt="Ausschnitt aus Russells Welle: Neodym markiert" /></figure>
+
+Neodym, das dem Magneten den Namen gibt, liegt noch tiefer, zwischen Xenon
+und Radon.
+
+</div>
+
+Das Vorangehende lässt sich überprüfen; die Stellungen in der Welle sind von
+Russells Tafel abgelesen. Das Folgende ist meine Deutung. Gleiches will ich
+mit Gleichem verbinden, Silikon mit Glas, Magnet mit Weißblech. Gegensätze
+sollen zeichnen, Wachs gegen Sole. Ob daraus ein Werk wird, weiß ich noch
+nicht.
