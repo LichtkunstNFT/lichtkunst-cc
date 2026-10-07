@@ -123,3 +123,86 @@ TON Blockchain. So wie die Installation nur einmal existiert hat, gibt es
 auch jedes dieser Bilder nur einmal. Die Sammlung wird gerade vorbereitet.
 Sobald sie steht, findet sich der Link hier, und ich kündige sie im
 Newsletter an.
+
+## Ausblick
+
+Cosmic Eggs gibt es nicht mehr, und ich zeige es nicht noch einmal. Was ich
+aus der Installation mitnehme, fließt in neue Arbeiten derselben Werkgruppe
+ein. Ihr Leitgedanke ist, Schweres in der Schwebe zu halten, nicht durch
+Kraft, sondern durch Gleichgewicht.
+
+### Gleichgewicht statt Kraft
+
+In der Installation hielten Magnete die Spiegel. Künftig klebt jeder Spiegel
+mit Silikon an einem Ring aus Weißblech, wie man ihn aus einer Konservendose
+schneidet, und der Ring steht auf einem kleinen Neodym-Magneten. Steht der
+Schwerpunkt des Spiegels genau im Lot über dem Magneten, braucht der Spiegel
+ihn nicht; der Magnet sichert nur. Der Halt ist eine Waage, kein Ständer.
+Dreht man den Ring auf dem Magneten, ändert sich die Neigung des Spiegels,
+mit ihr die Fuge am Boden und mit der Fuge das Licht.
+
+Für den Ring gibt es zwei Wege, die ich in einem Rechenmodell durchgespielt
+habe.
+
+<figure class="zeichnung"><img src="/bilder/cosmic-eggs/zeichnung-ausblick-dosenring-d-fest.jpg" alt="Schnittzeichnung: Spiegel an einem Dosenring mit festem Durchmesser von 10 cm" /><figcaption>Erster Weg: Der Durchmesser ist fest. Ein Ring aus der Standarddose, Ø 10 cm. Der Spiegel klebt 8,7 cm über seiner Unterkante am Ring; bei 30° Neigung nach außen steht sein Schwerpunkt im Lot über dem Magneten, die Fuge misst 4,8 mm.</figcaption></figure>
+
+Beim festen Durchmesser nimmt man einen Ring aus dem gesickten Teil der
+Dose. Die Sicken machen ihn steif, im Modell federt er nur gut ein Grad ein.
+Dafür legt der Ring die Neigung fest, bei der der Spiegel im Gleichgewicht
+steht: Bei 35 cm Spiegelhöhe sind es rund 30°. Soll der Spiegel steiler
+stehen, muss die Schieferplatte auf einen Sockel.
+
+<figure class="zeichnung"><img src="/bilder/cosmic-eggs/zeichnung-ausblick-ring-d-variabel.jpg" alt="Schnittzeichnung: Spiegel an einem Ring mit frei gewähltem Durchmesser von 8,25 cm" /><figcaption>Zweiter Weg: Der Durchmesser folgt der Neigung. Hier 8,25 cm für 20°. Die Klebestelle liegt 5,9 cm über der Unterkante, die Fuge misst 4,7 mm.</figcaption></figure>
+
+Beim veränderbaren Durchmesser wähle ich zuerst die Neigung und rechne den
+Ring dazu aus. Das ist freier, aber ein Ring aus zwei Lagen dünnem Blech ist
+weicher; im Modell sinkt der Spiegel beim Loslassen um mehrere Grad nach
+außen. Steif wird er erst mit einer dritten Lage oder einem ganzen gesickten
+Dosenring.
+
+Für beide Wege gilt: Ein größerer Ring macht den Spiegel nicht stabiler. Das
+Moment, mit dem der Magnet hält, wächst mit dem Durchmesser, aber das Moment,
+mit dem der Spiegel kippen will, wächst genauso. Stabiler wird er durch eine
+stärkere Neigung nach außen, durch Flachstahl unter dem Magneten und durch
+eine kleine, bewusste Abweichung vom Gleichgewicht. Die LED-Leiste liegt in
+beiden Fällen auf dem Grund im Zwickel zwischen Ring und Spiegelrücken, nie
+am Spiegel oder am Ring, sonst wandert der Schwerpunkt.
+
+### Die Stoffe in Russells Welle
+
+Walter Russell hat 1926 ein Periodensystem gezeichnet, in dem die Elemente
+auf einer Welle liegen. Jede Oktave schwingt von +1 über einen Scheitel bis
+−1 und endet in einem Edelgas auf der Mittelachse, der Nullebene. Mit dem
+Periodensystem der heutigen Chemie deckt sich das nicht in allem. In den
+kurzen Oktaven folgen Russells Zahlen aber den gewohnten Wertigkeiten,
+Natrium +1, Chlor −1, und am Scheitel stehen Kohlenstoff und Silizium, die
+auch im üblichen Periodensystem in einer Gruppe stehen.
+
+<figure class="zeichnung"><img src="/bilder/cosmic-eggs/zeichnung-ausblick-russell-welle.jpg" alt="Eigene Nachzeichnung von Russells Wellen-Periodensystem, 4. bis 6. Oktave, mit hervorgehobenen Elementen des Werks" /><figcaption>Russells Welle, 4. bis 6. Oktave, eigene Nachzeichnung nach seiner Tafel von 1926. In Amber die Stoffe, die im Werk vorkommen.</figcaption></figure>
+
+Fast alles, woraus die Arbeit besteht, liegt in drei aufeinanderfolgenden
+Oktaven. Kohlenstoff steckt in Ölfarbe und Wachs, die die Sole abstoßen.
+Sauerstoff verbindet Silizium mit allem anderen, im Glas, im Schiefer und im
+Silikon. Natrium und Chlor bilden das Salz. Silizium ist Spiegelglas,
+Silikon und Schiefer. Eisen ist der Dosenring und der Hauptbestandteil des
+Magneten, Bor ein kleiner Teil davon, Kupfer liegt unter dem Silber der
+Spiegelrückseite. Zinn, die dünne Haut der Dose, und Neodym, das dem Magneten
+den Namen gibt, folgen weiter unten in der Welle.
+
+Der Spiegelfuß ist im Schnitt eine kleine Erde. Innen der Eisenring, darauf
+eine Zinnhaut von Bruchteilen eines Mikrometers, Passivierung und Lack, dann
+Silikon, Glas, Silber und Kupfer. Auch in der Erde liegt das schwere Eisen
+innen, im Kern, und außen die Kruste, die zu fast drei Vierteln aus
+Sauerstoff und Silizium besteht.
+
+Das Vorangehende lässt sich überprüfen. Das Folgende ist meine Deutung.
+Silizium steht bei Russell am Scheitel seiner Oktave, Eisen dicht vor dem
+Scheitel der nächsten, auf der entgegengesetzten Seite der Achse. Zwischen
+ihnen liegt Argon, ein Ruhepunkt. Bei Russell gehen die Gegensätze aus einem solchen
+Ruhepunkt hervor und kehren in ihn zurück; verbunden sind sie über ihn,
+nicht unmittelbar. Natrium und Chlor sind die beiden
+Enden der Oktave des Siliziums; sie heben sich im Kristall auf, und dieser
+Kristall wächst auf Schiefer. Daraus lese ich die Regel für die nächsten
+Arbeiten: Gleiches verbinde ich mit Gleichem, Silikon mit Glas, Magnet mit
+Weißblech. Gegensätze lasse ich zeichnen, Wachs gegen Sole. Was daraus
+entsteht, wird keine Wiederholung von Cosmic Eggs.
