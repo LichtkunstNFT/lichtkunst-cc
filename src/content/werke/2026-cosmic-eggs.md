@@ -141,10 +141,10 @@ ihn nicht; der Magnet sichert nur. Der Halt ist eine Waage, kein Ständer.
 Dreht man den Ring auf dem Magneten, ändert sich die Neigung des Spiegels,
 mit ihr die Fuge am Boden und mit der Fuge das Licht.
 
-Für den Ring gibt es zwei Wege, die ich in einem Rechenmodell durchgespielt
-habe.
+Für den Durchmesser D des Dosenrings gibt es zwei Wege, die ich in einem
+Rechenmodell durchgespielt habe.
 
-<figure class="zeichnung"><img src="/bilder/cosmic-eggs/zeichnung-ausblick-dosenring-d-fest.jpg" alt="Schnittzeichnung: Spiegel an einem Dosenring mit festem Durchmesser von 10 cm" /><figcaption>Erster Weg: Der Durchmesser ist fest. Ein Ring aus der Standarddose, Ø 10 cm. Der Spiegel klebt 8,7 cm über seiner Unterkante am Ring; bei 30° Neigung nach außen steht sein Schwerpunkt im Lot über dem Magneten, die Fuge misst 4,8 mm.</figcaption></figure>
+<figure class="zeichnung"><img src="/bilder/cosmic-eggs/zeichnung-ausblick-dosenring-d-fest.jpg" alt="Schnittzeichnung: Spiegel an einem Dosenring mit festem Durchmesser von 10 cm" /><figcaption>Erster Weg: D bleibt fest. Ein Ring aus der Standarddose, Ø 10 cm. Der Spiegel klebt 8,7 cm über seiner Unterkante am Ring; bei 30° Neigung nach außen steht sein Schwerpunkt im Lot über dem Magneten, die Fuge misst 4,8 mm.</figcaption></figure>
 
 Beim festen Durchmesser nimmt man einen Ring aus dem gesickten Teil der
 Dose. Die Sicken machen ihn steif, im Modell federt er nur gut ein Grad ein.
@@ -152,7 +152,7 @@ Dafür legt der Ring die Neigung fest, bei der der Spiegel im Gleichgewicht
 steht: Bei 35 cm Spiegelhöhe sind es rund 30°. Soll der Spiegel steiler
 stehen, muss die Schieferplatte auf einen Sockel.
 
-<figure class="zeichnung"><img src="/bilder/cosmic-eggs/zeichnung-ausblick-ring-d-variabel.jpg" alt="Schnittzeichnung: Spiegel an einem Ring mit frei gewähltem Durchmesser von 8,25 cm" /><figcaption>Zweiter Weg: Der Durchmesser folgt der Neigung. Hier 8,25 cm für 20°. Die Klebestelle liegt 5,9 cm über der Unterkante, die Fuge misst 4,7 mm.</figcaption></figure>
+<figure class="zeichnung"><img src="/bilder/cosmic-eggs/zeichnung-ausblick-ring-d-variabel.jpg" alt="Schnittzeichnung: Spiegel an einem Ring mit frei gewähltem Durchmesser von 8,25 cm" /><figcaption>Zweiter Weg: D folgt der Neigung, hier 8,25 cm für 20°. Die Klebestelle liegt 5,9 cm über der Unterkante, die Fuge misst 4,7 mm.</figcaption></figure>
 
 Beim veränderbaren Durchmesser wähle ich zuerst die Neigung und rechne den
 Ring dazu aus. Das ist freier, aber ein Ring aus zwei Lagen dünnem Blech ist
