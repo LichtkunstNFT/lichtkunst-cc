@@ -11,10 +11,13 @@ import {
 interface Props {
   endpoint?: string;
   headline?: string;
+  /** eindeutige Kennung, wenn mehrere Formulare auf einer Seite stehen */
+  formId?: string;
 }
 const {
   endpoint = NEWSLETTER_ENDPOINT,
   headline = "Neue Werke, Ausstellungen, Texte — gelegentlich per Mail.",
+  formId = "newsletter",
 } = Astro.props;
 ---
 
@@ -36,9 +39,9 @@ const {
     data-min-fill={MIN_FILL_MS}
   >
     <div class="flex flex-col sm:flex-row gap-2">
-    <label class="sr-only" for="newsletter-email">E-Mail-Adresse</label>
+    <label class="sr-only" for={`${formId}-email`}>E-Mail-Adresse</label>
     <input
-      id="newsletter-email"
+      id={`${formId}-email`}
       type="email"
       name={EMAIL_FIELD}
       required

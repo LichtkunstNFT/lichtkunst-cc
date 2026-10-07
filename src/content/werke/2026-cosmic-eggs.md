@@ -159,11 +159,32 @@ D. Welcher Weg trägt, ist nicht entschieden.
 
 Walter Russell hat 1926 die Elemente auf eine Welle gelegt, deren Bögen von
 Oktave zu Oktave größer werden; jede endet in einem Edelgas auf der
-Mittelachse. Mit der heutigen Chemie deckt sich das nicht in allem. Ich lese
-darin, wie die Stoffe des Werks zusammenhängen: Jeder ist ein einzelnes Stück,
-erst zusammen ergeben sie ein Bild, wie die Instrumente eines Orchesters. Die
-kleinen Ausschnitte sind Nachzeichnungen aus Russells Tafel; rot markiert ist
-der Stoff, um den es im Absatz geht.
+Mittelachse. Für Russell gibt es keine feste Materie. Alles ist Licht in
+Wellen, und was wir als Element kennen, ist Licht, das von außen unter Druck
+verdichtet wurde. Gold und Kupfer unterscheiden sich nach dieser Logik nur in
+Art und Stärke des Drucks auf das Licht, das nach Russell von der Sonne
+ausgeht. Woher diese unsichtbare Kraft kommt, die aus Licht feste Materie
+macht, ist das eigentliche Rätsel seines Denkens.
+
+Ein Bild dafür sehe ich im glühenden Metall. Erhitzt man es, beginnt es zu
+leuchten, schmilzt und verdampft schließlich: Unter Zufuhr von Energie gibt
+es Licht preis. Die Physik erklärt das Glühen anders als Russell, als
+Wärmestrahlung, und Metalldampf ist noch immer Metall. Den Übergang zwischen
+Materie und Licht kennt aber auch sie. Nach Einsteins E = mc² lassen sich
+beide ineinander verwandeln, und in denselben Jahren, in denen Russell seine
+Tafel zeichnete, schrieb Louis de Broglie auch der Materie Wellen zu. Die
+Stringtheorie denkt sich die kleinsten Teilchen sogar als schwingende Saiten;
+bewiesen ist sie nicht. Bestätigt ist Russell damit nicht, aber er steht der
+heutigen Physik näher, als es vor hundert Jahren schien.
+
+Mit der Chemie, wie sie heute gelehrt wird, deckt sich seine Tafel nicht in
+allem. Ich lese darin, wie die Stoffe des Werks zusammenhängen. Jeder ist ein
+einzelnes Stück, erst zusammen ergeben sie ein Bild: wie die Instrumente
+eines Symphonieorchesters, von denen keines allein die Symphonie spielt, oder
+wie die Schauspieler eines Theaterstücks, von denen jeder nur seine Rolle
+kennt und die doch gemeinsam ein Stück erzählen, das keiner allein tragen
+könnte. Die kleinen Ausschnitte sind Nachzeichnungen aus Russells Tafel; rot
+markiert ist der Stoff, um den es im Absatz geht.
 
 <div class="stoff">
 <figure class="puzzle"><img src="/bilder/cosmic-eggs/zeichnung-russell-kohlenstoff-sauerstoff.jpg" alt="Ausschnitt aus Russells Welle: Kohlenstoff und Sauerstoff markiert" /></figure>
@@ -216,8 +237,13 @@ und Radon.
 
 </div>
 
-Das Vorangehende lässt sich überprüfen; die Stellungen in der Welle sind von
-Russells Tafel abgelesen. Das Folgende ist meine Deutung. Gleiches will ich
-mit Gleichem verbinden, Silikon mit Glas, Magnet mit Weißblech. Gegensätze
-sollen zeichnen, Wachs gegen Sole. Ob daraus ein Werk wird, weiß ich noch
-nicht.
+Überprüfen lässt sich, was ich über die Stoffe geschrieben habe; ihre
+Stellungen sind von Russells Tafel abgelesen. Russells Lehre selbst ist eine
+Weltsicht, keine gesicherte Physik. Das Folgende ist meine Deutung. Gleiches
+will ich mit Gleichem verbinden, Silikon mit Glas, Magnet mit Weißblech.
+Gegensätze sollen zeichnen, Wachs gegen Sole. Ob daraus ein Werk wird, weiß
+ich noch nicht.
+
+Wer die Suche aus der Nähe verfolgen will, auch dort, wo sie nicht gelingt,
+kann sich für meinen Newsletter eintragen. Dort berichte ich von den nächsten
+Schritten.

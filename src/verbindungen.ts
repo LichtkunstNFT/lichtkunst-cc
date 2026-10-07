@@ -41,3 +41,9 @@ export function journalFuer<T extends { id: string }>(werkId: string, journal: T
   }
   return undefined;
 }
+
+// Werke, deren Text direkt in eine Newsletter-Anmeldung münden soll
+// (Formular unmittelbar unter dem Text, vor „Weiter“). Wert = Zeile über dem Formular.
+export const NEWSLETTER_NACH_TEXT: Record<string, string> = {
+  "2026-cosmic-eggs": "Die nächsten Schritte der Suche schicke ich gelegentlich per Mail.",
+};
