@@ -9,7 +9,7 @@
  */
 import { getCollection } from "astro:content";
 import NewsletterForm from "./NewsletterForm.astro";
-import { GESPERRT, WERK_ZU_WERK, WERK_ZU_JOURNAL, journalFuer } from "../verbindungen";
+import { GESPERRT, WERK_ZU_WERK, WERK_ZU_JOURNAL, journalFuer, NFT_AKTUELL } from "../verbindungen";
 
 interface Props {
   art: "werk" | "blog";
@@ -47,6 +47,10 @@ if (art === "werk") {
   text = andere.find((j) => gemeinsam(j.data.tags, ich?.data.tags) > 0) ?? andere[0];
 }
 
+// Auf der Seite des aktuellen NFT-Werks und auf Texten dazu führt die
+// NFT-Karte direkt zur Sammlung auf Getgems.
+const nftDirekt = (art === "werk" ? id : WERK_ZU_JOURNAL[id]) === NFT_AKTUELL.werk;
+
 const kopf = "text-[0.7rem] tracking-[0.28em] uppercase text-[var(--color-accent)] mb-2";
 const karte = "group flex gap-4 items-start p-4 rounded-sm border border-[var(--color-border)]/50 hover:border-[var(--color-accent)]/50 transition-colors";
 const titel = "heading-serif text-lg leading-snug text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors";
@@ -80,14 +84,25 @@ const bild = "w-14 h-14 object-cover rounded-sm border border-[var(--color-borde
       </a>
     )}
 
-    <a href="/nft/info" class={karte}>
-      <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center" aria-hidden="true"><span class="hex hex-gross"></span></div>
-      <div>
-        <div class={kopf}>Originale</div>
-        <div class={titel}>Wie man ein Werk als NFT besitzt</div>
-        <p class={zeile}>Die Originale gibt es nur als NFT. Was man dafür braucht, Schritt für Schritt erklärt.</p>
-      </div>
-    </a>
+    {nftDirekt ? (
+      <a href={NFT_AKTUELL.url} target="_blank" rel="noopener" class={`${karte} border-[var(--color-accent)]/50`}>
+        <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center" aria-hidden="true"><span class="hex hex-gross"></span></div>
+        <div>
+          <div class={kopf}>Jetzt als NFT</div>
+          <div class={titel}>{NFT_AKTUELL.titel} auf Getgems <span class="pfeil-zeig" aria-hidden="true">→</span></div>
+          <p class={zeile}>{NFT_AKTUELL.zeile}{NFT_AKTUELL.stand && ` ${NFT_AKTUELL.stand}`}</p>
+        </div>
+      </a>
+    ) : (
+      <a href="/nft/info" class={karte}>
+        <div class="w-14 h-14 flex-shrink-0 flex items-center justify-center" aria-hidden="true"><span class="hex hex-gross"></span></div>
+        <div>
+          <div class={kopf}>Originale</div>
+          <div class={titel}>Wie man ein Werk als NFT besitzt</div>
+          <p class={zeile}>Die Originale gibt es nur als NFT. Was man dafür braucht, Schritt für Schritt erklärt.</p>
+        </div>
+      </a>
+    )}
   </div>
 
   <NewsletterForm headline="Neue Werke und Texte schicke ich gelegentlich per Mail." formId="newsletter-weiter" />

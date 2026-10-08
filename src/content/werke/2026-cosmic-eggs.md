@@ -10,13 +10,11 @@ tags:
   - salz
   - schiefer
   - "2026"
-# Online seit 01.10.2026 (Freigabe Istvan). Ausbau 02.10.2026. Hinweis oben entfernen, wenn die Getgems-URL steht.
+# Online seit 01.10.2026 (Freigabe Istvan). Ausbau 02.10.2026. NFT-Sammlung online seit 08.10.2026.
+getgems_url: https://getgems.io/cosmiceggs
 ausblenden: false
 kommentare: true
 ---
-
-*Diese Seite wächst noch. Die vollständigen Bilder erscheinen als
-NFT-Sammlung auf Getgems; sobald sie steht, findet sich der Link hier.*
 
 Am 19. und 20. September 2026 stand im Coworking am Klaustor in Halle eine
 Installation, die es seitdem nicht mehr gibt. Drei sechseckige Spiegelräume
@@ -100,7 +98,7 @@ unterscheiden.
 
 Deshalb zeige ich hier nur Ausschnitte. Die vollständigen Figuren gibt es
 nur im Blick in das Kaleidoskop, und von dort aus als Bilder in der
-NFT-Sammlung.
+[NFT-Sammlung auf Getgems](https://getgems.io/cosmiceggs).
 
 ## Was ich darüber denke
 
@@ -117,12 +115,12 @@ Irgendwo zwischen diesen beiden Sätzen liegt die Arbeit.
 
 ## Die Bilder
 
-Die vollständigen Figuren, bearbeitet und ergänzt, erscheinen als
-NFT-Sammlung auf Getgems — jedes Bild ein Unikat, geprägt als 1/1 auf der
-TON Blockchain. So wie die Installation nur einmal existiert hat, gibt es
-auch jedes dieser Bilder nur einmal. Die Sammlung wird gerade vorbereitet.
-Sobald sie steht, findet sich der Link hier, und ich kündige sie im
-Newsletter an.
+Die vollständigen Figuren sind als NFT-Sammlung auf Getgems geprägt: zehn
+Bilder, jedes ein Unikat 1/1 auf der TON Blockchain. So wie die Installation
+nur einmal existiert hat, gibt es auch jedes dieser Bilder nur einmal. Wer
+eines erwirbt, besitzt es allein.
+
+**[Zur Sammlung Cosmic Eggs auf Getgems →](https://getgems.io/cosmiceggs)**
 
 ## Ausblick
 

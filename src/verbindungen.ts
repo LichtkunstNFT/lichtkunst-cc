@@ -47,3 +47,15 @@ export function journalFuer<T extends { id: string }>(werkId: string, journal: T
 export const NEWSLETTER_NACH_TEXT: Record<string, string> = {
   "2026-cosmic-eggs": "Die nächsten Schritte der Suche schicke ich gelegentlich per Mail.",
 };
+
+// Aktuelle NFT-Sammlung (seit 08.10.2026). Erscheint als Band unter der
+// Kopfzeile auf allen Seiten, auf der Startseite, oben und unten auf der
+// Werkseite und im „Weiter“-Abschnitt. „stand“ leer lassen, solange nichts
+// zum Verkauf steht; sonst z. B. "Drei davon sind jetzt zu haben."
+export const NFT_AKTUELL = {
+  werk: "2026-cosmic-eggs",
+  titel: "Cosmic Eggs",
+  url: "https://getgems.io/cosmiceggs",
+  zeile: "Zehn Bilder als NFT, jedes gibt es nur einmal.",
+  stand: "",
+};

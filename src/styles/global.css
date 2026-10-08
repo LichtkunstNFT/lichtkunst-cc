@@ -537,3 +537,44 @@
   border-radius: 2px;
 }
 .werk-text .ausblick-paar figcaption { font-size: 0.75rem; margin-top: 0.5rem; }
+
+/* NFT-Aufruf (seit 08.10.2026) ------------------------------------------ */
+@keyframes pfeil-zeig { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(6px); } }
+.pfeil-zeig { display: inline-block; animation: pfeil-zeig 1.2s ease-in-out 4; }
+a:hover .pfeil-zeig, a:focus-visible .pfeil-zeig { animation: pfeil-zeig 1.2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .pfeil-zeig { animation: none !important; } }
+
+.nft-band {
+  background: color-mix(in oklch, var(--color-accent) 12%, var(--color-background));
+  border-bottom: 1px solid color-mix(in oklch, var(--color-accent) 35%, transparent);
+  font-size: 0.8rem; line-height: 1.4; color: var(--color-muted-foreground);
+}
+.nft-band .hex { width: 0.7rem; height: 0.7rem; }
+.nft-band-neu { text-transform: uppercase; letter-spacing: 0.25em; font-size: 0.7rem; color: var(--color-accent); margin-right: 0.5rem; }
+.nft-band-werk { color: var(--color-foreground); font-family: var(--font-display, inherit); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: color-mix(in oklch, var(--color-accent) 50%, transparent); }
+.nft-band-link { color: var(--color-accent); font-weight: 500; white-space: nowrap; text-decoration: underline; text-underline-offset: 4px; }
+.nft-band-link:hover, .nft-band-werk:hover { color: var(--color-foreground); }
+@media (max-width: 639px) { .nft-band-zeile { display: none; } }
+
+.nft-knopf {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.5rem; border-radius: 2px;
+  background: var(--color-accent); color: var(--color-accent-foreground);
+  font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
+  box-shadow: 0 0 18px color-mix(in oklch, var(--color-accent) 35%, transparent);
+  transition: box-shadow 0.3s;
+}
+.nft-knopf:hover { box-shadow: 0 0 30px color-mix(in oklch, var(--color-accent) 55%, transparent); }
+
+.nft-box {
+  margin: 0 0 2.5rem; padding: 1.5rem 1.75rem; border-radius: 2px;
+  border: 1px solid color-mix(in oklch, var(--color-accent) 45%, transparent);
+  background: color-mix(in oklch, var(--color-accent) 7%, var(--color-card));
+}
+.nft-box-kopf { display: flex; align-items: center; gap: 0.6rem; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.75rem; }
+.nft-box-kopf .hex { width: 0.7rem; height: 0.7rem; }
+.nft-box-titel { font-family: "Cormorant", serif; font-size: 1.6rem; line-height: 1.2; color: var(--color-foreground); margin-bottom: 0.6rem; }
+.nft-box-text { font-size: 0.9rem; line-height: 1.6; color: var(--color-muted-foreground); margin-bottom: 1.25rem; }
+.nft-box-text strong { color: var(--color-foreground); }
+.nft-box-hilfe { font-size: 0.85rem; color: var(--color-muted-foreground); text-decoration: underline; text-underline-offset: 4px; }
+.nft-box-hilfe:hover { color: var(--color-accent); }

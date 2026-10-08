@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import HeroBanner from "../components/HeroBanner.astro";
 import NewsletterForm from "../components/NewsletterForm.astro";
 import { getCollection } from "astro:content";
-import { journalFuer } from "../verbindungen";
+import { journalFuer, NFT_AKTUELL } from "../verbindungen";
 
 const werke = (await getCollection("werke", ({ data }) => !data.ausblenden))
   .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf());
@@ -104,6 +104,14 @@ const zitate = [
               <p class="text-sm leading-relaxed text-[var(--color-muted-foreground)] mb-5">
                 {aktuellesWerk.data.beschreibung_kurz}
               </p>
+            )}
+            {aktuellesWerk.id === NFT_AKTUELL.werk && (
+              <div class="mb-5">
+                <p class="text-sm text-[var(--color-foreground)] mb-3">{NFT_AKTUELL.zeile}{NFT_AKTUELL.stand && ` ${NFT_AKTUELL.stand}`}</p>
+                <a href={NFT_AKTUELL.url} target="_blank" rel="noopener" class="nft-knopf">
+                  Als NFT erwerben <span class="pfeil-zeig" aria-hidden="true">→</span>
+                </a>
+              </div>
             )}
             <div class="flex flex-col gap-2 text-sm">
               <a href={`/werke/${aktuellesWerk.id}`} class="text-[var(--color-accent)] underline underline-offset-4 hover:text-[var(--color-foreground)] transition-colors">

@@ -1,0 +1,45 @@
+---
+/**
+ * NftAufruf — Hinweis auf die aktuelle NFT-Sammlung (NFT_AKTUELL), seit 08.10.2026.
+ * form="band": schmales Band unter der Kopfzeile, alle Seiten.
+ * form="box":  Kasten oben auf der Werkseite des aktuellen Werks.
+ * Kein h2, damit die Leserspur ihre Abschnittszählung behält.
+ * Bewegung: nur der Pfeil, 4 Takte (unter 5 s), aus bei reduzierter Bewegung.
+ */
+import { NFT_AKTUELL } from "../verbindungen";
+interface Props { form: "band" | "box"; }
+const { form } = Astro.props;
+const n = NFT_AKTUELL;
+---
+
+{form === "band" ? (
+  <div class="nft-band" data-nft-aufruf="band">
+    <div class="max-w-6xl mx-auto px-6 py-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
+      <span class="hex" aria-hidden="true"></span>
+      <span>
+        <span class="nft-band-neu">Neu</span>
+        <a href={`/werke/${n.werk}`} class="nft-band-werk">{n.titel}</a>
+        <span class="nft-band-zeile"> — {n.zeile}</span>
+      </span>
+      <a href={n.url} target="_blank" rel="noopener" class="nft-band-link">
+        Zur Sammlung auf Getgems <span class="pfeil-zeig" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+) : (
+  <aside class="nft-box" data-nft-aufruf="box">
+    <div class="nft-box-kopf"><span class="hex" aria-hidden="true"></span>Jetzt als NFT</div>
+    <p class="nft-box-titel">Jedes dieser Bilder gibt es nur einmal.</p>
+    <p class="nft-box-text">
+      Die zehn vollständigen Figuren aus dem Kaleidoskop sind auf Getgems
+      geprägt, jede als Unikat 1/1. Wer eines erwirbt, besitzt es allein.
+      {n.stand && <> <strong>{n.stand}</strong></>}
+    </p>
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+      <a href={n.url} target="_blank" rel="noopener" class="nft-knopf">
+        Zur Sammlung auf Getgems <span class="pfeil-zeig" aria-hidden="true">→</span>
+      </a>
+      <a href="/nft/info" class="nft-box-hilfe">Wie kauft man ein NFT?</a>
+    </div>
+  </aside>
+)}

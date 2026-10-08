@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 import Leserspur from "../components/Leserspur.astro";
+import NftAufruf from "../components/NftAufruf.astro";
+import { GESPERRT } from "../verbindungen";
 
 interface Props {
   title?: string;
@@ -86,6 +88,8 @@ const canonical = new URL(Astro.url.pathname, SITE).href;
         </div>
       </div>
     </header>
+
+    {!Astro.url.pathname.startsWith("/intern") && ![...GESPERRT].some((id) => Astro.url.pathname.startsWith(`/werke/${id}`)) && <NftAufruf form="band" />}
 
     <main class="animate-fade-up">
       <slot />
