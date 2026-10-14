@@ -26,6 +26,8 @@ Ausschnitte wie diese.
 Die Installation war mein Beitrag zu den Offenen Ateliers Sachsen-Anhalt und
 zum Themenjahr der Stadt Halle, „Stadt, Licht, Energie".
 
+<p class="nft-hinweis"><span class="hex" aria-hidden="true"></span>Die zehn vollständigen Figuren gibt es als NFT, jede nur einmal. <a href="https://getgems.io/cosmiceggs" target="_blank" rel="noopener">Zur Sammlung auf Getgems <span class="pfeil-zeig" aria-hidden="true">→</span></a></p>
+
 ## Material
 
 Schiefer, zum Teil aus Frankreich. Sole vom Gradierwerk in

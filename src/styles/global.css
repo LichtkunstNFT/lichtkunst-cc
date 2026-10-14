@@ -578,3 +578,11 @@ a:hover .pfeil-zeig, a:focus-visible .pfeil-zeig { animation: pfeil-zeig 1.2s ea
 .nft-box-text strong { color: var(--color-foreground); }
 .nft-box-hilfe { font-size: 0.85rem; color: var(--color-muted-foreground); text-decoration: underline; text-underline-offset: 4px; }
 .nft-box-hilfe:hover { color: var(--color-accent); }
+
+/* Dezenter NFT-Hinweis im Werktext (seit 15.10.2026, ersetzt den Kasten unter dem Titel) */
+.werk-text .nft-hinweis {
+  font-size: 0.85rem; line-height: 1.6;
+  padding-left: 0.9rem; margin: -0.5rem 0 1.5rem;
+  border-left: 2px solid color-mix(in oklch, var(--color-accent) 55%, transparent);
+}
+.werk-text .nft-hinweis .hex { width: 0.55rem; height: 0.6rem; margin-right: 0.5rem; vertical-align: 0.05em; }
