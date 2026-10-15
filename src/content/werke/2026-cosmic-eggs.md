@@ -46,6 +46,9 @@ Salz selbst. Das Muster ist zur Hälfte gezeichnet und zur Hälfte gewachsen.
   <figure><img src="/bilder/cosmic-eggs/02-salzinseln.jpg" alt="Salzinseln auf Schiefer" /><figcaption>Salz in Inseln und Säumen, dazwischen bleibt der Schiefer dunkel.</figcaption></figure>
   <figure><img src="/bilder/cosmic-eggs/03-blume-des-lebens.jpg" alt="Geritzte Blume des Lebens mit Salz" /><figcaption>Die Blume des Lebens, mit dem Zirkel geritzt und vom Salz nachgezeichnet.</figcaption></figure>
   <figure><img src="/bilder/cosmic-eggs/07-salz-an-der-naht.jpg" alt="Schwarze Inseln im Salz" /><figcaption>Schwarze Inseln im Salz, an ihren Rändern feine Kristallnadeln.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/10-salzdecke.jpg" alt="Tafel fast ganz mit Salz bedeckt" /><figcaption>Salz deckt die Tafel fast ganz; nur an einer Seite bleibt der Schiefer dunkel.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/11-salzkoerner.jpg" alt="Einzelne Salzkörner auf Schiefer" /><figcaption>Einzelne Körner, grob auskristallisiert auf glattem Stein.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/12-salzfedern.jpg" alt="Salz in feinen Federn auf einer kleinen Tafel" /><figcaption>Auf einer kleinen Tafel wächst das Salz in feinen Federn, wie Reif.</figcaption></figure>
 </div>
 
 ## Licht
@@ -82,6 +85,9 @@ Eier liegen.
   <figure><img src="/bilder/cosmic-eggs/05-lichtknoten.jpg" alt="Lichtknoten zwischen Spiegelfugen" /><figcaption>Ein Lichtknoten: Hier treffen sich die Fugen mehrerer Spiegelbilder.</figcaption></figure>
   <figure><img src="/bilder/cosmic-eggs/04-lichtspur.jpg" alt="Lichtspur über geritztem Ornament" /><figcaption>Eine Lichtspur zieht quer über das geritzte Ornament.</figcaption></figure>
   <figure><img src="/bilder/cosmic-eggs/09-lichtstreif.jpg" alt="Streiflicht über geritzter Tafel" /><figcaption>Streiflicht über einer geritzten Tafel.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/13-lichtfuge.jpg" alt="Zwei Lichtfugen treffen sich" /><figcaption>Zwei Lichtfugen treffen sich auf dem dunklen Grund.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/14-lichtsaum.jpg" alt="Lichtsaum am Fuß der Spiegel" /><figcaption>Am Fuß der Spiegel ein schmaler Lichtsaum. Die Leiste selbst bleibt verborgen.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/15-hell-und-dunkel.jpg" alt="Streiflicht teilt eine Tafel in Hell und Dunkel" /><figcaption>Das Streiflicht teilt eine Tafel in eine helle und eine dunkle Hälfte.</figcaption></figure>
 </div>
 
 ## Echt oder gespiegelt
@@ -96,6 +102,10 @@ unterscheiden.
 <div class="ausschnitte">
   <figure><img src="/bilder/cosmic-eggs/06-spiegelkante.jpg" alt="Ei an der Spiegelkante mit Spiegelbild" /><figcaption>Ein Ei an der Spiegelkante, darunter sein Spiegelbild.</figcaption></figure>
   <figure><img src="/bilder/cosmic-eggs/08-ei-ueber-der-naht.jpg" alt="Ei zwischen Lichtnähten" /><figcaption>Ein Ei zwischen den Lichtnähten. Ob es auf dem Grund liegt oder gespiegelt ist, zeigt das Bild nicht.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/16-spiegelkreis.jpg" alt="Gerundete Spiegel mit gespiegeltem Feld" /><figcaption>Die Spiegel stehen im Kreis; in jedem liegt ein Stück des Feldes noch einmal.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/17-oben-wie-unten.jpg" alt="Tafeln auf dem Grund und im Spiegel" /><figcaption>Oben im Spiegel dieselben Tafeln wie unten auf dem Grund.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/18-zweite-blume.jpg" alt="Geritzte Tafel im Spiegel" /><figcaption>Die geritzte Tafel erscheint im Spiegel ein zweites Mal, angeschnitten von der Kante.</figcaption></figure>
+  <figure><img src="/bilder/cosmic-eggs/19-tiefe.jpg" alt="Spiegelkanten und Feld in der Tiefe" /><figcaption>Nach hinten wiederholt sich das Feld, bis Grund und Spiegelbild ineinander übergehen.</figcaption></figure>
 </div>
 
 Deshalb zeige ich hier nur Ausschnitte. Die vollständigen Figuren gibt es
