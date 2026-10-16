@@ -21,3 +21,12 @@ CREATE TABLE IF NOT EXISTS contacts (
   message    TEXT    NOT NULL,
   created_at INTEGER NOT NULL
 );
+
+-- Leserspur (Technik-Auftrag 9): ein Datensatz pro Seitenaufruf, keine IP,
+-- kein User-Agent. Wird vom Worker beim ersten Aufruf selbst angelegt.
+CREATE TABLE IF NOT EXISTS leserspur (
+  id TEXT PRIMARY KEY, ts INTEGER NOT NULL, tag TEXT NOT NULL, pfad TEXT NOT NULL,
+  kanal TEXT, ref TEXT, ref_intern TEXT, geraet TEXT, sekunden INTEGER, scroll INTEGER,
+  abschnitt_max INTEGER, abschnitt_ende INTEGER, abschnitte TEXT, bilder TEXT, klicks TEXT, formular TEXT
+);
+CREATE INDEX IF NOT EXISTS leserspur_ts ON leserspur(ts);
