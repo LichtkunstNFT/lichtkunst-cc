@@ -1,6 +1,6 @@
 // Cloudflare Worker: serviert die statische Seite (ASSETS) und stellt
 // unter /api/comments eine schlanke Kommentar-API auf Basis von D1 bereit,
-// dazu /api/contact und die Leserspur (/api/leserspur, /api/statistik).
+// dazu /api/contact, /api/newsletter und die Leserspur (/api/leserspur, /api/statistik).
 
 const SLUG_RE = /^[a-z0-9-]{1,120}$/;
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
@@ -304,6 +304,119 @@ async function statistik(request, env, url) {
   });
 }
 
+// ---------------------------------------------------------------------------
+// Newsletter-Anmeldung (Technik-Auftrag 8).
+// POST /api/newsletter: Herkunft lichtkunst.cc, Honigtopf, Zeitfalle,
+// Einwilligung, Cloudflare Turnstile (serverseitig geprüft), höchstens drei
+// Anmeldungen je IP und Stunde. Danach legt der Worker den Kontakt per
+// EmailOctopus-API an; EmailOctopus schickt die Double-Opt-in-Mail.
+// Nachweis der Einwilligung in D1: Adresse, Zeit, IP, Browserkennung, Quelle.
+// Secrets im Cloudflare-Dashboard: TURNSTILE_SECRET, EMAILOCTOPUS_API_KEY.
+// Nie stillen Erfolg vortäuschen (Lehre aus Commit 798231d): jede Ablehnung
+// kommt als Fehler mit Text zurück.
+// ---------------------------------------------------------------------------
+const NL_LISTE = "ae316472-6000-11f1-b054-1d58d0a6b597";
+const NL_MIN_MS = 3000;
+const NL_PRO_STUNDE = 3;
+const NL_HONIGTOPF = "lk_kontrolle";
+
+let nlSchemaGeprueft = false;
+async function ensureNewsletter(env) {
+  if (nlSchemaGeprueft) return;
+  await env.DB.prepare(
+    "CREATE TABLE IF NOT EXISTS newsletter_anmeldungen (" +
+      "id INTEGER PRIMARY KEY AUTOINCREMENT, ts INTEGER NOT NULL, email TEXT NOT NULL, " +
+      "ip TEXT, user_agent TEXT, quelle TEXT, einwilligung TEXT, ergebnis TEXT)"
+  ).run();
+  await env.DB.prepare("CREATE INDEX IF NOT EXISTS newsletter_ip_ts ON newsletter_anmeldungen(ip, ts)").run();
+  nlSchemaGeprueft = true;
+}
+
+const nlFehler = (status, error) => json({ ok: false, error }, status);
+
+async function newsletterAnmelden(request, env, url) {
+  if (!env.TURNSTILE_SECRET || !env.EMAILOCTOPUS_API_KEY)
+    return nlFehler(503, "Die Anmeldung ist gerade nicht eingerichtet. Bitte später erneut versuchen.");
+  if (!lsHerkunftErlaubt(request, url)) return nlFehler(403, "Anmeldung nur über lichtkunst.cc möglich.");
+  if (Number(request.headers.get("content-length") || 0) > 4096) return nlFehler(413, "Anfrage zu groß.");
+  let d;
+  try { d = await request.json(); } catch { return nlFehler(400, "Ungültige Anfrage."); }
+
+  const email = String(d.email || "").trim().toLowerCase();
+  const quelle = d.quelle === "kommentar" ? "kommentar" : "formular";
+  const einwilligung = String(d.einwilligung || "").slice(0, 300);
+  if (d[NL_HONIGTOPF]) return nlFehler(400, "Anmeldung abgelehnt.");
+  const elapsed = Date.now() - Number(d.t || 0);
+  if (!Number.isFinite(elapsed) || elapsed < NL_MIN_MS)
+    return nlFehler(400, "Bitte einen Moment warten und dann erneut senden.");
+  if (d.zustimmung !== true) return nlFehler(400, "Bitte die Einwilligung ankreuzen.");
+  if (!EMAIL_RE.test(email) || email.length > 120) return nlFehler(400, "Bitte eine gültige E-Mail-Adresse angeben.");
+
+  const ip = request.headers.get("CF-Connecting-IP") || "";
+  const ua = (request.headers.get("User-Agent") || "").slice(0, 300);
+  await ensureNewsletter(env);
+  const protokoll = (ergebnis) =>
+    env.DB.prepare(
+      "INSERT INTO newsletter_anmeldungen (ts, email, ip, user_agent, quelle, einwilligung, ergebnis) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    ).bind(Date.now(), email, ip, ua, quelle, einwilligung, ergebnis).run().catch(() => {});
+
+  if (ip) {
+    const r = await env.DB.prepare(
+      "SELECT count(*) AS n FROM newsletter_anmeldungen WHERE ip = ? AND ts > ?"
+    ).bind(ip, Date.now() - 3600000).first();
+    if ((r?.n || 0) >= NL_PRO_STUNDE) {
+      await protokoll("rate_limit");
+      return nlFehler(429, "Zu viele Anmeldungen von diesem Anschluss. Bitte in einer Stunde erneut versuchen.");
+    }
+  }
+
+  // Turnstile serverseitig prüfen
+  let tsOk = false;
+  try {
+    const form = new FormData();
+    form.append("secret", env.TURNSTILE_SECRET);
+    form.append("response", String(d.token || ""));
+    if (ip) form.append("remoteip", ip);
+    const v = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", { method: "POST", body: form });
+    const vr = await v.json();
+    tsOk = vr.success === true;
+  } catch {}
+  if (!tsOk) {
+    await protokoll("turnstile_abgelehnt");
+    return nlFehler(400, "Die Sicherheitsprüfung hat nicht geklappt. Bitte die Seite neu laden und erneut versuchen.");
+  }
+
+  // Kontakt bei EmailOctopus anlegen; der Status richtet sich nach der Liste
+  // (Double Opt-in: pending, Bestätigungsmail geht automatisch raus).
+  let eo;
+  try {
+    eo = await fetch("https://api.emailoctopus.com/lists/" + NL_LISTE + "/contacts", {
+      method: "POST",
+      headers: { Authorization: "Bearer " + env.EMAILOCTOPUS_API_KEY, "content-type": "application/json" },
+      body: JSON.stringify({ email_address: email, tags: ["website-" + quelle] }),
+    });
+  } catch {
+    await protokoll("emailoctopus_nicht_erreichbar");
+    return nlFehler(502, "Die Anmeldung ist gerade nicht möglich. Bitte später erneut versuchen.");
+  }
+  // Abgelehnte Versuche nach 30 Tagen löschen; Einwilligungsnachweise bleiben.
+  if (Math.random() < 0.05) {
+    await env.DB.prepare(
+      "DELETE FROM newsletter_anmeldungen WHERE ts < ? AND ergebnis NOT IN ('angelegt', 'schon_vorhanden')"
+    ).bind(Date.now() - 30 * 86400000).run().catch(() => {});
+  }
+  if (eo.status === 201) {
+    await protokoll("angelegt");
+    return json({ ok: true });
+  }
+  if (eo.status === 409) {
+    await protokoll("schon_vorhanden");
+    return json({ ok: true, vorhanden: true });
+  }
+  await protokoll("emailoctopus_" + eo.status);
+  return nlFehler(502, "Die Anmeldung ist gerade nicht möglich. Bitte später erneut versuchen.");
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -314,6 +427,10 @@ export default {
     }
     if (url.pathname === "/api/contact") {
       if (request.method === "POST") return addContact(request, env);
+      return new Response("Method not allowed", { status: 405 });
+    }
+    if (url.pathname === "/api/newsletter") {
+      if (request.method === "POST") return newsletterAnmelden(request, env, url);
       return new Response("Method not allowed", { status: 405 });
     }
     if (url.pathname === "/api/leserspur") {

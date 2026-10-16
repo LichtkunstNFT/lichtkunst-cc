@@ -30,3 +30,11 @@ CREATE TABLE IF NOT EXISTS leserspur (
   abschnitt_max INTEGER, abschnitt_ende INTEGER, abschnitte TEXT, bilder TEXT, klicks TEXT, formular TEXT
 );
 CREATE INDEX IF NOT EXISTS leserspur_ts ON leserspur(ts);
+
+-- Newsletter-Anmeldungen (Technik-Auftrag 8): Nachweis der Einwilligung.
+-- Wird vom Worker beim ersten Aufruf selbst angelegt.
+CREATE TABLE IF NOT EXISTS newsletter_anmeldungen (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, ts INTEGER NOT NULL, email TEXT NOT NULL,
+  ip TEXT, user_agent TEXT, quelle TEXT, einwilligung TEXT, ergebnis TEXT
+);
+CREATE INDEX IF NOT EXISTS newsletter_ip_ts ON newsletter_anmeldungen(ip, ts);
