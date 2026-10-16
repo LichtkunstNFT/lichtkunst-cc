@@ -1,12 +1,5 @@
 ---
-import {
-  NEWSLETTER_ENDPOINT,
-  EMAIL_FIELD,
-  HONEYPOT_FIELD,
-  CONSENT_FIELD,
-  CONSENT_LABEL,
-  MIN_FILL_MS,
-} from "../newsletter";
+import { NEWSLETTER_ENDPOINT, HONEYPOT_FIELD, CONSENT_LABEL, MIN_FILL_MS } from "../newsletter";
 
 interface Props {
   endpoint?: string;
@@ -43,13 +36,13 @@ const {
     <input
       id={`${formId}-email`}
       type="email"
-      name={EMAIL_FIELD}
+      name="email"
       required
       autocomplete="email"
       placeholder="E-Mail-Adresse"
       class="flex-1 px-4 py-2.5 bg-[var(--color-card)] border border-[var(--color-border)] rounded-sm text-sm text-[var(--color-foreground)] placeholder:text-[var(--color-muted-foreground)]/50 focus:outline-none focus:border-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)]/50 transition-colors"
     />
-    {/* EmailOctopus-Honeypot — von Menschen unsichtbar, muss leer bleiben */}
+    {/* Honigtopf — von Menschen unsichtbar, muss leer bleiben */}
     <div class="absolute left-[-5000px]" aria-hidden="true">
       <input
         type="text"
@@ -69,13 +62,14 @@ const {
     <label class="flex items-start gap-2.5 text-[0.7rem] text-[var(--color-muted-foreground)] leading-relaxed cursor-pointer">
       <input
         type="checkbox"
-        name={CONSENT_FIELD}
-        value="on"
+        name="zustimmung"
+        value="ja"
         required
         class="mt-0.5 shrink-0 accent-[var(--color-accent)]"
       />
       <span>{CONSENT_LABEL}</span>
     </label>
+    <div data-turnstile></div>
   </form>
 
   <p
@@ -87,65 +81,55 @@ const {
 
   <p class="text-[0.7rem] text-[var(--color-muted-foreground)]/60 text-center mt-3 leading-relaxed">
     Double Opt-In. Keine Werbung Dritter. Abmeldung jederzeit über Link in jeder Mail.
+    Zum Schutz vor Bots prüft Cloudflare Turnstile die Anmeldung (<a href="/datenschutz" class="underline underline-offset-2">Datenschutz</a>).
   </p>
 </div>
 
 <script>
+  import { vorbereiten, holeToken, tokenVerbraucht, anmelden, HONEYPOT_FIELD, CONSENT_LABEL } from "../newsletter";
+
   document.querySelectorAll<HTMLFormElement>("[data-newsletter-form]").forEach((form) => {
     const status = form.parentElement?.querySelector<HTMLElement>("[data-newsletter-status]");
     const button = form.querySelector<HTMLButtonElement>("button[type='submit']");
+    const platz = form.querySelector<HTMLElement>("[data-turnstile]")!;
     const minFill = Number(form.dataset.minFill ?? 0);
     const readyAt = Date.now();
     let running = false;
 
-    const showSuccess = () => {
-      form.hidden = true;
-      if (status) {
-        status.textContent =
-          "Fast geschafft — bitte bestätige die Anmeldung über den Link in der E-Mail, die wir dir gerade geschickt haben.";
-        status.hidden = false;
-      }
-    };
+    // Turnstile erst laden, wenn jemand das Formular berührt.
+    const starte = () => vorbereiten(platz);
+    form.addEventListener("focusin", starte, { once: true });
+    form.addEventListener("pointerdown", starte, { once: true });
+
+    const zeige = (text: string) => { if (status) { status.textContent = text; status.hidden = false; } };
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (running) return;
       running = true;
-
       if (button) button.disabled = true;
 
-      // Zu schnell abgesendet: nicht ablehnen, nur bis zur Mindestzeit warten.
       const elapsed = Date.now() - readyAt;
-      if (elapsed < minFill) {
-        await new Promise((resolve) => setTimeout(resolve, minFill - elapsed));
+      if (elapsed < minFill) await new Promise((r) => setTimeout(r, minFill - elapsed));
+
+      const fd = new FormData(form);
+      const token = await holeToken(platz);
+      if (!token) {
+        zeige("Die Sicherheitsprüfung konnte nicht geladen werden. Bitte die Seite neu laden und erneut versuchen.");
+        running = false; if (button) button.disabled = false;
+        return;
       }
-
-      const payload = new URLSearchParams();
-      new FormData(form).forEach((value, key) => {
-        if (typeof value === "string") payload.append(key, value);
+      const r = await anmelden({
+        email: String(fd.get("email") || ""), quelle: "formular", einwilligung: CONSENT_LABEL,
+        t: readyAt, token, honigtopf: String(fd.get(HONEYPOT_FIELD) || ""),
       });
-
-      try {
-        const response = await fetch(form.action, {
-          method: "POST",
-          headers: { Accept: "application/json" },
-          body: payload,
-        });
-        const data = await response.json().catch(() => ({}));
-
-        if (response.ok && data?.success !== false) {
-          showSuccess();
-        } else {
-          throw new Error(data?.error?.message ?? "Unbekannter Fehler");
-        }
-      } catch {
-        running = false;
-        if (button) button.disabled = false;
-        if (status) {
-          status.textContent =
-            "Da ist etwas schiefgelaufen. Bitte versuch es gleich noch einmal.";
-          status.hidden = false;
-        }
+      tokenVerbraucht(platz);
+      if (r.ok) {
+        form.hidden = true;
+        zeige("Fast geschafft. Bitte bestätige die Anmeldung über den Link in der E-Mail, die gleich bei dir ankommt.");
+      } else {
+        zeige(r.error || "Da ist etwas schiefgelaufen. Bitte versuch es gleich noch einmal.");
+        running = false; if (button) button.disabled = false;
       }
     });
   });

@@ -88,6 +88,7 @@ const { slug } = Astro.props;
         Anmeldung erst nach Bestätigung per E-Mail (Double Opt-In), Abmeldung jederzeit.
       </span>
     </label>
+    <div id="kommentar-turnstile"></div>
 
     <div class="flex items-center justify-between gap-4">
       <p id="kommentar-status" class="text-xs text-[var(--color-muted-foreground)]/70" role="status" aria-live="polite"></p>
@@ -119,7 +120,7 @@ const { slug } = Astro.props;
 </style>
 
 <script>
-  import { NEWSLETTER_ENDPOINT, EMAIL_FIELD, CONSENT_FIELD } from "../newsletter";
+  import { vorbereiten, holeToken, tokenVerbraucht, anmelden } from "../newsletter";
 
   const root = document.getElementById("kommentare");
   if (root) {
@@ -294,22 +295,20 @@ const { slug } = Astro.props;
     // Gleiche EmailOctopus-Liste wie das Newsletter-Formular (Double Opt-In),
     // zentral gepflegt in src/newsletter.ts.
 
+    // Newsletter-Opt-in im Kommentarformular: gleicher Weg wie das
+    // Newsletter-Formular (Worker, Turnstile, Double Opt-In), siehe src/newsletter.ts.
+    const tsPlatz = document.getElementById("kommentar-turnstile");
+    const nlHaken = form.querySelector('input[name="newsletter"]');
+    const nlText = nlHaken?.closest("label")?.textContent?.replace(/\s+/g, " ").trim() || "Newsletter-Opt-in im Kommentarformular";
+    nlHaken?.addEventListener("change", () => { if (nlHaken.checked && tsPlatz) vorbereiten(tsPlatz); });
+
     async function newsletterAnmelden(email) {
-      try {
-        const res = await fetch(NEWSLETTER_ENDPOINT, {
-          method: "POST",
-          headers: { Accept: "application/json" },
-          body: new URLSearchParams({
-            [EMAIL_FIELD]: email,
-            // Die Checkbox im Kommentarformular IST die Einwilligung.
-            [CONSENT_FIELD]: "on",
-          }),
-        });
-        const d = await res.json().catch(() => ({}));
-        return res.ok && d?.success !== false;
-      } catch {
-        return false;
-      }
+      if (!tsPlatz) return false;
+      const token = await holeToken(tsPlatz);
+      if (!token) return false;
+      const r = await anmelden({ email: String(email || ""), quelle: "kommentar", einwilligung: nlText, t: loadedAt, token });
+      tokenVerbraucht(tsPlatz);
+      return r.ok;
     }
 
     form.addEventListener("submit", async (e) => {

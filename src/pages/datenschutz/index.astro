@@ -91,6 +91,28 @@ import Layout from "../../layouts/Layout.astro";
           tatsächlich von dir stammt.
         </p>
         <p class="mt-3">
+          Zum Schutz vor automatisierten Anmeldungen geht deine Anmeldung zuerst
+          an meinen eigenen Server bei
+          <span class="text-[var(--color-foreground)]/80">Cloudflare</span>.
+          Sobald du das Anmeldeformular berührst, lädt
+          <span class="text-[var(--color-foreground)]/80">Cloudflare Turnstile</span>
+          eine Prüfung, ob ein Mensch das Formular bedient. Dabei verarbeitet
+          Cloudflare deine IP-Adresse und technische Merkmale deines Browsers;
+          Werbe- oder Analyse-Cookies setzt Turnstile nicht. Erst nach bestandener
+          Prüfung gebe ich deine Adresse an EmailOctopus weiter.
+        </p>
+        <p class="mt-3">
+          Um deine Einwilligung belegen zu können, speichere ich zur Anmeldung
+          E-Mail-Adresse, Zeitpunkt, IP-Adresse, Browserkennung und den Text, dem
+          du zugestimmt hast, in Cloudflare D1 innerhalb der EU — solange du
+          angemeldet bist und danach drei Jahre. Abgelehnte Anmeldeversuche
+          (etwa von Bots) lösche ich nach 30 Tagen. Rechtsgrundlage dafür ist
+          meine Pflicht, die Einwilligung nachweisen zu können, und mein
+          berechtigtes Interesse an einem Verteiler ohne missbräuchliche
+          Eintragungen (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;c und f, Art.&nbsp;7
+          Abs.&nbsp;1 DSGVO).
+        </p>
+        <p class="mt-3">
           Rechtsgrundlage ist deine Einwilligung (Art.&nbsp;6 Abs.&nbsp;1
           lit.&nbsp;a DSGVO). Du kannst den Newsletter
           <span class="text-[var(--color-foreground)]/80">jederzeit abbestellen</span> —
