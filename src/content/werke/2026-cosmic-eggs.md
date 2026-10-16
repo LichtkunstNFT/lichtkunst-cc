@@ -30,8 +30,14 @@ zum Themenjahr der Stadt Halle, „Stadt, Licht, Energie".
 
 ## Material
 
-Schiefer, zum Teil aus Frankreich. Sole vom Gradierwerk in
-Bad Dürrenberg, wo sie über Wände aus Schwarzdornreisig rieselt und in der
+Schiefer, zum Teil aus Lourdes in den Pyrenäen. Einige der flachen,
+eiförmigen Steine auf den Bildern sind Flusskiesel aus dem Gave de Pau, der
+in Lourdes unmittelbar an der Grotte von Massabielle vorbeifließt. In dieser
+Grotte sah die heilige Bernadette Soubirous 1858 Wasser aus dem Fels quellen;
+seitdem pilgern unzählige Menschen dorthin, um aus diesem Wasser Kraft zu
+schöpfen.
+
+Sole vom Gradierwerk in Bad Dürrenberg, wo sie über Wände aus Schwarzdornreisig rieselt und in der
 Luft verdunstet — Salz aus den Lagern eines längst eingedampften Meeres.
 
 ## Wie das Muster entsteht
@@ -118,7 +124,10 @@ Das Vorangehende lässt sich überprüfen. Das Folgende ist meine Deutung.
 
 Salz verbindet für mich Körper, Meer und Kosmos. Schweiß und Tränen sind
 Salzwasser wie der Urozean; die Heilsole aus Bad Dürrenberg ist ein altes,
-eingedampftes Meer. Die Eiform steht für den Anfang — das kosmische Ei, aus
+eingedampftes Meer. Schiefer und Kiesel kommen aus der Nähe einer Quelle, an
+der Menschen seit mehr als hundertfünfzig Jahren Kraft suchen. Ob der Fluss,
+aus dem die Kiesel stammen, etwas von diesem Wasser mit sich führt, weiß ich
+nicht; der Gedanke gehört für mich zur Arbeit. Die Eiform steht für den Anfang — das kosmische Ei, aus
 dem in vielen Schöpfungsmythen die Welt hervorgeht. Walter Russell hat
 behauptet, dass alles Licht ist, Materie nur Licht in einer bestimmten
 Bewegung. Beweisen kann ich das nicht. Was die Tafeln zeigen, ist der

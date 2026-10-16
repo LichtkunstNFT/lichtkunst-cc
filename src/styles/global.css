@@ -1,88 +1,41 @@
 @import "tailwindcss";
 
 /* ─── Schriften, selbst ausgeliefert (seit 2026-10-02) ───
- * Keine Verbindung zu Google Fonts oder Fontshare. Cormorant, Schibsted
+ * Keine Verbindung zu Google Fonts oder Fontshare. Instrument Serif (seit
+ * 2026-10-16, vorher Cormorant), Schibsted
  * Grotesk und Geist Mono stehen
  * unter der SIL Open Font License (Lizenztexte in /fonts/). Der Browser lädt
  * eine Datei nur, wenn Zeichen aus ihrem unicode-range gebraucht werden. */
 @font-face {
-  font-family: "Cormorant";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 300;
-  src: url("/fonts/cormorant-latin-300-normal.woff2") format("woff2");
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: "Cormorant";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 300;
-  src: url("/fonts/cormorant-latin-ext-300-normal.woff2") format("woff2");
-  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
-}
-@font-face {
-  font-family: "Cormorant";
+  font-family: "Instrument Serif";
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url("/fonts/cormorant-latin-400-normal.woff2") format("woff2");
+  src: url("/fonts/instrument-serif-latin-400-normal.woff2") format("woff2");
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 @font-face {
-  font-family: "Cormorant";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src: url("/fonts/cormorant-latin-ext-400-normal.woff2") format("woff2");
-  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
-}
-@font-face {
-  font-family: "Cormorant";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 500;
-  src: url("/fonts/cormorant-latin-500-normal.woff2") format("woff2");
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: "Cormorant";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 500;
-  src: url("/fonts/cormorant-latin-ext-500-normal.woff2") format("woff2");
-  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
-}
-@font-face {
-  font-family: "Cormorant";
-  font-style: italic;
-  font-display: swap;
-  font-weight: 300;
-  src: url("/fonts/cormorant-latin-300-italic.woff2") format("woff2");
-  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face {
-  font-family: "Cormorant";
-  font-style: italic;
-  font-display: swap;
-  font-weight: 300;
-  src: url("/fonts/cormorant-latin-ext-300-italic.woff2") format("woff2");
-  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
-}
-@font-face {
-  font-family: "Cormorant";
+  font-family: "Instrument Serif";
   font-style: italic;
   font-display: swap;
   font-weight: 400;
-  src: url("/fonts/cormorant-latin-400-italic.woff2") format("woff2");
+  src: url("/fonts/instrument-serif-latin-400-italic.woff2") format("woff2");
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 @font-face {
-  font-family: "Cormorant";
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/fonts/instrument-serif-latin-ext-400-normal.woff2") format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: "Instrument Serif";
   font-style: italic;
   font-display: swap;
   font-weight: 400;
-  src: url("/fonts/cormorant-latin-ext-400-italic.woff2") format("woff2");
+  src: url("/fonts/instrument-serif-latin-ext-400-italic.woff2") format("woff2");
   unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
 }
 @font-face {
@@ -151,7 +104,7 @@
   --color-schiefer-tief: oklch(0.26 0.02 250);
   --color-salz: oklch(0.94 0.01 240);
 
-  --font-display: "Cormorant", serif;
+  --font-display: "Instrument Serif", Georgia, serif;
   --font-body: "Schibsted Grotesk", system-ui, sans-serif;
   --font-mono: "Geist Mono", monospace;
 
@@ -190,15 +143,15 @@
 /* ─── Typography ─── */
 .heading-display {
   font-family: var(--font-display);
-  /* Cormorant Light: filigranste verfügbare Stärke ist 300 */
-  font-weight: 300;
-  letter-spacing: 0.05em;
+  /* Instrument Serif hat nur einen Schnitt (400); schmal, daher wenig Sperrung */
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 .heading-serif {
   font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 /* ─── Glow effects (light-art signature) ─── */
@@ -355,7 +308,7 @@
 /* ─── Abschnittsüberschriften im Werk- und Journaltext (2026-10-02) ───
  * Die Tailwind-Variante [&_h2]:heading-serif erzeugt kein CSS (eigene Klasse,
  * keine Utility). Deshalb standen diese Überschriften bisher in der
- * Fließschrift. Hier ausdrücklich in Cormorant, wie Branding.md §3 vorsieht. */
+ * Fließschrift. Hier ausdrücklich in der Titelschrift (--font-display), wie Branding.md §3 vorsieht. */
 .werk-text h2,
 .journal-text h2 {
   font-family: var(--font-display);
@@ -573,7 +526,7 @@ a:hover .pfeil-zeig, a:focus-visible .pfeil-zeig { animation: pfeil-zeig 1.2s ea
 }
 .nft-box-kopf { display: flex; align-items: center; gap: 0.6rem; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.75rem; }
 .nft-box-kopf .hex { width: 0.7rem; height: 0.7rem; }
-.nft-box-titel { font-family: "Cormorant", serif; font-size: 1.6rem; line-height: 1.2; color: var(--color-foreground); margin-bottom: 0.6rem; }
+.nft-box-titel { font-family: var(--font-display); font-size: 1.6rem; line-height: 1.2; color: var(--color-foreground); margin-bottom: 0.6rem; }
 .nft-box-text { font-size: 0.9rem; line-height: 1.6; color: var(--color-muted-foreground); margin-bottom: 1.25rem; }
 .nft-box-text strong { color: var(--color-foreground); }
 .nft-box-hilfe { font-size: 0.85rem; color: var(--color-muted-foreground); text-decoration: underline; text-underline-offset: 4px; }
@@ -586,3 +539,7 @@ a:hover .pfeil-zeig, a:focus-visible .pfeil-zeig { animation: pfeil-zeig 1.2s ea
   border-left: 2px solid color-mix(in oklch, var(--color-accent) 55%, transparent);
 }
 .werk-text .nft-hinweis .hex { width: 0.55rem; height: 0.6rem; margin-right: 0.5rem; vertical-align: 0.05em; }
+
+/* Instrument Serif läuft schmaler als Cormorant: Abschnittsüberschriften etwas größer (2026-10-16) */
+.werk-text h2,
+.journal-text h2 { font-size: 1.75rem; line-height: 1.2; }
