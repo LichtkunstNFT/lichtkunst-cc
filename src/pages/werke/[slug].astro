@@ -24,7 +24,7 @@ const datum = werk.data.datum.toLocaleDateString("de-DE", {
 });
 ---
 
-<Layout title={`${werk.data.titel} – Lichtkunst`} description={werk.data.beschreibung_kurz}>
+<Layout title={`${werk.data.titel} – Lichtkunst`} description={werk.data.beschreibung_kurz} image={werk.data.bild} type="article">
   <article class={`max-w-3xl mx-auto px-6 py-16 ${werk.data.tags?.includes("schiefer") ? "material-schiefer" : ""} ${werk.id === "2023-gegen-die-schwerkraft" ? "werk-gesperrt" : ""}`}>
     {werk.data.bild && (
       <div class="mb-10 flex justify-center">
