@@ -10,8 +10,10 @@
 // Einzige Ausnahme: der freiwillige Widerspruch auf /datenschutz legt
 // "leserspur-aus" im localStorage ab — auf ausdrücklichen Wunsch des Lesers.
 //
-// Läuft nicht bei: Global Privacy Control, Do Not Track, automatisierten
-// Browsern, Seiten unter /intern/.
+// Läuft nicht bei: Do Not Track, automatisierten Browsern, Seiten unter /intern/,
+// und wenn auf /datenschutz widersprochen wurde. Global Privacy Control wird
+// seit 20.10.2026 nicht mehr ausgewertet (Brave sendet es von Haus aus;
+// Entscheidung Istvan).
 // Gesendet wird erst beim Verlassen (sendBeacon) — die Seite lädt nicht langsamer.
 ---
 
@@ -19,7 +21,7 @@
 (function () {
   try {
     var n = navigator, w = window, d = document, L = location;
-    if (n.globalPrivacyControl || n.doNotTrack === "1" || n.webdriver || !n.sendBeacon) return;
+    if (n.doNotTrack === "1" || n.webdriver || !n.sendBeacon) return;
     try { if (localStorage.getItem("leserspur-aus") === "1") return; } catch (e) {}
     if (/^\/intern(\/|$)/.test(L.pathname)) return;
 
