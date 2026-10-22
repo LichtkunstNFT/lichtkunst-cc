@@ -417,6 +417,72 @@ async function newsletterAnmelden(request, env, url) {
   return nlFehler(502, "Die Anmeldung ist gerade nicht möglich. Bitte später erneut versuchen.");
 }
 
+// ---------------------------------------------------------------------------
+// Dashboard-Quellen (Knopf „Jetzt aktualisieren" im Lichtkunst Dashboard).
+// GET /api/dashboard-quellen, nur mit Secret DASHBOARD_SCHLUESSEL.
+// Liefert die Leserspur-Zeilen (enthalten keine IP, keine Kennung) und die
+// Kontaktzahlen aus EmailOctopus — nur Zahlen, nie Adressen.
+// ---------------------------------------------------------------------------
+async function eoZaehlen(env) {
+  const key = env.EMAILOCTOPUS_API_KEY;
+  if (!key) return { quelle: "api", status: "kein_schluessel" };
+  const base = "https://api.emailoctopus.com", h = { Authorization: "Bearer " + key };
+  const hole = async (pfad) => {
+    for (let i = 0; i < 3; i++) {
+      const r = await fetch(base + pfad, { headers: h });
+      if (r.status === 200) return r.json();
+      if (![429, 502, 503, 504].includes(r.status)) throw new Error("http_" + r.status);
+      await new Promise((ok) => setTimeout(ok, 1500 * (i + 1)));
+    }
+    throw new Error("http_503");
+  };
+  try {
+    const liste = await hole("/lists/" + NL_LISTE);
+    const jetzt = Date.now(), kontakte = {};
+    for (const status of ["subscribed", "pending", "unsubscribed"]) {
+      let n = 0, neu7 = 0, neu30 = 0, nach = null;
+      for (let seite = 0; seite < 30; seite++) {
+        const d = await hole("/lists/" + NL_LISTE + "/contacts?status=" + status + "&limit=100" + (nach ? "&starting_after=" + encodeURIComponent(nach) : ""));
+        for (const k of d.data || []) {
+          n++;
+          const alt = (jetzt - Date.parse(k.created_at || "")) / 86400000;
+          if (alt < 7) neu7++;
+          if (alt < 30) neu30++;
+        }
+        nach = d.paging && d.paging.next && d.paging.next.starting_after;
+        if (!nach) break;
+      }
+      kontakte[status] = { anzahl: n, neu_7: neu7, neu_30: neu30 };
+    }
+    return { quelle: "api", status: "ok", listenname: liste.name || null, kontakte };
+  } catch (e) {
+    return { quelle: "api", status: String((e && e.message) || "fehler").slice(0, 40) };
+  }
+}
+
+async function dashboardQuellen(request, env) {
+  const soll = env.DASHBOARD_SCHLUESSEL;
+  if (!soll) return json({ ok: false, error: "DASHBOARD_SCHLUESSEL ist im Worker noch nicht eingerichtet." }, 503);
+  const auth = request.headers.get("Authorization") || "";
+  const ist = auth.startsWith("Bearer ") ? auth.slice(7).trim() : "";
+  if (!ist || !lsGleich(ist, soll)) return json({ ok: false, error: "Der Schlüssel passt nicht." }, 401);
+  await ensureLeserspur(env);
+  const { results } = await env.DB.prepare(
+    "SELECT " + LS_SPALTEN + " FROM leserspur WHERE ts >= ? ORDER BY ts DESC LIMIT 50000"
+  ).bind(Date.now() - 400 * 86400000).all();
+  const zeilen = (results || []).map((r) => ({
+    ...r,
+    abschnitte: lsJson(r.abschnitte, []),
+    bilder: lsJson(r.bilder, {}),
+    klicks: lsJson(r.klicks, []),
+    formular: lsJson(r.formular, []),
+  }));
+  const newsletter = await eoZaehlen(env);
+  return new Response(JSON.stringify({ ok: true, erstellt: new Date().toISOString(), zeilen, newsletter }), {
+    headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -435,6 +501,10 @@ export default {
     }
     if (url.pathname === "/api/leserspur") {
       if (request.method === "POST") return leserspurSpeichern(request, env, url);
+      return new Response("Method not allowed", { status: 405 });
+    }
+    if (url.pathname === "/api/dashboard-quellen") {
+      if (request.method === "GET") return dashboardQuellen(request, env);
       return new Response("Method not allowed", { status: 405 });
     }
     if (url.pathname === "/api/statistik") {
