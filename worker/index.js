@@ -419,9 +419,11 @@ async function newsletterAnmelden(request, env, url) {
 
 // ---------------------------------------------------------------------------
 // Dashboard-Quellen (Knopf „Jetzt aktualisieren" im Lichtkunst Dashboard).
-// GET /api/dashboard-quellen, nur mit Secret DASHBOARD_SCHLUESSEL.
-// Liefert die Leserspur-Zeilen (enthalten keine IP, keine Kennung) und die
-// Kontaktzahlen aus EmailOctopus — nur Zahlen, nie Adressen.
+// GET /api/dashboard-quellen, öffentlich lesbar (Entscheidung Istvan
+// 22.10.2026: der Cloud-Lauf des Knopfs darf keinen Schlüssel mitschicken).
+// Liefert die Leserspur-Zeilen (keine IP, keine Kennung) und die Kontaktzahlen
+// aus EmailOctopus — nur Zahlen, nie Adressen. 60 Sekunden zwischengespeichert,
+// damit häufige Abrufe EmailOctopus nicht belasten.
 // ---------------------------------------------------------------------------
 async function eoZaehlen(env) {
   const key = env.EMAILOCTOPUS_API_KEY;
@@ -460,12 +462,13 @@ async function eoZaehlen(env) {
   }
 }
 
-async function dashboardQuellen(request, env) {
-  const soll = env.DASHBOARD_SCHLUESSEL;
-  if (!soll) return json({ ok: false, error: "DASHBOARD_SCHLUESSEL ist im Worker noch nicht eingerichtet." }, 503);
-  const auth = request.headers.get("Authorization") || "";
-  const ist = auth.startsWith("Bearer ") ? auth.slice(7).trim() : "";
-  if (!ist || !lsGleich(ist, soll)) return json({ ok: false, error: "Der Schlüssel passt nicht." }, 401);
+async function dashboardQuellen(request, env, ctx) {
+  const cache = typeof caches !== "undefined" ? caches.default : null;
+  const schluessel = new Request(new URL(request.url).origin + "/api/dashboard-quellen", { method: "GET" });
+  if (cache) {
+    const treffer = await cache.match(schluessel);
+    if (treffer) return treffer;
+  }
   await ensureLeserspur(env);
   const { results } = await env.DB.prepare(
     "SELECT " + LS_SPALTEN + " FROM leserspur WHERE ts >= ? ORDER BY ts DESC LIMIT 50000"
@@ -478,13 +481,15 @@ async function dashboardQuellen(request, env) {
     formular: lsJson(r.formular, []),
   }));
   const newsletter = await eoZaehlen(env);
-  return new Response(JSON.stringify({ ok: true, erstellt: new Date().toISOString(), zeilen, newsletter }), {
-    headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store" },
+  const antwort = new Response(JSON.stringify({ ok: true, erstellt: new Date().toISOString(), zeilen, newsletter }), {
+    headers: { "content-type": "application/json; charset=utf-8", "cache-control": "public, max-age=60", "x-robots-tag": "noindex" },
   });
+  if (cache && ctx && ctx.waitUntil) ctx.waitUntil(cache.put(schluessel, antwort.clone()));
+  return antwort;
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.pathname === "/api/comments") {
       if (request.method === "GET") return listComments(url, env);
@@ -504,7 +509,7 @@ export default {
       return new Response("Method not allowed", { status: 405 });
     }
     if (url.pathname === "/api/dashboard-quellen") {
-      if (request.method === "GET") return dashboardQuellen(request, env);
+      if (request.method === "GET") return dashboardQuellen(request, env, ctx);
       return new Response("Method not allowed", { status: 405 });
     }
     if (url.pathname === "/api/statistik") {
