@@ -49,7 +49,7 @@ const zitate = [
 <Layout>
   <HeroBanner title="Lichtkunst" subtitle="istvan seidel" compact />
 
-  <section class="max-w-2xl mx-auto px-6 pt-8 pb-0 text-center">
+  <section class="max-w-2xl mx-auto px-6 pt-8 pb-0 text-center" data-abschnitt-anfang="Kopf und Zitat">
     <blockquote id="random-zitat">
       <p
         class="font-display italic text-sm md:text-base leading-relaxed text-[var(--color-muted-foreground)]/85"
@@ -73,7 +73,7 @@ const zitate = [
   {aktuellesWerk && (
     <section class="mt-4">
       <div class="max-w-6xl mx-auto px-6 pt-1 pb-12">
-        <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-6 text-center animate-pulse-glow">
+        <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-6 text-center animate-pulse-glow" data-abschnitt="Aktuelles Werk">
           Aktuell
         </div>
 
@@ -128,7 +128,7 @@ const zitate = [
 
         {weitereWerke.length > 0 && (
           <>
-            <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-muted-foreground)]/80 mt-16 mb-6 text-center">
+            <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-muted-foreground)]/80 mt-16 mb-6 text-center" data-abschnitt="Weitere Werke">
               Weitere Werke
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto">
@@ -170,7 +170,7 @@ const zitate = [
           </>
         )}
 
-        <NewsletterForm />
+        <div data-abschnitt="Newsletter"><NewsletterForm /></div>
       </div>
     </section>
   )}
@@ -178,7 +178,7 @@ const zitate = [
   {blogEintraege.length > 0 && (
     <section class="border-t border-[var(--color-border)]/60">
       <div class="max-w-3xl mx-auto px-6 py-14">
-        <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-8 text-center">
+        <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-8 text-center" data-abschnitt="Aus dem Journal">
           Aus dem Journal
         </div>
 
@@ -208,7 +208,7 @@ const zitate = [
 
   <section class="border-t border-[var(--color-border)]/60">
     <div class="max-w-2xl mx-auto px-6 py-14 text-center">
-      <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-4">
+      <div class="text-[0.7rem] tracking-[0.3em] uppercase text-[var(--color-accent)] mb-4" data-abschnitt="NFT-Sammlungen">
         NFT-Sammlungen
       </div>
       <h2 class="heading-serif text-xl md:text-2xl text-[var(--color-foreground)] mb-4">

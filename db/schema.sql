@@ -27,7 +27,8 @@ CREATE TABLE IF NOT EXISTS contacts (
 CREATE TABLE IF NOT EXISTS leserspur (
   id TEXT PRIMARY KEY, ts INTEGER NOT NULL, tag TEXT NOT NULL, pfad TEXT NOT NULL,
   kanal TEXT, ref TEXT, ref_intern TEXT, geraet TEXT, sekunden INTEGER, scroll INTEGER,
-  abschnitt_max INTEGER, abschnitt_ende INTEGER, abschnitte TEXT, bilder TEXT, klicks TEXT, formular TEXT
+  abschnitt_max INTEGER, abschnitt_ende INTEGER, abschnitte TEXT, bilder TEXT, klicks TEXT, formular TEXT,
+  eigen INTEGER  -- 1 = Browser des Betreibers (über ?ich=1 selbst markiert); zieht der Worker bei Bedarf nach
 );
 CREATE INDEX IF NOT EXISTS leserspur_ts ON leserspur(ts);
 

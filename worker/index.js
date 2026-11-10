@@ -169,6 +169,8 @@ async function addContact(request, env) {
 // GET  /api/statistik liefert die Rohdaten nur mit Schlüssel (Secret
 // STATISTIK_SCHLUESSEL, im Cloudflare-Dashboard hinterlegt).
 // Gespeichert werden weder IP noch User-Agent. Aufbewahrung 13 Monate.
+// Spalte "eigen" (seit 11.11.2026): 1, wenn der Betreiber seinen Browser über
+// ?ich=1 selbst markiert hat. Die Auswertung kann eigene Besuche so abtrennen.
 // ---------------------------------------------------------------------------
 const LS_MAX_BODY = 8192;
 const LS_HOSTS = new Set(["lichtkunst.cc", "www.lichtkunst.cc"]);
@@ -179,15 +181,23 @@ const LS_SPALTEN =
   "abschnitt_max, abschnitt_ende, abschnitte, bilder, klicks, formular";
 
 let lsSchemaGeprueft = false;
+let lsHatEigen = false;
+const lsSpalten = () => LS_SPALTEN + (lsHatEigen ? ", eigen" : "");
 async function ensureLeserspur(env) {
   if (lsSchemaGeprueft) return;
   await env.DB.prepare(
     "CREATE TABLE IF NOT EXISTS leserspur (" +
       "id TEXT PRIMARY KEY, ts INTEGER NOT NULL, tag TEXT NOT NULL, pfad TEXT NOT NULL, " +
       "kanal TEXT, ref TEXT, ref_intern TEXT, geraet TEXT, sekunden INTEGER, scroll INTEGER, " +
-      "abschnitt_max INTEGER, abschnitt_ende INTEGER, abschnitte TEXT, bilder TEXT, klicks TEXT, formular TEXT)"
+      "abschnitt_max INTEGER, abschnitt_ende INTEGER, abschnitte TEXT, bilder TEXT, klicks TEXT, formular TEXT, " +
+      "eigen INTEGER)"
   ).run();
   await env.DB.prepare("CREATE INDEX IF NOT EXISTS leserspur_ts ON leserspur(ts)").run();
+  // Bestehende Tabelle: Spalte nachziehen. Scheitert das (Spalte gibt es schon
+  // oder die Datenbank lehnt ab), entscheidet die Probe darunter, ob mit oder
+  // ohne die Spalte gearbeitet wird. Die Zählung läuft in beiden Fällen weiter.
+  try { await env.DB.prepare("ALTER TABLE leserspur ADD COLUMN eigen INTEGER").run(); } catch {}
+  try { await env.DB.prepare("SELECT eigen FROM leserspur LIMIT 1").all(); lsHatEigen = true; } catch { lsHatEigen = false; }
   lsSchemaGeprueft = true;
 }
 
@@ -209,6 +219,7 @@ function lsBereinigen(d) {
     ref: lsStr(d.r, 80),
     ref_intern: lsStr(d.ri, 120),
     geraet: d.g === "m" ? "m" : "d",
+    eigen: d.e === 1 ? 1 : 0,
     sekunden: lsInt(d.t, 0, 7200),
     scroll: lsInt(d.s, 0, 100),
     abschnitt_max: lsInt(d.m, 0, 50),
@@ -250,16 +261,18 @@ async function leserspurSpeichern(request, env, url) {
     const z = lsBereinigen(roh);
     if (!z) return fertig();
     await ensureLeserspur(env);
+    const werte = [z.id, z.ts, z.tag, z.pfad, z.kanal, z.ref, z.ref_intern, z.geraet, z.sekunden, z.scroll,
+      z.abschnitt_max, z.abschnitt_ende, JSON.stringify(z.abschnitte), JSON.stringify(z.bilder),
+      JSON.stringify(z.klicks), JSON.stringify(z.formular)];
+    if (lsHatEigen) werte.push(z.eigen);
     await env.DB.prepare(
-      "INSERT INTO leserspur (id, " + LS_SPALTEN + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) " +
+      "INSERT INTO leserspur (id, " + lsSpalten() + ") VALUES (" + werte.map(() => "?").join(", ") + ") " +
         "ON CONFLICT(id) DO UPDATE SET sekunden = excluded.sekunden, scroll = excluded.scroll, " +
         "abschnitt_max = excluded.abschnitt_max, abschnitt_ende = excluded.abschnitt_ende, " +
         "abschnitte = excluded.abschnitte, bilder = excluded.bilder, klicks = excluded.klicks, " +
         "formular = excluded.formular WHERE leserspur.pfad = excluded.pfad"
     )
-      .bind(z.id, z.ts, z.tag, z.pfad, z.kanal, z.ref, z.ref_intern, z.geraet, z.sekunden, z.scroll,
-        z.abschnitt_max, z.abschnitt_ende, JSON.stringify(z.abschnitte), JSON.stringify(z.bilder),
-        JSON.stringify(z.klicks), JSON.stringify(z.formular))
+      .bind(...werte)
       .run();
     // Aufbewahrung: gelegentlich alte Zeilen löschen (Datenschutzerklärung: 13 Monate).
     if (Math.random() < 0.01) {
@@ -290,7 +303,7 @@ async function statistik(request, env, url) {
   const tage = lsInt(url.searchParams.get("tage") || 30, 1, 400);
   await ensureLeserspur(env);
   const { results } = await env.DB.prepare(
-    "SELECT " + LS_SPALTEN + " FROM leserspur WHERE ts >= ? ORDER BY ts DESC LIMIT 50000"
+    "SELECT " + lsSpalten() + " FROM leserspur WHERE ts >= ? ORDER BY ts DESC LIMIT 50000"
   ).bind(Date.now() - tage * 86400000).all();
   const zeilen = (results || []).map((r) => ({
     ...r,
@@ -471,7 +484,7 @@ async function dashboardQuellen(request, env, ctx) {
   }
   await ensureLeserspur(env);
   const { results } = await env.DB.prepare(
-    "SELECT " + LS_SPALTEN + " FROM leserspur WHERE ts >= ? ORDER BY ts DESC LIMIT 50000"
+    "SELECT " + lsSpalten() + " FROM leserspur WHERE ts >= ? ORDER BY ts DESC LIMIT 50000"
   ).bind(Date.now() - 400 * 86400000).all();
   const zeilen = (results || []).map((r) => ({
     ...r,

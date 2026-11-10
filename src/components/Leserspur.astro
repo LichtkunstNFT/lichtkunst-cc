@@ -7,8 +7,17 @@
 //
 // Bewusst NICHT: keine Cookies, nichts im Browser gespeichert, keine IP,
 // keine Wiedererkennung zwischen Besuchen, keine volle Herkunfts-URL.
-// Einzige Ausnahme: der freiwillige Widerspruch auf /datenschutz legt
-// "leserspur-aus" im localStorage ab — auf ausdrücklichen Wunsch des Lesers.
+// Zwei Ausnahmen, beide nur auf ausdrücklichen eigenen Wunsch:
+// - Der freiwillige Widerspruch auf /datenschutz legt "leserspur-aus" im
+//   localStorage ab.
+// - Der Betreiber markiert seinen eigenen Browser, indem er eine Seite mit
+//   ?ich=1 öffnet ("leserspur-eigen" im localStorage; ?ich=0 nimmt es zurück).
+//   Seine Besuche werden weiter gezählt, tragen aber das Feld e: 1, damit die
+//   Auswertung sie abtrennen kann. Leser bekommen diesen Vermerk nie.
+//
+// Abschnitte: Trägt eine Seite Marken data-abschnitt="Name", gelten diese als
+// Abschnitte (Startseite); sonst die Überschriften h2. Der Teil vor der ersten
+// Marke heißt "Einleitung" oder so, wie data-abschnitt-anfang es vorgibt.
 //
 // Läuft nicht bei: Do Not Track, automatisierten Browsern, Seiten unter /intern/,
 // und wenn auf /datenschutz widersprochen wurde. Global Privacy Control wird
@@ -27,6 +36,23 @@
 
     // --- Herkunft ---------------------------------------------------------
     var q = new URLSearchParams(L.search);
+    // Eigene Besuche markieren (nur der Betreiber öffnet ?ich=1 bzw. ?ich=0).
+    var eigen = 0;
+    try {
+      var ich = q.get("ich");
+      if (ich === "1") localStorage.setItem("leserspur-eigen", "1");
+      else if (ich === "0") localStorage.removeItem("leserspur-eigen");
+      eigen = localStorage.getItem("leserspur-eigen") === "1" ? 1 : 0;
+      if (ich === "1" || ich === "0") {
+        var hinweis = d.createElement("div");
+        hinweis.setAttribute("role", "status");
+        hinweis.textContent = eigen ? "Dieser Browser ist jetzt als eigener markiert. Deine Besuche zählen weiter, getrennt von denen der Leser."
+          : "Die Markierung ist aufgehoben. Besuche aus diesem Browser zählen wieder wie die der Leser.";
+        hinweis.style.cssText = "position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;max-width:min(32rem,90vw);padding:12px 16px;border-radius:4px;background:#111;color:#f5f5f0;border:1px solid #c8922a;font:14px/1.4 system-ui,sans-serif;text-align:center";
+        d.body.appendChild(hinweis);
+        setTimeout(function () { if (hinweis.parentNode) hinweis.parentNode.removeChild(hinweis); }, 8000);
+      }
+    } catch (e) {}
     var k = (q.get("k") || q.get("utm_source") || "").toLowerCase().replace(/[^a-z0-9-]/g, "").slice(0, 30);
     var ref = "", refIntern = "";
     try {
@@ -39,7 +65,7 @@
     // Kennzeichnung aus der Adresszeile nehmen: ein weitergegebener Link
     // soll nicht noch einmal als "Mail" oder "Pinterest" zählen.
     var weg = [];
-    q.forEach(function (_, key) { if (key === "k" || key.indexOf("utm_") === 0) weg.push(key); });
+    q.forEach(function (_, key) { if (key === "k" || key === "ich" || key.indexOf("utm_") === 0) weg.push(key); });
     if (weg.length) {
       weg.forEach(function (key) { q.delete(key); });
       var rest = q.toString();
@@ -48,8 +74,12 @@
 
     // --- Abschnitte und Bilder -------------------------------------------
     var root = d.querySelector("main article") || d.querySelector("main") || d.body;
-    var heads = [].slice.call(root.querySelectorAll("h2"));
-    var namen = ["Einleitung"].concat(heads.map(function (h) { return (h.textContent || "").replace(/\s+/g, " ").trim().slice(0, 60); }));
+    var marken = [].slice.call(root.querySelectorAll("[data-abschnitt]"));
+    var heads = marken.length ? marken : [].slice.call(root.querySelectorAll("h2"));
+    var anfang = root.querySelector("[data-abschnitt-anfang]");
+    var namen = [anfang ? anfang.getAttribute("data-abschnitt-anfang").slice(0, 60) : "Einleitung"].concat(heads.map(function (h) {
+      return (h.getAttribute("data-abschnitt") || h.textContent || "").replace(/\s+/g, " ").trim().slice(0, 60);
+    }));
     var abs = namen.map(function () { return 0; });
     var bilderEl = [].slice.call(root.querySelectorAll("img")).slice(0, 24);
     var bilder = {};
@@ -146,7 +176,7 @@
       tiefe();
       var daten = {
         v: 1, id: id, p: L.pathname.slice(0, 160), k: k, r: ref, ri: refIntern,
-        g: w.innerWidth < 768 ? "m" : "d", t: sek, s: Math.round(maxPct),
+        g: w.innerWidth < 768 ? "m" : "d", e: eigen, t: sek, s: Math.round(maxPct),
         a: namen.map(function (nm, i) { return [nm, abs[i]]; }),
         x: aktuell, m: maxAbs, b: bilder, c: klicks, f: formular
       };
