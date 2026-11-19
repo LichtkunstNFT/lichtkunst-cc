@@ -1,14 +1,36 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+
+// Quelle: Vita im BBK-Profil (von Istvan am 01.11.2026 selbst eingetragen).
+const vita: [string, string][] = [
+  ["1972", "geboren"],
+  ["2002", "Diplom Bildende Kunst, Burg Giebichenstein Kunsthochschule Halle"],
+  ["", "Gründer der Produzentengalerie Halle"],
+  ["", 'Mitglied im <a href="https://www.bbk-sachsenanhalt.de/author/seidel-istvan/" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline underline-offset-4">BBK Sachsen-Anhalt</a>'],
+  ["", "lebt und arbeitet als Lichtkünstler in Halle (Saale)"],
+];
+const ausstellungen: [string, string, string?][] = [
+  ["2026", "Cosmic Eggs, Lichtinstallation, Offene Ateliers Sachsen-Anhalt und Kulturelles Themenjahr Halle, Coworking am Klaustor, Halle (Saale)", "/werke/2026-cosmic-eggs/"],
+  ["2018", "Einzelausstellung, Galerie Gaia, Dresden"],
+  ["2015", "„Mephisto“, Neues Theater Halle"],
+  ["2015", "„Wo sind die Elefanten?“, Lichthaus Halle, mit raumkultur e.V."],
+  ["2011", "„das Frühlingsopfer“, Stuttgart"],
+  ["2009", "Art Tower Berlin, mit der Produzentengalerie Halle"],
+];
 ---
 
-<Layout title="Über – Istvan Seidel Lichtkunst" description="Über Istvan Seidel — Lichtkünstler. Inspiriert von Goethes Farbenlehre, Schopenhauer, Walter Russell, Otto Piene.">
+<Layout title="Über Istvan Seidel – Lichtkünstler in Halle (Saale)" description="Istvan Seidel, Lichtkünstler in Halle (Saale): Vita, Ausstellungen und Arbeitsweise. Lichtinstallationen, Land Art und Sky Art, inspiriert von Goethes Farbenlehre und Otto Piene.">
   <section class="container mx-auto px-6 py-20 max-w-2xl">
     <h1 class="heading-display text-2xl sm:text-3xl text-[var(--color-foreground)] uppercase mb-10 text-glow-amber tracking-[0.18em]">
       Über den Künstler
     </h1>
 
     <div class="space-y-6 font-body text-[var(--color-muted-foreground)] leading-relaxed text-sm sm:text-base">
+      <p class="text-[var(--color-foreground)]/85">
+        Istvan Seidel ist Lichtkünstler in Halle (Saale). Er arbeitet mit
+        Lichtinstallationen, Land Art und Sky Art in Halle und Mitteldeutschland.
+      </p>
+
       <p>
         <span class="text-[var(--color-foreground)] font-medium">Istvan Seidel</span>
         bewegt sich zwischen den Welten — zwischen Licht und Schatten,
@@ -49,6 +71,31 @@ import Layout from "../../layouts/Layout.astro";
       <p class="text-[var(--color-foreground)]/50 italic text-xs pt-6 border-t border-[var(--color-border)]/30">
         Wer er ist, verrät sein Werk. Mehr braucht es nicht.
       </p>
+    </div>
+
+    <div class="mt-16 grid gap-12 sm:grid-cols-2 font-body text-sm text-[var(--color-muted-foreground)] leading-relaxed" data-abschnitt="Vita und Ausstellungen">
+      <div>
+        <h2 class="heading-serif text-base text-[var(--color-foreground)] mb-4">Vita</h2>
+        <dl class="space-y-2">
+          {vita.map(([jahr, text]) => (
+            <div class="grid grid-cols-[3.5rem_1fr] gap-2">
+              <dt class="font-mono text-xs text-[var(--color-foreground)]/60 pt-0.5">{jahr}</dt>
+              <dd set:html={text} />
+            </div>
+          ))}
+        </dl>
+      </div>
+      <div>
+        <h2 class="heading-serif text-base text-[var(--color-foreground)] mb-4">Ausstellungen</h2>
+        <dl class="space-y-2">
+          {ausstellungen.map(([jahr, text, link]) => (
+            <div class="grid grid-cols-[3.5rem_1fr] gap-2">
+              <dt class="font-mono text-xs text-[var(--color-foreground)]/60 pt-0.5">{jahr}</dt>
+              <dd>{link ? <a href={link} class="text-[var(--color-accent)] hover:underline underline-offset-4">{text}</a> : text}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </div>
 
     <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4">

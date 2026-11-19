@@ -15,7 +15,7 @@ interface Props {
 const SITE = "https://lichtkunst.cc";
 const {
   title = "Istvan Seidel – Lichtkunst",
-  description = "Istvan Seidel – Lichtkünstler. Werke, Sky Art, NFTs. Inspiriert von Goethes Farbenlehre, Walter Russell, Otto Piene.",
+  description = "Istvan Seidel – Lichtkünstler in Halle (Saale). Lichtinstallationen, Sky Art, NFTs. Inspiriert von Goethes Farbenlehre, Walter Russell, Otto Piene.",
   image = "/bilder/eiform/eiform-01.jpg",
   type = "website",
   noindex = false,
@@ -24,6 +24,42 @@ const {
 // Open Graph braucht absolute URLs (Telegram, WhatsApp, Signal, Mastodon …).
 const ogImage = image.startsWith("http") ? image : SITE + image;
 const canonical = new URL(Astro.url.pathname, SITE).href;
+
+// Strukturierte Daten: wer hinter der Website steht. Hilft Suchmaschinen,
+// lichtkunst.cc dem Namen Istvan Seidel und den Profilen anderswo zuzuordnen.
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": SITE + "/#person",
+      name: "Istvan Seidel",
+      url: SITE + "/",
+      jobTitle: "Lichtkünstler",
+      birthDate: "1972",
+      alumniOf: { "@type": "CollegeOrUniversity", name: "Burg Giebichenstein Kunsthochschule Halle" },
+      memberOf: { "@type": "Organization", name: "BBK Sachsen-Anhalt", url: "https://www.bbk-sachsenanhalt.de/" },
+      homeLocation: { "@type": "Place", name: "Halle (Saale)", address: { "@type": "PostalAddress", addressLocality: "Halle (Saale)", addressRegion: "Sachsen-Anhalt", addressCountry: "DE" } },
+      knowsAbout: ["Lichtkunst", "Lichtinstallation", "Land Art", "Sky Art", "NFT"],
+      sameAs: [
+        "https://www.bbk-sachsenanhalt.de/author/seidel-istvan/",
+        "https://artfacts.net/artist/istvan-seidel-1972",
+        "https://getgems.io/lichtkunst",
+        "https://t.me/lichtkunst",
+        "https://x.com/bleibe_jung",
+        "https://www.pinterest.com/LichtkunstNFT/",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": SITE + "/#website",
+      url: SITE + "/",
+      name: "Istvan Seidel · Lichtkunst",
+      inLanguage: "de-DE",
+      publisher: { "@id": SITE + "/#person" },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -52,6 +88,8 @@ const canonical = new URL(Astro.url.pathname, SITE).href;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
