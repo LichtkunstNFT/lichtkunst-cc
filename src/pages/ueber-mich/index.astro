@@ -1,25 +1,87 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
-// Quelle: Vita im BBK-Profil (von Istvan am 01.11.2026 selbst eingetragen).
-const vita: [string, string][] = [
-  ["1972", "geboren"],
-  ["2002", "Diplom Bildende Kunst, Burg Giebichenstein Kunsthochschule Halle"],
-  ["", "Gründer der Produzentengalerie Halle"],
-  ["", 'Mitglied im <a href="https://www.bbk-sachsenanhalt.de/author/seidel-istvan/" target="_blank" rel="noopener" class="text-[var(--color-accent)] hover:underline underline-offset-4">BBK Sachsen-Anhalt</a>'],
-  ["", "lebt und arbeitet als Lichtkünstler in Halle (Saale)"],
-];
-const ausstellungen: [string, string, string?][] = [
-  ["2026", "Cosmic Eggs, Lichtinstallation, Offene Ateliers Sachsen-Anhalt und Kulturelles Themenjahr Halle, Coworking am Klaustor, Halle (Saale)", "/werke/2026-cosmic-eggs/"],
-  ["2018", "Einzelausstellung, Galerie Gaia, Dresden"],
-  ["2015", "„Mephisto“, Neues Theater Halle"],
-  ["2015", "„Wo sind die Elefanten?“, Lichthaus Halle, mit raumkultur e.V."],
-  ["2011", "„das Frühlingsopfer“, Stuttgart"],
-  ["2009", "Art Tower Berlin, mit der Produzentengalerie Halle"],
+// Quellen: Vita2.pdf (Stand 01.02.2021), BBK-Profil (01.11.2026), Istvans Angaben vom 19.11.2026.
+type Zeile = [string, string, string?];
+const BBK = 'https://www.bbk-sachsenanhalt.de/author/seidel-istvan/';
+const listen: { titel: string; zeilen: Zeile[] }[] = [
+  {
+    titel: "Vita",
+    zeilen: [
+      ["1972", "geboren in Budapest"],
+      ["1993–96", "Klassische Archäologie und Philosophie, Humboldt-Universität Berlin"],
+      ["1996–02", "Studium Malerei und Textil an der Burg Giebichenstein Kunsthochschule Halle bei Prof. Inge Götze und Prof. Ulrich Reimkasten"],
+      ["1999–00", "Studienaufenthalt an der Hochschule für angewandte Künste Budapest"],
+      ["2002", "Diplom"],
+      ["seit 2003", "freischaffend: Raum- und Lichtkunst, Objektkunst, Malerei, Grafik, Land Art, Kunst am Bau"],
+      ["2009–11", "Gründung und Leitung der Produzentengalerie Halle"],
+      ["seit 2016", "Mitglied im BBK Sachsen-Anhalt", BBK],
+      ["", "lebt und arbeitet in Halle (Saale)"],
+    ],
+  },
+  {
+    titel: "Stipendien",
+    zeilen: [
+      ["2020", "„Kultur ans Netz“, Land-Art-Projekt mit lebensgroßen Tensegrity-Kugeln"],
+      ["2016", "„Gläserner Untergrund und künstlerische Intervention“, Geologiestipendium mit der Martin-Luther-Universität und der Stadt Halle"],
+      ["2011", "Kunststipendium „Wilhelm von Kügelgen“ der Salzlandsparkasse Bernburg"],
+    ],
+  },
+  {
+    titel: "Lichtprojekte und Kunst am Bau",
+    zeilen: [
+      ["2026", "Cosmic Eggs, Lichtinstallation aus Schiefer, Salz und Spiegelräumen, Halle (Saale)", "/werke/2026-cosmic-eggs/"],
+      ["2017", "„Künstler als Gestalter der Welt“, Schaufensterinstallation mit Licht, BBK Halle"],
+      ["2017", "„Gläserner Untergrund und künstlerische Intervention 2“, Lichtvitrine, Stadtmuseum Halle"],
+      ["2015", "Lichtkunstperformance am Schalendom, Planetarium Halle"],
+      ["2010", "„Könneraner Blumenkinder“, Sandsteinrelief für die Kita in Könnern"],
+      ["2009", "„Die Kunst der Liebe“, Malerei und Lichtinstallation zu Ovids Liebesgedichten, Kabinett der Künste, Magdeburg"],
+      ["2007", "„Biophotonenspiegel“, Kunst am Bau, Psychiatrie St. Barbara, Halle"],
+      ["2004", "„Farbige Schatten“, Lichtrauminstallation, Kunst am Bau, St. Elisabeth Kinderkrankenhaus, Halle"],
+      ["2002", "„Der Griff nach den Sternen“, Farblicht am Ernemannturm der Technischen Sammlungen, Dresden"],
+      ["1999", "„Zu Goethes Farbenlehre“, Farblichtrauminstallation zum 250. Geburtstag Goethes, Galerie im Marktschlösschen, Halle"],
+    ],
+  },
+  {
+    titel: "Ausstellungen (Auswahl)",
+    zeilen: [
+      ["2026", "Cosmic Eggs, Offene Ateliers Sachsen-Anhalt und Kulturelles Themenjahr Halle, Coworking am Klaustor, Halle (Saale)", "/werke/2026-cosmic-eggs/"],
+      ["2018", "Einzelausstellung, Galerie Gaia, Dresden"],
+      ["2018", "Tafelbilder im selbst gebauten runden Lehmhaus, Tage des offenen Ateliers"],
+      ["2017", "Tafelmalerei, Bácskai Kulturpalota, Baja (Ungarn)"],
+      ["2017", "„generell frisch“, neun Tafelmalereien, Stadtmuseum Halle"],
+      ["2015", "„Mephisto“, Verein Hallescher Künstler, Galerie des Neuen Theaters, Halle", "/werke/2015-mephisto/"],
+      ["2015", "„Wo sind die Elefanten?“, Verein Hallescher Künstler, Lichthaus, Halle", "/werke/2015-wo-sind-die-elefanten/"],
+      ["2014", "„Das goldene Rechteck“, Tafelmalerei zu den Händelfestspielen, Halle"],
+      ["2013", "„Tanzende Sterne“, geometrische Tafelmalerei und Zeichnung, Amtsgericht Bernburg"],
+      ["2012", "„Macht Geld Sinn“, Installation mit Licht, Villa Kreutz, Köthen"],
+      ["2011", "„Das Frühlingsopfer“, mit der Produzentengalerie Halle, Art & Antik, Stuttgart"],
+      ["2010", "„Könneraner Schieferlichtgrafik“, Schieferfragmente und Licht, St. Wenzelskirche, Könnern"],
+      ["2009", "Art Tower Berlin, mit der Produzentengalerie Halle"],
+      ["2006", "Malerei und Lichtinstallation mit Oliver Benda, Schlosskirche Droyßig"],
+      ["2005", "„Augenlichter“, Malerei und Zeichnung, Stadtbibliothek Halle"],
+      ["2004", "„Zu Hause im Röhrenwerk“, fluoreszente Malerei und Lichtinstallation, ehemalige Röhrenwerke, Halle"],
+      ["2002", "„Dialog mit den Toten“, Diplominstallation mit 40 Petroleumlampen, Schattenobjekten und fluoreszenter Malerei, Volkspark Halle"],
+      ["2000", "„Japanische Ode an Goethe“, Lichtrauminstallation, Schloss Neuenburg, Freyburg"],
+      ["1998", "„Teetrinken zu Kriegszeiten“, großformatige Malerei, Künstlerhaus 188, Halle"],
+      ["1996", "„Ich denke, ich bin bald da“, erste Lichtvitrine, Heinrich-Heine-Haus, Lüneburg"],
+    ],
+  },
+  {
+    titel: "Publikationen",
+    zeilen: [
+      ["2016", "„Die Kunst des Polygons“, Kunstkalender, Calvendo"],
+      ["2015", "„Der Fluss der Zeit“, Kunstkalender, Calvendo"],
+      ["2014", "„Das goldene Rechteck“, Kunstkalender, Calvendo"],
+      ["2013", "„Die heilige Blume des Lebens“, Kunstkalender, Calvendo"],
+      ["2009", "„Humankapital Krankenhaus Kunst“, hg. von Prof. Ulrich Reimkasten, zum Kunst-am-Bau-Projekt St. Barbara, Verlag Janos Stekovics"],
+      ["2006", "„Krankenhaus“, zum Projekt im Kinderkrankenhaus St. Elisabeth, Verlag Janos Stekovics"],
+    ],
+  },
 ];
 ---
 
-<Layout title="Über Istvan Seidel – Lichtkünstler in Halle (Saale)" description="Istvan Seidel, Lichtkünstler in Halle (Saale): Vita, Ausstellungen und Arbeitsweise. Lichtinstallationen, Land Art und Sky Art, inspiriert von Goethes Farbenlehre und Otto Piene.">
+<Layout title="Über Istvan Seidel – Lichtkünstler in Halle (Saale)" description="Istvan Seidel, Lichtkünstler in Halle (Saale): Vita, Ausstellungen, Lichtprojekte und Kunst am Bau seit 1999. Lichtinstallationen, Land Art und Sky Art, inspiriert von Goethes Farbenlehre.">
   <section class="container mx-auto px-6 py-20 max-w-2xl">
     <h1 class="heading-display text-2xl sm:text-3xl text-[var(--color-foreground)] uppercase mb-10 text-glow-amber tracking-[0.18em]">
       Über den Künstler
@@ -73,29 +135,20 @@ const ausstellungen: [string, string, string?][] = [
       </p>
     </div>
 
-    <div class="mt-16 grid gap-12 sm:grid-cols-2 font-body text-sm text-[var(--color-muted-foreground)] leading-relaxed" data-abschnitt="Vita und Ausstellungen">
-      <div>
-        <h2 class="heading-serif text-base text-[var(--color-foreground)] mb-4">Vita</h2>
-        <dl class="space-y-2">
-          {vita.map(([jahr, text]) => (
-            <div class="grid grid-cols-[3.5rem_1fr] gap-2">
-              <dt class="font-mono text-xs text-[var(--color-foreground)]/60 pt-0.5">{jahr}</dt>
-              <dd set:html={text} />
-            </div>
-          ))}
-        </dl>
-      </div>
-      <div>
-        <h2 class="heading-serif text-base text-[var(--color-foreground)] mb-4">Ausstellungen</h2>
-        <dl class="space-y-2">
-          {ausstellungen.map(([jahr, text, link]) => (
-            <div class="grid grid-cols-[3.5rem_1fr] gap-2">
-              <dt class="font-mono text-xs text-[var(--color-foreground)]/60 pt-0.5">{jahr}</dt>
-              <dd>{link ? <a href={link} class="text-[var(--color-accent)] hover:underline underline-offset-4">{text}</a> : text}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
+    <div class="mt-16 space-y-12 font-body text-sm text-[var(--color-muted-foreground)] leading-relaxed" data-abschnitt="Vita und Ausstellungen">
+      {listen.map(({ titel, zeilen }) => (
+        <div>
+          <h2 class="heading-serif text-base text-[var(--color-foreground)] mb-4">{titel}</h2>
+          <dl class="space-y-2">
+            {zeilen.map(([jahr, text, link]) => (
+              <div class="grid grid-cols-[4.5rem_1fr] gap-3">
+                <dt class="font-mono text-xs text-[var(--color-foreground)]/60 pt-0.5">{jahr}</dt>
+                <dd>{link ? <a href={link} target={link.startsWith("http") ? "_blank" : undefined} rel={link.startsWith("http") ? "noopener" : undefined} class="text-[var(--color-accent)] hover:underline underline-offset-4">{text}</a> : text}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      ))}
     </div>
 
     <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4">

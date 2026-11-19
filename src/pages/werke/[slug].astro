@@ -37,9 +37,15 @@ const datum = werk.data.datum.toLocaleDateString("de-DE", {
       </div>
     )}
 
-    <p class="text-center text-[0.7rem] tracking-[0.25em] uppercase text-[var(--color-muted-foreground)]/70 mb-8 -mt-6">
-      Vorschau · Originale exklusiv als <a href="/nft/info" class="text-[var(--color-accent)] underline underline-offset-4">NFT</a>
-    </p>
+    {werk.data.getgems_url ? (
+      <p class="text-center text-[0.7rem] tracking-[0.25em] uppercase text-[var(--color-muted-foreground)]/70 mb-8 -mt-6">
+        Vorschau · Originale exklusiv als <a href="/nft/info" class="text-[var(--color-accent)] underline underline-offset-4">NFT</a>
+      </p>
+    ) : (
+      <p class="text-center text-[0.7rem] tracking-[0.25em] uppercase text-[var(--color-muted-foreground)]/70 mb-8 -mt-6">
+        Ausstellungsfoto
+      </p>
+    )}
 
     <header class="mb-10">
       {werk.data.serie && (
